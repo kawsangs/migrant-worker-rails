@@ -13,8 +13,7 @@ RUN curl -sL https://deb.nodesource.com/setup_12.x | bash - && \
 RUN mkdir /app
 WORKDIR /app
 
-#COPY Gemfile* package.json yarn.lock /app/
-COPY Gemfile* package.json
+COPY Gemfile* package.json yarn.lock /app/
 
 RUN gem install bundler -v 2.1.4
 
