@@ -49,7 +49,7 @@ class Account < ApplicationRecord
   end
 
   def send_confirmation_instruction_async
-    AccountWorker.perform_async(@account.id, :send_confirmation_instructions)
+    AccountWorker.perform_async(id, :send_confirmation_instructions)
   end
 
   def self.filter(params)
