@@ -1,6 +1,6 @@
 class AccountsController < ApplicationController
   def index
-    @accounts = Account.all
+    @accounts = authorize Account.all
   end
 
   def new

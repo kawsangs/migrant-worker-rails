@@ -29,20 +29,12 @@ class Account < ApplicationRecord
 
   ROLES = roles.keys.map { |r| [r.titlecase, r] }
 
-  def password_match?
-    errors[:password] << I18n.t('errors.messages.blank') if password.blank?
-    errors[:password_confirmation] << I18n.t('errors.messages.blank') if password_confirmation.blank?
-    errors[:password_confirmation] << I18n.translate('errors.messages.confirmation', attribute: 'password') if password != password_confirmation
-    password == password_confirmation && !password.blank?
-  end
+  def password_match?(params)
+    errors[:password] << I18n.t('errors.messages.blank') if params[:password].blank?
+    errors[:password_confirmation] << I18n.t('errors.messages.blank') if params[:password_confirmation].blank?
+    errors[:password_confirmation] << I18n.translate('errors.messages.confirmation_miss_match', attribute: 'password') if params[:password] != params[:password_confirmation]
 
-  # new function to set the password without knowing the current
-  # password used in our confirmation controller.
-  def attempt_set_password(params)
-    p = {}
-    p[:password] = params[:password]
-    p[:password_confirmation] = params[:password_confirmation]
-    update_attributes(p)
+    params[:password] == params[:password_confirmation] && params[:password].present?
   end
 
   # new function to return whether a password has been set

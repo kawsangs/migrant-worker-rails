@@ -1,6 +1,6 @@
 class AccountPolicy < ApplicationPolicy
   def index?
-    user.system_admin?
+    true
   end
 
   def show?
