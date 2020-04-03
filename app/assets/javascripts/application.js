@@ -2,18 +2,26 @@
 //= require activestorage
 //= require turbolinks
 
+//= require jquery3
+//= require popper
+//= require bootstrap
+
+//= require application/namespace
+//= require application/util
+
+//= require common/sidebar
+
+//= require accounts/index
 
 $(document).on("ready turbolinks:load", () => {
 
-  // const currentPage = OM.Util.getCurrentPage();
-  // if (OM[currentPage]) {
-  //   OM[currentPage].init();
-  // }
+  const currentPage = MW.Util.getCurrentPage();
+  if (MW[currentPage]) {
+    MW[currentPage].init();
+  }
 
-  // OM.Common.MobileMenu.init();
+  MW.Common.Sidebar.init();
 
-  // $("[data-toggle='tooltip']").tooltip()
-
-  // Rails.refreshCSRFTokens();
+  $("[data-toggle='tooltip']").tooltip()
 });
 

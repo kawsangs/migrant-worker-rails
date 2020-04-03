@@ -1,0 +1,26 @@
+- if notice.present?
+  .alert.alert-success.notify-message
+    %button.close{type: 'button', 'data-dismiss' => 'alert', 'aria-label' => 'Close'}
+    = notice
+
+- if resource.errors.any?
+  .alert.alert-danger.notify-message
+    %button.close{type: 'button', 'data-dismiss' => 'alert', 'aria-label' => 'Close'}
+    = I18n.t("errors.messages.not_saved",                 |
+      count: resource.errors.count,                       |
+      resource: resource.class.model_name.human.downcase) |
+
+    %ul
+      - resource.errors.full_messages.each do |message|
+        %li= message
+
+- elsif alert.present?
+  .alert.alert-danger.notify-message
+    %button.close{type: 'button', 'data-dismiss' => 'alert', 'aria-label' => 'Close'}
+    = alert
+
+
+:javascript
+  setTimeout(function() {
+    $( ".alert" ).fadeOut( "slow" )
+  }, 5000);

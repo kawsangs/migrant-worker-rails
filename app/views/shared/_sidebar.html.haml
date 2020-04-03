@@ -1,0 +1,30 @@
+%nav#sidebar
+  #sidebarCollapse.sidebar-header
+    %h3
+      = ENV['APP_NAME']
+      %div.mt-2{style: 'font-size: 12px'}= current_account.email
+
+    %strong.mr-1= ENV['APP_SHORTCUT_NAME']
+    %i.fas.fa-align-left
+
+  %ul.list-unstyled.components
+    %li{class: get_css_active_class('accounts') }
+      = link_to accounts_path do
+        %i.fas.fa-users
+        = t('sidebar.accounts')
+    %li
+      = link_to '#' do
+        %i.fas.fa-info
+        = t('sidebar.about_us')
+    %li
+      = link_to destroy_account_session_path, method: :delete do
+        %i.fas.fa-key
+        = t('sidebar.logout')
+
+  .copyright
+    - version = "#{t('sidebar.version')}: #{ENV.fetch('APP_VERSION') { 'development' }}"
+
+    .copyright-large
+      .d-block.pl-2= version
+    .copyright-small
+      .d-block= version
