@@ -5,9 +5,13 @@
 - if alert.present?
   .alert.alert-danger.notify-message
     %button.close{type: 'button', 'data-dismiss' => 'alert', 'aria-label' => 'Close'}
-    = alert
+    - if alert.kind_of?(Array)
+      - alert.each do |message|
+        %div= message
+    - else
+      = alert
 
-/ :javascript
-/   setTimeout(function() {
-/     $( ".alert" ).fadeOut( "slow" )
-/   }, 3000);
+:javascript
+  setTimeout(function() {
+    $( ".alert" ).fadeOut( "slow" )
+  }, 3000);
