@@ -36,6 +36,7 @@ gem "simple_form",    "~> 5.0", ">= 5.0.2"
 gem "font-awesome-rails", "~> 4.7.0.5"
 gem "pundit",         "~> 2.1.0"
 gem "pagy",           "~> 3.5"
+gem "sidekiq",        "~> 6.0.6"
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console

@@ -11,7 +11,7 @@ class AccountsController < ApplicationController
     @account = authorize Account.new(account_params)
 
     if @account.save
-      # AccountWorker.perform_async(@account.id)
+      @account.send_confirmation_instruction_async
       redirect_to accounts_url
     else
       flash.now[:alert] = @account.errors.full_messages

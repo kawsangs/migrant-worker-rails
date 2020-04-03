@@ -48,6 +48,10 @@ class Account < ApplicationRecord
     pending_any_confirmation { yield }
   end
 
+  def send_confirmation_instruction_async
+    AccountWorker.perform_async(@account.id, :send_confirmation_instructions)
+  end
+
   def self.filter(params)
     scope = all
     scope = scope.where('email LIKE ?', "%#{params[:email]}%") if params[:email].present?
