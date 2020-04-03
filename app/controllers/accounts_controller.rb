@@ -1,6 +1,6 @@
 class AccountsController < ApplicationController
   def index
-    @accounts = authorize Account.all
+    @pagy, @accounts = pagy(policy_scope(authorize Account.filter(params)))
   end
 
   def new
