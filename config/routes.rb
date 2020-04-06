@@ -10,4 +10,11 @@ Rails.application.routes.draw do
   end
 
   resources :migrants
+
+  # Api
+  namespace :api do
+    namespace :v1 do
+      resources :migrants, only: [:create]
+    end
+  end
 end
