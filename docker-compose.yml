@@ -30,3 +30,11 @@ services:
     stdin_open: true
     ports:
       - "3000:3000"
+
+  redis:
+    image: redis:5.0.7
+
+  sidekiq:
+    <<: *rails
+    command: bundle exec sidekiq -C config/sidekiq.yml
+    ports: []
