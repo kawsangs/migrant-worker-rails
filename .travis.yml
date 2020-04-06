@@ -20,4 +20,4 @@ before_script:
   - bash dev-setup.sh
 
 script:
-  - docker-compose run --rm web rspec
+  - docker-compose run --rm web bundle exec rspec
