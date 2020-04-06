@@ -8,4 +8,6 @@ Rails.application.routes.draw do
   as :account do
     match '/confirmation' => 'confirmations#update', :via => :put, :as => :update_account_confirmation
   end
+
+  resources :migrants
 end
