@@ -27,3 +27,4 @@ public/uploads/
 docker-env
 app.env
 .DS_Store
+/node_modules/
