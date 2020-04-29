@@ -20,11 +20,14 @@
         - @migrants.each_with_index do |migrant, index|
           %tr
             %td= index + 1
-            %td= migrant.full_name
+            %td= migrant.full_name.presence || '-'
             %td= migrant.sex
             %td= migrant.age
             %td= migrant.phone_number
-            %td= migrant.voice
+            %td
+              - if migrant.voice.present?
+                %audio{controls: true}
+                  %source{src: migrant.voice}
             %td.text-right
 
     - if @pagy.pages > 1
