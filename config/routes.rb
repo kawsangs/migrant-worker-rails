@@ -15,6 +15,10 @@ Rails.application.routes.draw do
   namespace :api do
     namespace :v1 do
       resources :migrants, only: [:create]
+
+      resources :pdfs, only: [] do
+        get :download, on: :collection
+      end
     end
   end
 end
