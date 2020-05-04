@@ -45,6 +45,7 @@ ActiveRecord::Schema.define(version: 2020_04_06_083438) do
     t.string "sex"
     t.string "phone_number"
     t.string "voice"
+    t.string "uuid"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end

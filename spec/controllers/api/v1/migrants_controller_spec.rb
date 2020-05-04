@@ -4,14 +4,7 @@ RSpec.describe Api::V1::MigrantsController, type: :controller do
   describe "POST migrant#create" do
     let(:api_key) { ApiKey.create! }
     let(:attributes) {
-      {
-        migrant: {
-          full_name: 'Nary',
-          sex: 'F',
-          age: '30',
-          voice: ''
-        }
-      }
+      {"migrant"=>"{\"uuid\":\"a86239a8-f8b2-4702-9590-dd15a189d40d\",\"full_name\":\"Sokra\",\"age\":\"30\",\"sex\":\"female\",\"phone_number\":\"012 333 444\",\"voice\":\"\"}"}
     }
 
     context "success" do
