@@ -8,4 +8,17 @@ Rails.application.routes.draw do
   as :account do
     match '/confirmation' => 'confirmations#update', :via => :put, :as => :update_account_confirmation
   end
+
+  resources :migrants
+
+  # Api
+  namespace :api do
+    namespace :v1 do
+      resources :migrants, only: [:create]
+
+      resources :pdfs, only: [] do
+        get :download, on: :collection
+      end
+    end
+  end
 end

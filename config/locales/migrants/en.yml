@@ -1,0 +1,9 @@
+en:
+  migrants:
+    migrants: Migrants
+    number: 'No'
+    full_name: Full name
+    sex: Sex
+    age: Age
+    phone_number: Phone number
+    voice: Voice

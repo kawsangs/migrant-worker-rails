@@ -1,0 +1,35 @@
+#content
+  %nav.navbar.navbar-expand-lg.navbar-light.bg-light
+    .container-fluid
+      %h3= t('migrant.migrants')
+
+  = render partial: "shared/no_data", locals: { items: @migrants }
+
+  - if @migrants.present?
+    %table.table.table-hover.medium-width
+      %thead
+        %tr
+          %th= t('migrant.number')
+          %th= t('migrant.full_name')
+          %th= t('migrant.sex')
+          %th= t('migrant.age')
+          %th= t('migrant.phone_number')
+          %th= t('migrant.voice')
+          %th
+      %tbody
+        - @migrants.each_with_index do |migrant, index|
+          %tr
+            %td= index + 1
+            %td= migrant.full_name.presence || '-'
+            %td= migrant.sex
+            %td= migrant.age
+            %td= migrant.phone_number
+            %td
+              - if migrant.voice.present?
+                %audio{controls: true}
+                  %source{src: migrant.voice}
+            %td.text-right
+
+    - if @pagy.pages > 1
+      .pagy-wrapper
+        != pagy_bootstrap_nav(@pagy)
