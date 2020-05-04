@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class AccountsController < ApplicationController
   def index
     @pagy, @accounts = pagy(policy_scope(authorize Account.filter(params)))

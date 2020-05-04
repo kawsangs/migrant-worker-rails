@@ -1,0 +1,28 @@
+#content
+  %nav.navbar.navbar-expand-lg.navbar-light.bg-light
+    .container-fluid
+      %h3= t('about.about')
+
+
+  %p= t('about.app_definition')
+  %p= t('about.safe_and_fare_definition')
+
+  %p.text-center
+    %strong= t('about.implemented_by')
+
+  .text-center
+    %p= image_tag('unwomen.png', class: 'medium-logo')
+    %p= image_tag('instedd.png', class: 'medium-logo')
+    %p= image_tag('chc.png', class: 'medium-logo')
+
+  %p.text-center{style: 'margin-top: 40px;'}
+    %strong= t('about.funded_by')
+
+  .funded-by-logo
+    %div{style: 'flex: 1;'}
+      = image_tag('spotlight.png', class: 'spotlight-logo')
+
+    %div= image_tag('eu.png', class: 'small-logo')
+    %div= image_tag('undp.png', class: 'small-logo')
+    %div= image_tag('global_support.png', class: 'small-logo')
+    %div= image_tag('gender_equality.jpg', class: 'small-logo')

@@ -10,6 +10,7 @@ Rails.application.routes.draw do
   end
 
   resources :migrants
+  resource :about, only: [:show]
 
   # Api
   namespace :api do
