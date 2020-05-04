@@ -6,6 +6,9 @@
   = render partial: "shared/no_data", locals: { items: @migrants }
 
   - if @migrants.present?
+    .medium-width
+      .float-right= "<b>#{@pagy.from}</b> - <b>#{@pagy.to}</b> of <b>#{@pagy.count}</b>".html_safe
+
     %table.table.table-hover.medium-width
       %thead
         %tr
@@ -19,7 +22,7 @@
       %tbody
         - @migrants.each_with_index do |migrant, index|
           %tr
-            %td= index + 1
+            %td= @pagy.from + index
             %td= migrant.full_name.presence || '-'
             %td= migrant.sex
             %td= migrant.age
