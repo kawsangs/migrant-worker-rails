@@ -7,7 +7,7 @@
 
   - if @migrants.present?
     .medium-width
-      .float-right= "<b>#{@pagy.from}</b> - <b>#{@pagy.to}</b> of <b>#{@pagy.count}</b>".html_safe
+      .float-right= pagy_label(@pagy)
 
     %table.table.table-hover.medium-width
       %thead
