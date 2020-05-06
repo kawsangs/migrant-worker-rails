@@ -9,6 +9,9 @@
   = render partial: "shared/no_data", locals: { items: @accounts }
 
   - if @accounts.present?
+    .medium-width
+      .float-right= pagy_label(@pagy)
+
     %table.table.table-hover.medium-width
       %thead
         %tr
@@ -20,7 +23,7 @@
       %tbody
         - @accounts.each_with_index do |account, index|
           %tr
-            %td= index + 1
+            %td= @pagy.from + index
             %td= account.email
             %td= account.role.titlecase
 

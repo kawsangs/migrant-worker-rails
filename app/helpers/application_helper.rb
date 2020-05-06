@@ -11,4 +11,8 @@ module ApplicationHelper
   def get_css_active_class(name)
     return "active" if params["controller"] == name
   end
+
+  def pagy_label(pagy)
+    "<b>#{pagy.from}</b> - <b>#{pagy.to}</b> of <b>#{pagy.count}</b>".html_safe
+  end
 end
