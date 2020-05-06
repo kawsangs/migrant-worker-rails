@@ -9,6 +9,11 @@
   %p= t('about.app_definition')
   %p= t('about.safe_and_fare_definition')
 
+  %div.mt-2.mb-5
+    .text-center= t('about.here_is_link_download')
+    .text-center= link_to 'Download Mobile App', '#', class: 'btn btn-link'
+    .text-center= image_tag 'qr_code.png'
+
   %p.text-center
     %strong= t('about.implemented_by')
 
