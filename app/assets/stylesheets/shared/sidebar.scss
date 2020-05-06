@@ -195,7 +195,7 @@ a:focus {
   padding-bottom: 0;
   min-height: 100vh;
   transition: all 0.3s;
-  overflow: scroll;
+  overflow-y: scroll;
 }
 
 #content:after {

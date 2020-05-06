@@ -13,6 +13,6 @@ module ApplicationHelper
   end
 
   def pagy_label(pagy)
-    "<b>#{pagy.from}</b> - <b>#{pagy.to}</b> of <b>#{pagy.count}</b>".html_safe
+    "#{I18n.t('shared.display')} <b>#{pagy.from}</b> - <b>#{pagy.to}</b> of <b>#{pagy.count}</b>".html_safe
   end
 end

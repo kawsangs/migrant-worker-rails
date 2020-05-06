@@ -6,8 +6,7 @@
   = render partial: "shared/no_data", locals: { items: @migrants }
 
   - if @migrants.present?
-    .medium-width
-      .float-right= pagy_label(@pagy)
+    = render 'shared/pagy_label'
 
     %table.table.table-hover.medium-width
       %thead
@@ -24,7 +23,10 @@
           %tr
             %td= @pagy.from + index
             %td= migrant.full_name.presence || '-'
-            %td= migrant.sex
+            %td
+              - if sex = migrant.sex.presence
+                = image_tag "#{sex}.png", style: 'width: 24px;', 'data-toggle' => 'tooltip', title: sex.titlecase
+
             %td= migrant.age
             %td= migrant.phone_number
             %td
