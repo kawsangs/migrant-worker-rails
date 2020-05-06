@@ -9,7 +9,9 @@ Rails.application.routes.draw do
     match '/confirmation' => 'confirmations#update', :via => :put, :as => :update_account_confirmation
   end
 
-  resources :migrants
+  resources :migrants do
+    get :download, on: :collection
+  end
   resource :about, only: [:show]
 
   # Api

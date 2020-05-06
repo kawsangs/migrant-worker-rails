@@ -1,7 +1,22 @@
 #content
   %nav.navbar.navbar-expand-lg.navbar-light.bg-light
     .container-fluid
-      %h3= t('migrant.migrants')
+      %h3= t('migrants.migrants')
+
+  %form{ action: '/migrants', method: 'get' }
+    .form-row.medium-width
+      .col-auto.form-group
+        .input-group
+          = text_field_tag(:keyword, params[:keyword], class: 'form-control keyword', placeholder: t('migrants.search'))
+
+          %a#info.input-group-append
+            .input-group-text
+              %i.fas.fa-search
+
+      .col-auto.form-group.flex-grow-1
+        %a.btn.btn-outline-info{href: download_migrants_path(keyword: params[:keyword]), target: '_blank'}
+          %i.fas.fa-download
+          = t('migrants.download_csv')
 
   = render partial: "shared/no_data", locals: { items: @migrants }
 
