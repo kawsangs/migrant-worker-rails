@@ -1,8 +1,10 @@
-#content
-  %nav.navbar.navbar-expand-lg.navbar-light.bg-light
+.w-75.view-center
+  - unless signed_in?
+    = link_to 'Back', root_path, class: 'btn btn-link'
+
+  %nav.text-center.mb-4{ class: ('mt-3' if signed_in?) }
     .container-fluid
       %h3= t('about.about')
-
 
   %p= t('about.app_definition')
   %p= t('about.safe_and_fare_definition')
