@@ -30,6 +30,6 @@ class MigrantService
     end
 
     def column_header
-      %w(Number Full_name Sex Age Phone_number Voice_url Created_date)
+      ['Number', 'Full Name', 'Sex', 'Age', 'Phone Number', 'Voice Record', 'Create Date']
     end
 end

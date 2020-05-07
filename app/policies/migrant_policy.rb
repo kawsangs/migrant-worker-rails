@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class MigrantPolicy < ApplicationPolicy
   def index?
     true

@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class ApplicationController < ActionController::Base
   include Pundit
   include Pagy::Backend
@@ -15,7 +17,7 @@ class ApplicationController < ActionController::Base
 
   private
     def layout_by_resource
-      devise_controller? ? "minimal" : "application"
+      devise_controller? ? 'minimal' : 'application'
     end
 
     def set_locale

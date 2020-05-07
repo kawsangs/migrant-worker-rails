@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 module ApplicationHelper
   include Pagy::Frontend
 
@@ -9,7 +11,7 @@ module ApplicationHelper
   end
 
   def get_css_active_class(name)
-    return "active" if params["controller"] == name
+    return 'active' if params['controller'] == name
   end
 
   def pagy_label(pagy)

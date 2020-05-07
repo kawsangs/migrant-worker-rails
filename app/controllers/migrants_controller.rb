@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class MigrantsController < ApplicationController
   def index
     @pagy, @migrants = pagy(policy_scope(authorize Migrant.filter(params)))
