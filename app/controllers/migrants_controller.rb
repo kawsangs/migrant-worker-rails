@@ -2,7 +2,7 @@
 
 class MigrantsController < ApplicationController
   def index
-    @pagy, @migrants = pagy(policy_scope(authorize Migrant.filter(params)))
+    @pagy, @migrants = pagy(policy_scope(authorize Migrant.filter(params).newest))
   end
 
   def download
