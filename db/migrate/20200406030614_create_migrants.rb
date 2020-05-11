@@ -9,6 +9,7 @@ class CreateMigrants < ActiveRecord::Migration[6.0]
       t.string  :phone_number
       t.string  :voice
       t.string  :uuid
+      t.datetime :registered_at
 
       t.timestamps
     end

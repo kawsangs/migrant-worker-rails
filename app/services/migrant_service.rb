@@ -24,12 +24,11 @@ class MigrantService
       %w(full_name sex age phone_number voice_url).each do |col|
         columns.push(migrant.send(col))
       end
-      columns.push(I18n.l(migrant.created_at, format: :long))
-
+      columns.push(I18n.l(migrant.registered_at, format: :long)) if migrant.registered_at.present?
       columns
     end
 
     def column_header
-      ['Number', 'Full Name', 'Sex', 'Age', 'Phone Number', 'Voice Record', 'Create Date']
+      ['Number', 'Full Name', 'Sex', 'Age', 'Phone Number', 'Voice Record', 'Registered At']
     end
 end

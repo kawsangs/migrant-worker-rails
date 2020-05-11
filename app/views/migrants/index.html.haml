@@ -32,6 +32,7 @@
           %th= t('migrant.age')
           %th= t('migrant.phone_number')
           %th= t('migrant.voice')
+          %th= t('migrant.registered_at')
           %th
       %tbody
         - @migrants.each_with_index do |migrant, index|
@@ -40,7 +41,7 @@
             %td= migrant.full_name.presence || '-'
             %td
               - if sex = migrant.sex.presence
-                = image_tag "#{sex}.png", style: 'width: 24px;', 'data-toggle' => 'tooltip', title: sex.titlecase
+                = image_tag "#{sex.downcase}.png", style: 'width: 24px;', 'data-toggle' => 'tooltip', title: sex.titlecase
 
             %td= migrant.age
             %td= migrant.phone_number
@@ -48,6 +49,8 @@
               - if migrant.voice.present?
                 %audio{controls: true}
                   %source{src: migrant.voice}
+            %td
+              = l(migrant.registered_at, format: :long) if migrant.registered_at.present?
             %td.text-right
 
     - if @pagy.pages > 1
