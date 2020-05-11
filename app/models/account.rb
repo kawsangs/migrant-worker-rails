@@ -21,7 +21,7 @@
 class Account < ApplicationRecord
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable, :trackable and :omniauthable
-  devise :database_authenticatable, :registerable,
+  devise :database_authenticatable, :registerable, :omniauthable,
          :recoverable, :rememberable, :validatable, :confirmable
 
   enum role: {
@@ -58,6 +58,10 @@ class Account < ApplicationRecord
     scope = all
     scope = scope.where('email LIKE ?', "%#{params[:email]}%") if params[:email].present?
     scope
+  end
+
+  def self.from_omniauth(access_token)
+    self.where(email: access_token.info['email']).first
   end
 
   protected
