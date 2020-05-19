@@ -17,7 +17,7 @@
 class Migrant < ApplicationRecord
   mount_uploader :voice, ::VoiceUploader
 
-  scope :newest, -> { order('updated_at DESC') }
+  scope :newest, -> { order('registered_at DESC') }
 
   def self.filter(params = {})
     scope = all

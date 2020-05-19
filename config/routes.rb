@@ -13,6 +13,7 @@ Rails.application.routes.draw do
 
   resources :migrants do
     get :download, on: :collection
+    get :voice, on: :member
   end
   resource :about, only: [:show]
 

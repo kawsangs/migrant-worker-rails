@@ -15,4 +15,10 @@ class MigrantsController < ApplicationController
       send_data(::MigrantService.new(migrants).export_csv, filename: 'migrants.csv')
     end
   end
+
+  def voice
+    migrant = authorize Migrant.find(params[:id])
+
+    send_file migrant.voice_url
+  end
 end

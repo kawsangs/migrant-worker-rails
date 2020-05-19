@@ -48,7 +48,7 @@
             %td
               - if migrant.voice.present?
                 %audio{controls: true}
-                  %source{src: migrant.voice}
+                  %source{src: voice_migrant_path(migrant)}
             %td
               = l(migrant.registered_at, format: :long) if migrant.registered_at.present?
             %td.text-right
