@@ -1,6 +1,4 @@
 .form-wrapper.pr-1
-  %h3.mb-3= "#{ENV['APP_NAME']} (#{ENV['APP_SHORTCUT_NAME']})"
-
   = form_for(resource, as: resource_name, url: session_path(resource_name)) do |f|
     = link_to omniauth_authorize_path(:account, :google_oauth2), class: 'btn btn-outline-primary w-100' do
       = image_tag 'google.png', style: 'width: 18px;'

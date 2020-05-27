@@ -5,7 +5,7 @@
 
   %form{ action: '/migrants', method: 'get' }
     .form-row.medium-width
-      .col-auto.form-group
+      .col-auto.form-group.pl-0
         .input-group
           = text_field_tag(:keyword, params[:keyword], class: 'form-control keyword', placeholder: t('migrants.search'))
 
