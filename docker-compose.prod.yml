@@ -2,6 +2,8 @@ version: '3'
 
 volumes:
   db:
+  bundle:
+  attachment:
   nginx-certs:
   nginx-dhparam:
   nginx-vhost:
@@ -18,6 +20,9 @@ services:
   app: &rails
     image: ilabsea/migrant-worker-rails:0.0.1
     restart: unless-stopped
+    volumes:
+      - bundle:/usr/local/bundle
+      - attachment:/app/public/uploads
     depends_on:
       - db
     environment:
@@ -38,6 +43,15 @@ services:
     - /bin/sh
     - -c
     - bundle exec puma -e production -b tcp://0.0.0.0:80
+
+  sidekiq:
+    <<: *rails
+    command: bundle exec sidekiq -C config/sidekiq.yml
+    ports: []
+
+  redis:
+    container_name: redis
+    image: redis
 
   nginx-proxy:
     image: jwilder/nginx-proxy
