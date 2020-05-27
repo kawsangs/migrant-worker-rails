@@ -1,35 +1,36 @@
-.w-75.view-center
-  - unless signed_in?
-    = link_to 'Back', root_path, class: 'btn btn-link'
+#content
+  .w-75.view-center
+    - unless signed_in?
+      = link_to 'Back', root_path, class: 'btn btn-link'
 
-  %nav.text-center.mb-4{ class: ('mt-3' if signed_in?) }
-    .container-fluid
-      %h3= t('about.about')
+    %nav.text-center.mb-4{ class: ('mt-3' if signed_in?) }
+      .container-fluid
+        %h3= t('about.about')
 
-  %p= t('about.app_definition')
-  %p= t('about.safe_and_fare_definition')
+    %p= t('about.app_definition')
+    %p= t('about.safe_and_fare_definition')
 
-  %div.mt-2.mb-5
-    .text-center= t('about.here_is_link_download')
-    .text-center= link_to 'Download Mobile App', '#', class: 'btn btn-link'
-    .text-center= image_tag 'qr_code.png'
+    %div.mt-2.mb-5
+      .text-center= t('about.here_is_link_download')
+      .text-center= link_to 'Download Mobile App', '#', class: 'btn btn-link'
+      .text-center= image_tag 'qr_code.png'
 
-  %p.text-center
-    %strong= t('about.implemented_by')
+    %p.text-center
+      %strong= t('about.implemented_by')
 
-  .text-center
-    %p= image_tag('unwomen.png', class: 'medium-logo')
-    %p= image_tag('instedd.png', class: 'medium-logo')
-    %p= image_tag('chc.png', class: 'medium-logo')
+    .text-center
+      %p= image_tag('unwomen.png', class: 'medium-logo')
+      %p= image_tag('instedd.png', class: 'medium-logo')
+      %p= image_tag('chc.png', class: 'medium-logo')
 
-  %p.text-center{style: 'margin-top: 40px;'}
-    %strong= t('about.funded_by')
+    %p.text-center{style: 'margin-top: 40px;'}
+      %strong= t('about.funded_by')
 
-  .funded-by-logo
-    %div{style: 'flex: 1;'}
-      = image_tag('spotlight.png', class: 'spotlight-logo')
+    .funded-by-logo
+      %div{style: 'flex: 1;'}
+        = image_tag('spotlight.png', class: 'spotlight-logo')
 
-    %div= image_tag('eu.png', class: 'small-logo')
-    %div= image_tag('undp.png', class: 'small-logo')
-    %div= image_tag('global_support.png', class: 'small-logo')
-    %div= image_tag('gender_equality.jpg', class: 'small-logo')
+      %div= image_tag('eu.png', class: 'small-logo')
+      %div= image_tag('undp.png', class: 'small-logo')
+      %div= image_tag('global_support.png', class: 'small-logo')
+      %div= image_tag('gender_equality.jpg', class: 'small-logo')

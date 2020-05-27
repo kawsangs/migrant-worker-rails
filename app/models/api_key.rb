@@ -1,3 +1,14 @@
+# frozen_string_literal: true
+
+# == Schema Information
+#
+# Table name: api_keys
+#
+#  id           :bigint           not null, primary key
+#  access_token :string
+#  created_at   :datetime         not null
+#  updated_at   :datetime         not null
+#
 class ApiKey < ApplicationRecord
   before_create :generate_access_token
 

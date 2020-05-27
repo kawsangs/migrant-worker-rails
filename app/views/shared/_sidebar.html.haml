@@ -8,6 +8,11 @@
     %i.fas.fa-align-left
 
   %ul.list-unstyled.components
+    %li
+      = link_to ENV['DASHBOARD_URL'], target: '_blank' do
+        %i.fas.fa-tachometer-alt
+        = t('sidebar.dashboard')
+
     %li{class: get_css_active_class('accounts') }
       = link_to accounts_path do
         %i.fas.fa-users

@@ -3,20 +3,10 @@
   flex-direction: column;
   height: 100%;
 
-  .column {
-    display: flex;
-    flex-direction: column;
+  .content-wrapper {
     height: 100%;
-    overflow: scroll;
-  }
-
-  .wrapper {
-    display: flex;
-    justify-content: center;
-    margin: 0 auto;
-    flex-grow: 1;
-    padding-top: 80px;
-    overflow: initial;
+    overflow-y: scroll;
+    padding-top: 60px;
 
     .logo {
       width: 200px;
@@ -34,7 +24,6 @@
     }
 
     .program {
-      width: 200px;
       text-align: center;
     }
   }
@@ -55,5 +44,22 @@
     .footer-logo {
       height: 50px;
     }
+  }
+
+  #footer {
+    padding: 10px 0;
+    border-top: 1px solid #eee;
+    margin-top: 20px;
+    color: #555;
+    font-size: 12px;
+  }
+
+  .line {
+    border: 1px solid #17a2b8;
+    height: 0;
+  }
+
+  .or-label {
+    padding: 16px 8px;
   }
 }

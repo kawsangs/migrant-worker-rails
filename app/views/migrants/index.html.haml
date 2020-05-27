@@ -1,36 +1,56 @@
 #content
   %nav.navbar.navbar-expand-lg.navbar-light.bg-light
     .container-fluid
-      %h3= t('migrant.migrants')
+      %h3= t('migrants.migrants')
+
+  %form{ action: '/migrants', method: 'get' }
+    .form-row.medium-width
+      .col-auto.form-group.pl-0
+        .input-group
+          = text_field_tag(:keyword, params[:keyword], class: 'form-control keyword', placeholder: t('migrants.search'))
+
+          %a#info.input-group-append
+            .input-group-text
+              %i.fas.fa-search
+
+      .col-auto.form-group.flex-grow-1
+        %a.btn.btn-outline-info{href: download_migrants_path(keyword: params[:keyword]), target: '_blank'}
+          %i.fas.fa-download
+          = t('migrants.download_csv')
 
   = render partial: "shared/no_data", locals: { items: @migrants }
 
   - if @migrants.present?
-    .medium-width
-      .float-right= pagy_label(@pagy)
+    = render 'shared/pagy_label'
 
     %table.table.table-hover.medium-width
       %thead
         %tr
-          %th= t('migrant.number')
+          %th #
           %th= t('migrant.full_name')
           %th= t('migrant.sex')
           %th= t('migrant.age')
           %th= t('migrant.phone_number')
           %th= t('migrant.voice')
+          %th= t('migrant.registered_at')
           %th
       %tbody
         - @migrants.each_with_index do |migrant, index|
           %tr
             %td= @pagy.from + index
             %td= migrant.full_name.presence || '-'
-            %td= migrant.sex
+            %td
+              - if sex = migrant.sex.presence
+                = image_tag "#{sex.downcase}.png", style: 'width: 24px;', 'data-toggle' => 'tooltip', title: sex.titlecase
+
             %td= migrant.age
             %td= migrant.phone_number
             %td
               - if migrant.voice.present?
                 %audio{controls: true}
-                  %source{src: migrant.voice}
+                  %source{src: voice_migrant_path(migrant)}
+            %td
+              = l(migrant.registered_at, format: :long) if migrant.registered_at.present?
             %td.text-right
 
     - if @pagy.pages > 1

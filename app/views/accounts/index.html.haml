@@ -9,8 +9,7 @@
   = render partial: "shared/no_data", locals: { items: @accounts }
 
   - if @accounts.present?
-    .medium-width
-      .float-right= pagy_label(@pagy)
+    = render 'shared/pagy_label'
 
     %table.table.table-hover.medium-width
       %thead

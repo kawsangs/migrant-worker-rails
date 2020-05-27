@@ -7,3 +7,7 @@ en:
     age: Age
     phone_number: Phone number
     voice: Voice
+    download_csv: 'Download CSV'
+    search: 'Search'
+    file_size_is_too_big: 'The file size is too big, please filter it!'
+    registered_at: 'Registered at'

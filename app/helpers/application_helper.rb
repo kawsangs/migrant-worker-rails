@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 module ApplicationHelper
   include Pagy::Frontend
 
@@ -9,10 +11,10 @@ module ApplicationHelper
   end
 
   def get_css_active_class(name)
-    return "active" if params["controller"] == name
+    return 'active' if params['controller'] == name
   end
 
   def pagy_label(pagy)
-    "<b>#{pagy.from}</b> - <b>#{pagy.to}</b> of <b>#{pagy.count}</b>".html_safe
+    "#{I18n.t('shared.display')} <b>#{pagy.from}</b> - <b>#{pagy.to}</b> of <b>#{pagy.count}</b>".html_safe
   end
 end

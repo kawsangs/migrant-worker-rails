@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class CreateMigrants < ActiveRecord::Migration[6.0]
   def change
     create_table :migrants do |t|
@@ -7,6 +9,7 @@ class CreateMigrants < ActiveRecord::Migration[6.0]
       t.string  :phone_number
       t.string  :voice
       t.string  :uuid
+      t.datetime :registered_at
 
       t.timestamps
     end

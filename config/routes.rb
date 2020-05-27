@@ -1,5 +1,7 @@
+# frozen_string_literal: true
+
 Rails.application.routes.draw do
-  devise_for :accounts, path: '/', controllers: { confirmations: 'confirmations'}
+  devise_for :accounts, path: '/', controllers: { confirmations: 'confirmations', omniauth_callbacks: 'accounts/omniauth_callbacks' }
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
   root to: 'accounts#index'
 
@@ -9,7 +11,10 @@ Rails.application.routes.draw do
     match '/confirmation' => 'confirmations#update', :via => :put, :as => :update_account_confirmation
   end
 
-  resources :migrants
+  resources :migrants do
+    get :download, on: :collection
+    get :voice, on: :member
+  end
   resource :about, only: [:show]
 
   # Api
