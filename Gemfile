@@ -41,6 +41,7 @@ gem 'pagy',           '~> 3.5'
 gem 'sidekiq',        '~> 6.0.6'
 gem 'carrierwave',    '~> 2.1.0'
 gem 'omniauth-google-oauth2', '~> 0.8.0'
+gem 'sentry-raven',   '~> 3.0.0'
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
