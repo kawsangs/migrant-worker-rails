@@ -6,7 +6,7 @@ git_source(:github) { |repo| "https://github.com/#{repo}.git" }
 ruby '2.6.0'
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
-gem 'rails', '~> 6.0.2', '>= 6.0.2.2'
+gem 'rails', '~> 6.0.3', '>= 6.0.3.1'
 # Use postgresql as the database for Active Record
 gem 'pg', '>= 0.18', '< 2.0'
 # Use Puma as the app server
@@ -41,6 +41,7 @@ gem 'pagy',           '~> 3.5'
 gem 'sidekiq',        '~> 6.0.6'
 gem 'carrierwave',    '~> 2.1.0'
 gem 'omniauth-google-oauth2', '~> 0.8.0'
+gem 'sentry-raven',   '~> 3.0.0'
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
