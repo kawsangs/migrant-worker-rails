@@ -39,7 +39,7 @@ gem 'font-awesome-rails', '~> 4.7.0.5'
 gem 'pundit',         '~> 2.1.0'
 gem 'pagy',           '~> 3.5'
 gem 'sidekiq',        '~> 6.0.6'
-gem 'carrierwave',    '~> 2.1.0'
+gem 'carrierwave',    '~> 2.1.1'
 gem 'omniauth-google-oauth2', '~> 0.8.0'
 gem 'sentry-raven',   '~> 3.0.0'
 
