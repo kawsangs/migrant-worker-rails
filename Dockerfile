@@ -1,4 +1,4 @@
-FROM ruby:2.6.0
+FROM ruby:2.7.2
 
 LABEL maintainer="Sokly <hengsokly23@gmail.com>"
 
