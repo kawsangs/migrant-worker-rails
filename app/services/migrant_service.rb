@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-require 'csv'
+require "csv"
 
 class MigrantService
   def initialize(migrants)
@@ -29,6 +29,6 @@ class MigrantService
     end
 
     def column_header
-      ['Number', 'Full Name', 'Sex', 'Age', 'Phone Number', 'Voice Record', 'Registered At']
+      ["Number", "Full Name", "Sex", "Age", "Phone Number", "Voice Record", "Registered At"]
     end
 end

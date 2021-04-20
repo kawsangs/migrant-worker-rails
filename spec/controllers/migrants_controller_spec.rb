@@ -1,4 +1,6 @@
-require 'rails_helper'
+# frozen_string_literal: true
+
+require "rails_helper"
 
 RSpec.describe MigrantsController, type: :controller do
   describe "GET #download" do
@@ -8,19 +10,19 @@ RSpec.describe MigrantsController, type: :controller do
       FactoryBot.create_list(:migrant, 3)
     end
 
-    context 'over limit' do
+    context "over limit" do
       before do
-        ENV["MAXIMUM_DOWNLOAD_RECORDS"] = '2'
+        ENV["MAXIMUM_DOWNLOAD_RECORDS"] = "2"
         get :download
       end
 
       it { expect(response.status).to eq(302) }
-      it { expect(flash[:alert]).to eq(I18n.t('migrants.file_size_is_too_big')) }
+      it { expect(flash[:alert]).to eq(I18n.t("migrants.file_size_is_too_big")) }
     end
 
-    context 'under limit' do
+    context "under limit" do
       before do
-        ENV["MAXIMUM_DOWNLOAD_RECORDS"] = '4'
+        ENV["MAXIMUM_DOWNLOAD_RECORDS"] = "4"
         get :download
       end
 

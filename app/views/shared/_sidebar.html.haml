@@ -1,43 +1,48 @@
-%nav#sidebar
-  #sidebarCollapse.sidebar-header
-    %h3
-      = ENV['APP_NAME']
-      %div.mt-2{style: 'font-size: 12px'}= current_account.email
+%ul#accordionSidebar.navbar-nav.bg-gradient-primary.sidebar.sidebar-dark.accordion
+  / Sidebar - Brand
+  %a.sidebar-brand.d-flex.align-items-center.justify-content-center{:href => root_path}
+    .sidebar-brand-icon
+      = image_tag 'logo.jpg', style: "width: 50px"
 
-    %strong.mr-1.ml-1= ENV['APP_SHORTCUT_NAME']
-    %i.fas.fa-align-left
+    .sidebar-brand-text.mx-3
+      = ENV['APP_SHORTCUT_NAME']
 
-  %ul.list-unstyled.components
-    %li
-      = link_to ENV['DASHBOARD_URL'], target: '_blank' do
-        %i.fas.fa-tachometer-alt
-        = t('sidebar.dashboard')
+  / Divider
+  %hr.sidebar-divider.my-0/
+
+  / Wrapper scroll
+  .sidebar-list-wrapper
+    / Nav Item - Dashboard
+    %li.nav-item{ class: get_css_active_class('dashboard') }
+      %a.nav-link{href: ENV['DASHBOARD_URL'], target: '_blank'}
+        %i.fas.fa-fw.fa-tachometer-alt
+        %span= t("sidebar.dashboard")
 
     - if policy(Account).index?
-      %li{class: get_css_active_class('accounts') }
-        = link_to accounts_path do
-          %i.fas.fa-users
-          = t('sidebar.accounts')
+      %li.nav-item{ class: get_css_active_class('accounts') }
+        = link_to accounts_path, class: 'nav-link' do
+          %i.fas.fa-fw.fa-users
+          %span= t("sidebar.accounts")
 
     - if policy(Migrant).index?
-      %li{class: get_css_active_class('migrants') }
-        = link_to migrants_path do
-          %i.fas.fa-people-carry
-          = t('sidebar.app_users')
+      %li.nav-item{ class: [get_css_active_class('migrants')] }
+        %a.nav-link{:href => migrants_path}
+          %i.fas.fa-fw.fa-people-carry
+          %span= t("sidebar.app_users")
 
-    %li{class: get_css_active_class('abouts') }
-      = link_to about_path do
-        %i.fas.fa-info
-        = t('sidebar.about_us')
-    %li
-      = link_to destroy_account_session_path, method: :delete do
-        %i.fas.fa-key
-        = t('sidebar.logout')
+    %li.nav-item{ class: get_css_active_class('abouts') }
+      %a.nav-link{:href => about_path}
+        %i.fas.fa-fw.fa-exclamation-circle
+        %span= t('sidebar.about')
 
-  .copyright
-    - version = "#{t('sidebar.version')}: #{ENV.fetch('APP_VERSION') { 'development' }}"
+    / Divider
+    %hr.sidebar-divider.d-none.d-md-block
 
-    .copyright-large
-      .d-block.pl-2= version
-    .copyright-small
-      .d-block= version
+  / Sidebar Toggler (Sidebar)
+  .text-center.d-none.d-md-inline.mt-3
+    %button#sidebarToggle.rounded-circle.border-0
+
+  .footer
+    / Version
+    .version
+      %span= "#{t('sidebar.version')}: #{ENV.fetch('APP_VERSION') { 'development' }}"

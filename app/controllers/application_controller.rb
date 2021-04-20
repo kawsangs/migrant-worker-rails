@@ -17,10 +17,10 @@ class ApplicationController < ActionController::Base
 
   private
     def layout_by_resource
-      devise_controller? ? 'minimal' : 'application'
+      devise_controller? ? "minimal" : "application"
     end
 
     def set_locale
-      I18n.locale = params[:locale] || I18n.default_locale
+      I18n.locale = current_account.try(:language_code) || I18n.default_locale
     end
 end

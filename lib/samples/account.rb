@@ -4,12 +4,12 @@ module Samples
   class Account
     def self.load
       accounts = [
-        { email: 'sokly@instedd.org', role: :system_admin },
-        { email: 'guest@instedd.org', role: :guest }
+        { email: "admin@instedd.org", role: :system_admin },
+        { email: "guest@instedd.org", role: :guest }
       ]
 
       accounts.each do |account|
-        u = ::Account.new(account.merge({ password: '123456' }))
+        u = ::Account.new(account.merge({ password: "123456" }))
         u.confirm
       end
     end
