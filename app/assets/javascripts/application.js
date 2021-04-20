@@ -6,22 +6,20 @@
 //= require popper
 //= require bootstrap
 
+//= require sb-admin-2
+
 //= require application/namespace
 //= require application/util
 
-//= require common/sidebar
+//= require common/topbar
 
 //= require accounts/index
 
 $(document).on("ready turbolinks:load", () => {
+  MW.Common.Topbar.init();
+  $("[data-toggle='tooltip']").tooltip();
 
-  const currentPage = MW.Util.getCurrentPage();
-  if (MW[currentPage]) {
-    MW[currentPage].init();
-  }
-
-  MW.Common.Sidebar.init();
-
-  $("[data-toggle='tooltip']").tooltip()
+  let currentPage = MW.Util.getCurrentPage();
+  !!MW[currentPage] && MW[currentPage].init();
 });
 

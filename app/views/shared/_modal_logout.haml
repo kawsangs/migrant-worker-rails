@@ -1,0 +1,12 @@
+/ Logout Modal
+#logoutModal.modal.fade{"aria-hidden" => "true", "aria-labelledby" => "exampleModalLabel", :role => "dialog", :tabindex => "-1"}
+  .modal-dialog.modal-dialog-centered{:role => "document"}
+    .modal-content
+      .modal-header
+        %h5#exampleModalLabel.modal-title= t("sidebar.logout")
+        %button.close{"aria-label" => "Close", "data-dismiss" => "modal", :type => "button"}
+          %span{"aria-hidden" => "true"} ×
+      .modal-body= t("shared.confirm_logout")
+      .modal-footer
+        %button.btn.btn-secondary{"data-dismiss" => "modal", :type => "button"}= t("shared.cancel")
+        = link_to t("sidebar.logout"), destroy_account_session_path, method: :delete, class: "btn btn-primary"

@@ -7,7 +7,7 @@ module Api
         send_file(
           "#{Rails.root}/public/pdfs/#{params[:filename]}",
           filename: "#{params[:filename]}",
-          type: 'application/pdf'
+          type: "application/pdf"
         )
       end
     end

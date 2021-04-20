@@ -17,13 +17,14 @@
 #  unconfirmed_email      :string
 #  created_at             :datetime         not null
 #  updated_at             :datetime         not null
+#  language_code          :string           default("en")
 #
 
 FactoryBot.define do
   factory :account do
     email         { FFaker::Internet.email }
-    role          { 'system_admin' }
-    password      { '123456' }
+    role          { "system_admin" }
+    password      { "123456" }
 
     after(:create) do |account, evaluator|
       account.confirm

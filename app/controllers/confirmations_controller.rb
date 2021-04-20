@@ -1,15 +1,14 @@
 # frozen_string_literal: true
 
 class ConfirmationsController < Devise::ConfirmationsController
-  # skip_before_action :require_no_authentication
   skip_before_action :authenticate_account!
 
   # PUT /resource/confirmation
   def update
     with_unconfirmed_confirmable do
       if @confirmable.no_password?
-        if @confirmable.valid? && @confirmable.password_match?(account_params)
-          @confirmable.update_attributes(account_params)
+        @confirmable.attempt_set_password(account_params)
+        if @confirmable.valid? && @confirmable.password_match?
           do_confirm
         else
           do_show
@@ -23,7 +22,7 @@ class ConfirmationsController < Devise::ConfirmationsController
     return if @confirmable.errors.empty?
 
     self.resource = @confirmable
-    render 'devise/confirmations/new'
+    render "devise/confirmations/new"
   end
 
   # GET /resource/confirmation?confirmation_token=abcdef
@@ -39,7 +38,7 @@ class ConfirmationsController < Devise::ConfirmationsController
     return if @confirmable.errors.empty?
 
     self.resource = @confirmable
-    render 'devise/confirmations/new'
+    render "devise/confirmations/new"
   end
 
   protected
@@ -52,10 +51,11 @@ class ConfirmationsController < Devise::ConfirmationsController
       @confirmation_token = params[:confirmation_token]
       @requires_password = true
       self.resource = @confirmable
-      render 'devise/confirmations/show'
+      render "devise/confirmations/show"
     end
 
     def do_confirm
+      @confirmable.save
       @confirmable.confirm
       set_flash_message :notice, :confirmed
       sign_in_and_redirect(resource_name, @confirmable)

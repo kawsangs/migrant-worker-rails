@@ -4,15 +4,16 @@
 #
 # Table name: migrants
 #
-#  id           :bigint           not null, primary key
-#  full_name    :string
-#  age          :string
-#  sex          :string
-#  phone_number :string
-#  voice        :string
-#  created_at   :datetime         not null
-#  updated_at   :datetime         not null
-#  uuid         :string
+#  id            :bigint           not null, primary key
+#  full_name     :string
+#  age           :string
+#  sex           :string
+#  phone_number  :string
+#  voice         :string
+#  uuid          :string
+#  registered_at :datetime
+#  created_at    :datetime         not null
+#  updated_at    :datetime         not null
 #
 FactoryBot.define do
   factory :migrant do

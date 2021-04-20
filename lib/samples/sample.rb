@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
-require_relative 'account'
-require_relative 'migrant'
+require_relative "account"
+require_relative "migrant"
 
 module Samples
   class Sample

@@ -43,8 +43,21 @@ class AccountsController < ApplicationController
     redirect_to accounts_url
   end
 
+  def update_locale
+    current_account.language_code = locale_params[:language_code]
+    if current_account.save
+      head :ok
+    else
+      render json: current_account.errors.messages
+    end
+  end
+
   private
     def account_params
       params.require(:account).permit(:email, :role)
+    end
+
+    def locale_params
+      params.require(:account).permit(:language_code)
     end
 end
