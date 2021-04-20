@@ -3,10 +3,10 @@
 source 'https://rubygems.org'
 git_source(:github) { |repo| "https://github.com/#{repo}.git" }
 
-ruby '2.6.0'
+ruby '2.7.2'
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
-gem 'rails', '~> 6.0.3', '>= 6.0.3.1'
+gem 'rails', '~> 6.0.3', '>= 6.0.3.5'
 # Use postgresql as the database for Active Record
 gem 'pg', '>= 0.18', '< 2.0'
 # Use Puma as the app server
@@ -30,7 +30,7 @@ gem 'jbuilder', '~> 2.7'
 # Reduces boot times through caching; required in config/boot.rb
 gem 'bootsnap', '>= 1.4.2', require: false
 
-gem 'devise'
+gem "devise", github: "heartcombo/devise", branch: "ca-omniauth-2"
 gem 'haml-rails',     '~> 2.0'
 gem 'jquery-rails',   '~> 4.3.5'
 gem 'bootstrap',      '~> 4.4.1'
@@ -39,8 +39,11 @@ gem 'font-awesome-rails', '~> 4.7.0.5'
 gem 'pundit',         '~> 2.1.0'
 gem 'pagy',           '~> 3.5'
 gem 'sidekiq',        '~> 6.0.6'
-gem 'carrierwave',    '~> 2.1.0'
-gem 'omniauth-google-oauth2', '~> 0.8.0'
+gem 'carrierwave',    '~> 2.1.1'
+
+gem 'omniauth-google-oauth2', '~> 1.0.0'
+gem "omniauth-rails_csrf_protection", "~> 1.0.0"
+
 gem 'sentry-raven',   '~> 3.0.0'
 
 group :development, :test do

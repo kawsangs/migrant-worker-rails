@@ -1,6 +1,6 @@
 .form-wrapper.pr-1
   = form_for(resource, as: resource_name, url: session_path(resource_name)) do |f|
-    = link_to omniauth_authorize_path(:account, :google_oauth2), class: 'btn btn-outline-primary w-100' do
+    = link_to account_google_oauth2_omniauth_authorize_path, method: :post, class: 'btn btn-outline-primary w-100' do
       = image_tag 'google.png', style: 'width: 18px;'
       = t('devise.sign_in_with', omniauth: 'Gmail')
 
