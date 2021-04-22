@@ -1,8 +1,11 @@
 en:
   category:
     your_departure: Your departure
+    your_safety: your safety
     new_departure: New departure
+    new_safety: New Safety
     edit_departure: Edit departure
+    edit_safety: Edit Safety
     audio: Audio
     image: Image
     icon: Icon

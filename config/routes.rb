@@ -19,7 +19,9 @@ Rails.application.routes.draw do
   end
   resource :about, only: [:show]
 
+  resources :categories
   resources :departures
+  resources :safeties
 
   # Api
   namespace :api do

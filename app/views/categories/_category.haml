@@ -1,0 +1,19 @@
+- edit_url = send("edit_#{type}_path", id: category.id)
+- delete_url = send("#{type}_path", id: category.id)
+- new_url = send("new_#{type}_path", parent_id: category.id)
+
+.d-flex.item
+  .name{ class: "depth-#{category.depth}" }
+    = category.name
+
+  .flex-1
+
+  .action-buttons
+    - if policy(Categories::Departure).create?
+      = link_to new_url, remote: true, class: "btn btn-circle btn-sm btn-info mr-2", data: { toggle: 'tooltip', placement: 'top', title: t('shared.add_sub_category')} do
+        %i.fas.fa-plus
+
+    = render 'shared/action_buttons', edit_url: edit_url, remote: true, delete_url: delete_url, object: category
+
+- category.children.each do |child|
+  = render "category", category: child, type: type

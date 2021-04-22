@@ -1,0 +1,22 @@
+= render "categories/form/icon", f: f
+
+- if @category.parent.present?
+  .form-group
+    %label= t('category.parent_category')
+    .form-control
+      = @category.parent.name
+
+= f.input :type, as: :hidden, value: @category.type
+= f.input :parent_id, as: :hidden
+= f.input :name, label: t('category.name')
+= f.input :description
+
+= render "categories/form/audio", f: f
+= render "categories/form/pdf_file", f: f
+= render "categories/form/video", f: f
+= render "categories/form/image", f: f
+
+.actions.text-right
+  %button.btn.btn-secondary{ type: "button", "data-dismiss" => "modal" }
+    = t('shared.cancel')
+  = f.submit t('shared.save'), class: 'btn btn-primary'

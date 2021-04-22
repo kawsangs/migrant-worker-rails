@@ -14,6 +14,6 @@
         %strong.name= t("category.name")
 
       - @categories.each do |category|
-        = render 'category', category: category
+        = render 'categories/category', category: category, type: 'departure'
 
-= render 'modal'
+= render 'categories/modal'
