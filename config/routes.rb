@@ -7,6 +7,7 @@ Rails.application.routes.draw do
 
   resources :accounts do
     post :update_locale, on: :collection
+    post :resend_confirmation, on: :member
   end
 
   as :account do

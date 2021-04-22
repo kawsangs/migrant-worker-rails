@@ -1,0 +1,16 @@
+en:
+  account:
+    accounts: Accounts
+    email: Email
+    role: Role
+    status: Status
+    copy_confirm_link: Copy confirm link
+    copied: Copied!
+    new_account: New account
+    actived: Actived
+    pending: Pending
+    number: "#"
+    edit_account: Edit account
+    add_new: Add new account
+    resend_confirmation: Resend confirmation
+    resend_confirmation_successfully: Resend the confirmation successfully!

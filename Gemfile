@@ -39,7 +39,6 @@ gem "coffee-rails",   "~> 5.0.0"
 gem "simple_form",    "~> 5.1.0"
 gem "pundit",         "~> 2.1.0"
 gem "pagy",           "~> 3.5"
-gem "sidekiq",        "~> 6.0.6"
 gem "carrierwave",    "~> 2.1.1"
 
 gem "omniauth-google-oauth2", "~> 1.0.0"

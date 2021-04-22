@@ -33,10 +33,6 @@ class Account < ApplicationRecord
 
   ROLES = roles.keys.map { |r| [r.titlecase, r] }
 
-  def send_confirmation_instruction_async
-    AccountWorker.perform_async(id, :send_confirmation_instructions)
-  end
-
   def self.filter(params)
     scope = all
     scope = scope.where("email LIKE ?", "%#{params[:email]}%") if params[:email].present?

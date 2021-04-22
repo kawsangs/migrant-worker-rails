@@ -13,7 +13,6 @@ class AccountsController < ApplicationController
     @account = authorize Account.new(account_params)
 
     if @account.save
-      @account.send_confirmation_instruction_async
       redirect_to accounts_url
     else
       flash.now[:alert] = @account.errors.full_messages
@@ -50,6 +49,13 @@ class AccountsController < ApplicationController
     else
       render json: current_account.errors.messages
     end
+  end
+
+  def resend_confirmation
+    @account = Account.find_by(id: params[:id])
+    @account.send_confirmation_instructions
+
+    redirect_to accounts_url, notice: I18n.t("account.resend_confirmation_successfully")
   end
 
   private

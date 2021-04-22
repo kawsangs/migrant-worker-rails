@@ -31,10 +31,8 @@ services:
     ports:
       - "3000:3000"
 
-  redis:
-    image: redis:5.0.7
-
-  sidekiq:
-    <<: *rails
-    command: bundle exec sidekiq -C config/sidekiq.yml
-    ports: []
+  smtp:
+    image: 'djfarrelly/maildev:latest'
+    command: 'bin/maildev --web 3080 --smtp 1025 --incoming-user smtp --incoming-pass smtp'
+    ports:
+      - '3080:3080'

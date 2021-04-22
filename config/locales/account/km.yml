@@ -1,0 +1,16 @@
+km:
+  account:
+    accounts: គណនី
+    email: អ៊ីម៉ែល
+    role: តួនាទី
+    status: ស្ថានភាព
+    copy_confirm_link: ថតចម្លងតំណភ្ជាប់
+    copied: ត្រូវបានថតចម្លង!
+    new_account: អ្នកប្រើប្រាស់ថ្មី
+    actived: សកម្ម
+    pending: រង់ចាំ
+    number: លេខរៀង
+    edit_account: កែតម្រូវអ្នកប្រើប្រាស់
+    add_new: បន្ថែមអ្នកប្រើប្រាស់ថ្មី
+    resend_confirmation: ផ្ញើតំណភ្ជាប់ម្តងទៀត
+    resend_confirmation_successfully: ផ្ញើតំណភ្ជាប់ម្តងទៀតដោយជោគជ័យ!
