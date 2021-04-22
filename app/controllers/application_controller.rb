@@ -4,7 +4,7 @@ class ApplicationController < ActionController::Base
   include Pundit
   include Pagy::Backend
 
-  protect_from_forgery
+  protect_from_forgery prepend: true
 
   before_action :authenticate_account!
   before_action :set_locale

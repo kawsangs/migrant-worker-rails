@@ -19,6 +19,8 @@ Rails.application.routes.draw do
   end
   resource :about, only: [:show]
 
+  resources :departures
+
   # Api
   namespace :api do
     namespace :v1 do

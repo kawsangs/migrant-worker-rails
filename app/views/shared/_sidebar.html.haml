@@ -30,6 +30,12 @@
           %i.fas.fa-fw.fa-people-carry
           %span= t("sidebar.app_users")
 
+    - if policy(Categories::Departure).index?
+      %li.nav-item{ class: [get_css_active_class('departures')] }
+        %a.nav-link{:href => departures_path}
+          %i.fas.fa-fw.fa-plane-departure
+          %span= t("sidebar.departure")
+
     %li.nav-item{ class: get_css_active_class('abouts') }
       %a.nav-link{:href => about_path}
         %i.fas.fa-fw.fa-exclamation-circle

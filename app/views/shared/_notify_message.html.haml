@@ -1,15 +1,19 @@
 - if notice.present?
-  .alert.alert-success.notify-message
-    %button.close{type: 'button', 'data-dismiss' => 'alert', 'aria-label' => 'Close'}
+  .alert.alert-success.alert-dismissible.fade.show.notify-message.ml-2{:role => "alert"}
     = notice
+    %button.close{"aria-label" => "Close", "data-dismiss" => "alert", :type => "button"}
+      %span{"aria-hidden" => "true"} ×
+
 - if alert.present?
-  .alert.alert-danger.notify-message
-    %button.close{type: 'button', 'data-dismiss' => 'alert', 'aria-label' => 'Close'}
+  .alert.alert-warning.alert-dismissible.fade.show.notify-message.ml-2{:role => "alert"}
     - if alert.kind_of?(Array)
       - alert.each do |message|
         %div= message
     - else
       = alert
+
+    %button.close{"aria-label" => "Close", "data-dismiss" => "alert", :type => "button"}
+      %span{"aria-hidden" => "true"} ×
 
 :javascript
   setTimeout(function() {
