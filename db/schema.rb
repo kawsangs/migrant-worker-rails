@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_04_20_081921) do
+ActiveRecord::Schema.define(version: 2021_04_21_025148) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -38,6 +38,27 @@ ActiveRecord::Schema.define(version: 2021_04_20_081921) do
     t.string "access_token"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+  end
+
+  create_table "categories", force: :cascade do |t|
+    t.string "name"
+    t.string "icon"
+    t.string "image"
+    t.string "pdf_file"
+    t.string "audio"
+    t.string "video"
+    t.text "description"
+    t.string "type"
+    t.integer "parent_id"
+    t.integer "lft", null: false
+    t.integer "rgt", null: false
+    t.integer "depth", default: 0, null: false
+    t.integer "children_count", default: 0, null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["lft"], name: "index_categories_on_lft"
+    t.index ["parent_id"], name: "index_categories_on_parent_id"
+    t.index ["rgt"], name: "index_categories_on_rgt"
   end
 
   create_table "migrants", force: :cascade do |t|

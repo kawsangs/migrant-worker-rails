@@ -1,0 +1,21 @@
+- errors = f.object.errors[:video]
+
+.form-group.file-wrapper
+  %label= t("category.video")
+
+  %div{class: ('form-group-invalid' if errors.present?)}
+    .form-control.file-control-wrapper{ class: [('d-none' if (errors.blank? && f.object.video.present?)), ('is-invalid' if errors.present?)] }
+
+      = f.file_field :video, class: 'file-inputbox', accept: "video/mp4,video/x-m4v,video/*"
+
+    .invalid-feedback= errors.join('; ')
+
+    - if errors.blank? && f.object.video.present?
+      .remove-file-wrapper
+        .d-flex.align-items-center
+          = f.hidden_field :remove_video, class: 'remove-file-checkbox'
+          %a.remove-file-button.text-danger.mr-2.pointer
+            %i.far.fa-trash-alt
+
+          = link_to f.object.video_url, target: "_blank", class: 'btn btn-link p-0 d-block text-truncate' do
+            = f.object.video_identifier

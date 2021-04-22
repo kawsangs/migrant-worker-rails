@@ -33,3 +33,17 @@
 .pointer {
   cursor: pointer;
 }
+
+.flex-1 {
+  flex: 1;
+}
+
+.file-control-wrapper {
+  display: flex;
+  align-items: center;
+  overflow: hidden;
+
+  input:focus {
+    outline: none;
+  }
+}

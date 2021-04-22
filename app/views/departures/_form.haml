@@ -1,0 +1,24 @@
+.view-center
+  - url = @category.persisted? ? departure_path(@category) : departures_path
+  = simple_form_for @category, url: url do |f|
+    = render "departures/form/icon", f: f
+
+    - if @category.parent.present?
+      .form-group
+        %label= t('category.parent_category')
+        .form-control
+          = @category.parent.name
+
+    = f.input :parent_id, as: :hidden
+    = f.input :name, label: t('category.name')
+    = f.input :description
+
+    = render "departures/form/audio", f: f
+    = render "departures/form/pdf_file", f: f
+    = render "departures/form/video", f: f
+    = render "departures/form/image", f: f
+
+    .actions.text-right
+      %button.btn.btn-secondary{ type: "button", "data-dismiss" => "modal" }
+        = t('shared.cancel')
+      = f.submit t('shared.save'), class: 'btn btn-primary'

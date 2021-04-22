@@ -1,0 +1,21 @@
+- errors = f.object.errors[:pdf_file]
+
+.form-group.file-wrapper
+  %label= t("category.pdf_file")
+
+  %div{class: ('form-group-invalid' if errors.present?)}
+    .form-control.file-control-wrapper{ class: [('d-none' if (errors.blank? && f.object.pdf_file.present?)), ('is-invalid' if errors.present?)] }
+
+      = f.file_field :pdf_file, class: 'file-inputbox', accept: "application/pdf"
+
+    .invalid-feedback= errors.join('; ')
+
+    - if errors.blank? && f.object.pdf_file.present?
+      .remove-file-wrapper
+        .d-flex.align-items-center
+          = f.hidden_field :remove_pdf_file, class: 'remove-file-checkbox'
+          %a.remove-file-button.text-danger.mr-2.pointer
+            %i.far.fa-trash-alt
+
+          = link_to f.object.pdf_file_url, target: "_blank", class: 'btn btn-link p-0 d-block text-truncate' do
+            = f.object.pdf_file_identifier

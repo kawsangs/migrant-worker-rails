@@ -1,0 +1,10 @@
+en:
+  category:
+    your_departure: Your departure
+    new_departure: New departure
+    edit_departure: Edit departure
+    audio: Audio
+    image: Image
+    icon: Icon
+    video: Video
+    parent_category: Parent category

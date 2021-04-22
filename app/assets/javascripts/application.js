@@ -14,6 +14,7 @@
 //= require common/topbar
 
 //= require accounts/index
+//= require departures/new
 
 $(document).on("ready turbolinks:load", () => {
   MW.Common.Topbar.init();
