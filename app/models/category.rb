@@ -31,8 +31,15 @@ class Category < ApplicationRecord
   mount_uploader :video, FileUploader
 
   validates :name, presence: true
+  validates :type, presence: true, inclusion: { in: TYPES }
 
   def self.policy_class
     CategoryPolicy
+  end
+
+  def self.filter(param)
+    scope = all
+    scope = scope.where(type: param[:type]) if param[:type].present?
+    scope
   end
 end

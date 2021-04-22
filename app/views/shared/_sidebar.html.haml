@@ -36,6 +36,12 @@
           %i.fas.fa-fw.fa-plane-departure
           %span= t("sidebar.departure")
 
+    - if policy(Categories::Safety).index?
+      %li.nav-item{ class: [get_css_active_class('safeties')] }
+        %a.nav-link{:href => safeties_path}
+          %i.fas.fa-fw.fa-user-shield
+          %span= t("sidebar.safety")
+
     %li.nav-item{ class: get_css_active_class('abouts') }
       %a.nav-link{:href => about_path}
         %i.fas.fa-fw.fa-exclamation-circle
