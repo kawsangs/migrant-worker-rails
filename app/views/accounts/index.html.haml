@@ -1,60 +1,47 @@
-#content
-  %nav.navbar.navbar-expand-lg.navbar-light.bg-light
-    .container-fluid
-      %h3= t('account.accounts')
-      - if policy(Account).create?
-        = link_to new_account_path, class: 'btn btn-primary' do
-          %i.fas.fa-plus
+= render "shared/page_title", title: t('account.accounts'), url: new_account_path, label: t('account.add_new')
 
-  = render partial: "shared/no_data", locals: { items: @accounts }
+.card.shadow.mb-4
+  .card-body
+    = render partial: "shared/no_data", locals: { items: @accounts }
 
-  - if @accounts.present?
-    = render 'shared/pagy_label'
+    - if @accounts.present?
+      = render 'shared/pagy_label'
 
-    %table.table.table-hover.medium-width
-      %thead
-        %tr
-          %th= t('account.number')
-          %th= t('account.email')
-          %th= t('account.role')
-          %th= t('account.status')
-          %th
-      %tbody
-        - @accounts.each_with_index do |account, index|
+      %table.table.table-hover
+        %thead
           %tr
-            %td= @pagy.from + index
-            %td= account.email
-            %td= account.role.titlecase
+            %th= t('account.number')
+            %th= t('account.email')
+            %th= t('account.role')
+            %th= t('account.status')
+            %th
+        %tbody
+          - @accounts.each_with_index do |account, index|
+            %tr
+              %td= @pagy.from + index
+              %td= account.email
+              %td= account.role.titlecase
 
-            %td.status{ class: ('active' if account.confirmed?) }
-              = account.confirmed? ? t('account.active') : t('account.pending')
-            %td.text-right
-              - if policy(account).destroy?
-                %button.btn{"aria-expanded" => "false", "aria-haspopup" => "true", "data-toggle" => "dropdown", :type => "button"}
-                  %i.fas.fa-ellipsis-v
-
-                .dropdown-menu.dropdown-menu-right
+              %td.status{ class: ('active' if account.confirmed?) }
+                = account.confirmed? ? t('account.active') : t('account.pending')
+              %td.text-right
+                - if policy(account).destroy?
                   - unless account.confirmed?
+                    = link_to resend_confirmation_account_path(account), :method => :post, class: "btn btn-circle btn-sm btn-success", data: { toggle: 'tooltip', placement: 'top', title: t('account.resend_confirmation') } do
+                      %i.fas.fa-share-square
+
                     %input.confirm-link{ value: confirmation_url(account, confirmation_token: account.confirmation_token) }
-                    = link_to '#', class: "btn dropdown-item btn-copy" do
-                      %i.far.fa-copy.drop-menu-icon
-                      %span= t('account.copy_confirm_link')
 
-                  - if policy(account).update?
-                    = link_to edit_account_path(account), class: "btn dropdown-item" do
-                      %i.fas.fa-pen.drop-menu-icon
-                      %span= t('shared.edit')
+                    = link_to '#', class: "btn btn-circle btn-sm btn-info mr-1 btn-copy", data: { toggle: 'tooltip', placement: 'top', title: t('account.copy_confirm_link') } do
+                      %i.far.fa-copy
 
-                  - if policy(account).destroy?
-                    = link_to account_path(account), method: :delete, class: "btn dropdown-item", :data => {:confirm => t('account.are_you_sure_to_delete')} do
-                      %i.fas.fa-trash-alt.drop-menu-icon
-                      %span= t('shared.delete')
+                  = render 'shared/action_buttons', edit_url: edit_account_path(account), delete_url: account_path(account), object: account
 
-    - if @pagy.pages > 1
-      .pagy-wrapper
-        != pagy_bootstrap_nav(@pagy)
+      - if @pagy.pages > 1
+        .pagy-wrapper
+          != pagy_bootstrap_nav(@pagy)
 
-.toast-wrapper{"aria-atomic" => "true", "aria-live" => "polite"}
-  .toast
-    .toast-body= t('account.copied')
+  .toast-wrapper{"aria-atomic" => "true", "aria-live" => "polite"}
+    .toast
+      .toast-body= t('account.copied')
 

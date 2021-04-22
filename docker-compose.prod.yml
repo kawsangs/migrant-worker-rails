@@ -44,15 +44,6 @@ services:
     - -c
     - bundle exec puma -e production -b tcp://0.0.0.0:80
 
-  sidekiq:
-    <<: *rails
-    command: bundle exec sidekiq -C config/sidekiq.yml
-    ports: []
-
-  redis:
-    container_name: redis
-    image: redis
-
   nginx-proxy:
     image: jwilder/nginx-proxy
     container_name: nginx-proxy

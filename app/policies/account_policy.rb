@@ -5,28 +5,18 @@ class AccountPolicy < ApplicationPolicy
     user.system_admin?
   end
 
-  def show?
-    user.system_admin?
-  end
-
   def create?
     user.system_admin?
   end
 
-  def new?
+  def update?
     create?
   end
 
-  def update?
-    user.system_admin?
-  end
-
-  def edit?
-    update?
-  end
-
   def destroy?
-    user.system_admin?
+    return false if record.id == user.id
+    return true if user.system_admin?
+    false
   end
 
   def roles

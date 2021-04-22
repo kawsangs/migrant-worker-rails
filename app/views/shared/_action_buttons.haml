@@ -5,7 +5,7 @@
     %i.fas.fa-pen
 
 - if policy(object).destroy?
-  %span{data: {toggle: 'tooltip', placement: 'top', title: t('shared.delete')}}
+  %span.d-inline-block{data: {toggle: 'tooltip', placement: 'top', title: t('shared.delete')}}
     = link_to "#", class: "btn btn-circle btn-sm btn-danger", data: { target: "#confirmModal#{object.id}", toggle: 'modal' } do
       %i.fas.fa-trash-alt
 
