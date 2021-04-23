@@ -15,7 +15,7 @@ services:
     volumes:
       - db:/var/lib/postgresql/data
     environment:
-      POSTGRES_PASSWORD: CHANGEME
+      MIGRANT_WORKER_RAILS_DATABASE_PASSWORD: CHANGEME
 
   app: &rails
     image: ilabsea/migrant-worker-rails:0.0.1
