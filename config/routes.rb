@@ -32,6 +32,10 @@ Rails.application.routes.draw do
       resources :pdfs, only: [] do
         get :download, on: :collection
       end
+
+      resources :categories
+      resources :departures, controller: :categories, type: "Categories::Departure", only: [:index, :show]
+      resources :safeties, controller: :categories, type: "Categories::Safety", only: [:index, :show]
     end
   end
 end

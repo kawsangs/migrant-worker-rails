@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class SafetiesController < CategoriesController
   def index
     @pagy, @categories = pagy(Categories::Safety.roots)

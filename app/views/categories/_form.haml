@@ -1,4 +1,4 @@
-= render "categories/form/icon", f: f
+= render "categories/form/image", f: f
 
 - if @category.parent.present?
   .form-group
@@ -12,9 +12,6 @@
 = f.input :description
 
 = render "categories/form/audio", f: f
-= render "categories/form/pdf_file", f: f
-= render "categories/form/video", f: f
-= render "categories/form/image", f: f
 
 .actions.text-right
   %button.btn.btn-secondary{ type: "button", "data-dismiss" => "modal" }

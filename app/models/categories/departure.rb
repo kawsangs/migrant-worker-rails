@@ -1,14 +1,13 @@
+# frozen_string_literal: true
+
 # == Schema Information
 #
 # Table name: categories
 #
 #  id             :bigint           not null, primary key
 #  name           :string
-#  icon           :string
 #  image          :string
-#  pdf_file       :string
 #  audio          :string
-#  video          :string
 #  description    :text
 #  type           :string
 #  parent_id      :integer
@@ -21,6 +20,5 @@
 #
 module Categories
   class Departure < ::Category
-
   end
 end
