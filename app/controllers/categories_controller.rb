@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class CategoriesController < ApplicationController
   def new
     @category = authorize Category.new(parent_id: params[:parent_id])
@@ -36,7 +38,7 @@ class CategoriesController < ApplicationController
 
   private
     def do_redirect
-      redirect_to action: 'index'
+      redirect_to action: "index"
     end
 
     def category_class
@@ -46,10 +48,7 @@ class CategoriesController < ApplicationController
     def category_params
       params.require(:category).permit(:name, :description, :parent_id,
         :image, :remove_image,
-        :icon, :remove_icon,
-        :audio, :remove_audio,
-        :video, :remove_video,
-        :pdf_file, :remove_pdf_file,
+        :audio, :remove_audio
       ).merge(type: param_type)
     end
 

@@ -42,11 +42,8 @@ ActiveRecord::Schema.define(version: 2021_04_21_025148) do
 
   create_table "categories", force: :cascade do |t|
     t.string "name"
-    t.string "icon"
     t.string "image"
-    t.string "pdf_file"
     t.string "audio"
-    t.string "video"
     t.text "description"
     t.string "type"
     t.integer "parent_id"

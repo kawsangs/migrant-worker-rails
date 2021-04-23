@@ -18,13 +18,10 @@
 #  created_at     :datetime         not null
 #  updated_at     :datetime         not null
 #
-FactoryBot.define do
-  factory :category do
-    name { FFaker::Name.name }
-    type { Categories::Departure }
+class CategorySerializer < ActiveModel::Serializer
+  attributes :id, :name, :description, :image_url, :parent_id, :children
 
-    trait :safety do
-      type { Categories::Safety }
-    end
+  def children
+    ActiveModelSerializers::SerializableResource.new(object.children,  each_serializer: CategorySerializer)
   end
 end
