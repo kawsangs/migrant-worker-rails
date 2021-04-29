@@ -19,8 +19,6 @@
 #  updated_at     :datetime         not null
 #
 class Category < ApplicationRecord
-  acts_as_nested_set counter_cache: :children_count
-
   TYPES = %w(Categories::Departure Categories::Safety).freeze
 
   mount_uploader :image, FileUploader
@@ -28,6 +26,8 @@ class Category < ApplicationRecord
 
   validates :name, presence: true
   validates :type, presence: true, inclusion: { in: TYPES }
+
+  acts_as_nested_set counter_cache: :children_count, touch: true
 
   def self.policy_class
     CategoryPolicy
