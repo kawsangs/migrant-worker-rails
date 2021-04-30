@@ -1,14 +1,14 @@
 .d-flex.flex-column.align-items-center
   .image-wrapper.position-relative
-    - image_url = f.object.image_url.presence || "default_image.png"
-    = image_tag image_url, class: 'display-image', 'data-default' => image_path('default_image.png')
+    = image_tag f.object.image_url, class: 'display-image', 'data-default' => f.object.image.default_url
+
     = f.input :image, as: :file, label: false, wrapper_html: { class: 'file_wrapper' }, input_html: { class: 'file_avata pointer image-file', accept: "image/x-png,image/gif,image/jpeg" }
 
     .d-none
       = f.input :remove_image, as: :boolean, input_html: { class: 'remove-image-checkbock'}
-    .btn-delete.pointer{class: ('d-none' unless f.object.image_url.present?) }
+    .btn-delete.pointer{class: ('d-none' unless f.object.image.present?) }
       %i.fas.fa-trash-alt.text-white
 
-  .mt-2
+  %div
     = t("category.icon")
     %small 250 x 250 (32-bit PNG)

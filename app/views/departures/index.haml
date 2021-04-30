@@ -1,13 +1,13 @@
 .d-sm-flex.align-items-center.justify-content-between.mb-4
   %h1.h3.mb-0.text-gray-800= t("category.your_departure")
   - if @categories.present?
-    = link_to new_departure_path, remote: true, class: "btn btn-primary btn-sm shadow-sm" do
+    = link_to new_departure_path, class: "btn btn-primary btn-sm shadow-sm" do
       %i.fas.fa-plus.fa-sm.text-white-50
       = t('shared.add_new')
 
 .card.shadow.mb-4.categories
   .card-body
-    = render partial: "shared/no_data", locals: { items: @categories, url: new_departure_path, label: t('shared.add_new'), remote: true }
+    = render partial: "shared/no_data", locals: { items: @categories, url: new_departure_path, label: t('shared.add_new') }
 
     - if @categories.present?
       .d-flex.header
@@ -15,5 +15,3 @@
 
       - @categories.each do |category|
         = render 'categories/category', category: category, type: 'departure'
-
-= render 'categories/modal'

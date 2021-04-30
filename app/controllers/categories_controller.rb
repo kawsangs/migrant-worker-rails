@@ -46,7 +46,7 @@ class CategoriesController < ApplicationController
     end
 
     def category_params
-      params.require(:category).permit(:name, :description, :parent_id,
+      params.require(:category).permit(:name, :description, :parent_id, :uuid, :last,
         :image, :remove_image,
         :audio, :remove_audio
       ).merge(type: param_type)

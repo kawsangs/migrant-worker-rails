@@ -7,13 +7,14 @@
     = category.name
 
   .flex-1
+    = category.last? ? t("category.leaf_category") : ""
 
   .action-buttons
-    - if policy(Categories::Departure).create?
-      = link_to new_url, remote: true, class: "btn btn-circle btn-sm btn-info mr-2", data: { toggle: 'tooltip', placement: 'top', title: t('shared.add_sub_category')} do
+    - if policy(Categories::Departure).create? && !category.last?
+      = link_to new_url, class: "btn btn-circle btn-sm btn-info mr-2", data: { toggle: 'tooltip', placement: 'top', title: t('shared.add_sub_category')} do
         %i.fas.fa-plus
 
-    = render 'shared/action_buttons', edit_url: edit_url, remote: true, delete_url: delete_url, object: category
+    = render 'shared/action_buttons', edit_url: edit_url, delete_url: delete_url, object: category
 
 - category.children.each do |child|
   = render "category", category: child, type: type

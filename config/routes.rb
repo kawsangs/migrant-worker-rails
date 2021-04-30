@@ -23,6 +23,7 @@ Rails.application.routes.draw do
   resources :categories
   resources :departures
   resources :safeties
+  resources :category_images, only: [:create, :destroy]
 
   # Api
   namespace :api do

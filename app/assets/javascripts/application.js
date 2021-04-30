@@ -6,6 +6,9 @@
 //= require popper
 //= require bootstrap
 
+//= require jquery-fileupload/basic
+//= require jquery-fileupload/vendor/tmpl
+
 //= require sb-admin-2
 
 //= require application/namespace
@@ -14,6 +17,7 @@
 //= require common/topbar
 
 //= require accounts/index
+//= require category_images
 //= require departures/new
 
 $(document).on("ready turbolinks:load", () => {

@@ -1,4 +1,0 @@
-.view-center
-  - url = @category.persisted? ? safety_path(@category) : safeties_path
-  = simple_form_for @category, as: :category, url: url do |f|
-    = render "categories/form", f: f

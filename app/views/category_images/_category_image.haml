@@ -1,0 +1,5 @@
+.image-wrapper.position-relative{class: "img-#{category_image.id}"}
+  = image_tag category_image.image_url, class: 'display-image'
+
+  = link_to category_image_path(category_image), method: :delete, remote: true, class: "btn-delete" do
+    %i.fas.fa-trash-alt.text-white
