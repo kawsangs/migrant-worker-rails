@@ -17,6 +17,8 @@
 #  children_count :integer          default(0), not null
 #  created_at     :datetime         not null
 #  updated_at     :datetime         not null
+#  last           :boolean          default(FALSE)
+#  uuid           :string
 #
 class CategorySerializer < ActiveModel::Serializer
   attributes :id, :name, :description, :image_url, :parent_id, :children

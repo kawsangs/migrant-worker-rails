@@ -12,13 +12,8 @@
 #  created_at    :datetime         not null
 #  updated_at    :datetime         not null
 #
-class CategoryImage < ApplicationRecord
-  mount_uploader :image, ImageUploader
+require "rails_helper"
 
-  belongs_to :category, optional: true
-  before_create :default_name
-
-  def default_name
-    self.name ||= File.basename(image.filename, ".*").titleize if image
-  end
+RSpec.describe CategoryImage, type: :model do
+  it { is_expected.to belong_to(:category).optional }
 end
