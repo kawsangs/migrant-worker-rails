@@ -1,0 +1,15 @@
+---
+:concurrency: 5
+staging:
+  :concurrency: 10
+production:
+  :concurrency: 20
+:queues:
+  - ["default", 2]
+
+:max_retries: 15
+
+:schedule:
+  clean_category_image:
+    cron: "0 0 * * *"
+    class: CategoryImageWorker

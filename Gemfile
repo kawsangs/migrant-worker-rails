@@ -45,12 +45,12 @@ gem "omniauth-google-oauth2", "~> 1.0.0"
 gem "omniauth-rails_csrf_protection", "~> 1.0.0"
 
 gem "sentry-raven",   "~> 3.0.0"
-
 gem "awesome_nested_set", "~> 3.4.0"
-
 gem "active_model_serializers", "~> 0.10.12"
-
 gem "jquery-fileupload-rails", "~> 1.0.0"
+
+gem "sidekiq", "~> 6.2.1"
+gem "sidekiq-scheduler", "~> 3.0.1"
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console

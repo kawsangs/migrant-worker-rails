@@ -1,5 +1,7 @@
 # frozen_string_literal: true
 
+require 'sidekiq/web'
+
 Rails.application.routes.draw do
   devise_for :accounts, path: "/", controllers: { confirmations: "confirmations", omniauth_callbacks: "accounts/omniauth_callbacks" }
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
@@ -38,5 +40,14 @@ Rails.application.routes.draw do
       resources :departures, controller: :categories, type: "Categories::Departure", only: [:index, :show]
       resources :safeties, controller: :categories, type: "Categories::Safety", only: [:index, :show]
     end
+  end
+
+  if Rails.env.production?
+    # Sidekiq
+    authenticate :account, lambda { |u| u.system_admin? } do
+      mount Sidekiq::Web => '/sidekiq'
+    end
+  else
+    mount Sidekiq::Web => '/sidekiq'
   end
 end

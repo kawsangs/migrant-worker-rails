@@ -33,7 +33,7 @@ module ApplicationHelper
     str += "<label class='form-check-label form-check-toggle'>"
     str += "<input type='hidden' name='#{option[:name]}' value='0'/>"
     str += "<input type='checkbox' name='#{option[:name]}' #{checked} #{disabled}/>"
-    str += "<span>#{option[:label]}</span>"
+    str += "<span class=#{'text-secondary' if disabled.present?}>#{option[:label]}</span>"
     str += "</label>"
     str + "</div>"
   end

@@ -15,7 +15,7 @@
   = render "categories/form/audio", f: f
 
   .from-group.pt-2
-    = form_check_toggle({name: "category[last]", checked: f.object.last?, label: t('category.mark_last_category')}).html_safe
+    = form_check_toggle({name: "category[last]", checked: f.object.last?, disabled: f.object.children.present?, label: t('category.mark_leaf_category')}).html_safe
 
   .actions.text-right.position-absolute.pb-4{style: 'bottom: -70px; right: 0;'}
     = link_to t('shared.cancel'), cancel_url, class: 'btn btn-secondary'
