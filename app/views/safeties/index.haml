@@ -13,5 +13,5 @@
       .d-flex.header
         %strong.name= t("category.name")
 
-      - @categories.each do |category|
-        = render 'categories/category', category: category, type: 'safety'
+      - @categories.each_with_index do |category, index|
+        = render 'categories/category', category: category, num: index + 1, type: 'safety'

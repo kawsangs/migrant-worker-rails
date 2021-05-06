@@ -4,9 +4,10 @@
 
 .d-flex.item
   .name{ class: "depth-#{category.depth}" }
-    = category.name
+    = "#{num}. #{category.name}"
 
   .flex-1
+    = image_tag category.image_url, width: 40
     = category.last? ? t("category.leaf_category") : ""
 
   .action-buttons
@@ -16,5 +17,5 @@
 
     = render 'shared/action_buttons', edit_url: edit_url, delete_url: delete_url, object: category
 
-- category.children.each do |child|
-  = render "category", category: child, type: type
+- category.children.each_with_index do |child, index|
+  = render "category", category: child, num: index + 1, type: type
