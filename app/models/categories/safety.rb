@@ -17,6 +17,8 @@
 #  children_count :integer          default(0), not null
 #  created_at     :datetime         not null
 #  updated_at     :datetime         not null
+#  last           :boolean          default(FALSE)
+#  uuid           :string
 #
 module Categories
   class Safety < ::Category

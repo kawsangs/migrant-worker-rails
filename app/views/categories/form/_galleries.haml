@@ -1,0 +1,16 @@
+#category-images.form-group
+  %label Image Gallery
+
+  .border.p-2.d-flex.flex-wrap
+    = render partial: "category_images/category_image", collection: @category.category_images, as: :category_image
+
+    = simple_form_for CategoryImage.new do |ff|
+      .image-wrapper.position-relative
+        = image_tag "default_image.png", class: 'display-image'
+
+        .position-absolute
+          %i.fas.fa-plus.text-secondary
+
+        = ff.input :image, as: :file, label: false, wrapper_html: { class: 'file_wrapper' }, input_html: { class: 'file_avata pointer gallery-image-input', accept: "image/x-png,image/gif,image/jpeg", multiple: true, name: "category_image[image]" }
+
+        = ff.input :category_uuid, as: :hidden, input_html: { value: @category.uuid }

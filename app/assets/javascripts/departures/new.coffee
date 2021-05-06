@@ -6,6 +6,20 @@ MW.DeparturesNew = do ->
     onChangeImageFile()
     onClickButtonDeleteImage()
 
+    handleDisplayGallery()
+    onToggleIsLastCategory()
+
+    MW.CategoryImages.onFileUpload()
+
+  onToggleIsLastCategory = ->
+    $(document).off 'change', "[name='category[last]']"
+    $(document).on 'change', "[name='category[last]']", (event)->
+      handleDisplayGallery()
+
+  handleDisplayGallery = ->
+    isChecked = !!$("[name='category[last]']:checked").length
+    $("#category-images").toggle(isChecked)
+
   onRemoveAudio = ->
     $(document).on 'click', '.remove-file-button', (e) =>
       wrapper = $(e.target).parents('.file-wrapper')
@@ -66,7 +80,11 @@ MW.DeparturesNew = do ->
     onClickButtonDeleteImage: onClickButtonDeleteImage
   }
 
-
 MW.DeparturesEdit = MW.DeparturesNew
 MW.DeparturesUpdate = MW.DeparturesNew
 MW.DeparturesCreate = MW.DeparturesNew
+
+MW.SafetiesNew = MW.DeparturesNew
+MW.SafetiesEdit = MW.DeparturesNew
+MW.SafetiesUpdate = MW.DeparturesNew
+MW.SafetiesCreate = MW.DeparturesNew

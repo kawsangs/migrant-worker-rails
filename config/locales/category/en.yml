@@ -11,3 +11,5 @@ en:
     icon: Icon
     video: Video
     parent_category: Parent category
+    mark_leaf_category: Mark as leaf category
+    leaf_category: Leaf category

@@ -31,10 +31,11 @@
   width: 150px;
   height: 150px;
   overflow: hidden;
-  border: 1px solid #eee;
+  border: 1px solid #ccc;
   display: flex;
   justify-content: center;
   align-items: center;
+  margin: 10px;
 
   &.thumbnail {
     width: 40px !important;

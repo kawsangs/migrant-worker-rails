@@ -1,19 +1,25 @@
-= render "categories/form/image", f: f
+= simple_form_for @category, as: :category, url: form_url do |f|
+  = render "categories/form/image", f: f
 
-- if @category.parent.present?
-  .form-group
-    %label= t('category.parent_category')
-    .form-control
-      = @category.parent.name
+  - if @category.parent.present?
+    .form-group
+      %label= t('category.parent_category')
+      .form-control
+        = @category.parent.name
 
-= f.input :type, as: :hidden, value: @category.type
-= f.input :parent_id, as: :hidden
-= f.input :name, label: t('category.name')
-= f.input :description
+  = f.input :uuid, as: :hidden
+  = f.input :parent_id, as: :hidden
+  = f.input :name, label: t('category.name')
+  = f.input :description
 
-= render "categories/form/audio", f: f
+  = render "categories/form/audio", f: f
 
-.actions.text-right
-  %button.btn.btn-secondary{ type: "button", "data-dismiss" => "modal" }
-    = t('shared.cancel')
-  = f.submit t('shared.save'), class: 'btn btn-primary'
+  .from-group.pt-2
+    = form_check_toggle({name: "category[last]", checked: f.object.last?, disabled: f.object.children.present?, label: t('category.mark_leaf_category')}).html_safe
+
+  .actions.text-right.position-absolute.pb-4{style: 'bottom: -70px; right: 0;'}
+    = link_to t('shared.cancel'), cancel_url, class: 'btn btn-secondary'
+    = f.submit t('shared.save'), class: 'btn btn-primary'
+
+.gallery
+  = render "categories/form/galleries"

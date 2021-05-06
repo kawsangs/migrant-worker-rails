@@ -17,10 +17,13 @@
 #  children_count :integer          default(0), not null
 #  created_at     :datetime         not null
 #  updated_at     :datetime         not null
+#  last           :boolean          default(FALSE)
+#  uuid           :string
 #
 require "rails_helper"
 
 RSpec.describe Category, type: :model do
   it { is_expected.to validate_presence_of(:name) }
   it { is_expected.to validate_inclusion_of(:type).in_array(Category::TYPES) }
+  it { is_expected.to have_many(:category_images) }
 end
