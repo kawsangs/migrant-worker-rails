@@ -1,0 +1,13 @@
+.result-type-wrapper
+  .wrapper
+    = f.input :passing_score
+    .d-flex
+      .flex-1
+        = f.input :passing_message
+      .w-25.ml-2
+        = render "shared/audio", field: :passing_audio, f: f, label: "Passing audio"
+    .d-flex
+      .flex-1
+        = f.input :failing_message
+      .w-25.ml-2
+        = render "shared/audio", field: :failing_audio, f: f, label: "Failing audio"

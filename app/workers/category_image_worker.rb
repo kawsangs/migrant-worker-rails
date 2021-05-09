@@ -1,4 +1,6 @@
-require 'sidekiq-scheduler'
+# frozen_string_literal: true
+
+require "sidekiq-scheduler"
 
 class CategoryImageWorker
   include Sidekiq::Worker

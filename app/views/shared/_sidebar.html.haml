@@ -52,11 +52,18 @@
       %a.nav-link{:href => terms_and_conditions_path}
         %i.fas.fa-fw.fa-file-contract
         %span= t('sidebar.terms_and_conditions')
-    
+
     %li.nav-item{ class: get_css_active_class('privacy_policy') }
       %a.nav-link{:href => privacy_policy_path}
         %i.fas.fa-fw.fa-user-secret
         %span= t('sidebar.privacy_policy')
+
+    - if policy(Form).index?
+      %li.nav-item{ class: [get_css_active_class('forms')] }
+        %a.nav-link{:href => forms_path}
+          %i.fas.fa-file-audio
+          %span= t("form.story_form")
+>>>>>>> User story: add form question and option and some relevant model
 
     %li.nav-item{ class: get_css_active_class('abouts') }
       %a.nav-link{:href => about_path}

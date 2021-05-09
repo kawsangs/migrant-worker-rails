@@ -1,0 +1,17 @@
+en:
+  form:
+    story_form: Story form
+    new_form: New form
+    edit_form: Edit form
+    hint: Hint
+    setting: Setting
+    hint: Hint
+    name: Name
+    skip_logic: Skip logic
+    question: Question
+    condition: Condition
+    skip_logic_not: not
+    any_of: any of
+    match_all_of: match all of
+    type: Field type
+    add_question: + Add question

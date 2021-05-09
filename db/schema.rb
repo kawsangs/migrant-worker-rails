@@ -34,6 +34,18 @@ ActiveRecord::Schema.define(version: 2021_05_11_044734) do
     t.index ["reset_password_token"], name: "index_accounts_on_reset_password_token", unique: true
   end
 
+  create_table "answers", force: :cascade do |t|
+    t.string "uuid"
+    t.integer "question_id"
+    t.string "question_code"
+    t.string "value"
+    t.integer "score"
+    t.string "user_uuid"
+    t.string "quiz_uuid"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+  end
+
   create_table "api_keys", force: :cascade do |t|
     t.string "access_token"
     t.datetime "created_at", precision: 6, null: false
@@ -107,6 +119,15 @@ ActiveRecord::Schema.define(version: 2021_05_11_044734) do
     t.index ["name"], name: "index_institutions_on_name"
   end
 
+  create_table "forms", force: :cascade do |t|
+    t.string "uuid"
+    t.string "name"
+    t.string "form_type"
+    t.integer "version"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+  end
+
   create_table "migrants", force: :cascade do |t|
     t.string "full_name"
     t.string "age"
@@ -122,4 +143,65 @@ ActiveRecord::Schema.define(version: 2021_05_11_044734) do
   add_foreign_key "contacts", "institutions"
   add_foreign_key "country_institutions", "countries"
   add_foreign_key "country_institutions", "institutions"
+
+  create_table "options", force: :cascade do |t|
+    t.integer "question_id"
+    t.string "name"
+    t.string "value"
+    t.integer "score"
+    t.string "alert_audio"
+    t.text "alert_message"
+    t.boolean "warning"
+    t.boolean "recursive"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+  end
+
+  create_table "questions", force: :cascade do |t|
+    t.string "code"
+    t.text "name"
+    t.string "type"
+    t.string "hint"
+    t.integer "display_order"
+    t.string "relevant"
+    t.boolean "required"
+    t.string "audio"
+    t.integer "passing_score"
+    t.text "passing_message"
+    t.string "passing_audio"
+    t.text "failing_message"
+    t.string "failing_audio"
+    t.integer "form_id"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+  end
+
+  create_table "quizzes", force: :cascade do |t|
+    t.string "uuid"
+    t.string "user_uuid"
+    t.integer "form_id"
+    t.datetime "quizzed_at"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+  end
+
+  create_table "stories", force: :cascade do |t|
+    t.string "uuid"
+    t.string "user_uuid"
+    t.string "story_type"
+    t.datetime "played_at"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+  end
+
+  create_table "users", force: :cascade do |t|
+    t.string "uuid"
+    t.string "full_name"
+    t.string "sex"
+    t.string "age"
+    t.string "audio"
+    t.datetime "registered_at"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+  end
 end
