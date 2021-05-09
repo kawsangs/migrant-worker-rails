@@ -1,0 +1,29 @@
+%fieldset.option-field
+  .field-wrapper{style: 'margin-top: 1em'}
+    = f.hidden_field :_destroy
+    = link_to '#', class: "remove_fields btn btn-link" do
+      %i.fa.fa-trash-alt.text-danger
+
+    %div.flex-1
+      .d-flex.flex-1
+        .flex-1.mr-2
+          = f.input :name, label: false, placeholder: "This option has no name"
+        .flex-1.mr-2
+          = f.input :value, label: false, placeholder: "value"
+        .flex-1.mr-2
+          = f.input :score, label: false, placeholder: "score"
+        .mr-2
+          = link_to "Advanced", "#", class: 'btn btn-advance'
+
+      .advance-options{class: ('d-none' unless f.object.alert_message.present?)}
+        .d-flex
+          .flex-1.mr-2
+            = f.input :alert_message, label: false, placeholder: "alert message"
+          .w-25.mr-2
+            = render "shared/audio", field: :alert_audio, f: f, label: "Alert audio"
+
+          .m-2.mr-3
+            = f.input :warning, label: 'Set as warning?'
+          .m-2
+            = f.input :recursive, label: "Repeat the question?"
+

@@ -14,11 +14,22 @@
 //= require application/namespace
 //= require application/util
 
+//= require jquery-sortable
+//= require tagify.min
+//= require common/form
+//= require common/audio
+
+// For building question skip logic
+//= require common/skip_logic_constant
+//= require common/question_type
+//= require common/skip_logic
+
 //= require common/topbar
 
 //= require accounts/index
 //= require category_images
 //= require departures/new
+//= require forms/new
 
 $(document).on("ready turbolinks:load", () => {
   MW.Common.Topbar.init();

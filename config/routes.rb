@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-require 'sidekiq/web'
+require "sidekiq/web"
 
 Rails.application.routes.draw do
   devise_for :accounts, path: "/", controllers: { confirmations: "confirmations", omniauth_callbacks: "accounts/omniauth_callbacks" }
@@ -36,6 +36,9 @@ Rails.application.routes.draw do
     end
   end
 
+  # User story
+  resources :forms
+
   # Api
   namespace :api do
     namespace :v1 do
@@ -53,15 +56,17 @@ Rails.application.routes.draw do
       resources :categories
       resources :departures, controller: :categories, type: "Categories::Departure", only: [:index, :show]
       resources :safeties, controller: :categories, type: "Categories::Safety", only: [:index, :show]
+
+      resources :forms, only: [:index, :show]
     end
   end
 
   if Rails.env.production?
     # Sidekiq
     authenticate :account, lambda { |u| u.system_admin? } do
-      mount Sidekiq::Web => '/sidekiq'
+      mount Sidekiq::Web => "/sidekiq"
     end
   else
-    mount Sidekiq::Web => '/sidekiq'
+    mount Sidekiq::Web => "/sidekiq"
   end
 end
