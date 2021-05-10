@@ -1,0 +1,6 @@
+= simple_form_for @contact do |f|
+  = f.association :country, as: :select
+  = f.association :help_center
+  = f.input :phones, input_html: { multiple: true }
+  
+  = f.submit 'save'

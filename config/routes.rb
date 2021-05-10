@@ -29,6 +29,7 @@ Rails.application.routes.draw do
 
   resources :countries
   resources :help_centers
+  resources :contacts
 
   # Api
   namespace :api do

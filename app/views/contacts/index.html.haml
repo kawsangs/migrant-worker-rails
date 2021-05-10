@@ -1,0 +1,6 @@
+= link_to 'new contact', new_contact_path
+
+- @contacts.each do |contact|
+  = contact.country.name
+  = contact.help_center.name
+  = contact.phones.to_sentence
