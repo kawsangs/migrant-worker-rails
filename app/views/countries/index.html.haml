@@ -1,6 +1,24 @@
-= link_to 'new country', new_country_path
+.row
+  .col-xs-12.col-md-6
+    = link_to 'new country', new_country_path, class: 'btn btn-primary mb-3'
 
-- @countries.each do |country|
-  = country.name
-  = link_to 'edit', edit_country_path(country)
-  = link_to 'delete', country_path(country), data: { method: :delete, confirm: 'are you sure?' }
+    %table.table
+      %thead
+        %tr
+          %th{:scope => "col"} #
+          %th{:scope => "col"} name
+          %th{:scope => "col"} created at
+          %th{:scope => "col"} &nbsp;
+      %tbody
+        - @countries.each do |country|
+          %tr
+            %th{:scope => "row"} 1
+            %td= country.name
+            %td= country.created_at
+            %td
+              
+              = link_to edit_country_path(country), id: dom_id(country, :edit), class: "btn btn-sm rounded-circle btn-warning mr-3" do
+                %i.fas.fa-pen
+
+              = link_to country_path(country), id: dom_id(country, :delete), data: { method: :delete, confirm: 'are you sure?' }, class: "btn btn-sm rounded-circle btn-danger" do
+                %i.fas.fa-trash-alt
