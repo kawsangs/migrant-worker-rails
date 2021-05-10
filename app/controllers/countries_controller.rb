@@ -1,4 +1,6 @@
 class CountriesController < ApplicationController
+  before_action :set_country, only: [:edit, :update, :destroy]
+
   def index
     @countries = Country.all
   end
@@ -17,11 +19,9 @@ class CountriesController < ApplicationController
   end
 
   def edit
-    @country = Country.find(params[:id])
   end
 
   def update
-    @country = Country.find(params[:id])
     if @country.update(country_params)
       redirect_to countries_path, status: :moved_permanently, notice: 'success'
     else
@@ -30,7 +30,6 @@ class CountriesController < ApplicationController
   end
 
   def destroy
-    @country = Country.find(params[:id])
     @country.destroy
     redirect_to countries_path, status: :moved_permanently, notice: 'success'
   end
@@ -39,5 +38,9 @@ class CountriesController < ApplicationController
 
   def country_params
     params.require(:country).permit(:name)
+  end
+
+  def set_country
+    @country = Country.find(params[:id])
   end
 end
