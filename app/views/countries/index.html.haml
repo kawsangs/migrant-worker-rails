@@ -2,3 +2,4 @@
 
 - @countries.each do |country|
   = country.name
+  = link_to 'edit', edit_country_path(country), id: "country_#{country.id}"
