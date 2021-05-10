@@ -28,6 +28,7 @@ Rails.application.routes.draw do
   resources :category_images, only: [:create, :destroy]
 
   resources :countries
+  resources :help_centers
 
   # Api
   namespace :api do

@@ -43,7 +43,6 @@ RSpec.describe 'Manage country', type: :system do
       expect(page).to have_content('success')
     end
   end
-  
-  it 'enables to create help centers'
+
   it 'enables to create contacts for help centers'
 end
