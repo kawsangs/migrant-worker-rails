@@ -2,4 +2,5 @@
 
 - @countries.each do |country|
   = country.name
-  = link_to 'edit', edit_country_path(country), id: "country_#{country.id}"
+  = link_to 'edit', edit_country_path(country)
+  = link_to 'delete', country_path(country), data: { method: :delete, confirm: 'are you sure?' }

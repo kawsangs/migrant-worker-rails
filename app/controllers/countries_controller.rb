@@ -29,6 +29,12 @@ class CountriesController < ApplicationController
     end
   end
 
+  def destroy
+    @country = Country.find(params[:id])
+    @country.destroy
+    redirect_to countries_path, status: :moved_permanently, notice: 'success'
+  end
+
   private
 
   def country_params
