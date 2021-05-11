@@ -1,4 +1,6 @@
 class ContactsController < ApplicationController
+  before_action :set_contact, only: [:edit, :update, :destroy]
+
   def index
     @contacts = Contact.includes(:country, :help_center)
   end
@@ -17,11 +19,9 @@ class ContactsController < ApplicationController
   end
 
   def edit
-    @contact = Contact.find(params[:id])
   end
 
   def update
-    @contact = Contact.find(params[:id])
     if @contact.update(contact_params)
       redirect_to contacts_path, status: :moved_permanently, notice: 'success'
     else
@@ -29,9 +29,17 @@ class ContactsController < ApplicationController
     end
   end
 
+  def destroy
+    redirect_to contacts_path, status: :moved_permanently, notice: 'success'
+  end
+
   private
 
   def contact_params
     params.require(:contact).permit(:country_id, :help_center_id, phones: [])
+  end
+
+  def set_contact
+    @contact = Contact.find(params[:id])
   end
 end

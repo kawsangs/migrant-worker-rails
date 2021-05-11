@@ -50,11 +50,11 @@ RSpec.describe 'Manage contact', type: :system do
     end
   end
 
-  xdescribe '#destroy' do
-    it 'enables to delete existing help_center by name' do
-      visit '/help_centers'
+  describe '#destroy' do
+    it 'enables to delete existing contact' do
+      visit '/contacts'
 
-      click_link "delete_help_center_#{help_center.id}"
+      click_link "delete_contact_#{contact.id}"
 
       expect(page).to have_content('success')
     end
