@@ -52,6 +52,9 @@ gem "jquery-fileupload-rails", "~> 1.0.0"
 gem "sidekiq", "~> 6.2.1"
 gem "sidekiq-scheduler", "~> 3.0.1"
 
+gem 'countries'
+gem 'country_select'
+
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
   gem "byebug", platforms: [:mri, :mingw, :x64_mingw]

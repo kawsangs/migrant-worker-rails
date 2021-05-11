@@ -1,0 +1,6 @@
+= simple_form_for @institution do |f|
+  = f.input :country_institutions
+  = f.input :name
+  = f.input :kind, collection: Institution.kinds
+
+  = f.submit

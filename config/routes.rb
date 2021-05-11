@@ -27,6 +27,7 @@ Rails.application.routes.draw do
   resources :safeties
   resources :category_images, only: [:create, :destroy]
 
+  resources :institutions
   resources :countries
   resources :help_centers
   resources :contacts
