@@ -6,7 +6,7 @@ module Api
       def index
         forms = Form.all
 
-        render json: forms
+        render json: forms, include: ["questions", "questions.options"]
       end
 
       def show

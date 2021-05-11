@@ -1,12 +1,12 @@
 .fieldsets {
-  border: 1px solid #ccc;
+  border: 1px solid #b8bac7;
   border-radius: 4px;
   padding: 10px;
   margin-bottom: 20px;
 }
 
 .fieldset {
-  border: 1px solid #ccc;
+  border: 1px solid #b8bac7;
   margin-bottom: 10px;
   position: relative;
 }
@@ -70,12 +70,13 @@
 
   .move, .collapse-trigger {
     display: none;
-    color: #8a8ea3;
+    color: #2d2f39;
     box-shadow: none;
   }
 
   .move {
     cursor: move !important;
+    color: #5a5e72;
   }
 
   .collapse-trigger {
@@ -93,12 +94,12 @@
   }
 
   .as-title {
-    color: #8a8ea3;
+    color: #5a5e72;
     font-weight: bold;
     padding-left: 14px;
 
     &:focus {
-      color: #495057;
+      color: #2d2f39;
     }
   }
 

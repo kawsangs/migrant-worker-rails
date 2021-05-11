@@ -43,6 +43,6 @@ class CategorySerializer < ActiveModel::Serializer
   end
 
   class CategoryImageSerializer < ActiveModel::Serializer
-    attributes :id, :name, :image_url
+    attributes :id, :name, :image_url, :category_id
   end
 end

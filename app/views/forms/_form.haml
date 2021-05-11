@@ -3,7 +3,9 @@
 
   %fieldset
     %legend.d-inline
-      Questions
+      %span Questions
+      %button.btn.collapse-all-trigger{type: :button}
+        %i.fas.fa-caret-right
 
     %ol.fields.sortable
       = f.fields_for :questions, f.object.questions do |builder|

@@ -58,6 +58,7 @@ Rails.application.routes.draw do
       resources :safeties, controller: :categories, type: "Categories::Safety", only: [:index, :show]
 
       resources :forms, only: [:index, :show]
+      resources :quizzed, only: [:create]
     end
   end
 
