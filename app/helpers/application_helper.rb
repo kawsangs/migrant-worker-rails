@@ -37,4 +37,8 @@ module ApplicationHelper
     str += "</label>"
     str + "</div>"
   end
+
+  def tagify_class(value)
+    'tagify-item-' + value.to_s.gsub(/[^a-zA-Z0-9]/,'-')
+  end
 end

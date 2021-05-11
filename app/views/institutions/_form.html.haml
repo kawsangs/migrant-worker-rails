@@ -1,6 +1,12 @@
 = simple_form_for @institution do |f|
-  = f.input :country_institutions
+  .form-group
+    %label Country
+    %input{ type: 'text', value: @institution.country_codes, class: 'form-control tagify-country' }    
+    - @institution.country_institutions.each.with_index do |c, index|
+      %input{ type: 'hidden', name: "institution[country_institutions_attributes][#{index}][id]", value: c.id }
+      %input{ type: 'hidden', name: "institution[country_institutions_attributes][#{index}][_destroy]", class: "del-" + tagify_class(c.country_code), value: '' }
+
   = f.input :name
-  = f.input :kind, collection: Institution.kinds
+  = f.input :kind, collection: Institution.kinds.keys
 
   = f.submit

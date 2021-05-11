@@ -14,6 +14,8 @@
 
 # Use this setup block to configure all options available in SimpleForm.
 SimpleForm.setup do |config|
+  config.input_mappings = { /country/ => :string }
+
   # Default class for buttons
   config.button_class = "btn"
 

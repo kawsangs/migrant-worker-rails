@@ -1,1 +1,23 @@
-= link_to 'New institution', new_institution_path
+= link_to 'New institution', new_institution_path, class: 'btn btn-primary mb-3'
+
+%table.table
+  %thead
+    %tr
+      %th{:scope => "col"} #
+      %th{:scope => "col"} name
+      %th{:scope => "col"} countries
+      %th{:scope => "col"} created at
+      %th{:scope => "col"} &nbsp;
+  %tbody
+    - @institutions.each do |institution|
+      %tr
+        %td 1
+        %td= institution.name
+        %td= institution.country_codes
+        %td= institution.created_at
+        %td
+          = link_to edit_institution_path(institution), id: dom_id(institution, :edit), class: "btn btn-sm rounded-circle btn-warning mr-3" do
+            %i.fas.fa-pen
+
+          = link_to institution_path(institution), id: dom_id(institution, :delete), data: { method: :delete, confirm: 'are you sure?' }, class: "btn btn-sm rounded-circle btn-danger" do
+            %i.fas.fa-trash-alt
