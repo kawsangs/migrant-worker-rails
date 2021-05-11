@@ -1,12 +1,28 @@
-= link_to 'new contact', new_contact_path
+.row
+  .col-xs-12.col-md-6
+    = link_to 'new contact', new_contact_path, class: "btn btn-primary mb-3"
 
-- @contacts.each do |contact|
-  = contact.country.name
-  = contact.help_center.name
-  = contact.phones.to_sentence
+    %table.table
+      %thead
+        %tr
+          %th{:scope => "col"} #
+          %th{:scope => "col"} country
+          %th{:scope => "col"} help center
+          %th{:scope => "col"} phones
+          %th{:scope => "col"} created at
+          %th{:scope => "col"} &nbsp;
 
-  = link_to edit_contact_path(contact), id: dom_id(contact, :edit), class: "btn btn-sm rounded-circle btn-warning mr-3" do
-    %i.fas.fa-pen
+      %tbody
+        - @contacts.each do |contact|
+          %tr
+            %th{:scope => "row"} 1
+            %td= contact.country.name
+            %td= contact.help_center.name
+            %td= contact.phones.to_sentence
 
-  = link_to contact_path(contact), id: dom_id(contact, :delete), data: { method: :delete, confirm: 'are you sure?' }, class: "btn btn-sm rounded-circle btn-danger" do
-    %i.fas.fa-trash-alt
+            %td
+              = link_to edit_contact_path(contact), id: dom_id(contact, :edit), class: "btn btn-sm rounded-circle btn-warning mr-3" do
+                %i.fas.fa-pen
+
+              = link_to contact_path(contact), id: dom_id(contact, :delete), data: { method: :delete, confirm: 'are you sure?' }, class: "btn btn-sm rounded-circle btn-danger" do
+                %i.fas.fa-trash-alt

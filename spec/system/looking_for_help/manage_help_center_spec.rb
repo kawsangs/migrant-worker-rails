@@ -43,6 +43,4 @@ RSpec.describe 'Manage help center', type: :system do
       expect(page).to have_content('success')
     end
   end
-  
-  it 'enables to create contacts for help centers'
 end
