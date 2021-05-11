@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_05_10_102312) do
+ActiveRecord::Schema.define(version: 2021_05_11_035706) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -70,13 +70,12 @@ ActiveRecord::Schema.define(version: 2021_05_10_102312) do
   end
 
   create_table "contacts", force: :cascade do |t|
-    t.bigint "country_id", null: false
-    t.bigint "help_center_id", null: false
-    t.string "phones", default: [], array: true
+    t.string "type", null: false
+    t.string "value", default: ""
+    t.bigint "institution_id", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
-    t.index ["country_id"], name: "index_contacts_on_country_id"
-    t.index ["help_center_id"], name: "index_contacts_on_help_center_id"
+    t.index ["institution_id"], name: "index_contacts_on_institution_id"
   end
 
   create_table "countries", force: :cascade do |t|
@@ -93,6 +92,14 @@ ActiveRecord::Schema.define(version: 2021_05_10_102312) do
     t.index ["name"], name: "index_help_centers_on_name", unique: true
   end
 
+  create_table "institutions", force: :cascade do |t|
+    t.string "name", null: false
+    t.integer "kind", default: 2, comment: "ex: ngo, gov. agency, other (default)"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["name"], name: "index_institutions_on_name"
+  end
+
   create_table "migrants", force: :cascade do |t|
     t.string "full_name"
     t.string "age"
@@ -105,6 +112,5 @@ ActiveRecord::Schema.define(version: 2021_05_10_102312) do
     t.datetime "updated_at", precision: 6, null: false
   end
 
-  add_foreign_key "contacts", "countries"
-  add_foreign_key "contacts", "help_centers"
+  add_foreign_key "contacts", "institutions"
 end

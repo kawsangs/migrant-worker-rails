@@ -1,4 +1,3 @@
 class Contact < ApplicationRecord
-  belongs_to :country
-  belongs_to :help_center
+  belongs_to :institution
 end

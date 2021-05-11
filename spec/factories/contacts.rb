@@ -1,7 +1,7 @@
 FactoryBot.define do
   factory :contact do
-    country
-    help_center
-    phones { FFaker::PhoneNumber.phone_number }
+    type { "Phone" }
+    value { FFaker::PhoneNumber.phone_number }
+    institution
   end
 end
