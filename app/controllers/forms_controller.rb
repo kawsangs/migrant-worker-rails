@@ -37,7 +37,7 @@ class FormsController < ApplicationController
     @form = Form.find(params[:id])
     @form.destroy
 
-    do_redirect
+    redirect_to forms_url
   end
 
   private

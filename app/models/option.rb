@@ -18,4 +18,13 @@
 #
 class Option < ApplicationRecord
   mount_uploader :alert_audio, AudioUploader
+
+  # Validation
+  validates :value, :name, presence: true, uniqueness: { scope: [:question_id] }
+  before_validation :set_option_value, if: -> { name.present? }
+
+  private
+    def set_option_value
+      self.value = (value.presence || name).downcase.split(' ').join('_')
+    end
 end

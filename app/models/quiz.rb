@@ -15,4 +15,6 @@
 class Quiz < ApplicationRecord
   belongs_to :user, primary_key: "uuid", foreign_key: "user_uuid"
   belongs_to :form
+
+  accepts_nested_attributes_for :answers, allow_destroy: true
 end

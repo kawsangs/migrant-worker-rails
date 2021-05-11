@@ -23,13 +23,29 @@ MW.Form = do ->
 
     onClickBtnAdvanceOption()
     MW.Audio.init()
+    onClickCollapseAllTrigger()
+
+  onClickCollapseAllTrigger = ->
+    $(document).off 'click', '.collapse-all-trigger'
+    $(document).on 'click', '.collapse-all-trigger', (e)->
+      dom = event.currentTarget
+      content = $('.fieldset').find('.collapse-content')
+      icon = $($(dom).find('i'))
+      content.toggle()
+
+      if $(content).is(":visible")
+        icon.removeClass('fa-caret-right')
+        icon.addClass('fa-caret-down')
+        hideSettingContent(this)
+      else
+        icon.addClass('fa-caret-right')
+        icon.removeClass('fa-caret-down')
 
   onClickBtnAdvanceOption = ->
     $(document).off 'click', '.btn-advance'
     $(document).on 'click', '.btn-advance', (e)->
       $(this).parents('.field-wrapper').find('.advance-options').toggleClass('d-none')
       e.preventDefault()
-
 
   onClickBtnSetting = ->
     $(document).off 'click', '.btn-setting'
