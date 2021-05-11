@@ -4,3 +4,9 @@
   = contact.country.name
   = contact.help_center.name
   = contact.phones.to_sentence
+
+  = link_to edit_contact_path(contact), id: dom_id(contact, :edit), class: "btn btn-sm rounded-circle btn-warning mr-3" do
+    %i.fas.fa-pen
+
+  = link_to contact_path(contact), id: dom_id(contact, :delete), data: { method: :delete, confirm: 'are you sure?' }, class: "btn btn-sm rounded-circle btn-danger" do
+    %i.fas.fa-trash-alt

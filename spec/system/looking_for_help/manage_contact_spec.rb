@@ -29,15 +29,24 @@ RSpec.describe 'Manage contact', type: :system do
     end
   end
 
-  xdescribe '#edit' do
-    it 'enables to update existing help_center name' do
-      visit '/help_centers'
+  describe '#edit' do
+    let!(:usa) { create(:country, name: 'USA') }
+    let!(:save_children) { create(:help_center, name: 'Save the children') }
 
-      click_link "edit_help_center_#{help_center.id}"
-      fill_in 'Name', with: 'child help service'
+    it 'enables to update existing contact' do
+      visit '/contacts'
+
+      click_link "edit_contact_#{contact.id}"
+      select(usa.name, from: 'Country')
+      select(save_children.name, from: 'Help center')
+      fill_in 'Phones', with: '012345678'
+
       click_button 'save'
 
-      expect(page).to have_content('child help service')
+      expect(page).to have_current_path(contacts_path)
+      expect(page).to have_content(usa.name)
+      expect(page).to have_content(save_children.name)
+      expect(page).to have_content('012345678')
     end
   end
 
