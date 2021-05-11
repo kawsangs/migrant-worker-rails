@@ -1,6 +1,6 @@
 require 'rails_helper'
 
-RSpec.describe 'Manage contact', type: :system do
+RSpec.xdescribe 'Manage contact', type: :system do
   let(:account) { create(:account) }
   let!(:contact) { create(:contact) }
 
