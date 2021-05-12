@@ -37,6 +37,10 @@ Rails.application.routes.draw do
     namespace :v1 do
       resources :migrants, only: [:create]
 
+      resources :countries, only: [:index] do
+        resources :institutions, only: [:index]
+      end
+
       resources :pdfs, only: [] do
         get :download, on: :collection
       end
