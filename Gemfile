@@ -53,6 +53,7 @@ gem "sidekiq", "~> 6.2.1"
 gem "sidekiq-scheduler", "~> 3.0.1"
 
 gem 'countries'
+gem "cocoon"
 gem 'country_select'
 
 group :development, :test do

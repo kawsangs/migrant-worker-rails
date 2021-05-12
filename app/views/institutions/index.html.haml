@@ -6,6 +6,7 @@
       %th{:scope => "col"} #
       %th{:scope => "col"} name
       %th{:scope => "col"} countries
+      %th{:scope => "col"} contacts
       %th{:scope => "col"} created at
       %th{:scope => "col"} &nbsp;
   %tbody
@@ -13,7 +14,15 @@
       %tr
         %td 1
         %td= institution.name
-        %td= institution.country_codes
+        %td
+          - institution.country_institutions.each do |country|
+            %span.badge.badge-pill.badge-primary
+              = country.country_code
+        %td
+          - institution.contacts.each do |contact|
+            .contact
+              %span{ class: contact.fa }
+              %span= contact.value
         %td= institution.created_at
         %td
           = link_to edit_institution_path(institution), id: dom_id(institution, :edit), class: "btn btn-sm rounded-circle btn-warning mr-3" do
