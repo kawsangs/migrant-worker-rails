@@ -88,8 +88,10 @@ ActiveRecord::Schema.define(version: 2021_05_11_044734) do
   create_table "country_institutions", force: :cascade do |t|
     t.string "country_code", null: false
     t.bigint "institution_id", null: false
+    t.bigint "country_id", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.index ["country_id"], name: "index_country_institutions_on_country_id"
     t.index ["institution_id"], name: "index_country_institutions_on_institution_id"
   end
 
@@ -121,5 +123,6 @@ ActiveRecord::Schema.define(version: 2021_05_11_044734) do
   end
 
   add_foreign_key "contacts", "institutions"
+  add_foreign_key "country_institutions", "countries"
   add_foreign_key "country_institutions", "institutions"
 end
