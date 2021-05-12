@@ -1,7 +1,18 @@
 const load = () => {
   var input = document.querySelector('.tagify-country');
+  var whitelist = [
+    { value:'Afghanistan', countryId: 1, code:'AF' },
+    { value:'Åland Islands', countryId: 2, code:'AX' },
+    { value:'Albania', countryId: 3, code:'AL' },
+    { value:'Algeria', countryId: 4, code:'DZ' },
+    { value:'American Samoa', countryId: 5, code:'AS' },
+    { value:'Andorra', countryId: 6, code:'AD' },
+    { value:'Angola', countryId: 7, code:'AO' },
+    { value:'Anguilla', countryId: 8, code:'AI' },
+    { value:'Antarctica', countryId: 9, code:'AQ' },]
+
   var tagify = new Tagify(input, {
-    whitelist: ["Tajikistan", "Jamaica", "Haiti", "Sao Tome and Principe", "Montserrat", "United Arab Emirates", "Pakistan", "Netherlands", "Luxembourg", "Belize", "Iran (Islamic Republic of)", "Bolivia (Plurinational State of)", "Uruguay", "Ghana", "Saudi Arabia", "Côte d'Ivoire", "Saint Martin (French part)", "French Southern Territories", "Anguilla", "Qatar", "Sint Maarten (Dutch part)", "Libya", "Bouvet Island", "Papua New Guinea", "Kyrgyzstan", "Equatorial Guinea", "Western Sahara", "Niue", "Puerto Rico", "Grenada", "Korea (Republic of)", "Heard Island and McDonald Islands", "San Marino", "Sierra Leone", "Congo (Democratic Republic of the)", "North Macedonia", "Turkey", "Algeria", "Georgia", "Palestine, State of", "Barbados", "Ukraine", "Guadeloupe", "French Polynesia", "Namibia", "Botswana", "Syrian Arab Republic", "Togo", "Dominican Republic", "Antarctica"],
+    whitelist: whitelist,
     maxTags: 10,
     enforceWhitelist : true,
     dropdown: {
