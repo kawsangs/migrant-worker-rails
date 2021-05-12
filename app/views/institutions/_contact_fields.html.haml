@@ -2,5 +2,5 @@
   = link_to_remove_association f, class: 'd-flex align-items-center btn btn-danger rounded-circle mr-3' do
     %span.fa.fa-trash-alt
   .input-group-prepend
-    = f.input_field :type, include_blank: false, collection: Contact::TYPES, class: 'input-group-text rounded-left'
+    = f.input_field :type, include_blank: false, collection: Contact::TYPES, value_method: :first, label_method: :second, class: 'input-group-text rounded-left'
   = f.input_field :value, class: 'form-control'

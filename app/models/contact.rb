@@ -4,5 +4,6 @@ class Contact < ApplicationRecord
   TYPES = [
     ['Phone', 'Phone'],
     ['Facebook', 'Facebook'],
+    ['Whatsapp', 'WhatsApp'],
   ]
 end
