@@ -1,18 +1,18 @@
 = simple_form_for @institution do |f|
-  = f.input :name
-  = f.input :kind, collection: Institution.kinds.keys
+  = f.input :name, label: t('institution.name')
+  = f.input :kind, label: t('institution.type'), collection: Institution.kinds, value_method: :first, label_method: lambda { |kind| t("institution.#{kind.first}") }, include_blank: false
 
-  %h3 Countries
+  %label= t('institution.countries')
   .form-group
     %input{ type: 'text', value: @institution.country_codes, class: 'form-control tagify-country' }    
     - @institution.country_institutions.each.with_index do |c, index|
       %input{ type: 'hidden', name: "institution[country_institutions_attributes][#{index}][id]", value: c.id }
       %input{ type: 'hidden', name: "institution[country_institutions_attributes][#{index}][_destroy]", class: "del-" + tagify_class(c.country_code), value: '' }
 
-  %h3 Contacts
+  %label= t('institution.contacts')
   #contacts
     = f.simple_fields_for :contacts do |contact|
       = render 'contact_fields', f: contact
     .links.mb-3
-      = link_to_add_association 'add contact', f, :contacts, class: 'btn btn-sm btn-outline-secondary'
+      = link_to_add_association t('institution.add_contact'), f, :contacts, class: 'btn btn-sm btn-outline-secondary'
   = f.submit nil, class: 'btn btn-primary'
