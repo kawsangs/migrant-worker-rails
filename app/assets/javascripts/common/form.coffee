@@ -19,16 +19,29 @@ MW.Form = do ->
 
     onClickSettingItem()
     onClickBtnSetting()
-    MW.SkipLogic.init()
+    # MW.SkipLogic.init()
 
     onClickBtnAdvanceOption()
     MW.Audio.init()
     onClickCollapseAllTrigger()
+    onClickAddCriteria()
+    onChangeQuestionName()
+
+    MW.Criteria.init()
+
+  onChangeQuestionName = ->
+    $(document).off 'change', '.field-name'
+    $(document).on 'change', '.field-name', (e)->
+      value = e.currentTarget.value
+      if !!value
+        value = value.split(" ").join("_").toLowerCase()
+      $(e.currentTarget).parents('.fieldset').find('.question-code').val(value)
+
 
   onClickCollapseAllTrigger = ->
     $(document).off 'click', '.collapse-all-trigger'
     $(document).on 'click', '.collapse-all-trigger', (e)->
-      dom = event.currentTarget
+      dom = e.currentTarget
       content = $('.fieldset').find('.collapse-content')
       icon = $($(dom).find('i'))
       content.toggle()
@@ -170,6 +183,13 @@ MW.Form = do ->
       appendField(this)
       event.preventDefault()
 
+  onClickAddCriteria = ->
+    $(document).off('click', 'form .add_criterias')
+    $(document).on 'click', 'form .add_criterias', (event) ->
+      event.preventDefault()
+      criteriaWrapper = appendField(this)
+      MW.Criteria.initOptionsToCriteriaQuestionSelect(criteriaWrapper)
+
   onChooseFieldType = ->
     $(document).off('click', '.field-type-list')
     $(document).on 'click', '.field-type-list', (event) ->
@@ -245,6 +265,8 @@ MW.Form = do ->
 
     $(dom).before(field)
     assignDisplayOrderToListItem()
+
+    return field
 
   initOneOption = (dom)->
     $(dom).parents('.fieldset').find('.add_options').click()

@@ -48,7 +48,8 @@ class FormsController < ApplicationController
           :_destroy, :hint, :relevant, :audio, :remove_audio,
           :passing_score, :passing_message, :passing_audio,
           :failing_message, :failing_audio,
-          options_attributes: %i[id name value score alert_audio remove_alert_audio alert_message other warning recursive _destroy]
+          options_attributes: %i[id name value score alert_audio remove_alert_audio alert_message other warning recursive _destroy],
+          criterias_attributes: %i[id question_code operator response_value _destroy]
         ]
       )
     end

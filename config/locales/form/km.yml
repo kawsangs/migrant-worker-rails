@@ -15,3 +15,9 @@ km:
     match_all_of: ផ្គូរផ្គងទាំងអស់
     type: 'ប្រភេទសំនួរ'
     add_question: + បន្ថែមសំណួរ
+    select_question_from_list: ជ្រើសរើសសំណួរពីបញ្ជី
+    response_value: តម្លៃឆ្លើយតប
+    add_critera: + បន្ថែមលក្ខខណ្ឌ
+    add_option: + បន្ថែមជម្រើស
+    match_all_criteria: សំណួរគួរតែត្រូវនឹងលក្ខណៈវិនិច្ឆ័យទាំងអស់នេះ
+    match_any_criteria: សំណួរគួរតែត្រូវនឹងលក្ខណៈវិនិច្ឆ័យណាមួយ

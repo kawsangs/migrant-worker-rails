@@ -15,3 +15,9 @@ en:
     match_all_of: match all of
     type: Field type
     add_question: + Add question
+    select_question_from_list: Select question from list
+    response_value: Response value
+    add_critera: + Add criteria
+    add_option: + Add option
+    match_all_criteria: Question should match all of these criteria
+    match_any_criteria: Question should match any of these criteria

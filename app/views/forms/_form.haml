@@ -1,4 +1,4 @@
-= simple_form_for @form, html: { class: 'main-form' } do |f|
+= simple_form_for @form, html: { class: 'main-form skip-logic' } do |f|
   = f.input :name
 
   %fieldset
@@ -20,6 +20,7 @@
 :javascript
   locale = {
     please_select: "#{t('shared.please_select')}",
+    select_question_from_list: "#{t('form.select_question_from_list')}",
     skip_logic_not: "#{t('form.skip_logic_not')}",
     any_of: "#{t('form.any_of')}",
     match_all_of: "#{t('form.match_all_of')}"

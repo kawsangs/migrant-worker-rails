@@ -135,7 +135,7 @@ MW.SkipLogic = (function () {
     fields.unshift({
       code: '',
       type: '',
-      name: locale.please_select
+      name: locale.select_question_from_list
     });
     fields.forEach(function (field) {
       option = $("<option value='".concat(field.code, "' type='").concat(field.type, "'>").concat(field.name, "</option>"));
