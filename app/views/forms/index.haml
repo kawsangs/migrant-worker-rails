@@ -25,7 +25,7 @@
             %tr
               %td= @pagy.from + index
               %td= form.name
-              %td= form.created_at
-              %td= form.updated_at
+              %td= l(form.created_at)
+              %td= l(form.updated_at)
               %td.text-right
                 = render 'shared/action_buttons', edit_url: edit_form_path(form), delete_url: form_path(form), object: form

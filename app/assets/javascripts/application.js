@@ -14,17 +14,18 @@
 //= require application/namespace
 //= require application/util
 
-//= require jquery-sortable
-//= require tagify.min
-//= require common/form
-//= require common/audio
+//= require common/topbar
 
 // For building question skip logic
 //= require common/skip_logic_constant
 //= require common/question_type
 //= require common/skip_logic
+//= require common/criteria
 
-//= require common/topbar
+//= require jquery-sortable
+//= require tagify.min
+//= require common/form
+//= require common/audio
 
 //= require accounts/index
 //= require category_images

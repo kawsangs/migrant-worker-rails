@@ -32,6 +32,7 @@ class Question < ApplicationRecord
   # Associations
   belongs_to :form
   has_many   :options
+  has_many   :criterias
 
   default_scope { order(display_order: :asc) }
 
@@ -46,6 +47,7 @@ class Question < ApplicationRecord
   before_create :set_field_code, if: -> { name.present? }
 
   accepts_nested_attributes_for :options, allow_destroy: true, reject_if: ->(attributes) { attributes["name"].blank? }
+  accepts_nested_attributes_for :criterias, allow_destroy: true
 
   def self.validation_operators
     ["<", "<=", "=", ">", ">="]
