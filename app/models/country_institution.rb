@@ -1,3 +1,14 @@
+# == Schema Information
+#
+# Table name: country_institutions
+#
+#  id             :bigint           not null, primary key
+#  country_code   :string           not null
+#  institution_id :bigint           not null
+#  country_id     :bigint           not null
+#  created_at     :datetime         not null
+#  updated_at     :datetime         not null
+#
 class CountryInstitution < ApplicationRecord
   belongs_to :institution
   belongs_to :country
