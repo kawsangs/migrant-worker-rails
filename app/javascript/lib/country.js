@@ -1,17 +1,44 @@
 window.countryList = require('countries-list');
 
 const load = () => {
-  const countries = Object.values(countryList.countries)
+  const countries = Object.keys(countryList.countries)
   var input = document.querySelector('.tagify-country');
-  var whitelist = countries.map(country => ({ value: country.name }))
+  var whitelist = countries.map((code, index) => ({ value: countryList.countries[code].name, code: code }))
 
   var tagify = new Tagify(input, {
+    templates : {
+      tag: function(tagData) {
+          try {
+          return `<tag title='${tagData.value}' contenteditable='false' spellcheck="false" class='tagify__tag ${tagData.class ? tagData.class : ""}' ${this.getAttributes(tagData)}>
+                    <x title='remove tag' class='tagify__tag__removeBtn'></x>
+                    <div>
+                      ${tagData.code ?
+                      `<img onerror="this.style.visibility='hidden'" src='https://lipis.github.io/flag-icon-css/flags/4x3/${tagData.code.toLowerCase()}.svg'>` : ''
+                      }
+                      <span class='tagify__tag-text'>${tagData.value}</span>
+                    </div>
+                  </tag>`
+          }
+          catch(err) {}
+      },
+
+      dropdownItem: function(tagData) {
+          try {
+          return `<div class='tagify__dropdown__item ${tagData.class ? tagData.class : ""}' tagifySuggestionIdx="${tagData.tagifySuggestionIdx}">
+                    <img onerror="this.style.visibility = 'hidden'"
+                          src='https://lipis.github.io/flag-icon-css/flags/4x3/${tagData.code.toLowerCase()}.svg'>
+                    <span>${tagData.value}</span>
+                  </div>`
+          }
+          catch(err) {}
+      }
+    },
     whitelist: whitelist,
     maxTags: 10,
     enforceWhitelist : true,
     dropdown: {
       maxItems: 20,           // <- mixumum allowed rendered suggestions
-      classname: "tags-look", // <- custom classname for this dropdown, so it could be targeted
+      classname: "extra-properties", // <- custom classname for this dropdown, so it could be targeted
       enabled: 0,             // <- show suggestions on focus
       closeOnSelect: false    // <- do not hide the suggestions dropdown once an item has been selected
     }
