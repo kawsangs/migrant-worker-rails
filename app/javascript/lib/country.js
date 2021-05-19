@@ -1,15 +1,9 @@
+window.countryList = require('countries-list');
+
 const load = () => {
+  const countries = Object.values(countryList.countries)
   var input = document.querySelector('.tagify-country');
-  var whitelist = [
-    { value:'Afghanistan', countryId: 1, code:'AF' },
-    { value:'Åland Islands', countryId: 2, code:'AX' },
-    { value:'Albania', countryId: 3, code:'AL' },
-    { value:'Algeria', countryId: 4, code:'DZ' },
-    { value:'American Samoa', countryId: 5, code:'AS' },
-    { value:'Andorra', countryId: 6, code:'AD' },
-    { value:'Angola', countryId: 7, code:'AO' },
-    { value:'Anguilla', countryId: 8, code:'AI' },
-    { value:'Antarctica', countryId: 9, code:'AQ' },]
+  var whitelist = countries.map(country => ({ value: country.name }))
 
   var tagify = new Tagify(input, {
     whitelist: whitelist,
@@ -38,7 +32,7 @@ const load = () => {
 
   function onRemoveTag(e) {
     console.log("onRemoveTag:", `.tagify-item-${e.detail.index}`, "tagify instance value:", tagify.value);
-    $(`.del-${tagify_class(e.detail.data.value)}`).val('1');
+    $(`.del-${tagify_class(e.detail.data.value)}`).val('1'); // set _destroy=1
   }
 
   function tagify_class(value) {
