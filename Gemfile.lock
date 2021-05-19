@@ -127,9 +127,6 @@ GEM
       i18n_data (~> 0.11.0)
       sixarm_ruby_unaccent (~> 1.1)
       unicode_utils (~> 1.4)
-    country_select (5.0.1)
-      countries (~> 3.0)
-      sort_alphabetical (~> 1.1)
     crass (1.0.6)
     database_cleaner (1.8.5)
     database_cleaner-active_record (1.8.0)
@@ -407,8 +404,6 @@ GEM
       actionpack (>= 5.2)
       activemodel (>= 5.2)
     sixarm_ruby_unaccent (1.2.0)
-    sort_alphabetical (1.1.0)
-      unicode_utils (>= 1.2.2)
     spring (2.1.1)
     spring-watcher-listen (2.0.1)
       listen (>= 2.7, < 4.0)
@@ -468,10 +463,9 @@ DEPENDENCIES
   byebug
   capybara (>= 2.15)
   carrierwave (~> 2.1.1)
-  cocoon
+  cocoon (~> 1.2, >= 1.2.15)
   coffee-rails (~> 5.0.0)
-  countries
-  country_select
+  countries (~> 3.1)
   database_cleaner-active_record (~> 1.8.0)
   devise!
   factory_bot_rails (~> 6.1.0)
