@@ -4,11 +4,8 @@ module Api
   module V1
     class CountriesController < ApplicationController
       def index
-        @countries = Country.query(params[:query]).limit(10)
+        @countries = Country.query(params[:query])
         render json: @countries, each_serializer: CountrySerializer
-      end
-
-      def show
       end
     end
   end
