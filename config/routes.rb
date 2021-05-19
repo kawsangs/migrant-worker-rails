@@ -39,6 +39,7 @@ Rails.application.routes.draw do
 
       resources :countries, only: [:index] do
         resources :institutions, only: [:index]
+        resources :country_institutions, only: :index
       end
 
       resources :pdfs, only: [] do
