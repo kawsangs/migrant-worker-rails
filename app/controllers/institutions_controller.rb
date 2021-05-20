@@ -1,6 +1,6 @@
 class InstitutionsController < ApplicationController
   def index
-    @institutions = Institution.includes(:contacts, :country_institutions)
+    @pagy, @institutions = pagy(Institution.includes(:contacts, :country_institutions))
   end
 
   def new

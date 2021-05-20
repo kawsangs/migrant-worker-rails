@@ -1,0 +1,22 @@
+%tr
+  %td 1
+  %td= institution.name
+  %td
+    - institution.country_institutions.each do |country|
+      %span.badge.badge-pill.badge-light
+        %span.mr-1
+          = country.emoji_flag
+        = country.country_name
+  %td
+    - institution.contacts.each do |contact|
+      .contact
+        %span{ class: contact.fa }
+        %span= contact.value
+  %td
+    = l(institution.created_at, format: :short)
+  %td
+    = link_to edit_institution_path(institution), id: dom_id(institution, :edit), class: "btn btn-sm rounded-circle btn-warning mr-3" do
+      %i.fas.fa-pen
+
+    = link_to institution_path(institution), id: dom_id(institution, :delete), data: { method: :delete, confirm: 'are you sure?' }, class: "btn btn-sm rounded-circle btn-danger" do
+      %i.fas.fa-trash-alt
