@@ -1,4 +1,6 @@
 class InstitutionsController < ApplicationController
+  before_action :set_institution, only: [:edit, :update, :destroy]
+
   def index
     @pagy, @institutions = pagy(Institution.includes(:contacts, :country_institutions))
   end
@@ -17,12 +19,9 @@ class InstitutionsController < ApplicationController
   end
 
   def edit
-    @institution = Institution.find(params[:id])
   end
 
   def update
-    @institution = Institution.find(params[:id])
-
     if @institution.update(institution_params)
       redirect_to institutions_path, status: :moved_permanently, notice: I18n.t(:success, scope: :update)
     else
@@ -31,12 +30,15 @@ class InstitutionsController < ApplicationController
   end
 
   def destroy
-    @institution = Institution.find(params[:id])
     @institution.destroy
     redirect_to institutions_path, status: :moved_permanently, notice: I18n.t(:success, scope: :destroy)
   end
 
   private
+
+  def set_institution
+    @institution ||= Institution.find(params[:id])
+  end
 
   def institution_params
     params.require('institution').permit(
