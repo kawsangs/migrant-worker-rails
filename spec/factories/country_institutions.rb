@@ -3,7 +3,7 @@
 # Table name: country_institutions
 #
 #  id             :bigint           not null, primary key
-#  country_code   :string           not null
+#  country_name   :string           not null
 #  institution_id :bigint           not null
 #  country_id     :bigint           not null
 #  created_at     :datetime         not null
@@ -11,7 +11,7 @@
 #
 FactoryBot.define do
   factory :country_institution do
-    country_code { 'km' }
+    country_name { 'km' }
     institution
   end
 end

@@ -42,7 +42,7 @@ class InstitutionsController < ApplicationController
     params.require('institution').permit(
       :name, 
       :kind, 
-      country_institutions_attributes: [:id, :country_code, :_destroy],
+      country_institutions_attributes: [:id, :country_name, :_destroy],
       contacts_attributes: [:id, :type, :value, :_destroy]
     )
   end

@@ -52,7 +52,7 @@ const load = () => {
     console.log("original input value: ", input.value);
     $(`<input class="form-control string optional ${tagify_class(e.detail.data.value)}" 
               type="hidden" 
-              name="institution[country_institutions_attributes][${tagify.value.length + 1}][country_code]" 
+              name="institution[country_institutions_attributes][${tagify.value.length + 1}][country_name]" 
               value="${e.detail.data.value}" />`).insertAfter(input);
     // tagify.off('add', onAddTag)
   }

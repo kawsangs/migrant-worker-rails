@@ -17,7 +17,7 @@ class Institution < ApplicationRecord
   accepts_nested_attributes_for :country_institutions, allow_destroy: true
   accepts_nested_attributes_for :contacts, reject_if: :all_blank, allow_destroy: true
 
-  def country_codes
-    country_institutions.map(&:country_code).join(',')
+  def country_names
+    country_institutions.map(&:country_name).join(',')
   end
 end
