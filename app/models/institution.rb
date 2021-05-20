@@ -13,6 +13,7 @@ class Institution < ApplicationRecord
   
   has_many :contacts, inverse_of: :institution, dependent: :destroy
   has_many :country_institutions, dependent: :destroy
+  has_one_attached :logo
 
   accepts_nested_attributes_for :country_institutions, allow_destroy: true
   accepts_nested_attributes_for :contacts, reject_if: :all_blank, allow_destroy: true

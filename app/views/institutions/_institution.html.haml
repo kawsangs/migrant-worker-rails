@@ -12,6 +12,7 @@
       .contact
         %span{ class: contact.fa }
         %span= contact.value
+  %td= image_tag institution.logo.variant(resize_to_limit: [100, 100]), class: 'img-thumbnail' if institution.logo.attached?
   %td= institution.address
   %td
     = l(institution.created_at, format: :short)

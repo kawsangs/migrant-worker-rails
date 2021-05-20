@@ -472,6 +472,7 @@ DEPENDENCIES
   ffaker (~> 2.14.0)
   guard-rspec
   haml-rails (~> 2.0)
+  image_processing (~> 1.2)
   jbuilder (~> 2.7)
   jquery-fileupload-rails (~> 1.0.0)
   jquery-rails (~> 4.4.0)

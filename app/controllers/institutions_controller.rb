@@ -45,6 +45,7 @@ class InstitutionsController < ApplicationController
       :name, 
       :kind, 
       :address,
+      :logo,
       country_institutions_attributes: [:id, :country_name, :_destroy],
       contacts_attributes: [:id, :type, :value, :_destroy]
     )
