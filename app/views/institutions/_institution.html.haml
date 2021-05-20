@@ -18,6 +18,12 @@
         = image_tag institution.logo.variant(resize_to_limit: [100, 100]), class: 'img-thumbnail'
         = link_to delete_logo_institution_path(institution), method: :delete, class: 'position-absolute btn btn-danger rounded-circle btn-sm attachment__delete', data: { confirm: 'are you sure?' } do
           %i.fa.fa-trash-alt
+  %td
+    - if institution.audio.attached?
+      .position-relative.d-inline-block.attachment
+        = audio_tag url_for(institution.audio), controls: true
+        = link_to delete_audio_institution_path(institution), method: :delete, class: 'position-absolute btn btn-danger rounded-circle btn-sm attachment__delete', data: { confirm: 'are you sure?' } do
+          %i.fa.fa-trash-alt
   %td= institution.address
   %td
     = l(institution.created_at, format: :short)

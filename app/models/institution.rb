@@ -15,6 +15,7 @@ class Institution < ApplicationRecord
   has_many :country_institutions, dependent: :destroy
   has_many :countries, through: :country_institutions
   has_one_attached :logo
+  has_one_attached :audio
 
   accepts_nested_attributes_for :country_institutions, allow_destroy: true
   accepts_nested_attributes_for :contacts, reject_if: :all_blank, allow_destroy: true

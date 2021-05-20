@@ -30,6 +30,7 @@ Rails.application.routes.draw do
   resources :institutions do
     member do
       delete :delete_logo
+      delete :delete_audio
     end
   end
 

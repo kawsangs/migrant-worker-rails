@@ -3,6 +3,7 @@
   = f.input :kind, label: t('institution.type'), collection: Institution.kinds, value_method: :first, label_method: lambda { |kind| t("institution.#{kind.first}") }, include_blank: false
   = f.input :address, label: t('institution.address')
   = f.input :logo
+  = f.input :audio
 
   %label= t('institution.countries')
   .form-group

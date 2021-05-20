@@ -39,6 +39,11 @@ class InstitutionsController < ApplicationController
     redirect_to institutions_path, status: :moved_permanently, notice: I18n.t(:success, scope: :destroy)
   end
 
+  def delete_audio
+    @institution.audio.purge
+    redirect_to institutions_path, status: :moved_permanently, notice: I18n.t(:success, scope: :destroy)
+  end
+
   private
 
   def set_institution
@@ -51,6 +56,7 @@ class InstitutionsController < ApplicationController
       :kind, 
       :address,
       :logo,
+      :audio,
       country_institutions_attributes: [:id, :country_name, :_destroy],
       contacts_attributes: [:id, :type, :value, :_destroy]
     )
