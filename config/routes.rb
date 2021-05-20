@@ -27,7 +27,11 @@ Rails.application.routes.draw do
   resources :safeties
   resources :category_images, only: [:create, :destroy]
 
-  resources :institutions
+  resources :institutions do
+    member do
+      delete :delete_logo
+    end
+  end
 
   # Api
   namespace :api do
