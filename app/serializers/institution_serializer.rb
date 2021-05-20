@@ -9,7 +9,7 @@
 #  updated_at :datetime         not null
 #
 class InstitutionSerializer < ActiveModel::Serializer
-  attributes :id, :name, :kind
+  attributes :id, :name, :kind, :address
 
   has_many :contacts
   has_many :country_institutions
