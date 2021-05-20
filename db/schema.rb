@@ -108,7 +108,7 @@ ActiveRecord::Schema.define(version: 2021_05_20_041117) do
   end
 
   create_table "country_institutions", force: :cascade do |t|
-    t.string "country_name", null: false
+    t.string "country_name", default: ""
     t.bigint "institution_id", null: false
     t.bigint "country_id", null: false
     t.datetime "created_at", precision: 6, null: false
