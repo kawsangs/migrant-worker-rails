@@ -1,5 +1,5 @@
 %tr
-  %td 1
+  %td= institution_counter + 1
   %td= institution.name
   %td
     - institution.country_institutions.each do |country|
@@ -12,6 +12,7 @@
       .contact
         %span{ class: contact.fa }
         %span= contact.value
+  %td= institution.address
   %td
     = l(institution.created_at, format: :short)
   %td

@@ -4,6 +4,7 @@ en:
     edit: Edit institution
     name: Name
     type: Type
+    address: Address
     countries: Countries
     contacts: Contacts
     created_at: Created at
