@@ -16,12 +16,16 @@ class Country < ApplicationRecord
 
   scope :query, -> (query) { where('LOWER(name) LIKE ?', "#{query.to_s.downcase}%") }
 
-  delegate :emoji_flag, :local_name, to: :country_iso
+  delegate :emoji_flag, to: :country_iso
 
   before_save :downcase_code
 
   def country_iso
     ISO3166::Country.find_country_by_alpha2(code)
+  end
+
+  def display_name
+    country_iso.local_name || country_iso.name
   end
 
   private

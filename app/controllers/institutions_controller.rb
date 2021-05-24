@@ -57,7 +57,7 @@ class InstitutionsController < ApplicationController
       :address,
       :logo,
       :audio,
-      country_institutions_attributes: [:id, :country_code, :_destroy],
+      country_institutions_attributes: [:id, :country_name, :country_code, :_destroy],
       contacts_attributes: [:id, :type, :value, :_destroy]
     )
   end

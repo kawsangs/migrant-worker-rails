@@ -10,7 +10,7 @@
     %input{ type: 'text', value: @institution.country_names, class: 'form-control tagify-country' }    
     - @institution.country_institutions.each.with_index do |c, index|
       %input{ type: 'hidden', name: "institution[country_institutions_attributes][#{index}][id]", value: c.id }
-      %input{ type: 'hidden', name: "institution[country_institutions_attributes][#{index}][_destroy]", class: "del-" + tagify_class(c.country_name), value: '' }
+      %input{ type: 'hidden', name: "institution[country_institutions_attributes][#{index}][_destroy]", class: "del-" + tagify_class(c.c_name), value: '' }
 
   %label= t('institution.contacts')
   #contacts

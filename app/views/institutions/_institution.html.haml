@@ -4,9 +4,9 @@
   %td
     - institution.country_institutions.each do |country|
       %span.badge.badge-pill.badge-frame
-        %span.mr-1
+        %span.mr-1{ title: country.country_code }
           = country.emoji_flag
-        = country.local_name
+        = country.display_name
   %td
     - institution.contacts.each do |contact|
       .contact

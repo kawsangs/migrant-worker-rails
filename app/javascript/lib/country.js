@@ -49,18 +49,26 @@ const load = () => {
   tagify.on('remove', onRemoveTag);
 
   function onAddTag(e) {
-    console.log("onAddTag: ", e.detail);
-    console.log("original input value: ", input.value);
-    $(`<input class="form-control string optional ${tagify_class(e.detail.data.value)}" 
-              type="hidden" 
-              name="institution[country_institutions_attributes][${tagify.value.length + 1}][country_name]" 
-              value="${e.detail.data.value}" />`).insertAfter(input);
-    // tagify.off('add', onAddTag)
+    let id = tagify.value.length + 1;
+    let { data } = e.detail;
+
+    inputBuilder('country_name', data, data.value, id).insertAfter(input);
+    inputBuilder('country_code', data, data.code, id).insertAfter(input);
+  }
+
+  function inputBuilder(name, data, value, id) {
+    return $(`<input class="${tagify_class(data.value)}" 
+                type="hidden" 
+                name="institution[country_institutions_attributes][${id}][${name}]" 
+                value="${value}" />`)
   }
 
   function onRemoveTag(e) {
     console.log("onRemoveTag:", `.tagify-item-${e.detail.index}`, "tagify instance value:", tagify.value);
-    $(`.del-${tagify_class(e.detail.data.value)}`).val('1'); // set _destroy=1
+    let country = $(`.del-${tagify_class(e.detail.data.value)}`)
+
+    if( !!country.length ) country.val('1'); // set _destroy=1
+    else $(`.${tagify_class(e.detail.data.value)}`).remove()
   }
 
   function tagify_class(value) {

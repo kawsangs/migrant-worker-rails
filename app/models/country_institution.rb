@@ -15,17 +15,14 @@ class CountryInstitution < ApplicationRecord
   belongs_to :institution
   belongs_to :country
 
-  delegate :emoji_flag, :country_iso, to: :country
+  delegate :emoji_flag, :display_name, to: :country
+  delegate :name, to: :country, prefix: 'c', allow_nil: true
 
   after_initialize :set_country
-
-  def local_name
-    country_iso.reload && country_iso.local_name
-  end
 
   private
 
   def set_country
-    self.country = Country.create_with(name: country_name).find_or_create_by(code: country_code)
+    self.country = Country.create_with(name: self.country_name).find_or_create_by(code: self.country_code.downcase)
   end
 end
