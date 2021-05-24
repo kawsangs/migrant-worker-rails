@@ -17,6 +17,9 @@ class Institution < ApplicationRecord
   has_one_attached :logo
   has_one_attached :audio
 
+  validates :logo, content_type: [:png, :jpg, :jpeg], size: { less_than: 5.megabytes }
+  validates :audio, content_type: [:mp3], size: { less_than: 5.megabytes }
+
   accepts_nested_attributes_for :country_institutions, allow_destroy: true
   accepts_nested_attributes_for :contacts, reject_if: :all_blank, allow_destroy: true
 

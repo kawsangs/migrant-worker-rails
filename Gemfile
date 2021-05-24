@@ -54,6 +54,8 @@ gem "sidekiq-scheduler", "~> 3.0.1"
 
 gem 'countries', '~> 3.1'
 gem 'cocoon', '~> 1.2', '>= 1.2.15'
+gem 'active_storage_validations', '~> 0.9.3'
+gem 'mini_magick', '>= 4.9.5'
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console

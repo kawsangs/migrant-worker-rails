@@ -38,10 +38,10 @@ const load = () => {
     maxTags: 10,
     enforceWhitelist : true,
     dropdown: {
-      maxItems: 20,           // <- mixumum allowed rendered suggestions
-      classname: "extra-properties", // <- custom classname for this dropdown, so it could be targeted
-      enabled: 0,             // <- show suggestions on focus
-      closeOnSelect: false    // <- do not hide the suggestions dropdown once an item has been selected
+      maxItems: 20,
+      classname: "extra-properties",
+      enabled: 0,
+      closeOnSelect: false
     }
   })
 
