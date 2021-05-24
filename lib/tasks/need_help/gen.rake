@@ -7,7 +7,7 @@ namespace :need_help do
         address: 'Battambang',
         logo_url: '1.jpeg',
         country_institutions_attributes: [
-          { country_name: 'Cambodia' }
+          { country_name: 'Cambodia', country_code: 'kh' }
         ],
         contacts_attributes: [
           { type: 'Phone', value: '012 801 820' }
@@ -19,10 +19,10 @@ namespace :need_help do
         address: 'Phnom Penh',
         logo_url: '2.jpeg',
         country_institutions_attributes: [
-          { country_name: 'Cambodia' },
-          { country_name: 'Thailand' },
-          { country_name: 'Vietnam' },
-          { country_name: 'Laos' },
+          { country_name: 'Cambodia', country_code: 'kh' },
+          { country_name: 'Thailand', country_code: 'th' },
+          { country_name: 'Vietnam', country_code: 'vn' },
+          { country_name: 'Laos', country_code: 'la' },
         ],
         contacts_attributes: [
           { type: 'Phone', value: '054 710 446' },
@@ -36,10 +36,10 @@ namespace :need_help do
         address: 'Battambang',
         logo_url: '4.jpg',
         country_institutions_attributes: [
-          { country_name: 'Andorra' },
-          { country_name: 'Bangladesh' },
-          { country_name: 'Japan' },
-          { country_name: 'Norway' },
+          { country_name: 'Andorra', country_code: 'ad' },
+          { country_name: 'Bangladesh', country_code: 'bd' },
+          { country_name: 'Japan', country_code: 'jp' },
+          { country_name: 'Norway', country_code: 'no' },
         ],
         contacts_attributes: [
           { type: 'Phone', value: '077 552 221' },
@@ -52,8 +52,8 @@ namespace :need_help do
         address: 'Koh Kong',
         logo_url: '3.jpeg',
         country_institutions_attributes: [
-          { country_name: 'Qatar' },
-          { country_name: 'Slovakia' },
+          { country_name: 'Qatar', country_code: 'qa' },
+          { country_name: 'Slovakia', country_code: 'sk' },
         ],
         contacts_attributes: [
           { type: 'Whatsapp', value: '077 552 221' }

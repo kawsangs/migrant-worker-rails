@@ -1,3 +1,4 @@
+// https://github.com/annexare/Countries
 window.countryList = require('countries-list');
 
 const load = () => {
