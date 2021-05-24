@@ -10,6 +10,14 @@
 #
 FactoryBot.define do
   factory :country do
-    name { "cambodia" }
+    name { "Cambodia" }
+  end
+
+  trait :cambodia do
+    name { "Cambodia" }
+  end
+
+  trait :canada do
+    name { "Canada" }
   end
 end

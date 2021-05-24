@@ -18,4 +18,16 @@ RSpec.describe Country, type: :model do
     subject { build(:country) }
     it { is_expected.to validate_uniqueness_of(:name).case_insensitive }
   end
+
+
+  describe '.query' do
+    let!(:cambodia) { create(:country, :cambodia) }
+    let!(:canada) { create(:country, :canada) }
+    
+    it 'queries by name' do
+      countries = Country.query('Cam')
+
+      expect(countries.count).to eq 1
+    end
+  end
 end
