@@ -83,7 +83,6 @@ group :test do
   gem "webdrivers"
   gem "shoulda-matchers",       "~> 4.3.0"
   gem "database_cleaner-active_record", "~> 1.8.0"
-  gem 'guard-rspec', require: false
 end
 
 # Windows does not include zoneinfo files, so bundle the tzinfo-data gem
