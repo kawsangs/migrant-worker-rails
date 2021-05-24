@@ -1,0 +1,3 @@
+class InstitutionPolicy < CategoryPolicy
+
+end

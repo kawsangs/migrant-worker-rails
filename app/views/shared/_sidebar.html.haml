@@ -42,6 +42,12 @@
           %i.fas.fa-fw.fa-user-shield
           %span= t("sidebar.safety")
 
+    - if policy(Institution).index?
+      %li.nav-item{ class: [get_css_active_class('institutions')] }
+        %a.nav-link{:href => institutions_path}
+          %i.fas.fa-fw.fa-university
+          %span= t("sidebar.institutions")
+
     %li.nav-item{ class: get_css_active_class('abouts') }
       %a.nav-link{:href => about_path}
         %i.fas.fa-fw.fa-exclamation-circle
