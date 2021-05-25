@@ -1,0 +1,16 @@
+km:
+  institution:
+    new: បង្កើតស្ថាប័នថ្មី
+    edit: កែប្រែស្ថាប័ន
+    name: ឈ្មោះ
+    type: ប្រភេទ
+    address: អាសយដ្ឋាន
+    countries: ប្រទេស
+    contacts: អាសយដ្ឋាន
+    created_at: ថ្ងៃបង្កើត
+    add_contact: បង្កើតអាសយដ្ឋាន
+    ngo: អង្គការក្រៅរដ្ឋាភិបាល
+    gov: រដ្ឋាភិបាល
+    other: ផ្សេងៗ
+    logo: រូបយីហោ
+    audio: សំលេង

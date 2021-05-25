@@ -1,0 +1,16 @@
+en:
+  institution:
+    new: New institution
+    edit: Edit institution
+    name: Name
+    type: Type
+    address: Address
+    countries: Countries
+    contacts: Contacts
+    created_at: Created at
+    add_contact: Add contact
+    ngo: NGO
+    gov: Government
+    other: Other
+    logo: Logo
+    audio: Audio

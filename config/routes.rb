@@ -27,10 +27,22 @@ Rails.application.routes.draw do
   resources :safeties
   resources :category_images, only: [:create, :destroy]
 
+  resources :institutions do
+    member do
+      delete :delete_logo
+      delete :delete_audio
+    end
+  end
+
   # Api
   namespace :api do
     namespace :v1 do
       resources :migrants, only: [:create]
+
+      resources :countries, only: [:index] do
+        resources :institutions, only: [:index]
+        resources :country_institutions, only: :index
+      end
 
       resources :pdfs, only: [] do
         get :download, on: :collection

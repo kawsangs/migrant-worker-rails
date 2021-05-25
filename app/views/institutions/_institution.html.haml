@@ -1,0 +1,36 @@
+%tr
+  %td= institution_counter + 1
+  %td= institution.name
+  %td
+    - institution.country_institutions.each do |country|
+      %span.badge.badge-pill.badge-frame
+        %span.mr-1{ title: country.country_code }
+          = country.emoji_flag
+        = country.display_name
+  %td
+    - institution.contacts.each do |contact|
+      .contact
+        %span{ class: contact.fa }
+        %span= contact.value
+  %td
+    - if institution.logo.file.present?
+      .position-relative.d-inline-block.attachment
+        = link_to institution.logo.url, data: { lightbox: institution.logo.identifier, title: institution.name } do
+          = image_tag institution.logo.url, class: 'img-thumbnail'
+        = link_to delete_logo_institution_path(institution), method: :delete, class: 'position-absolute btn btn-danger rounded-circle btn-sm attachment__delete', data: { confirm: 'are you sure?' } do
+          %i.fa.fa-trash-alt
+  %td
+    - if institution.audio.file.present?
+      .position-relative.d-inline-block.attachment
+        = audio_tag institution.audio.url, controls: true
+        = link_to delete_audio_institution_path(institution), method: :delete, class: 'position-absolute btn btn-danger rounded-circle btn-sm attachment__delete', data: { confirm: 'are you sure?' } do
+          %i.fa.fa-trash-alt
+  %td= institution.address
+  %td
+    = l(institution.created_at, format: :short)
+  %td
+    = link_to edit_institution_path(institution), id: dom_id(institution, :edit), class: "btn btn-sm rounded-circle btn-warning mr-3" do
+      %i.fas.fa-pen
+
+    = link_to institution_path(institution), id: dom_id(institution, :delete), data: { method: :delete, confirm: 'are you sure?' }, class: "btn btn-sm rounded-circle btn-danger" do
+      %i.fas.fa-trash-alt

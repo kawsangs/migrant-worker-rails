@@ -1,0 +1,18 @@
+#institutions-index {
+  .badge-frame {
+    border: 1px solid #ddd;
+  }
+
+  .attachment {
+    &:hover .attachment__delete {
+      opacity: 1;
+    }
+    
+    .attachment__delete {
+      transition: 0.3s;
+      top: -10px;
+      right: -10px;
+      opacity: 0;
+    }
+  }
+}
