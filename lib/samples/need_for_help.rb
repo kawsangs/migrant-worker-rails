@@ -70,10 +70,10 @@ module Samples
         institution = Institution.create!(hash)
   
         if File.exists?(logo_url)
-          institution.logo.attach(
-            io: File.open(logo_url),
-            filename: File.basename(logo_url)
-          )
+          File.open(logo_url) do |logo|
+            institution.logo = logo
+          end
+
           institution.save!
         end
       end

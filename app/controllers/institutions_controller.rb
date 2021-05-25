@@ -1,5 +1,5 @@
 class InstitutionsController < ApplicationController
-  before_action :set_institution, only: [:edit, :update, :destroy, :delete_logo]
+  before_action :set_institution, only: [:edit, :update, :destroy, :delete_logo, :delete_audio]
 
   def index
     @pagy, @institutions = pagy(Institution.includes(:contacts, :country_institutions))
@@ -35,12 +35,14 @@ class InstitutionsController < ApplicationController
   end
 
   def delete_logo
-    @institution.logo.purge
+    @institution.remove_logo!
+    @institution.save!
     redirect_to institutions_path, status: :moved_permanently, notice: I18n.t(:success, scope: :destroy)
   end
 
   def delete_audio
-    @institution.audio.purge
+    @institution.remove_audio!
+    @institution.save!
     redirect_to institutions_path, status: :moved_permanently, notice: I18n.t(:success, scope: :destroy)
   end
 
