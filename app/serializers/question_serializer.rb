@@ -28,7 +28,6 @@ class QuestionSerializer < ActiveModel::Serializer
              :failing_message, :failing_audio_url, :form_id, :criterias
 
   has_many :options
-  # has_many :criterias
 
   def criterias
     object.criterias.map do |criteria|
@@ -40,15 +39,14 @@ class QuestionSerializer < ActiveModel::Serializer
         response_value: criteria.response_value
       }
     end
-
   end
 
   class OptionSerializer < ActiveModel::Serializer
     attributes :id, :name, :value, :score, :alert_message, :alert_audio_url,
-               :warning, :recursive, :question_id
-  end
+               :warning, :recursive, :question_id, :image_url
 
-  # class CriteriaSerializer < ActiveModel::Serializer
-  #   attributes :id, :question_id, :question_code, :operator, :response_value
-  # end
+    def image_url
+      return object.image_url if object.image.present?
+    end
+  end
 end
