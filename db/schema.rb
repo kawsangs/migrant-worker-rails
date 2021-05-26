@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_05_13_072525) do
+ActiveRecord::Schema.define(version: 2021_05_24_034942) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -67,6 +67,10 @@ ActiveRecord::Schema.define(version: 2021_05_13_072525) do
     t.datetime "updated_at", precision: 6, null: false
     t.boolean "last", default: false
     t.string "uuid"
+    t.boolean "is_video"
+    t.string "hint"
+    t.string "hint_image"
+    t.string "hint_audio"
     t.index ["lft"], name: "index_categories_on_lft"
     t.index ["parent_id"], name: "index_categories_on_parent_id"
     t.index ["rgt"], name: "index_categories_on_rgt"
@@ -129,12 +133,14 @@ ActiveRecord::Schema.define(version: 2021_05_13_072525) do
   end
 
   create_table "forms", force: :cascade do |t|
-    t.string "uuid"
+    t.string "code"
     t.string "name"
     t.string "form_type"
     t.integer "version"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.string "image"
+    t.string "audio"
   end
 
   create_table "migrants", force: :cascade do |t|
@@ -164,6 +170,7 @@ ActiveRecord::Schema.define(version: 2021_05_13_072525) do
     t.boolean "recursive"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.string "image"
   end
 
   create_table "questions", force: :cascade do |t|
@@ -190,15 +197,6 @@ ActiveRecord::Schema.define(version: 2021_05_13_072525) do
     t.string "user_uuid"
     t.integer "form_id"
     t.datetime "quizzed_at"
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
-  end
-
-  create_table "stories", force: :cascade do |t|
-    t.string "uuid"
-    t.string "user_uuid"
-    t.string "story_type"
-    t.datetime "played_at"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end

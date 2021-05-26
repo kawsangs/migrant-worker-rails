@@ -31,8 +31,8 @@ class Question < ApplicationRecord
 
   # Associations
   belongs_to :form
-  has_many   :options
-  has_many   :criterias
+  has_many   :options, dependent: :destroy
+  has_many   :criterias, dependent: :destroy
 
   default_scope { order(display_order: :asc) }
 

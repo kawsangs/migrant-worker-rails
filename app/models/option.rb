@@ -18,6 +18,7 @@
 #
 class Option < ApplicationRecord
   mount_uploader :alert_audio, AudioUploader
+  mount_uploader :image, ImageUploader
 
   # Validation
   validates :value, :name, presence: true, uniqueness: { scope: [:question_id] }

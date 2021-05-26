@@ -13,7 +13,15 @@
 #  updated_at :datetime         not null
 #
 class FormSerializer < ActiveModel::Serializer
-  attributes :id, :uuid, :name, :form_type
+  attributes :id, :code, :name, :audio_url, :image_url
 
   has_many :questions
+
+  def image_url
+    return object.image_url if object.image.present?
+  end
+
+  def audio_url
+    return object.audio_url if object.audio.present?
+  end
 end

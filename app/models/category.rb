@@ -25,6 +25,8 @@ class Category < ApplicationRecord
 
   mount_uploader :image, ImageUploader
   mount_uploader :audio, AudioUploader
+  mount_uploader :hint_image, ImageUploader
+  mount_uploader :hint_audio, AudioUploader
 
   has_many :category_images
 

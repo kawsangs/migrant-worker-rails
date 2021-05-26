@@ -32,7 +32,12 @@ public/pdfs/
 
 /public/packs
 /public/packs-test
+
 /node_modules
 /yarn-error.log
 yarn-debug.log*
 .yarn-integrity
+
+public/exports/*
+lib/samples/assets/audios/*
+lib/samples/assets/images/*

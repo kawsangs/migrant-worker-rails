@@ -13,7 +13,10 @@
 #  updated_at :datetime         not null
 #
 class Form < ApplicationRecord
-  has_many :questions
+  mount_uploader :audio, AudioUploader
+  mount_uploader :image, ImageUploader
+
+  has_many :questions, dependent: :destroy
 
   accepts_nested_attributes_for :questions, allow_destroy: true
 end
