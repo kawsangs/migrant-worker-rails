@@ -22,4 +22,4 @@
     = render 'shared/action_buttons', edit_url: edit_url, delete_url: delete_url, object: category
 
 - category.children.each_with_index do |child, index|
-  = render "category", category: child, num: index + 1, type: type
+  = render "category", category: child, num: "#{num}.#{index + 1}", type: type
