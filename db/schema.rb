@@ -42,6 +42,7 @@ ActiveRecord::Schema.define(version: 2021_05_24_034942) do
     t.integer "score"
     t.string "user_uuid"
     t.string "quiz_uuid"
+    t.string "voice"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end
@@ -141,18 +142,6 @@ ActiveRecord::Schema.define(version: 2021_05_24_034942) do
     t.datetime "updated_at", precision: 6, null: false
     t.string "image"
     t.string "audio"
-  end
-
-  create_table "migrants", force: :cascade do |t|
-    t.string "full_name"
-    t.string "age"
-    t.string "sex"
-    t.string "phone_number"
-    t.string "voice"
-    t.string "uuid"
-    t.datetime "registered_at"
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
   end
 
   add_foreign_key "contacts", "institutions"

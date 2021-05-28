@@ -17,7 +17,7 @@ RSpec.describe "Api::V1::CategoriesController", type: :request do
 
     it { expect(response.content_type).to eq("application/json; charset=utf-8") }
     it { expect(response.status).to eq(200) }
-    it { expect(body.length).to eq(1) }
-    it { expect(body.last["name"]).to eq departure_category.name }
+    it { expect(body.length).to eq(2) }
+    it { expect(body.last["name"]).to eq sub_departure.name }
   end
 end

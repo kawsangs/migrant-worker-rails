@@ -16,5 +16,8 @@
 #
 FactoryBot.define do
   factory :user do
+    full_name     { FFaker::Name.name }
+    age           { (18..60).to_a.sample }
+    sex           {  %w(female male other).sample }
   end
 end

@@ -6,9 +6,13 @@
   .name{ class: "depth-#{category.depth}" }
     = "#{num}. #{category.name}"
 
-  .flex-1
+  .mr-4
     = image_tag category.image_url, width: 40
-    = category.last? ? t("category.leaf_category") : ""
+
+  .flex-1
+    - if category.audio_url.present?
+      %audio{controls: true}
+        %source{src: category.audio_url}
 
   .action-buttons
     - if policy(Categories::Departure).create? && !category.last?
