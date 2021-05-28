@@ -9,7 +9,7 @@ MW.DeparturesNew = do ->
     handleDisplayGallery()
     onToggleIsLastCategory()
 
-    MW.CategoryImages.onFileUpload()
+    # MW.CategoryImages.onFileUpload()
 
   onToggleIsLastCategory = ->
     $(document).off 'change', "[name='category[last]']"

@@ -16,7 +16,9 @@
 #  updated_at    :datetime         not null
 #
 class Answer < ApplicationRecord
+  mount_uploader :voice, AudioUploader
+
   belongs_to :question
-  belongs_to :quiz, primary_key: "uuid", foreign_key: "quiz_uuid"
-  belongs_to :user, primary_key: "uuid", foreign_key: "user_uuid"
+  belongs_to :quiz, primary_key: "uuid", foreign_key: "quiz_uuid", optional: true
+  belongs_to :user, primary_key: "uuid", foreign_key: "user_uuid", optional: true
 end

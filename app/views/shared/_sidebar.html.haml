@@ -24,9 +24,9 @@
           %i.fas.fa-fw.fa-users
           %span= t("sidebar.accounts")
 
-    - if policy(Migrant).index?
-      %li.nav-item{ class: [get_css_active_class('migrants')] }
-        %a.nav-link{:href => migrants_path}
+    - if policy(User).index?
+      %li.nav-item{ class: [get_css_active_class('users')] }
+        %a.nav-link{:href => users_path}
           %i.fas.fa-fw.fa-people-carry
           %span= t("sidebar.app_users")
 

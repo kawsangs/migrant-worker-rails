@@ -11,7 +11,7 @@ module ApplicationHelper
   end
 
   def get_css_active_class(name)
-    return "active" if params["controller"] == name
+    return "active" if request.path.split("/")[1] == name
   end
 
   def pagy_label(pagy)

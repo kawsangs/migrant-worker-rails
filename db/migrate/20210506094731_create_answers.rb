@@ -10,6 +10,7 @@ class CreateAnswers < ActiveRecord::Migration[6.0]
       t.integer :score
       t.string  :user_uuid
       t.string  :quiz_uuid
+      t.string  :voice
 
       t.timestamps
     end

@@ -2,12 +2,12 @@
 
 require "rails_helper"
 
-RSpec.describe MigrantsController, type: :controller do
+RSpec.describe UsersController, type: :controller do
   describe "GET #download" do
     let!(:account) { FactoryBot.create(:account) }
     before do
       sign_in account
-      FactoryBot.create_list(:migrant, 3)
+      FactoryBot.create_list(:user, 3)
     end
 
     context "over limit" do
@@ -17,7 +17,7 @@ RSpec.describe MigrantsController, type: :controller do
       end
 
       it { expect(response.status).to eq(302) }
-      it { expect(flash[:alert]).to eq(I18n.t("migrants.file_size_is_too_big")) }
+      it { expect(flash[:alert]).to eq(I18n.t("users.file_size_is_too_big")) }
     end
 
     context "under limit" do
