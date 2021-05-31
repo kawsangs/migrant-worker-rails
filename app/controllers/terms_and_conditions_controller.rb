@@ -1,6 +1,4 @@
-class TermsAndConditionsController < ApplicationController
-  skip_before_action :authenticate_account!
-
+class TermsAndConditionsController < AboutsController
   def index
   end
 end

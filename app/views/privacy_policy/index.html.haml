@@ -1,6 +1,9 @@
 .container
   .row
     .col-12
+      - unless signed_in?
+        = link_to 'Back', root_path, class: 'btn btn-link'
+
       %h1.my-4.text-center
         Privacy Policy
 

@@ -59,6 +59,8 @@ gem "roo", "~> 2.8.3"
 
 gem "fcm", "~> 0.0.6"
 
+gem "roo", "~> 2.8.3"
+
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
   gem "byebug", platforms: [:mri, :mingw, :x64_mingw]
