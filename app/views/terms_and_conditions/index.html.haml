@@ -1,8 +1,6 @@
 .container
   .row
     .col-12
-      = render 'privacy_policy'
-
       %h1.my-4.text-center
         Terms and Conditions
 
@@ -71,7 +69,7 @@
         %h4 Your Privacy
         %p
           Please read
-          = link_to 'Privacy Policy', '#', data: { toggle: 'modal', target: '#privacy-policy' }
+          = link_to 'Privacy Policy', privacy_policy_path
 
         %h4 Reservation of Rights
         %p We reserve the right to request that you remove all links or any particular link to our Website. You approve to immediately remove all links to our Website upon request. We also reserve the right to amen these terms and conditions and it’s linking policy at any time. By continuously linking to our Website, you agree to be bound to and follow these linking terms and conditions.
