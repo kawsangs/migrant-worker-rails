@@ -6,6 +6,7 @@ Rails.application.routes.draw do
   devise_for :accounts, path: "/", controllers: { confirmations: "confirmations", omniauth_callbacks: "accounts/omniauth_callbacks" }
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
   root to: "migrants#index"
+  get "/terms-and-conditions", to: 'terms_and_conditions#index'
 
   resources :accounts do
     post :update_locale, on: :collection
