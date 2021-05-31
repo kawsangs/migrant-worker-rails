@@ -6,8 +6,8 @@ Rails.application.routes.draw do
   devise_for :accounts, path: "/", controllers: { confirmations: "confirmations", omniauth_callbacks: "accounts/omniauth_callbacks" }
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
   root to: "users#index"
-  get "/terms-and-conditions", to: 'terms_and_conditions#index'
-  get "/privacy-policy", to: 'privacy_policy#index'
+  get "/terms_and_conditions", to: 'terms_and_conditions#index'
+  get "/privacy_policy", to: 'privacy_policy#index'
 
   resources :accounts do
     post :update_locale, on: :collection
@@ -62,6 +62,7 @@ Rails.application.routes.draw do
       resources :forms, only: [:index, :show]
       resources :quizzes, only: [:create]
       resources :answers, only: [:update]
+      resource :registered_tokens, only: [:update]
     end
   end
 

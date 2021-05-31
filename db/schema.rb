@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_05_24_034942) do
+ActiveRecord::Schema.define(version: 2021_05_31_092729) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -182,6 +182,12 @@ ActiveRecord::Schema.define(version: 2021_05_24_034942) do
     t.string "user_uuid"
     t.integer "form_id"
     t.datetime "quizzed_at"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+  end
+
+  create_table "registered_tokens", force: :cascade do |t|
+    t.string "token"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end
