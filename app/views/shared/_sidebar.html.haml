@@ -18,31 +18,31 @@
         %i.fas.fa-fw.fa-tachometer-alt
         %span= t("sidebar.dashboard")
 
-    - if current_account && policy(Account).index?
+    - if policy(Account).index?
       %li.nav-item{ class: get_css_active_class('accounts') }
         = link_to accounts_path, class: 'nav-link' do
           %i.fas.fa-fw.fa-users
           %span= t("sidebar.accounts")
 
-    - if current_account && policy(Migrant).index?
-      %li.nav-item{ class: [get_css_active_class('migrants')] }
-        %a.nav-link{:href => migrants_path}
+    - if policy(User).index?
+      %li.nav-item{ class: [get_css_active_class('users')] }
+        %a.nav-link{:href => users_path}
           %i.fas.fa-fw.fa-people-carry
           %span= t("sidebar.app_users")
 
-    - if current_account && policy(Categories::Departure).index?
+    - if policy(Categories::Departure).index?
       %li.nav-item{ class: [get_css_active_class('departures')] }
         %a.nav-link{:href => departures_path}
           %i.fas.fa-fw.fa-plane-departure
           %span= t("sidebar.departure")
 
-    - if current_account && policy(Categories::Safety).index?
+    - if policy(Categories::Safety).index?
       %li.nav-item{ class: [get_css_active_class('safeties')] }
         %a.nav-link{:href => safeties_path}
           %i.fas.fa-fw.fa-user-shield
           %span= t("sidebar.safety")
 
-    - if current_account && policy(Institution).index?
+    - if policy(Institution).index?
       %li.nav-item{ class: [get_css_active_class('institutions')] }
         %a.nav-link{:href => institutions_path}
           %i.fas.fa-fw.fa-university
@@ -57,6 +57,12 @@
       %a.nav-link{:href => privacy_policy_path}
         %i.fas.fa-fw.fa-user-secret
         %span= t('sidebar.privacy_policy')
+
+    - if policy(Form).index?
+      %li.nav-item{ class: [get_css_active_class('forms')] }
+        %a.nav-link{:href => forms_path}
+          %i.fas.fa-file-audio
+          %span= t("form.story_form")
 
     %li.nav-item{ class: get_css_active_class('abouts') }
       %a.nav-link{:href => about_path}

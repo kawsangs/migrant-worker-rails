@@ -17,5 +17,10 @@ if Rails.env.development? || Rails.env.test?
     task load: [:clean_db] do
       Samples::Sample.load
     end
+
+    desc "Export sample data"
+    task export: :environment do
+      Samples::Sample.export
+    end
   end
 end

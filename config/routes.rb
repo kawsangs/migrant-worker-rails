@@ -1,11 +1,11 @@
 # frozen_string_literal: true
 
-require 'sidekiq/web'
+require "sidekiq/web"
 
 Rails.application.routes.draw do
   devise_for :accounts, path: "/", controllers: { confirmations: "confirmations", omniauth_callbacks: "accounts/omniauth_callbacks" }
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
-  root to: "migrants#index"
+  root to: "users#index"
   get "/terms-and-conditions", to: 'terms_and_conditions#index'
   get "/privacy-policy", to: 'privacy_policy#index'
 
@@ -18,10 +18,12 @@ Rails.application.routes.draw do
     match "/confirmation" => "confirmations#update", :via => :put, :as => :update_account_confirmation
   end
 
-  resources :migrants do
+  resources :users do
     get :download, on: :collection
-    get :voice, on: :member
+
+    resources :quizzes, only: [:index, :show], module: :users
   end
+
   resource :about, only: [:show]
 
   resources :categories
@@ -36,10 +38,13 @@ Rails.application.routes.draw do
     end
   end
 
+  # User story
+  resources :forms
+
   # Api
   namespace :api do
     namespace :v1 do
-      resources :migrants, only: [:create]
+      resources :users, only: [:create]
 
       resources :countries, only: [:index] do
         resources :institutions, only: [:index]
@@ -53,15 +58,19 @@ Rails.application.routes.draw do
       resources :categories
       resources :departures, controller: :categories, type: "Categories::Departure", only: [:index, :show]
       resources :safeties, controller: :categories, type: "Categories::Safety", only: [:index, :show]
+
+      resources :forms, only: [:index, :show]
+      resources :quizzes, only: [:create]
+      resources :answers, only: [:update]
     end
   end
 
   if Rails.env.production?
     # Sidekiq
     authenticate :account, lambda { |u| u.system_admin? } do
-      mount Sidekiq::Web => '/sidekiq'
+      mount Sidekiq::Web => "/sidekiq"
     end
   else
-    mount Sidekiq::Web => '/sidekiq'
+    mount Sidekiq::Web => "/sidekiq"
   end
 end

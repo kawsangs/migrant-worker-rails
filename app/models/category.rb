@@ -25,6 +25,8 @@ class Category < ApplicationRecord
 
   mount_uploader :image, ImageUploader
   mount_uploader :audio, AudioUploader
+  mount_uploader :hint_image, ImageUploader
+  mount_uploader :hint_audio, AudioUploader
 
   has_many :category_images
 
@@ -34,7 +36,6 @@ class Category < ApplicationRecord
   acts_as_nested_set counter_cache: :children_count, touch: true
 
   after_initialize :set_uuid, if: -> { uuid.blank? }
-  after_commit :update_category_images, on: [:create, :update]
 
   def self.policy_class
     CategoryPolicy
@@ -43,9 +44,4 @@ class Category < ApplicationRecord
   def self.types
     TYPES
   end
-
-  private
-    def update_category_images
-      CategoryImage.where(category_uuid: uuid).update_all(category_id: id)
-    end
 end

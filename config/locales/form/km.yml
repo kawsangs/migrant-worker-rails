@@ -1,0 +1,23 @@
+km:
+  form:
+    story_form: ទម្រង់រឿង
+    new_form: ទម្រង់ថ្មី
+    edit_form: កែតម្រូវទម្រង់
+    hint: ព័ត៌មានជំនួយ
+    setting: 'ការកំណត់'
+    hint: 'ព័ត៌មានជំនួយ'
+    name: 'ឈ្មោះ'
+    skip_logic: Skip logic
+    question: សំណួរ
+    condition: លក្ខខណ្ឌ
+    skip_logic_not: ខុសពី
+    any_of: មួយក្នុងចំណោម
+    match_all_of: ផ្គូរផ្គងទាំងអស់
+    type: 'ប្រភេទសំនួរ'
+    add_question: + បន្ថែមសំណួរ
+    select_question_from_list: ជ្រើសរើសសំណួរពីបញ្ជី
+    response_value: តម្លៃឆ្លើយតប
+    add_critera: + បន្ថែមលក្ខខណ្ឌ
+    add_option: + បន្ថែមជម្រើស
+    match_all_criteria: សំណួរគួរតែត្រូវនឹងលក្ខណៈវិនិច្ឆ័យទាំងអស់នេះ
+    match_any_criteria: សំណួរគួរតែត្រូវនឹងលក្ខណៈវិនិច្ឆ័យណាមួយ

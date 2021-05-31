@@ -21,14 +21,9 @@
 #  uuid           :string
 #
 class CategorySerializer < ActiveModel::Serializer
-  attributes :id, :name, :description, :image_url, :audio_url, :parent_id, :children,
-             :uuid, :last, :leaf, :lft, :rgt
-
-  has_many :category_images
-
-  def children
-    ActiveModelSerializers::SerializableResource.new(object.children,  each_serializer: CategorySerializer)
-  end
+  attributes :id, :name, :description, :image_url, :audio_url, :parent_id,
+             :uuid, :leaf, :lft, :rgt, :type, :is_video, :hint, :hint_image_url,
+             :hint_audio_url, :updated_at
 
   def leaf
     object.leaf?
@@ -42,7 +37,11 @@ class CategorySerializer < ActiveModel::Serializer
     return object.audio_url if object.audio.present?
   end
 
-  class CategoryImageSerializer < ActiveModel::Serializer
-    attributes :id, :name, :image_url
+  def hint_audio_url
+    return object.hint_audio_url if object.hint_audio.present?
+  end
+
+  def hint_image_url
+    return object.hint_image_url if object.hint_image.present?
   end
 end

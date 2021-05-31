@@ -1,19 +1,24 @@
 @import 'bootstrap';
 @import "sb-admin-2";
+
 @import "@yaireo/tagify/src/tagify";
 @import "custom/tagify";
 @import "lightbox2/src/css/lightbox.css";
 @import "custom/lightbox2";
+
+// @import 'tagify';
 
 @import 'shared/base';
 @import 'shared/common';
 @import 'shared/sidebar';
 @import 'shared/devise';
 @import 'shared/form_check_toggle';
+@import 'shared/sortable';
+@import 'shared/question_field';
 
 @import 'accounts';
 @import 'abouts';
-@import 'migrants';
+@import 'users';
 @import 'categories';
 @import 'institutions';
 @import 'terms_and_conditions';

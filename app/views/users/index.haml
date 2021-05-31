@@ -1,0 +1,58 @@
+.d-sm-flex.align-items-center.justify-content-between.mb-4
+  %h1.h3.mb-0.text-gray-800= t('sidebar.app_users')
+
+%form{ action: '/users', method: 'get' }
+  .form-row
+    .col-auto.form-group.pl-0
+      .input-group
+        = text_field_tag(:keyword, params[:keyword], class: 'form-control keyword', placeholder: t('users.search'))
+
+        %a#info.input-group-append
+          .input-group-text
+            %i.fas.fa-search
+
+    .col-auto.form-group.flex-grow-1
+      %a.btn.btn-outline-info{href: download_users_path(keyword: params[:keyword]), target: '_blank'}
+        %i.fas.fa-download
+        = t('users.download_csv')
+
+.card.shadow.mb-4
+  .card-body
+    = render partial: "shared/no_data", locals: { items: @users }
+
+    - if @users.present?
+      = render 'shared/pagy_label'
+
+      %table.table.table-hover
+        %thead
+          %tr
+            %th #
+            %th= t('user.full_name')
+            %th= t('user.sex')
+            %th= t('user.age')
+            %th= t('user.voice')
+            %th= t('user.registered_at')
+            %th
+        %tbody
+          - @users.each_with_index do |user, index|
+            %tr
+              %td= @pagy.from + index
+              %td= user.full_name.presence || '-'
+              %td
+                - if sex = user.sex.presence
+                  = image_tag "#{sex.downcase}.png", style: 'width: 24px;', 'data-toggle' => 'tooltip', title: sex.titlecase
+
+              %td= user.age
+              %td
+                - if user.audio.present?
+                  %audio{controls: true}
+                    %source{src: user.audio_url}
+              %td
+                = l(user.registered_at, format: :long) if user.registered_at.present?
+              %td.text-right
+                - if user.quizzes.present?
+                  = link_to "View Quiz", user_quizzes_path(user), class: 'btn'
+
+      - if @pagy.pages > 1
+        .pagy-wrapper
+          != pagy_bootstrap_nav(@pagy)

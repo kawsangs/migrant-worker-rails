@@ -1,0 +1,13 @@
+km:
+  users:
+    migrants: ជនចំណាកស្រុក
+    number: លេខរៀង
+    full_name: ឈ្មោះពេញ
+    sex: ភេទ
+    age: អាយុ
+    phone_number: លេខទូរស័ព្ទ
+    voice: សំលេង
+    download_csv: 'ទាញយក CSV'
+    search: 'ស្វែងរក'
+    file_size_is_too_big: 'ទំហំឯកសារធំពេកសូមច្រោះវា!'
+    registered_at: 'កាលបរិច្ឆេទចុះឈ្មោះ'

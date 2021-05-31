@@ -1,0 +1,18 @@
+.d-flex.flex-1
+  %ul.d-flex.flex-column.items
+    %label.p-1.border-bottom= t('form.setting')
+    %li.item.item-setting{'data-target' => '.setting-content'} Question Option
+    %li.item.skip-logic{'data-target' => '.skip-logic-content'}= t('form.skip_logic')
+
+  .contents.flex-1
+    .content.setting-content
+      = f.input :code, label: 'Data column name', input_html: {class: 'question-code'}
+
+      = f.input :required, label: 'Mandatory Response', input_html: { class: 'form-check-input field-required' }
+
+    .content.skip-logic-content.w-100.position-relative
+      = f.simple_fields_for :criterias, f.object.criterias do |builder|
+        = render 'criteria_fields', f: builder
+      = link_to_add_fields t('form.add_critera'), f, :criterias
+
+      = f.input :relevant, collection: [[t("form.match_all_criteria"), "AND"], [t('form.match_any_criteria'), "OR"]], label: false, include_blank: false, input_html: { class: 'custom-select '}, wrapper_html: { class: ['position-absolute relevant', ('d-none' unless f.object.criterias.length > 1)], style: 'bottom: -20px; left: 190px;'}

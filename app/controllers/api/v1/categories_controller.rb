@@ -6,7 +6,7 @@ module Api
       before_action :set_type
 
       def index
-        categories = category_class.roots
+        categories = category_class.all
 
         render json: categories
       end
