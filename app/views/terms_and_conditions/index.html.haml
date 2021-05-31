@@ -1,15 +1,14 @@
 .container
   .row
     .col-12
-      - name = ''
-      - website = ''
+      = render 'privacy_policy'
 
       %h1.my-4.text-center
         Terms and Conditions
 
       .main-content.p-3
-        %h3.mb-4 General site usage
-        %p.mb-5 Last updated: May 31, 2021
+        %h3.text-uppercase.mb-4 General site usage
+        %p.date-revise.mb-5 Last updated: May 31, 2021
 
         %p Welcome to Safe Migration!
         %p These terms and conditions outline the rules and regulations for the use of Safe Migration's Website, located at http://www.seafood.asia.
@@ -72,7 +71,7 @@
         %h4 Your Privacy
         %p
           Please read
-          = link_to 'Privacy Policy', '#'
+          = link_to 'Privacy Policy', '#', data: { toggle: 'modal', target: '#privacy-policy' }
 
         %h4 Reservation of Rights
         %p We reserve the right to request that you remove all links or any particular link to our Website. You approve to immediately remove all links to our Website upon request. We also reserve the right to amen these terms and conditions and it’s linking policy at any time. By continuously linking to our Website, you agree to be bound to and follow these linking terms and conditions.
