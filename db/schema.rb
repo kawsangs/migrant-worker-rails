@@ -113,17 +113,6 @@ ActiveRecord::Schema.define(version: 2021_05_24_034942) do
     t.index ["institution_id"], name: "index_country_institutions_on_institution_id"
   end
 
-  create_table "institutions", force: :cascade do |t|
-    t.string "name", null: false
-    t.integer "kind", default: 2, comment: "ex: ngo, gov. agency, other (default)"
-    t.text "address", default: ""
-    t.string "logo"
-    t.string "audio"
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
-    t.index ["name"], name: "index_institutions_on_name"
-  end
-
   create_table "criteria", force: :cascade do |t|
     t.integer "question_id"
     t.string "question_code"
@@ -144,9 +133,16 @@ ActiveRecord::Schema.define(version: 2021_05_24_034942) do
     t.string "audio"
   end
 
-  add_foreign_key "contacts", "institutions"
-  add_foreign_key "country_institutions", "countries"
-  add_foreign_key "country_institutions", "institutions"
+  create_table "institutions", force: :cascade do |t|
+    t.string "name", null: false
+    t.integer "kind", default: 2, comment: "ex: ngo, gov. agency, other (default)"
+    t.text "address", default: ""
+    t.string "logo"
+    t.string "audio"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["name"], name: "index_institutions_on_name"
+  end
 
   create_table "options", force: :cascade do |t|
     t.integer "question_id"
@@ -200,4 +196,8 @@ ActiveRecord::Schema.define(version: 2021_05_24_034942) do
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end
+
+  add_foreign_key "contacts", "institutions"
+  add_foreign_key "country_institutions", "countries"
+  add_foreign_key "country_institutions", "institutions"
 end
