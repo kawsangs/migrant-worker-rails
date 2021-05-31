@@ -18,47 +18,45 @@
         %i.fas.fa-fw.fa-tachometer-alt
         %span= t("sidebar.dashboard")
 
-    - if policy(Account).index?
+    - if current_account && policy(Account).index?
       %li.nav-item{ class: get_css_active_class('accounts') }
         = link_to accounts_path, class: 'nav-link' do
           %i.fas.fa-fw.fa-users
           %span= t("sidebar.accounts")
 
-    - if policy(Migrant).index?
+    - if current_account && policy(Migrant).index?
       %li.nav-item{ class: [get_css_active_class('migrants')] }
         %a.nav-link{:href => migrants_path}
           %i.fas.fa-fw.fa-people-carry
           %span= t("sidebar.app_users")
 
-    - if policy(Categories::Departure).index?
+    - if current_account && policy(Categories::Departure).index?
       %li.nav-item{ class: [get_css_active_class('departures')] }
         %a.nav-link{:href => departures_path}
           %i.fas.fa-fw.fa-plane-departure
           %span= t("sidebar.departure")
 
-    - if policy(Categories::Safety).index?
+    - if current_account && policy(Categories::Safety).index?
       %li.nav-item{ class: [get_css_active_class('safeties')] }
         %a.nav-link{:href => safeties_path}
           %i.fas.fa-fw.fa-user-shield
           %span= t("sidebar.safety")
 
-    - if policy(Institution).index?
+    - if current_account && policy(Institution).index?
       %li.nav-item{ class: [get_css_active_class('institutions')] }
         %a.nav-link{:href => institutions_path}
           %i.fas.fa-fw.fa-university
           %span= t("sidebar.institutions")
 
-    - if policy(:privacy).index?
-      %li.nav-item{ class: get_css_active_class('terms_and_conditions') }
-        %a.nav-link{:href => terms_and_conditions_path}
-          %i.fas.fa-fw.fa-file-contract
-          %span= t('sidebar.terms_and_conditions')
+    %li.nav-item{ class: get_css_active_class('terms_and_conditions') }
+      %a.nav-link{:href => terms_and_conditions_path}
+        %i.fas.fa-fw.fa-file-contract
+        %span= t('sidebar.terms_and_conditions')
 
-    - if policy(:privacy).index?
-      %li.nav-item{ class: get_css_active_class('privacy_policy') }
-        %a.nav-link{:href => privacy_policy_path}
-          %i.fas.fa-fw.fa-user-secret
-          %span= t('sidebar.privacy_policy')
+    %li.nav-item{ class: get_css_active_class('privacy_policy') }
+      %a.nav-link{:href => privacy_policy_path}
+        %i.fas.fa-fw.fa-user-secret
+        %span= t('sidebar.privacy_policy')
 
     %li.nav-item{ class: get_css_active_class('abouts') }
       %a.nav-link{:href => about_path}

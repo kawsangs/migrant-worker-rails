@@ -1,4 +1,4 @@
-class TermsAndConditionsController < ApplicationController
+class TermsAndConditionsController < AboutsController
   def index
   end
 end
