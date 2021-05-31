@@ -10,28 +10,35 @@
         - language = { en: "english.png", km: "khmer.png" }
         = image_tag language[I18n.locale], alt: "locale", size: "24x24", class: "mr-2"
         %span= t("shared.#{I18n.locale}")
-        %i.fas.fa-angle-down.fa-fw
+        
+        %i.fas.fa-angle-down.fa-fw{ class: "#{'d-none' unless current_account}" }
 
-      .dropdown-list.dropdown-menu.dropdown-menu-right.shadow.animated--grow-in{"aria-labelledby" => "languageDropdown"}
-        = simple_form_for(current_account, url: update_locale_accounts_path, method: :post, remote: true, html: { id: "switch-language" }) do |f|
-          = f.hidden_field :language_code
+      - if current_account.present?
+        .dropdown-list.dropdown-menu.dropdown-menu-right.shadow.animated--grow-in{"aria-labelledby" => "languageDropdown"}
+          = simple_form_for(current_account, url: update_locale_accounts_path, method: :post, remote: true, html: { id: "switch-language" }) do |f|
+            = f.hidden_field :language_code
 
-          - program_languages.each do |language|
-            %a.switch-language.dropdown-item.d-flex.align-items-center{'data-language' => language[:code]}
-              .dropdown-list-image.mr-3
-                = image_tag language[:image], alt: "locale", size: "24x24", class: "mr-2"
-              .font-weight-bold
-                .text-truncate= language[:label]
+            - program_languages.each do |language|
+              %a.switch-language.dropdown-item.d-flex.align-items-center{'data-language' => language[:code]}
+                .dropdown-list-image.mr-3
+                  = image_tag language[:image], alt: "locale", size: "24x24", class: "mr-2"
+                .font-weight-bold
+                  .text-truncate= language[:label]
 
     .topbar-divider.d-none.d-sm-block
     / Nav Item - User Information
     %li.nav-item.dropdown.no-arrow
       %a#userDropdown.nav-link.dropdown-toggle{"aria-expanded" => "false", "aria-haspopup" => "true", "data-toggle" => "dropdown", :href => "#", :role => "button"}
         %span.mr-2.d-none.d-lg-inline.text-gray-600.small
-          = current_account.display_name
+          = current_account&.display_name
         = image_tag 'default_profile.png', alt: 'profile', class: 'img-profile img-thumbnail rounded-circle'
 
       .dropdown-menu.dropdown-menu-right.shadow.animated--grow-in{"aria-labelledby" => "userDropdown"}
-        %a.dropdown-item{"data-target" => "#logoutModal", "data-toggle" => "modal", :href => "#"}
-          %i.fas.fa-sign-out-alt.fa-sm.fa-fw.mr-2.text-gray-400
-          = t("sidebar.logout")
+        - if current_account
+          %a.dropdown-item{"data-target" => "#logoutModal", "data-toggle" => "modal", :href => "#"}
+            %i.fas.fa-sign-out-alt.fa-sm.fa-fw.mr-2.text-gray-400
+            = t("sidebar.logout")
+        - else
+          = link_to new_account_session_path, class: 'dropdown-item' do
+            %i.fas.fa-sign-out-alt.fa-sm.fa-fw.mr-2.text-gray-400
+            = t("sidebar.login")
