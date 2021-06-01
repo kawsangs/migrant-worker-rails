@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class InstitutionsController < ApplicationController
   before_action :set_institution, only: [:edit, :update, :destroy, :delete_logo, :delete_audio]
 
@@ -47,20 +49,19 @@ class InstitutionsController < ApplicationController
   end
 
   private
+    def set_institution
+      @institution ||= Institution.find(params[:id])
+    end
 
-  def set_institution
-    @institution ||= Institution.find(params[:id])
-  end
-
-  def institution_params
-    params.require('institution').permit(
-      :name, 
-      :kind, 
-      :address,
-      :logo,
-      :audio,
-      country_institutions_attributes: [:id, :country_name, :country_code, :_destroy],
-      contacts_attributes: [:id, :type, :value, :_destroy]
-    )
-  end
+    def institution_params
+      params.require("institution").permit(
+        :name,
+        :kind,
+        :address,
+        :logo,
+        :audio,
+        country_institutions_attributes: [:id, :country_name, :country_code, :_destroy],
+        contacts_attributes: [:id, :type, :value, :_destroy]
+      )
+    end
 end

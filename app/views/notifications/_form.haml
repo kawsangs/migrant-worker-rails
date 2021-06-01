@@ -1,0 +1,15 @@
+.d-flex
+  .flex-1.mr-4
+    = simple_form_for @notification do |f|
+      = f.input :title, label: t('notification.notification_title')
+      = f.input :body, label: t('notification.notification_text')
+
+      .actions.text-right
+        = link_to t('shared.cancel'), notifications_url, class: 'btn btn-secondary'
+        = f.submit t('notification.send_message'), class: 'btn btn-primary'
+
+  %div
+    .preview-background
+      .card-box
+        .title
+        .text-body

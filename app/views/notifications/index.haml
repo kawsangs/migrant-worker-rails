@@ -1,0 +1,32 @@
+.d-sm-flex.align-items-center.justify-content-between.mb-4
+  %h1.h3.mb-0.text-gray-800= t("notification.notification")
+  - if @notifications.present?
+    = link_to new_notification_path, class: "btn btn-primary btn-sm shadow-sm" do
+      %i.fas.fa-plus.fa-sm.text-white-50
+      = t('shared.add_new')
+
+.card.shadow.mb-4
+  .card-body
+    = render partial: "shared/no_data", locals: { items: @notifications, url: new_notification_path, label: t('shared.add_new') }
+
+    - if @notifications.present?
+      = render 'shared/pagy_label'
+
+      %table.table.table-hover
+        %thead
+          %tr
+            %th #
+            %th= t('notification.notification_title')
+            %th= t('notification.notification_text')
+            %th
+            %th
+        %tbody
+          - @notifications.each_with_index do |notification, index|
+            %tr
+              %td= @pagy.from + index
+              %td= notification.title
+              %td= notification.body
+              %td= "success: #{notification.success_count}, fails: #{notification.failure_count}"
+              %td.text-right
+                = render 'shared/action_buttons', edit_url: edit_notification_path(notification), delete_url: notification_path(notification), object: notification
+

@@ -4,7 +4,7 @@ module Api
   module V1
     class RegisteredTokensController < ApplicationController
       def update
-        @token = RegisteredToken.find_or_initialize_by(id: token_params['id'])
+        @token = RegisteredToken.find_or_initialize_by(id: token_params["id"])
 
         if @token.update(token_params)
           render json: @token
@@ -14,10 +14,9 @@ module Api
       end
 
       private
-
-      def token_params
-        params.require(:registered_token).permit(:id, :token)
-      end
+        def token_params
+          params.require(:registered_token).permit(:id, :token)
+        end
     end
   end
 end

@@ -1,18 +1,30 @@
-= link_to t('institution.new'), new_institution_path, class: 'btn btn-primary mb-3'
+.d-sm-flex.align-items-center.justify-content-between.mb-4
+  %h1.h3.mb-0.text-gray-800= t("category.story_form")
+  - if @institutions.present?
+    = link_to new_institution_path, class: "btn btn-primary btn-sm shadow-sm" do
+      %i.fas.fa-plus.fa-sm.text-white-50
+      = t('shared.add_new')
 
-%table.table
-  %thead
-    %tr
-      %th{:scope => "col"} #
-      %th{:scope => "col"}= t('institution.name')
-      %th{:scope => "col"}= t('institution.countries')
-      %th{:scope => "col"}= t('institution.contacts')
-      %th{:scope => "col"}= t('institution.logo')
-      %th{:scope => "col"}= t('institution.audio')
-      %th{:scope => "col"}= t('institution.address')
-      %th{:scope => "col"}= t('institution.created_at')
-      %th{:scope => "col"} &nbsp;
-  %tbody
-    = render @institutions
+.card.shadow.mb-4
+  .card-body
+    = render partial: "shared/no_data", locals: { items: @institutions, url: new_institution_path, label: t('shared.add_new') }
 
-!= pagy_bootstrap_nav(@pagy) if @pagy.pages > 1
+    - if @institutions.present?
+      = render 'shared/pagy_label'
+
+      %table.table.table-hover
+        %thead
+          %tr
+            %th{:scope => "col"} #
+            %th{:scope => "col"}= t('institution.name')
+            %th{:scope => "col"}= t('institution.countries')
+            %th{:scope => "col"}= t('institution.contacts')
+            %th{:scope => "col"}= t('institution.logo')
+            %th{:scope => "col"}= t('institution.audio')
+            %th{:scope => "col"}= t('institution.address')
+            %th{:scope => "col"}= t('institution.created_at')
+            %th{:scope => "col"} &nbsp;
+        %tbody
+          = render @institutions
+
+      != pagy_bootstrap_nav(@pagy) if @pagy.pages > 1

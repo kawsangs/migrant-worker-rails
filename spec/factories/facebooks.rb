@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 # == Schema Information
 #
 # Table name: contacts
@@ -11,6 +13,6 @@
 #
 FactoryBot.define do
   factory :facebook do
-    value { 'https://www.facebook.com/ilabs' }
+    value { "https://www.facebook.com/ilabs" }
   end
 end

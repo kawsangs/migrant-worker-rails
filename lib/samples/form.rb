@@ -11,11 +11,11 @@ module Samples
         rows = sheet.parse(headers: true)
 
         case page_name
-        when 'form'
+        when "form"
           upsert_form(rows)
-        when 'question'
+        when "question"
           upsert_question(rows)
-        when 'option'
+        when "option"
           upsert_option(rows)
         end
       end
@@ -56,7 +56,7 @@ module Samples
           }
 
           if row["criteria"].present?
-            criterias = row["criteria"].split(';')
+            criterias = row["criteria"].split(";")
             param[:criterias_attributes] = criterias.map { |cri|
               data = cri.split("||")
               {
@@ -82,8 +82,8 @@ module Samples
             score: row["score"],
             alert_message: row["alert_message"],
             alert_audio: get_audio(row["alert_audio"]),
-            warning: (row["is_warning"] == 'TRUE'),
-            recursive: (row["is_repeat"] == 'TRUE'),
+            warning: (row["is_warning"] == "TRUE"),
+            recursive: (row["is_repeat"] == "TRUE"),
             image: get_image(row["image"]),
           )
         end

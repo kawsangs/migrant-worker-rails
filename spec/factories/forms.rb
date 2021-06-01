@@ -5,12 +5,14 @@
 # Table name: forms
 #
 #  id         :bigint           not null, primary key
-#  uuid       :string
+#  code       :string
 #  name       :string
 #  form_type  :string
 #  version    :integer
 #  created_at :datetime         not null
 #  updated_at :datetime         not null
+#  image      :string
+#  audio      :string
 #
 FactoryBot.define do
   factory :form do

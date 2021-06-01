@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 module Users
   class QuizzesController < ApplicationController
     before_action :assign_user

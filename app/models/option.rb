@@ -15,6 +15,7 @@
 #  recursive     :boolean
 #  created_at    :datetime         not null
 #  updated_at    :datetime         not null
+#  image         :string
 #
 class Option < ApplicationRecord
   mount_uploader :alert_audio, AudioUploader
@@ -26,6 +27,6 @@ class Option < ApplicationRecord
 
   private
     def set_option_value
-      self.value = (value.presence || name).downcase.split(' ').join('_')
+      self.value = (value.presence || name).downcase.split(" ").join("_")
     end
 end
