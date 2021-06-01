@@ -19,6 +19,10 @@
 #  updated_at     :datetime         not null
 #  last           :boolean          default(FALSE)
 #  uuid           :string
+#  is_video       :boolean
+#  hint           :string
+#  hint_image     :string
+#  hint_audio     :string
 #
 FactoryBot.define do
   factory :category do

@@ -11,9 +11,9 @@ module Samples
         rows = sheet.parse(headers: true)
 
         case page_name
-        when 'departure'
+        when "departure"
           upsert_category(rows, "Categories::Departure")
-        when 'safety'
+        when "safety"
           upsert_category(rows, "Categories::Safety")
         end
       end

@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 # == Schema Information
 #
 # Table name: contacts
@@ -13,8 +15,8 @@ class Contact < ApplicationRecord
   belongs_to :institution
 
   TYPES = [
-    ['Phone', 'Phone'],
-    ['Facebook', 'Facebook'],
-    ['Whatsapp', 'WhatsApp'],
+    ["Phone", "Phone"],
+    ["Facebook", "Facebook"],
+    ["Whatsapp", "WhatsApp"],
   ]
 end

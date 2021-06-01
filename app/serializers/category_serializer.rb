@@ -19,6 +19,10 @@
 #  updated_at     :datetime         not null
 #  last           :boolean          default(FALSE)
 #  uuid           :string
+#  is_video       :boolean
+#  hint           :string
+#  hint_image     :string
+#  hint_audio     :string
 #
 class CategorySerializer < ActiveModel::Serializer
   attributes :id, :name, :description, :image_url, :audio_url, :parent_id,

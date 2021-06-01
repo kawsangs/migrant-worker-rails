@@ -1,7 +1,9 @@
+# frozen_string_literal: true
+
 class CreateCountryInstitutions < ActiveRecord::Migration[6.0]
   def change
     create_table :country_institutions do |t|
-      t.string :country_code, default: ''
+      t.string :country_code, default: ""
       t.references :institution, null: false, foreign_key: true
       t.references :country, null: false, foreign_key: true
 

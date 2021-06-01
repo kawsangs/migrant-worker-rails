@@ -31,6 +31,7 @@
 //= require category_images
 //= require departures/new
 //= require forms/new
+//= require notifications
 
 $(document).on("ready turbolinks:load", () => {
   MW.Common.Topbar.init();

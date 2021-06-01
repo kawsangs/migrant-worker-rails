@@ -12,6 +12,7 @@
 #  score         :integer
 #  user_uuid     :string
 #  quiz_uuid     :string
+#  voice         :string
 #  created_at    :datetime         not null
 #  updated_at    :datetime         not null
 #

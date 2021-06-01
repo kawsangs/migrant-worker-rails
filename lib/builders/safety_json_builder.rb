@@ -6,4 +6,3 @@ module Categories
   class SafetyJsonBuilder < DepartureJsonBuilder
   end
 end
-

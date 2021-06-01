@@ -52,8 +52,12 @@ gem "jquery-fileupload-rails", "~> 1.0.0"
 gem "sidekiq", "~> 6.2.1"
 gem "sidekiq-scheduler", "~> 3.0.1"
 
-gem 'countries', '~> 3.1'
-gem 'cocoon', '~> 1.2', '>= 1.2.15'
+gem "countries", "~> 3.1"
+gem "cocoon", "~> 1.2", ">= 1.2.15"
+
+gem "roo", "~> 2.8.3"
+
+gem "fcm", "~> 0.0.6"
 
 gem "roo", "~> 2.8.3"
 

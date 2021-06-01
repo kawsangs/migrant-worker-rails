@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 # == Schema Information
 #
 # Table name: countries
@@ -14,7 +16,7 @@ class Country < ApplicationRecord
   validates :name, presence: true,
                     uniqueness: { case_sensitive: false }
 
-  scope :query, -> (query) { where('LOWER(name) LIKE ?', "#{query.to_s.downcase}%") }
+  scope :query, -> (query) { where("LOWER(name) LIKE ?", "#{query.to_s.downcase}%") }
 
   delegate :emoji_flag, to: :country_iso
 
@@ -29,8 +31,7 @@ class Country < ApplicationRecord
   end
 
   private
-
-  def downcase_code
-    self.code = self.code.downcase
-  end
+    def downcase_code
+      self.code = self.code.downcase
+    end
 end

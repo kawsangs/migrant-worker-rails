@@ -14,8 +14,8 @@
       = link_to_add_fields t('form.add_question'), f, :questions
 
     .actions.text-right.mb-3
-      = f.submit t('shared.save'), class: 'btn btn-primary'
       = link_to t('shared.cancel'), forms_path, class: 'btn btn-secondary'
+      = f.submit t('shared.save'), class: 'btn btn-primary'
 
 :javascript
   locale = {

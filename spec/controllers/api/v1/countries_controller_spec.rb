@@ -1,7 +1,9 @@
-require 'rails_helper'
+# frozen_string_literal: true
+
+require "rails_helper"
 
 RSpec.describe Api::V1::CountriesController, type: :controller do
-  describe 'GET :index' do
+  describe "GET :index" do
     let(:api_key) { ApiKey.create! }
 
     before(:each) do
@@ -11,7 +13,7 @@ RSpec.describe Api::V1::CountriesController, type: :controller do
     it "returns json" do
       get :index
 
-      expect(response.content_type).to include 'application/json'
+      expect(response.content_type).to include "application/json"
     end
   end
 end

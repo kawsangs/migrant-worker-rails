@@ -1,3 +1,4 @@
-class InstitutionPolicy < CategoryPolicy
+# frozen_string_literal: true
 
+class InstitutionPolicy < CategoryPolicy
 end

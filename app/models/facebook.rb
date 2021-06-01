@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 # == Schema Information
 #
 # Table name: contacts
@@ -11,6 +13,6 @@
 #
 class Facebook < Contact
   def fa
-    'fab fa-facebook'
+    "fab fa-facebook"
   end
 end

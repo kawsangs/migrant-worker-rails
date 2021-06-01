@@ -15,6 +15,7 @@
 #  recursive     :boolean
 #  created_at    :datetime         not null
 #  updated_at    :datetime         not null
+#  image         :string
 #
 require "rails_helper"
 

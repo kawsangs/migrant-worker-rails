@@ -1,0 +1,8 @@
+km:
+  notification:
+    notification: សេចក្ដីជូនដំណឹង
+    edit_notification: កែតម្រូវសេចក្ដីជូនដំណឹង
+    new_notification: បង្កើតសេចក្ដីជូនដំណឹង
+    notification_title: ចំណងជើងជូនដំណឹង
+    notification_text: អត្ថបទជូនដំណឹង
+    send_message: បញ្ជូនសារ
