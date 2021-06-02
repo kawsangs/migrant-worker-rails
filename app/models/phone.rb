@@ -12,7 +12,15 @@
 #  updated_at     :datetime         not null
 #
 class Phone < Contact
+  before_save :remove_whitespace
+
   def fa
     "fas fa-phone"
+  end
+
+  private
+
+  def remove_whitespace
+    self.value = self.value.gsub /\s/, ''
   end
 end
