@@ -5,32 +5,25 @@
 
     %nav.text-center.mb-4{ class: ('mt-3' if signed_in?) }
       .container-fluid
-        %h3= t('about.about')
+        %h3 កម្មវិធីដំណើរឆ្លងដែនរបស់ខ្ញុំ
+        %h4 (My Journeys Application)
 
     %p= t('about.app_definition')
     %p= t('about.safe_and_fare_definition')
 
-    %div.mt-2.mb-5
-      .text-center= t('about.here_is_link_download')
-      .text-center= link_to 'Download Mobile App', '#', class: 'btn btn-link'
-      .text-center= image_tag 'qr_code.png'
+    %h5.text-center
+      %strong ក្រោមជំនួយថវិកាដោយ / Funded By
 
-    %p.text-center
-      %strong= t('about.implemented_by')
+    .w-100.text-center
+      = image_tag('spotlight_one_line.png', class: 'spotlight-logo')
 
-    .text-center
-      %p= image_tag('unwomen.png', class: 'medium-logo')
-      %p= image_tag('instedd.png', class: 'medium-logo')
-      %p= image_tag('chc.png', class: 'medium-logo')
+    %h5.text-center.my-3
+      %strong សហការណ៍ផលិតដោយ / Implemented By
 
-    %p.text-center{style: 'margin-top: 40px;'}
-      %strong= t('about.funded_by')
+    .d-flex.justify-content-center.mb-5
+      %div= image_tag('unwomen.png', class: 'small-logo')
+      %div.mx-2= image_tag('instedd.png', class: 'small-logo')
+      %div= image_tag('chc.png', class: 'small-logo')
 
-    .funded-by-logo
-      %div{style: 'flex: 1;'}
-        = image_tag('spotlight.png', class: 'spotlight-logo')
 
-      %div= image_tag('eu.png', class: 'small-logo')
-      %div= image_tag('undp.png', class: 'small-logo')
-      %div= image_tag('global_support.png', class: 'small-logo')
-      %div= image_tag('gender_equality.jpg', class: 'small-logo')
+
