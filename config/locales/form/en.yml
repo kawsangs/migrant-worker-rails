@@ -21,3 +21,7 @@ en:
     add_option: + Add option
     match_all_criteria: Question should match all of these criteria
     match_any_criteria: Question should match any of these criteria
+    published: Published
+    publish: Publish
+    publish_form: Publish form
+    confirm_publish: Are you sure to publish this form?

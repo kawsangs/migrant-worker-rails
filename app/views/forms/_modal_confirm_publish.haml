@@ -1,0 +1,12 @@
+.modal.fade{"aria-hidden" => "true", :role => "dialog", :tabindex => "-1", id: "publishModal_#{form.id}"}
+  .modal-dialog.modal-dialog-centered{:role => "document"}
+    .modal-content
+      .modal-header
+        %h5#exampleModalLabel.modal-title= t("form.publish_form")
+        %button.close{"aria-label" => "Close", "data-dismiss" => "modal", :type => "button"}
+          %span{"aria-hidden" => "true"} ×
+
+      .modal-body= t("form.confirm_publish")
+      .modal-footer
+        %button.btn.btn-secondary{"data-dismiss" => "modal", :type => "button"}= t("shared.cancel")
+        = link_to t("form.publish"), publish_form_path(form), method: :put, class: 'btn btn-primary'

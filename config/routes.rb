@@ -41,7 +41,9 @@ Rails.application.routes.draw do
   end
 
   # User story
-  resources :forms
+  resources :forms do
+    put :publish, on: :member
+  end
 
   # Api
   namespace :api do

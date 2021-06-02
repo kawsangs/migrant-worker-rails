@@ -12,10 +12,16 @@
       %input{ type: 'hidden', name: "institution[country_institutions_attributes][#{index}][id]", value: c.id }
       %input{ type: 'hidden', name: "institution[country_institutions_attributes][#{index}][_destroy]", class: "del-" + tagify_class(c.c_name), value: '' }
 
+    .error-message.text-danger.small
+      = @institution.errors["country_institutions"].join("; ")
+
   %label= t('institution.contacts')
   #contacts
     = f.simple_fields_for :contacts do |contact|
       = render 'contact_fields', f: contact
     .links.mb-3
       = link_to_add_association t('institution.add_contact'), f, :contacts, class: 'btn btn-sm btn-outline-secondary'
-  = f.submit nil, class: 'btn btn-primary mt-4 mb-5'
+
+  .actions.text-right.mb-3
+    = link_to t('shared.cancel'), institutions_path, class: 'btn btn-secondary'
+    = f.submit t('shared.save'), class: 'btn btn-primary'

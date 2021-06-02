@@ -40,6 +40,13 @@ class FormsController < ApplicationController
     redirect_to forms_url
   end
 
+  def publish
+    @form = Form.find(params[:id])
+    @form.update(published: true)
+
+    redirect_to forms_url
+  end
+
   private
     def form_params
       params.require(:form).permit(:name, :form_type,

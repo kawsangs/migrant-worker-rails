@@ -20,5 +20,8 @@ class Form < ApplicationRecord
 
   has_many :questions, dependent: :destroy
 
+  default_scope { order("created_at") }
+  scope :published, -> { where(published: true) }
+
   accepts_nested_attributes_for :questions, allow_destroy: true
 end
