@@ -7,11 +7,16 @@ km:
     type: ប្រភេទ
     address: អាសយដ្ឋាន
     countries: ប្រទេស
-    contacts: ទំនាក់ទំនង
+    contacts: លេខទំនាក់ទំនង
     created_at: ថ្ងៃបង្កើត
-    add_contact: បង្កើតអាសយដ្ឋាន
+    add_contact: បង្កើតលេខទំនាក់ទំនង
     ngo: អង្គការក្រៅរដ្ឋាភិបាល
     gov: រដ្ឋាភិបាល
     other: ផ្សេងៗ
     logo: រូបយីហោ
+    logo_form: រូបយីហោ (32-bit PNG) ទំហំណែនាំ 64x64
     audio: សំលេង
+    audio_form: សំលេង (.mp3 មិនលើសពី 2 មេហ្គាបៃ)
+    input_placeholder: វាយបញ្ចូលឈ្មោះប្រទេសដើម្បីស្វែងរក
+    institution_name: ឈ្មោះស្ថាប័ន
+    institution_address: អាសយដ្ឋានស្ថាប័ន

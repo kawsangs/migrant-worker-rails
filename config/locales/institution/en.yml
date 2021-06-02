@@ -14,4 +14,9 @@ en:
     gov: Government
     other: Other
     logo: Logo
+    logo_form: Logo (32-bit PNG) recommended 64x64
     audio: Audio
+    audio_form: Audio (.mp3 not exceed 2 megabytes)
+    input_placeholder: Type to search
+    institution_name: Institution name
+    institution_address: Institution address

@@ -12,7 +12,7 @@
     - if @institutions.present?
       = render 'shared/pagy_label'
 
-      %table.table.table-hover
+      %table.table.table-hover.table-responsive
         %thead
           %tr
             %th{:scope => "col"} #
@@ -22,7 +22,6 @@
             %th{:scope => "col"}= t('institution.logo')
             %th{:scope => "col"}= t('institution.audio')
             %th{:scope => "col"}= t('institution.address')
-            %th{:scope => "col"}= t('institution.created_at')
             %th{:scope => "col"} &nbsp;
         %tbody
           = render @institutions
