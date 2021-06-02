@@ -1,13 +1,13 @@
 = simple_form_for @institution do |f|
-  = f.input :name, label: t('institution.name')
+  = f.input :name, label: t('institution.name'), placeholder: t('institution.institution_name'), wrapper_html: { class: 'mt-3' }
   = f.input :kind, label: t('institution.type'), collection: Institution.kinds, value_method: :first, label_method: lambda { |kind| t("institution.#{kind.first}") }, include_blank: false
-  = f.input :address, label: t('institution.address')
-  = f.input :logo, label: t('institution.logo'), input_html: { accept: 'image/png, image/jpg' }
-  = f.input :audio, label: t('institution.audio'), input_html: { accept: 'audio/mpeg' }
+  = f.input :address, label: t('institution.address'), placeholder: t('institution.institution_address')
+  = f.input :logo, label: t('institution.logo_form'), input_html: { accept: 'image/png, image/jpg' }
+  = f.input :audio, label: t('institution.audio_form'), input_html: { accept: 'audio/mpeg' }
 
   %label= t('institution.countries')
   .form-group
-    %input{ type: 'text', value: @institution.country_names, class: 'form-control tagify-country' }    
+    %input{ type: 'text', value: @institution.country_names, placeholder: t('institution.input_placeholder'), class: 'form-control tagify-country' }    
     - @institution.country_institutions.each.with_index do |c, index|
       %input{ type: 'hidden', name: "institution[country_institutions_attributes][#{index}][id]", value: c.id }
       %input{ type: 'hidden', name: "institution[country_institutions_attributes][#{index}][_destroy]", class: "del-" + tagify_class(c.c_name), value: '' }
@@ -18,4 +18,4 @@
       = render 'contact_fields', f: contact
     .links.mb-3
       = link_to_add_association t('institution.add_contact'), f, :contacts, class: 'btn btn-sm btn-outline-secondary'
-  = f.submit nil, class: 'btn btn-primary'
+  = f.submit nil, class: 'btn btn-primary mt-4 mb-5'
