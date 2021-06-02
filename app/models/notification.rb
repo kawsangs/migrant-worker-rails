@@ -15,7 +15,7 @@
 class Notification < ApplicationRecord
   validates :body, presence: true
 
-  after_commit :push_notification_async, on: [:create, :update]
+  after_commit :push_notification_async, on: [:create]
 
   def push_notification_async
     NotificationWorker.perform_async(id)
