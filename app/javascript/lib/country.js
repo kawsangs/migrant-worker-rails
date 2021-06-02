@@ -4,7 +4,7 @@ window.countryList = require('countries-list');
 const load = () => {
   const countries = Object.keys(countryList.countries)
   var input = document.querySelector('.tagify-country');
-  var whitelist = countries.map((code, index) => ({ value: countryList.countries[code].name, code: code }))
+  var whitelist = countries.map((code, index) => ({ value: countryList.countries[code].name, code: code })).sort(sortCountryByNames)
 
   var tagify = new Tagify(input, {
     templates : {
@@ -38,7 +38,7 @@ const load = () => {
     maxTags: 10,
     enforceWhitelist : true,
     dropdown: {
-      maxItems: 20,
+      maxItems: 1000,
       classname: "extra-properties",
       enabled: 0,
       closeOnSelect: false
@@ -73,6 +73,12 @@ const load = () => {
 
   function tagify_class(value) {
     return 'tagify-item-' + value.replace(/[^a-zA-Z0-9]/g,'-');
+  }
+
+  function sortCountryByNames(c1, c2) {
+    if(c1.value < c2.value) { return -1; }
+    if(c1.value > c2.value) { return 1; }
+    return 0;
   }
 }
 
