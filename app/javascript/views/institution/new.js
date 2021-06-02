@@ -7,3 +7,7 @@ MW.InstitutionsNew = (() => {
 
   return { init }
 })();
+
+MW.InstitutionsCreate = MW.InstitutionsNew
+MW.InstitutionsEdit = MW.InstitutionsNew
+MW.InstitutionsUpdate = MW.InstitutionsNew

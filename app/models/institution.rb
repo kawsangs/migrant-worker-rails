@@ -20,6 +20,9 @@ class Institution < ApplicationRecord
   has_many :country_institutions, dependent: :destroy
   has_many :countries, through: :country_institutions
 
+  validates :country_institutions, length: { minimum: 1, message: 'should have at least 1 country.' }
+  validates :name, presence: true
+
   mount_uploader :logo, ImageUploader
   mount_uploader :audio, AudioUploader
 
