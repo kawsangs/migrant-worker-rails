@@ -4,7 +4,7 @@ module Api
   module V1
     class FormsController < ApplicationController
       def index
-        forms = Form.all
+        forms = Form.published
 
         render json: forms, include: ["questions", "questions.options"]
       end
