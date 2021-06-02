@@ -16,7 +16,7 @@
     - if institution.logo.file.present?
       .position-relative.d-inline-block.attachment
         = link_to institution.logo.url, data: { lightbox: institution.logo.identifier, title: institution.name } do
-          = image_tag institution.logo.url, class: 'img-thumbnail'
+          = image_tag institution.logo.url, class: 'img-thumbnail', size: '48x48'
         = link_to delete_logo_institution_path(institution), method: :delete, class: 'position-absolute btn btn-danger rounded-circle btn-sm attachment__delete', data: { confirm: 'are you sure?' } do
           %i.fa.fa-trash-alt
   %td
