@@ -60,16 +60,6 @@
           %i.fas.fa-bell
           %span= t("sidebar.notification")
 
-    %li.nav-item{ class: get_css_active_class('terms-and-conditions') }
-      %a.nav-link{:href => terms_and_conditions_path}
-        %i.fas.fa-fw.fa-file-contract
-        %span= t('sidebar.terms_and_conditions')
-
-    %li.nav-item{ class: get_css_active_class('privacy-policy') }
-      %a.nav-link{:href => privacy_policy_path}
-        %i.fas.fa-fw.fa-user-secret
-        %span= t('sidebar.privacy_policy')
-
     %li.nav-item{ class: get_css_active_class('abouts') }
       %a.nav-link{:href => about_path}
         %i.fas.fa-fw.fa-exclamation-circle
