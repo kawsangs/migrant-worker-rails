@@ -1,82 +1,68 @@
 # frozen_string_literal: true
 
+require_relative "base"
+
 module Samples
-  class NeedForHelp
+  class NeedForHelp < ::Samples::Base
     def self.load
-      institutions = [
-        {
-          name: "អង្គការ​មនុស្ស​ចាស់​កម្ពុជា",
-          kind: "ngo",
-          address: "Battambang",
-          logo_url: "1.jpeg",
-          country_institutions_attributes: [
-            { country_name: "Cambodia", country_code: "kh" }
-          ],
-          contacts_attributes: [
-            { type: "Phone", value: "012 801 820" }
-          ]
-        },
-        {
-          name: "អភិវឌ្ឍន៍សហគមន៍ជនបទនិងបរិស្ថាន ( អាសេដូ )",
-          kind: "gov",
-          address: "Phnom Penh",
-          logo_url: "2.jpeg",
-          country_institutions_attributes: [
-            { country_name: "Cambodia", country_code: "kh" },
-            { country_name: "Thailand", country_code: "th" },
-            { country_name: "Vietnam", country_code: "vn" },
-            { country_name: "Laos", country_code: "la" },
-          ],
-          contacts_attributes: [
-            { type: "Phone", value: "054 710 446" },
-            { type: "Facebook", value: "fb.com/test1" },
-            { type: "Whatsapp", value: "054 710 446" },
-          ]
-        },
-        {
-          name: "ផ្ទះទឹកដូងកម្ពុជា",
-          kind: "other",
-          address: "Battambang",
-          logo_url: "4.jpg",
-          country_institutions_attributes: [
-            { country_name: "Andorra", country_code: "ad" },
-            { country_name: "Bangladesh", country_code: "bd" },
-            { country_name: "Japan", country_code: "jp" },
-            { country_name: "Norway", country_code: "no" },
-          ],
-          contacts_attributes: [
-            { type: "Phone", value: "077 552 221" },
-            { type: "Facebook", value: "fb.com/test2" },
-          ]
-        },
-        {
-          name: "អង្គការមរតក",
-          kind: "ngo",
-          address: "Koh Kong",
-          logo_url: "3.jpeg",
-          country_institutions_attributes: [
-            { country_name: "Qatar", country_code: "qa" },
-            { country_name: "Slovakia", country_code: "sk" },
-          ],
-          contacts_attributes: [
-            { type: "Whatsapp", value: "077 552 221" }
-          ]
-        }
-      ]
+      path = file_path("institutions.xlsx")
+      xlsx = Roo::Spreadsheet.open(path)
+      xlsx.each_with_pagename do |page_name, sheet|
+        rows = sheet.parse(headers: true)
 
-      institutions.each do |hash|
-        logo_url = hash.delete(:logo_url)
-        logo_url = Rails.root.join("lib/samples/images/#{logo_url}")
-        institution = Institution.create!(hash)
-
-        if File.exist?(logo_url)
-          File.open(logo_url) do |logo|
-            institution.logo = logo
-          end
-
-          institution.save!
+        case page_name
+        when "country"
+          upsert_country(rows)
+        when "institution"
+          upsert_institution(rows)
         end
       end
     end
+
+    def self.export(type = "json")
+      class_name = "Exporters::#{type.camelcase}Exporter"
+      class_name.constantize.new(::Country.all).export("countries")
+      class_name.constantize.new(::Institution.all).export("institutions")
+    rescue
+      Rails.logger.warn "#{class_name} is unknwon"
+    end
+
+    private
+      def self.upsert_country(rows)
+        rows[1..-1].each do |row|
+          country = ::Country.find_or_initialize_by(code: row["code"])
+          country.update(name: row["name"])
+        end
+      end
+
+      def self.upsert_institution(rows)
+        rows[1..-1].each do |row|
+          country = ::Country.find_by name: row["country_name"]
+          next if country.nil?
+
+          institution = ::Institution.find_or_initialize_by(code: row["code"])
+          institution.update(
+            name: row["name"],
+            kind: row["kind"],
+            audio: get_audio(row["audio"]),
+            address: row["address"],
+            country_institutions_attributes: [
+              {
+                id: institution.country_institutions.find_by(country_code: country.code).try(:id),
+                country_code: country.code
+              }
+            ]
+          )
+
+          row["phone"].to_s.split("/").each do |num|
+            phone = num.gsub(/\s/, "")
+            institution.contacts.find_or_create_by(value: phone, type: "Phone")
+          end
+
+          row["facebook"].to_s.split("/").each do |fb|
+            institution.contacts.find_or_create_by(value: fb, type: "Facebook")
+          end
+        end
+      end
   end
 end

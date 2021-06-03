@@ -18,7 +18,7 @@ class Country < ApplicationRecord
 
   scope :query, -> (query) { where("LOWER(name) LIKE ?", "#{query.to_s.downcase}%") }
 
-  delegate :emoji_flag, to: :country_iso
+  delegate :emoji_flag, to: :country_iso, allow_nil: true
 
   before_save :downcase_code
 
@@ -27,11 +27,11 @@ class Country < ApplicationRecord
   end
 
   def display_name
-    country_iso.local_name || country_iso.name
+    country_iso.try(:local_name) || country_iso.try(:name) || name
   end
 
   private
     def downcase_code
-      self.code = self.code.downcase
+      self.code = code.downcase
     end
 end
