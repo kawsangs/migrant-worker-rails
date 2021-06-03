@@ -11,5 +11,5 @@
 #  code       :string           default("")
 #
 class CountrySerializer < ActiveModel::Serializer
-  attributes :id, :name, :emoji_flag
+  attributes :id, :name, :emoji_flag, :updated_at
 end

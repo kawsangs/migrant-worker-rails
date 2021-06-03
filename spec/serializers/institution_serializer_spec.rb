@@ -23,6 +23,6 @@ RSpec.describe InstitutionSerializer do
 
     it { is_expected.to include(:id, :address, :audio_url,
                                 :contacts, :country_institutions,
-                                :kind, :logo, :logo_url, :name) }
+                                :kind, :logo_url, :name) }
   end
 end

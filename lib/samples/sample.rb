@@ -22,6 +22,7 @@ module Samples
     def self.export
       ::Samples::Category.export
       ::Samples::Form.export
+      ::Samples::NeedForHelp.export
     end
   end
 end
