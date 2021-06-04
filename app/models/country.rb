@@ -20,7 +20,7 @@ class Country < ApplicationRecord
 
   delegate :emoji_flag, to: :country_iso, allow_nil: true
 
-  before_save :downcase_code
+  before_save :downcase_code, :capitalize_name
 
   def country_iso
     ISO3166::Country.find_country_by_alpha2(code)
@@ -33,5 +33,9 @@ class Country < ApplicationRecord
   private
     def downcase_code
       self.code = code.downcase
+    end
+
+    def capitalize_name
+      self.name = name.capitalize
     end
 end
