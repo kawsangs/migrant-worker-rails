@@ -37,7 +37,7 @@ module Samples
 
       def self.upsert_institution(rows)
         rows[1..-1].each do |row|
-          country = ::Country.find_by name: row["country_name"]
+          country = ::Country.find_by name: row["country_name"].capitalize
           next if country.nil?
 
           institution = ::Institution.find_or_initialize_by(code: row["code"])
