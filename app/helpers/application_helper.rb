@@ -41,4 +41,13 @@ module ApplicationHelper
   def tagify_class(value)
     "tagify-item-" + value.to_s.gsub(/[^a-zA-Z0-9]/, "-")
   end
+
+  def timeago(date)
+    return "" unless date.present?
+
+    str = "<span class='timeago' data-date='#{l(date)}'>"
+    str += time_ago_in_words(date)
+    str += "</span>"
+    str
+  end
 end

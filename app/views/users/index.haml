@@ -47,11 +47,10 @@
                 - if user.audio.present?
                   %audio{controls: true}
                     %source{src: user.audio_url}
-              %td
-                = l(user.registered_at, format: :long) if user.registered_at.present?
+              %td= timeago(user.registered_at).html_safe
               %td.text-right
                 - if user.quizzes.present?
-                  = link_to "View Quiz", user_quizzes_path(user), class: 'btn'
+                  = link_to t("user.view_game"), user_quizzes_path(user), class: 'btn'
 
       - if @pagy.pages > 1
         .pagy-wrapper

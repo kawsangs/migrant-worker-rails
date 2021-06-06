@@ -15,6 +15,7 @@
 //= require application/util
 
 //= require common/topbar
+//= require common/timeago
 
 // For building question skip logic
 //= require common/skip_logic_constant
@@ -35,6 +36,7 @@
 
 $(document).on("ready turbolinks:load", () => {
   MW.Common.Topbar.init();
+  MW.Common.Timeago.init();
   $("[data-toggle='tooltip']").tooltip();
 
   let currentPage = MW.Util.getCurrentPage();

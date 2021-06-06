@@ -18,6 +18,7 @@
             %th #
             %th= t('notification.notification_title')
             %th= t('notification.notification_text')
+            %th= t('shared.created_at')
             %th
             %th
         %tbody
@@ -26,7 +27,7 @@
               %td= @pagy.from + index
               %td= notification.title
               %td= notification.body
+              %td= timeago(notification.created_at).html_safe
               %td= "success: #{notification.success_count}, fails: #{notification.failure_count}"
               %td.text-right
                 = render 'shared/action_buttons', delete_url: notification_path(notification), object: notification
-

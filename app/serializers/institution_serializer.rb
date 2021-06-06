@@ -12,6 +12,7 @@
 #  audio      :string
 #  created_at :datetime         not null
 #  updated_at :datetime         not null
+#  code       :string
 #
 class InstitutionSerializer < ActiveModel::Serializer
   include Rails.application.routes.url_helpers
