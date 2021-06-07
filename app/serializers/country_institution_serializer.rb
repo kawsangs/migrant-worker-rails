@@ -12,7 +12,7 @@
 #  updated_at     :datetime         not null
 #
 class CountryInstitutionSerializer < ActiveModel::Serializer
-  attributes :country_id
+  attributes :country_id, :country_code
 
   belongs_to :institution
 end
