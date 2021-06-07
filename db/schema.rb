@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_06_03_070410) do
+ActiveRecord::Schema.define(version: 2021_06_07_080838) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -100,6 +100,7 @@ ActiveRecord::Schema.define(version: 2021_06_03_070410) do
     t.string "code", default: ""
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.string "name_km"
     t.index ["name"], name: "index_countries_on_name", unique: true
   end
 
@@ -131,7 +132,7 @@ ActiveRecord::Schema.define(version: 2021_06_03_070410) do
     t.datetime "updated_at", precision: 6, null: false
     t.string "image"
     t.string "audio"
-    t.boolean "published", default: false
+    t.datetime "published_at"
   end
 
   create_table "institutions", force: :cascade do |t|

@@ -1,9 +1,9 @@
 .d-sm-flex.align-items-center.justify-content-between.mb-4
-  %h1.h3.mb-0.text-gray-800= "#{@user.full_name}: Quiz"
+  %h1.h3.mb-0.text-gray-800= "#{@user.full_name}: #{t('quiz.game')}"
 
   = link_to users_path, class: 'btn btn-primary btn-sm shadow-sm' do
     %i.fas.fa-arrow-left.fa-sm.text-white-50
-    Back
+    = t('shared.back')
 
 .card.shadow.mb-4
   .card-body

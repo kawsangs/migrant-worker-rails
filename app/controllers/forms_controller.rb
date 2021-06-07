@@ -42,7 +42,7 @@ class FormsController < ApplicationController
 
   def publish
     @form = Form.find(params[:id])
-    @form.update(published: true)
+    @form.update(published_at: Time.now)
 
     redirect_to forms_url
   end

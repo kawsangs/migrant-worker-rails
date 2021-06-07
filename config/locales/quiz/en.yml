@@ -2,4 +2,5 @@ en:
   quiz:
     story: Story
     answer: Answer
-    quiz_code: Quiz code
+    quiz_code: Game code
+    game: Game

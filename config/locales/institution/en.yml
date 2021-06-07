@@ -1,9 +1,9 @@
 en:
   institution:
-    title: Institutions
+    title: Looking for help
     new: New institution
     edit: Edit institution
-    name: Name
+    name: Institution Name
     type: Type
     address: Address
     countries: Countries

@@ -6,9 +6,10 @@
 #
 #  id         :bigint           not null, primary key
 #  name       :string           not null
+#  code       :string           default("")
 #  created_at :datetime         not null
 #  updated_at :datetime         not null
-#  code       :string           default("")
+#  name_km    :string
 #
 class Country < ApplicationRecord
   has_many :country_institutions
@@ -28,6 +29,11 @@ class Country < ApplicationRecord
 
   def display_name
     country_iso.try(:local_name) || country_iso.try(:name) || name
+  end
+
+  def self.having_institutions
+    ids = joins(:institutions).group("countries.id").count.keys
+    where(id: ids)
   end
 
   private

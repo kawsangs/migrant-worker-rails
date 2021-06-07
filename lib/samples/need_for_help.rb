@@ -21,7 +21,7 @@ module Samples
 
     def self.export(type = "json")
       class_name = "Exporters::#{type.camelcase}Exporter"
-      class_name.constantize.new(::Country.all).export("countries")
+      class_name.constantize.new(::Country.having_institutions).export("countries")
       class_name.constantize.new(::Institution.all).export("institutions")
     rescue
       Rails.logger.warn "#{class_name} is unknwon"
@@ -31,7 +31,7 @@ module Samples
       def self.upsert_country(rows)
         rows[1..-1].each do |row|
           country = ::Country.find_or_initialize_by(code: row["code"])
-          country.update(name: row["name"])
+          country.update(name: row["name"], name_km: row["name_km"])
         end
       end
 
