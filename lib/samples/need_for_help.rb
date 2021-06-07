@@ -21,7 +21,7 @@ module Samples
 
     def self.export(type = "json")
       class_name = "Exporters::#{type.camelcase}Exporter"
-      class_name.constantize.new(::Country.all).export("countries")
+      class_name.constantize.new(::Country.having_institutions).export("countries")
       class_name.constantize.new(::Institution.all).export("institutions")
     rescue
       Rails.logger.warn "#{class_name} is unknwon"

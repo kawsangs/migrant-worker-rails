@@ -45,19 +45,19 @@
     - if policy(Institution).index?
       %li.nav-item{ class: [get_css_active_class('institutions')] }
         %a.nav-link{:href => institutions_path}
-          %i.fas.fa-fw.fa-university
-          %span= t("sidebar.institutions")
+          %i.fas.fa-fw.fa-question-circle
+          %span= t("sidebar.looking_for_help")
 
     - if policy(Form).index?
       %li.nav-item{ class: [get_css_active_class('forms')] }
         %a.nav-link{:href => forms_path}
-          %i.fas.fa-file-audio
+          %i.fas.fa-fw.fa-file-audio
           %span= t("form.story_form")
 
     - if policy(Notification).index?
       %li.nav-item{ class: [get_css_active_class('notifications')] }
         %a.nav-link{:href => notifications_path}
-          %i.fas.fa-bell
+          %i.fas.fa-fw.fa-bell
           %span= t("sidebar.notification")
 
     %li.nav-item{ class: get_css_active_class('about') }
