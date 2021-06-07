@@ -6,9 +6,10 @@
 #
 #  id         :bigint           not null, primary key
 #  name       :string           not null
+#  code       :string           default("")
 #  created_at :datetime         not null
 #  updated_at :datetime         not null
-#  code       :string           default("")
+#  name_km    :string
 #
 FactoryBot.define do
   factory :country do

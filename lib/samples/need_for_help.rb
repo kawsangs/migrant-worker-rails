@@ -31,7 +31,7 @@ module Samples
       def self.upsert_country(rows)
         rows[1..-1].each do |row|
           country = ::Country.find_or_initialize_by(code: row["code"])
-          country.update(name: row["name"])
+          country.update(name: row["name"], name_km: row["name_km"])
         end
       end
 
