@@ -1,8 +1,8 @@
 .d-flex
   .flex-1.mr-4
     = simple_form_for @notification do |f|
-      = f.input :title, label: t('notification.notification_title')
-      = f.input :body, label: t('notification.notification_text')
+      = f.input :title, label: t('notification.notification_title'), input_html: { maxlength: 64}
+      = f.input :body, label: t('notification.notification_text'), input_html: { maxlength: 255}
 
       .actions.text-right
         = link_to t('shared.cancel'), notifications_url, class: 'btn btn-secondary'
@@ -11,5 +11,9 @@
   %div
     .preview-background
       .card-box
-        .title
-        .text-body
+        .d-flex
+          .mr-2
+            = image_tag 'myjourney.png', size: '24x24', class: 'rounded'
+          %div
+            .title
+            .text-body

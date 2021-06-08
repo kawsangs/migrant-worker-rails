@@ -3,6 +3,6 @@ en:
     notification: Notification
     edit_notification: Edit Notification
     new_notification: New Notification
-    notification_title: Notification title
-    notification_text: Notification text
+    notification_title: Notification title (max 64 characters)
+    notification_text: Notification text (max 255 characters)
     send_message: Send message
