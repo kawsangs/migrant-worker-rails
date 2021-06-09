@@ -12,7 +12,7 @@ class UsersController < ApplicationController
       flash[:alert] = t("users.file_size_is_too_big")
       redirect_to users_url
     else
-      send_data(::UserService.new(users).export_csv, filename: "users.csv")
+      send_data(::UserService.new(users).export, filename: "users.xls")
     end
   end
 end
