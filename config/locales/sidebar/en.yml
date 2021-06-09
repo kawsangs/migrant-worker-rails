@@ -7,9 +7,10 @@ en:
     migrants: Migrants
     dashboard: Dashboard
     app_users: App Users
-    departure: Your departure
-    safety: Your safety
+    departure: Your departures
+    safety: Your safeties
     terms_and_conditions: Terms and Conditions
     privacy_policy: Privacy Policy
-    notification: Notification
-    looking_for_help: Looking for help
+    notification: Notifications
+    looking_for_help: Looking for helps
+    your_story: Your stories

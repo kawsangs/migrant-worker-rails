@@ -1,6 +1,7 @@
 en:
   form:
     story_form: Story form
+    your_stories: Your stories
     new_form: New form
     edit_form: Edit form
     hint: Hint
