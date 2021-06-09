@@ -5,6 +5,15 @@
       %i.fas.fa-plus.fa-sm.text-white-50
       = t('shared.add_new')
 
+%form.d-flex{ action: '/institutions', method: 'get' }
+  .form-group
+    .input-group
+      = text_field_tag(:keyword, params[:keyword], class: 'form-control keyword', placeholder: t('shared.search'))
+
+      %a#info.input-group-append
+        .input-group-text
+          %i.fas.fa-search
+
 .card.shadow.mb-4
   .card-body
     = render partial: "shared/no_data", locals: { items: @institutions, url: new_institution_path, label: t('shared.add_new') }

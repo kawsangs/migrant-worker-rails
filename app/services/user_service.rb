@@ -20,11 +20,11 @@ class UserService
 
   private
     def create_sheet_user(book)
-      sheet = book.create_worksheet name: "user"
-      sheet.row(0).push("#", "Full Name", "Sex", "Age", "Voice Record", "Registered At")
+      sheet = book.create_worksheet name: "Users"
+      sheet.row(0).push("User ID", "User Name", "Sex", "Age", "Voice Record", "Registered At")
 
       @users.each_with_index do |user, index|
-        sheet.row(index + 1).push(index + 1, user.full_name, user.sex, user.age, user.audio_url)
+        sheet.row(index + 1).push(user.id, user.full_name, user.sex, user.age, user.audio_url)
         sheet.row(index + 1).push(I18n.l(user.registered_at)) if user.registered_at.present?
       end
     end
@@ -42,7 +42,7 @@ class UserService
     end
 
     def build_quiz_header(sheet, form)
-      sheet.row(0).push("#", "User Code", "User Name")
+      sheet.row(0).push("User ID", "User Name")
       form.questions.each do |question|
         sheet.row(0).push(question.name)
       end
@@ -53,7 +53,7 @@ class UserService
       quizzes.find_each(batch_size: ENV["MAXIMUM_DOWNLOAD_RECORDS"].to_i).with_index do |quiz, index|
         row_num = index + 1
         # User info
-        sheet.row(row_num).push(row_num, quiz.user_uuid, quiz.user.full_name)
+        sheet.row(row_num).push(quiz.user.id, quiz.user.full_name)
 
         # Quiz answer info
         form.questions.each do |question|

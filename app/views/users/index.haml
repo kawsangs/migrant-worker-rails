@@ -1,20 +1,19 @@
 .d-sm-flex.align-items-center.justify-content-between.mb-4
   %h1.h3.mb-0.text-gray-800= t('sidebar.app_users')
 
-%form{ action: '/users', method: 'get' }
-  .form-row
-    .col-auto.form-group.pl-0
-      .input-group
-        = text_field_tag(:keyword, params[:keyword], class: 'form-control keyword', placeholder: t('users.search'))
+%form.d-flex{ action: '/users', method: 'get' }
+  .form-group
+    .input-group
+      = text_field_tag(:keyword, params[:keyword], class: 'form-control keyword', placeholder: t('users.search'))
 
-        %a#info.input-group-append
-          .input-group-text
-            %i.fas.fa-search
+      %a#info.input-group-append
+        .input-group-text
+          %i.fas.fa-search
 
-    .col-auto.form-group.flex-grow-1
-      %a.btn.btn-outline-info{href: download_users_path(keyword: params[:keyword]), target: '_blank'}
-        %i.fas.fa-download
-        = t('users.download_csv')
+  .col-auto.form-group
+    %a.btn.btn-outline-info{href: download_users_path(keyword: params[:keyword]), target: '_blank'}
+      %i.fas.fa-download
+      = t('users.download_excel')
 
 .card.shadow.mb-4
   .card-body
