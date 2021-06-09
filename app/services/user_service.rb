@@ -1,34 +1,65 @@
 # frozen_string_literal: true
 
-require "csv"
+require "spreadsheet"
 
 class UserService
   def initialize(users)
     @users = users
   end
 
-  def export_csv
-    CSV.generate(headers: true) do |csv|
-      csv << column_header
+  def export
+    Spreadsheet.client_encoding = "UTF-8"
+    book = Spreadsheet::Workbook.new
+    create_sheet_user(book)
+    create_sheet_games(book)
 
-      @users.each_with_index do |user, index|
-        csv << build_csv_record(user, index)
-      end
-    end
+    file_path = [Rails.root, "public", "uploads", "tmp", "users.xls"].join("/")
+    book.write(file_path)
+    File.read(file_path)
   end
 
   private
-    def build_csv_record(user, index)
-      columns = [index+1]
+    def create_sheet_user(book)
+      sheet = book.create_worksheet name: "user"
+      sheet.row(0).push("#", "Full Name", "Sex", "Age", "Voice Record", "Registered At")
 
-      %w(full_name sex age audio_url).each do |col|
-        columns.push(user.send(col))
+      @users.each_with_index do |user, index|
+        sheet.row(index + 1).push(index + 1, user.full_name, user.sex, user.age, user.audio_url)
+        sheet.row(index + 1).push(I18n.l(user.registered_at)) if user.registered_at.present?
       end
-      columns.push(I18n.l(user.registered_at, format: :long)) if user.registered_at.present?
-      columns
     end
 
-    def column_header
-      ["Number", "Full Name", "Sex", "Age", "Voice Record", "Registered At"]
+    def create_sheet_games(book)
+      Form.all.each do |form|
+        create_sheet_game(book, form)
+      end
+    end
+
+    def create_sheet_game(book, form)
+      sheet = book.create_worksheet name: form.name
+      build_quiz_header(sheet, form)
+      build_quiz_body(sheet, form)
+    end
+
+    def build_quiz_header(sheet, form)
+      sheet.row(0).push("#", "User Code", "User Name")
+      form.questions.each do |question|
+        sheet.row(0).push(question.name)
+      end
+    end
+
+    def build_quiz_body(sheet, form)
+      quizzes = Quiz.where(form_id: form.id).includes(:user, :answers)
+      quizzes.find_each(batch_size: ENV["MAXIMUM_DOWNLOAD_RECORDS"].to_i).with_index do |quiz, index|
+        row_num = index + 1
+        # User info
+        sheet.row(row_num).push(row_num, quiz.user_uuid, quiz.user.full_name)
+
+        # Quiz answer info
+        form.questions.each do |question|
+          answer = quiz.answers.select { |ans| ans.question_id == question.id }.first
+          sheet.row(row_num).push(answer.try(:value))
+        end
+      end
     end
 end
