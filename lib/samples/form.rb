@@ -82,8 +82,8 @@ module Samples
             score: row["score"],
             alert_message: row["alert_message"],
             alert_audio: get_audio(row["alert_audio"]),
-            warning: (row["is_warning"] == "TRUE"),
-            recursive: (row["is_repeat"] == "TRUE"),
+            warning: (row["is_warning"] == true),
+            recursive: (row["is_repeat"] == true),
             image: get_image(row["image"]),
           )
         end
