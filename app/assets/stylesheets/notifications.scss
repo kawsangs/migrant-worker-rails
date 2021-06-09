@@ -1,36 +1,40 @@
 // Place all the styles related to the notifications controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: https://sass-lang.com/
+.notifications-form {
+  .preview-background {
+    background-repeat: no-repeat;
+    background-size: 100%;
+    display: flex;
+    margin: 4px;
+    padding: 60px 20px 4px;
+    background-image: url(image_path('mobile.png'));
+    width: 370px;
+  }
 
-.preview-background {
-  background-repeat: no-repeat;
-  background-size: 100%;
-  display: flex;
-  margin: 4px;
-  padding: 60px 20px 4px;
-  background-image: url('mobile.png');
-  width: 370px;
-}
+  .card-box {
+    overflow: hidden;
+    width: 100%;
+    background-color: #fff;
+    min-height: 60px;
+    padding: 10px;
+  }
 
-.card-box {
-  overflow: hidden;
-  width: 100%;
-  background-color: #fff;
-  height: 60px;
-  padding: 10px;
-}
+  .title {
+    font-weight: 500;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: pre;
+    font-size: 10px;
+  }
 
-.title {
-  font-weight: 500;
-  overflow: hidden;
-  text-overflow: ellipsis;
-  white-space: pre;
-  font-size: 10px;
-}
+  .text-body {
+    font-size: 10px;
+  }
 
-.text-body {
-  overflow: hidden;
-  text-overflow: ellipsis;
-  white-space: pre;
-  font-size: 10px;
+  .text-wrapper {
+    overflow: hidden;
+    word-break: break-all;
+  }
+
 }

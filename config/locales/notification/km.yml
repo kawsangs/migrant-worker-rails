@@ -5,4 +5,6 @@ km:
     new_notification: បង្កើតសេចក្ដីជូនដំណឹង
     notification_title: ចំណងជើងជូនដំណឹង
     notification_text: អត្ថបទជូនដំណឹង
-    send_message: បញ្ជូនសារ
+    max_title: អតិបរមា 64 តួ
+    max_body: អតិបរមា 255 តួ
+    push_notification: បញ្ជូនការជូនដំណឹង

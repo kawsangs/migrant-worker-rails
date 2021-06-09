@@ -20,7 +20,6 @@
             %th= t('notification.notification_text')
             %th= t('shared.created_at')
             %th
-            %th
         %tbody
           - @notifications.each_with_index do |notification, index|
             %tr
@@ -28,6 +27,8 @@
               %td= notification.title
               %td= notification.body
               %td= timeago(notification.created_at).html_safe
-              %td= "success: #{notification.success_count}, fails: #{notification.failure_count}"
-              %td.text-right
-                = render 'shared/action_buttons', delete_url: notification_path(notification), object: notification
+              %td
+                - if notification.success_count.present?
+                  %span.badge.badge-success Delivered
+                - else
+                  %span.badge.badge-info Sent

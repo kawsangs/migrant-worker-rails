@@ -1,15 +1,40 @@
-.d-flex
+.d-flex.notifications-form
   .flex-1.mr-4
     = simple_form_for @notification do |f|
-      = f.input :title, label: t('notification.notification_title')
-      = f.input :body, label: t('notification.notification_text')
+      .form-group
+        %label
+          = t('notification.notification_title')
+          = "(#{t('notification.max_title')})"
+
+        = f.input :title, label: false, input_html: { maxlength: 64}
+
+        .text-right.small{style: 'margin-top: -12px'}
+          %span.title-count 0
+          %span /
+          %span 64
+
+      .form-group
+        %label
+          = t('notification.notification_text')
+          = "(#{t('notification.max_body')})"
+          %abbr.text-danger{title: 'required'} *
+
+        = f.input :body, label: false, input_html: { maxlength: 255}
+
+        .text-right.small{style: 'margin-top: -12px'}
+          %span.body-count 0
+          %span /
+          %span 255
 
       .actions.text-right
         = link_to t('shared.cancel'), notifications_url, class: 'btn btn-secondary'
-        = f.submit t('notification.send_message'), class: 'btn btn-primary'
+        = f.submit t('notification.push_notification'), class: 'btn btn-primary'
 
   %div
     .preview-background
-      .card-box
-        .title
-        .text-body
+      .d-flex.card-box
+        .mr-2
+          = image_tag 'myjourney.png', size: '24x24', class: 'rounded'
+        .text-wrapper
+          .title
+          .text-body

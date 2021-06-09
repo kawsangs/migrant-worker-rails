@@ -52,7 +52,7 @@
       %li.nav-item{ class: [get_css_active_class('forms')] }
         %a.nav-link{:href => forms_path}
           %i.fas.fa-fw.fa-file-audio
-          %span= t("form.story_form")
+          %span= t("sidebar.your_story")
 
     - if policy(Notification).index?
       %li.nav-item{ class: [get_css_active_class('notifications')] }
