@@ -28,7 +28,7 @@ class Country < ApplicationRecord
   end
 
   def display_name
-    country_iso.try(:local_name) || country_iso.try(:name) || name
+    name_km || country_iso.try(:local_name) || country_iso.try(:name) || name
   end
 
   def self.having_institutions

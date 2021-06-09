@@ -30,6 +30,12 @@ class Institution < ApplicationRecord
   accepts_nested_attributes_for :country_institutions, allow_destroy: true
   accepts_nested_attributes_for :contacts, reject_if: :all_blank, allow_destroy: true
 
+  def self.filter(params = {})
+    scope = all
+    scope = scope.where("LOWER(name) LIKE ?", "%#{params[:keyword].downcase}%") if params[:keyword].present?
+    scope
+  end
+
   def country_names
     countries.map(&:name).join(",")
   end

@@ -13,10 +13,11 @@
   / Wrapper scroll
   .sidebar-list-wrapper
     / Nav Item - Dashboard
-    %li.nav-item{ class: get_css_active_class('dashboard') }
-      %a.nav-link{href: ENV['DASHBOARD_URL'], target: '_blank'}
-        %i.fas.fa-fw.fa-tachometer-alt
-        %span= t("sidebar.dashboard")
+    - if ENV['DASHBOARD_URL'].present?
+      %li.nav-item{ class: get_css_active_class('dashboard') }
+        %a.nav-link{href: ENV['DASHBOARD_URL'], target: '_blank'}
+          %i.fas.fa-fw.fa-tachometer-alt
+          %span= t("sidebar.dashboard")
 
     - if policy(Account).index?
       %li.nav-item{ class: get_css_active_class('accounts') }
@@ -25,7 +26,7 @@
           %span= t("sidebar.accounts")
 
     - if policy(User).index?
-      %li.nav-item{ class: [get_css_active_class('users')] }
+      %li.nav-item{ class: [get_css_active_class('users'), ('active' if current_page?(root_url))] }
         %a.nav-link{:href => users_path}
           %i.fas.fa-fw.fa-people-carry
           %span= t("sidebar.app_users")
