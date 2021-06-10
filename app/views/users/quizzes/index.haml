@@ -1,5 +1,5 @@
 .d-sm-flex.align-items-center.justify-content-between.mb-4
-  %h1.h3.mb-0.text-gray-800= "#{@user.full_name}: #{t('quiz.game')}"
+  %h1.h3.mb-0.text-gray-800= "#{@user.full_name}(#{t('users.id')}: #{@user.id}): #{t('quiz.games')}"
 
   = link_to users_path, class: 'btn btn-primary btn-sm shadow-sm' do
     %i.fas.fa-arrow-left.fa-sm.text-white-50
@@ -17,7 +17,7 @@
           %tr
             %th #
             %th= t('quiz.story')
-            %th= t('quiz.quiz_code')
+            %th= t('quiz.game_date')
             %th= t('quiz.answer')
             %th
 
@@ -26,7 +26,7 @@
             %tr
               %td= @pagy.from + index
               %td= quiz.form.name
-              %td= quiz.uuid
+              %td= l(quiz.quizzed_at)
               %td
                 = link_to user_quiz_path(@user, quiz), class: 'btn btn-link', remote: true do
                   = quiz.answers.length

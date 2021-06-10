@@ -24,7 +24,8 @@ class UserService
       sheet.row(0).push("User ID", "User Name", "Sex", "Age", "Voice Record", "Registered At")
 
       @users.each_with_index do |user, index|
-        sheet.row(index + 1).push(user.id, user.full_name, user.sex, user.age, user.audio_url)
+        audio = user.audio_url.present? ? Spreadsheet::Link.new(user.audio_url, user.audio_url) : ""
+        sheet.row(index + 1).push(user.id, user.full_name, user.sex, user.age, audio)
         sheet.row(index + 1).push(I18n.l(user.registered_at)) if user.registered_at.present?
       end
     end
@@ -42,7 +43,7 @@ class UserService
     end
 
     def build_quiz_header(sheet, form)
-      sheet.row(0).push("User ID", "User Name")
+      sheet.row(0).push("Game date", "User ID", "User Name")
       form.questions.each do |question|
         sheet.row(0).push(question.name)
       end
@@ -53,7 +54,7 @@ class UserService
       quizzes.find_each(batch_size: ENV["MAXIMUM_DOWNLOAD_RECORDS"].to_i).with_index do |quiz, index|
         row_num = index + 1
         # User info
-        sheet.row(row_num).push(quiz.user.id, quiz.user.full_name)
+        sheet.row(row_num).push(I18n.l(quiz.quizzed_at), quiz.user.id, quiz.user.full_name)
 
         # Quiz answer info
         form.questions.each do |question|
