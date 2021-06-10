@@ -25,8 +25,7 @@ class UserService
 
       @users.each_with_index do |user, index|
         audio = user.audio_url.present? ? Spreadsheet::Link.new(user.audio_url, user.audio_url) : ""
-        sheet.row(index + 1).push(user.id, user.full_name, user.sex, user.age, audio)
-        sheet.row(index + 1).push(I18n.l(user.registered_at)) if user.registered_at.present?
+        sheet.row(index + 1).push(user.id, user.full_name, user.sex, user.age, audio, user.registered_at)
       end
     end
 
@@ -51,15 +50,14 @@ class UserService
 
     def build_quiz_body(sheet, form)
       quizzes = Quiz.where(form_id: form.id).includes(:user, :answers)
-      quizzes.find_each(batch_size: ENV["MAXIMUM_DOWNLOAD_RECORDS"].to_i).with_index do |quiz, index|
-        row_num = index + 1
+      quizzes.find_each(batch_size: 1000).with_index do |quiz, index|
         # User info
-        sheet.row(row_num).push(I18n.l(quiz.quizzed_at), quiz.user.id, quiz.user.full_name)
+        sheet.row(index + 1).push(quiz.quizzed_at, quiz.user.id, quiz.user.full_name)
 
         # Quiz answer info
         form.questions.each do |question|
           answer = quiz.answers.select { |ans| ans.question_id == question.id }.first
-          sheet.row(row_num).push(answer.try(:value))
+          sheet.row(index + 1).push(answer.try(:value))
         end
       end
     end
