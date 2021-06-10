@@ -26,10 +26,10 @@
             %tr
               %td= @pagy.from + index
               %td= quiz.form.name
-              %td= l(quiz.quizzed_at)
+              %td= l(quiz.quizzed_at, format: :nice)
               %td
                 = link_to user_quiz_path(@user, quiz), class: 'btn btn-link', remote: true do
-                  = quiz.answers.length
+                  = "#{t('quiz.quiz')}(#{quiz.answers.length})"
                   - if arr = quiz.answers.select{|a| a.voice_url.present?}.presence
                     = "(voice: #{arr.length})"
 

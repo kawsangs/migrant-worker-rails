@@ -26,11 +26,11 @@
         %thead
           %tr
             %th #
-            %th= t('user.full_name')
-            %th= t('user.sex')
-            %th= t('user.age')
-            %th= t('user.voice')
-            %th= t('user.registered_at')
+            %th= t('users.full_name')
+            %th= t('users.sex')
+            %th= t('users.age')
+            %th= t('users.voice')
+            %th= t('users.registered_at')
             %th
         %tbody
           - @users.each_with_index do |user, index|
@@ -49,7 +49,7 @@
               %td= timeago(user.registered_at).html_safe
               %td.text-right
                 - if user.quizzes.present?
-                  = link_to t("user.view_game"), user_quizzes_path(user), class: 'btn'
+                  = link_to t("users.view_game"), user_quizzes_path(user), class: 'btn'
 
       - if @pagy.pages > 1
         .pagy-wrapper

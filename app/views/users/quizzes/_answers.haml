@@ -1,11 +1,18 @@
 .modal-body
   - @quiz.form.questions.each do |question|
     - if answer = @quiz.answers.select{|a| a.question_id == question.id}.first.presence
-      %div.mb-3
+      %div.mb-3.p-1.card{style: 'background-color: rgba(0, 0, 0, 0.05)'}
         %div= question.name
-        .d-flex{style: 'background-color: rgba(0, 0, 0, 0.05)'}
+        .d-flex.mt-1
           %div
-            %strong= answer.value
+            - if question.type == 'Questions::Text'
+              %strong= answer.value
+            - else
+              - answer.value.split(',').each do |value|
+                .d-flex.align-items-center
+                  %i.far.fa-check-circle.mr-2.text-success
+                  %strong= value
+
             - if answer.voice_url.present?
               %audio{controls: true}
                 %source{src: answer.voice_url}
