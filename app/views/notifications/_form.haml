@@ -32,9 +32,14 @@
 
   %div
     .preview-background
-      .d-flex.card-box
-        .mr-2
-          = image_tag 'myjourney.png', size: '24x24', class: 'rounded'
-        .text-wrapper
-          .title
-          .text-body
+      .card-box
+        .d-flex.align-items-center
+          .mr-2
+            = image_tag 'myjourney.png', size: '18x18', class: 'rounded'
+          .flex-1.small ដំណើរឆ្លងដែនរបស់ខ្ញុំ
+          %span.toggle-trigger.pointer
+            %i.fas.fa-chevron-down{style: 'font-size: 12px'}
+
+        .text-wrapper.mt-2
+          .title.text-truncate
+          .text-body.text-truncate

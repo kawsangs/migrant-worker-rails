@@ -3,12 +3,16 @@
 
   %h3.title.mb-3.text-center
     = ENV['APP_NAME']
-
-    - if shortcut_name = ENV['APP_SHORTCUT_NAME'].presence
-      = "(#{shortcut_name})"
+    %div
+      = "(My Journeys)"
 
   .logo-image-wrapper.flex-row.text-center.justify-content-conter
     = image_tag 'myjourney.png', size: '200x200'
 
   %footer.mt-4
     = render 'devise/shared/stackholder'
+
+  .text-center
+    = link_to "Download Mobile App?", "#", class: 'btn btn-link'
+  .text-center
+    = image_tag "qr_code.png", size: '100x100'

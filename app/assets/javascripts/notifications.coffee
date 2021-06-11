@@ -5,6 +5,21 @@ MW.NotificationsNew = do ->
     onChangeBody()
     onKeypressTitle()
     onKeypressBody()
+    onClickToggleCollapse()
+
+  onClickToggleCollapse = ->
+    $(document).off 'click', ".toggle-trigger"
+    $(document).on 'click', ".toggle-trigger", (event)->
+      if $('.title').hasClass('text-truncate')
+        $('.title').removeClass('text-truncate')
+        $('.text-body').removeClass('text-truncate')
+        $('.toggle-trigger i').removeClass('fa-chevron-down')
+        $('.toggle-trigger i').addClass('fa-chevron-up')
+      else
+        $('.title').addClass('text-truncate')
+        $('.text-body').addClass('text-truncate')
+        $('.toggle-trigger i').removeClass('fa-chevron-up')
+        $('.toggle-trigger i').addClass('fa-chevron-down')
 
   handleDisplay = ->
     title = $("[name='notification[title]']").val();
