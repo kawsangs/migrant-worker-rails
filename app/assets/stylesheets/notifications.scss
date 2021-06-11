@@ -22,19 +22,15 @@
 
   .title {
     font-weight: 500;
-    overflow: hidden;
-    text-overflow: ellipsis;
-    white-space: pre;
-    font-size: 10px;
+    font-size: 12px;
   }
 
   .text-body {
-    font-size: 10px;
+    font-size: 12px;
   }
 
   .text-wrapper {
     overflow: hidden;
     word-break: break-all;
   }
-
 }
