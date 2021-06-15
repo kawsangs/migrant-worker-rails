@@ -10,9 +10,9 @@
   = f.input :uuid, as: :hidden
   = f.input :parent_id, as: :hidden
   = f.input :name, label: t('category.name')
-  = f.input :description
-
   = render "categories/form/audio", f: f
+
+  = f.input :description, input_html: {id: 'description'}
 
   .actions.text-right.position-absolute.pb-4{style: 'bottom: -70px; right: 0;'}
     = link_to t('shared.cancel'), cancel_url, class: 'btn btn-secondary'

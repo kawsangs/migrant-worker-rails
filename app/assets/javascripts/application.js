@@ -11,6 +11,8 @@
 
 //= require sb-admin-2
 
+//= require jquery.richtext
+
 //= require application/namespace
 //= require application/util
 
@@ -33,6 +35,7 @@
 //= require departures/new
 //= require forms/new
 //= require notifications
+//= require categories
 
 $(document).on("ready turbolinks:load", () => {
   MW.Common.Topbar.init();
