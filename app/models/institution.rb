@@ -13,6 +13,7 @@
 #  created_at :datetime         not null
 #  updated_at :datetime         not null
 #  code       :string
+#  name_km    :string
 #
 class Institution < ApplicationRecord
   enum kind: { ngo: 1, gov: 2, other: 3 }

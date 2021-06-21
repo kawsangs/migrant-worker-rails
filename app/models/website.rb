@@ -11,13 +11,8 @@
 #  created_at     :datetime         not null
 #  updated_at     :datetime         not null
 #
-class Contact < ApplicationRecord
-  belongs_to :institution
-
-  TYPES = [
-    ["Phone", "Phone"],
-    ["Facebook", "Facebook"],
-    ["Whatsapp", "WhatsApp"],
-    ["Website", "Website"],
-  ]
+class Website < Contact
+  def fa
+    "fas fa-globe-europe"
+  end
 end
