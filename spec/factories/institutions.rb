@@ -13,6 +13,7 @@
 #  created_at :datetime         not null
 #  updated_at :datetime         not null
 #  code       :string
+#  name_km    :string
 #
 FactoryBot.define do
   factory :institution do

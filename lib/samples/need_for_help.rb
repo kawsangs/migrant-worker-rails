@@ -42,7 +42,8 @@ module Samples
 
           institution = ::Institution.find_or_initialize_by(code: row["code"])
           institution.update(
-            name: row["name"],
+            name: row["name"].presence || row["name_km"],
+            name_km: row["name_km"].presence || row["name"],
             kind: row["kind"],
             audio: get_audio(row["audio"]),
             address: row["address"],
@@ -59,8 +60,12 @@ module Samples
             institution.contacts.find_or_create_by(value: phone, type: "Phone")
           end
 
-          row["facebook"].to_s.split("/").each do |fb|
+          row["facebook"].to_s.split(";").each do |fb|
             institution.contacts.find_or_create_by(value: fb, type: "Facebook")
+          end
+
+          row["website"].to_s.split(";").each do |web|
+            institution.contacts.find_or_create_by(value: web, type: "Website")
           end
         end
       end
