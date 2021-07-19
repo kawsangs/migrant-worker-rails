@@ -16,7 +16,7 @@ module Samples
       def self.get_audio(filename)
         return unless filename.present?
 
-        audio = audios.select { |file| file.split("/").last.split(".").first == "#{filename.split('.').first}" }.first
+        audio = audios.select { |file| file.split("/").last.split(".mp3").first == "#{filename.split('.mp3').first}" }.first
         Pathname.new(audio).open if audio.present?
       end
 

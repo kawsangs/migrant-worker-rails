@@ -32,7 +32,7 @@ module Samples
       def self.upsert_form(rows)
         rows[1..-1].each do |row|
           form = ::Form.find_or_initialize_by(code: row["code"])
-          form.update(name: row["name"], image: get_image(row["image"]), audio: get_audio(row["image"]))
+          form.update(name: row["name"], image: get_image(row["image"]), audio: get_audio(row["audio"]))
         end
       end
 
