@@ -23,8 +23,8 @@ RSpec.describe InstitutionSerializer do
   describe "serializable" do
     subject { described_class.new(institution).as_json }
 
-    it { is_expected.to include(:id, :address, :audio_url,
+    it { is_expected.to include(:id, :address, :audio_url, :name_km,
                                 :contacts, :country_institutions,
-                                :kind, :logo_url, :name) }
+                                :logo_url, :name) }
   end
 end

@@ -1,6 +1,7 @@
 %tr
   %td= @pagy.from + institution_counter
   %td= institution.name
+  %td= institution.name_km
   %td
     .countries.w-50
       - institution.country_institutions.each do |country|
@@ -10,9 +11,11 @@
           = country.display_name
   %td
     - institution.contacts.each do |contact|
-      .contact.text-nowrap
-        %span{ class: contact.fa }
-        %span= contact.value
+      .d-flex
+        %div
+          .mr-1{ style: 'width: 16px;' }
+            %i{class: contact.fa}
+        .text-break= contact.value
   %td
     - if institution.logo.file.present?
       .position-relative.d-inline-block.attachment
