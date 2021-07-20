@@ -32,10 +32,10 @@
 
 //= require accounts/index
 //= require category_images
+//= require categories
 //= require departures/new
 //= require forms/new
 //= require notifications
-//= require categories
 
 $(document).on("ready turbolinks:load", () => {
   MW.Common.Topbar.init();
