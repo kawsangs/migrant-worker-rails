@@ -106,13 +106,3 @@ MW.CategoriesNew = do ->
 
 
   { init: init }
-
-MW.DeparturesNew = MW.CategoriesNew
-MW.DeparturesEdit = MW.DeparturesNew
-MW.DeparturesUpdate = MW.DeparturesNew
-MW.DeparturesCreate = MW.DeparturesNew
-
-MW.SafetiesNew = MW.CategoriesNew
-MW.DeparturesEdit = MW.SafetiesNew
-MW.DeparturesUpdate = MW.SafetiesNew
-MW.DeparturesCreate = MW.SafetiesNew
