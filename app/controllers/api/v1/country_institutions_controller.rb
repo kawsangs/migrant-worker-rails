@@ -14,7 +14,7 @@ module Api
 
       private
         def set_country
-          @country ||= Country.find(params[:country_id])
+          @country ||= Country.find_by(code: params[:country_id])
         end
     end
   end

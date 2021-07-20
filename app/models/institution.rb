@@ -16,14 +16,12 @@
 #  name_km    :string
 #
 class Institution < ApplicationRecord
-  enum kind: { ngo: 1, gov: 2, other: 3 }
-
   has_many :contacts, inverse_of: :institution, dependent: :destroy
   has_many :country_institutions, dependent: :destroy
   has_many :countries, through: :country_institutions
 
   validates :country_institutions, length: { minimum: 1, message: "should have at least 1 country." }
-  validates :name, presence: true
+  validates :name, :name_km, presence: true
 
   mount_uploader :logo, ImageUploader
   mount_uploader :audio, AudioUploader

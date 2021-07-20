@@ -12,7 +12,7 @@ RSpec.describe Api::V1::CountryInstitutionsController, type: :controller do
     end
 
     it "returns json" do
-      get :index, params: { country_id: country.id }
+      get :index, params: { country_id: country.code }
 
       expect(response.content_type).to include "application/json"
     end

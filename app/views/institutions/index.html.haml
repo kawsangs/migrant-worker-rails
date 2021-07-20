@@ -24,14 +24,15 @@
       %table.table.table-hover
         %thead
           %tr
-            %th{:scope => "col"} #
-            %th{:scope => "col"}= t('institution.name')
-            %th{:scope => "col"}= t('institution.countries')
-            %th{:scope => "col"}= t('institution.contacts')
-            %th{:scope => "col"}= t('institution.logo')
-            %th{:scope => "col"}= t('institution.audio')
-            %th{:scope => "col"}= t('institution.address')
-            %th{:scope => "col"} &nbsp;
+            %th #
+            %th= t('institution.name')
+            %th= t('institution.name_km')
+            %th= t('institution.countries')
+            %th= t('institution.contacts')
+            %th= t('institution.logo')
+            %th= t('institution.audio')
+            %th= t('institution.address')
+            %th
         %tbody
           = render @institutions
 
