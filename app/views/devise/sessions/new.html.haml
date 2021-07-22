@@ -27,9 +27,9 @@
     .actions
       = f.submit t('devise.sign_in'), class: 'btn btn-primary w-100 mb-2'
 
-  .text-right
+  .text-right.mt-2
     = render "devise/shared/links"
-    = link_to t('about.about_us'), about_path, class: 'btn btn-link pl-0'
+    = link_to t('about.about_us'), about_path, class: 'btn btn-link pr-0'
 
   .footer
-    .text-right.mt-4= "Version: #{ENV['APP_VERSION'] || 'development'}"
+    .text-right.mt-2= "Version: #{ENV['APP_VERSION'] || 'development'}"
