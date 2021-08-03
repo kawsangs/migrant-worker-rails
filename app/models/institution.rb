@@ -23,6 +23,8 @@ class Institution < ApplicationRecord
   validates :country_institutions, length: { minimum: 1, message: "should have at least 1 country." }
   validates :name, :name_km, presence: true
 
+  before_create :set_display_order
+
   mount_uploader :logo, ImageUploader
   mount_uploader :audio, AudioUploader
 
@@ -38,4 +40,9 @@ class Institution < ApplicationRecord
   def country_names
     countries.map(&:name).join(",")
   end
+
+  private
+    def set_display_order
+      self.display_order ||= self.class.maximum(:display_order).to_i + 1
+    end
 end
