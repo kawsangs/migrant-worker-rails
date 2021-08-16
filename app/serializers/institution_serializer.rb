@@ -18,7 +18,7 @@
 class InstitutionSerializer < ActiveModel::Serializer
   include Rails.application.routes.url_helpers
 
-  attributes :id, :name, :address, :logo_url, :audio_url, :name_km
+  attributes :id, :name, :address, :logo_url, :audio_url, :name_km, :display_order
 
   has_many :contacts
   has_many :country_institutions
