@@ -18,6 +18,7 @@
 
 //= require common/topbar
 //= require common/timeago
+//= require common/country
 
 // For building question skip logic
 //= require common/skip_logic_constant
@@ -36,6 +37,7 @@
 //= require departures/new
 //= require forms/new
 //= require notifications
+//= require institutions/new
 
 $(document).on("ready turbolinks:load", () => {
   MW.Common.Topbar.init();

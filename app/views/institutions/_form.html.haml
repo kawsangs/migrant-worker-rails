@@ -7,7 +7,8 @@
 
   %label= t('institution.countries')
   .form-group
-    %input{ type: 'text', value: @institution.country_names, placeholder: t('institution.input_placeholder'), class: 'form-control tagify-country' }    
+    %input{ type: 'text', value: @institution.countries.map(&:name).join(","), placeholder: t('institution.input_placeholder'), class: 'form-control tagify-country', 'data-country': Country.all.map { |c| { name: c.name, code: c.code}}.to_json }
+
     - @institution.country_institutions.each.with_index do |c, index|
       %input{ type: 'hidden', name: "institution[country_institutions_attributes][#{index}][id]", value: c.id }
       %input{ type: 'hidden', name: "institution[country_institutions_attributes][#{index}][_destroy]", class: "del-" + tagify_class(c.c_name), value: '' }
@@ -20,7 +21,7 @@
     = f.simple_fields_for :contacts do |contact|
       = render 'contact_fields', f: contact
     .links.mb-3
-      = link_to_add_association t('institution.add_contact'), f, :contacts, class: 'btn btn-sm btn-outline-secondary'
+      = link_to_add_fields t('institution.add_contact'), f, :contacts, class: 'btn btn-sm btn-outline-secondary'
 
   .actions.text-right.mb-3
     = link_to t('shared.cancel'), institutions_path, class: 'btn btn-secondary'
