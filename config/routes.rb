@@ -69,6 +69,8 @@ Rails.application.routes.draw do
       resources :quizzes, only: [:create]
       resources :answers, only: [:update]
       resource  :registered_tokens, only: [:update]
+
+      resources :videos
     end
   end
 
