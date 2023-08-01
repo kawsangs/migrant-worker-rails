@@ -32,6 +32,7 @@ Rails.application.routes.draw do
   resources :safeties
   resources :category_images, only: [:create, :destroy]
   resources :notifications
+  resources :videos
 
   resources :institutions do
     member do

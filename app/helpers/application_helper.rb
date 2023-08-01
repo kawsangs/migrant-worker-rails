@@ -10,8 +10,8 @@ module ApplicationHelper
     "#{prefix}-#{subfix}"
   end
 
-  def get_css_active_class(name)
-    return "active" if request.path.split("/")[1] == name
+  def css_active_class(controller_name, *other)
+    return "active" if params[:controller] == controller_name || other.include?(params[:controller])
   end
 
   def pagy_label(pagy)
