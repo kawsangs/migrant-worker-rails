@@ -19,6 +19,8 @@
 //= require common/topbar
 //= require common/timeago
 //= require common/country
+//= require common/sidebar
+//= require common/confirm_modal
 
 // For building question skip logic
 //= require common/skip_logic_constant
@@ -42,6 +44,9 @@
 $(document).on("ready turbolinks:load", () => {
   MW.Common.Topbar.init();
   MW.Common.Timeago.init();
+  MW.Common.Sidebar.init();
+  MW.Common.ConfirmModal.init();
+
   $("[data-toggle='tooltip']").tooltip();
 
   let currentPage = MW.Util.getCurrentPage();

@@ -30,3 +30,10 @@ en:
     confirm_logout: Are you going to logout the account?
     created_at: Created Date
     updated_at: Updated Date
+    file_size_is_too_big: Download size too large, please filter. You can download up to %{max_record} records
+    url: URL
+    title: Title
+    pagination_title: "Displaying items <b>%{from}</b> - <b>%{to}</b> of <b>%{total}</b> in total"
+    are_you_sure_to_delete: Are you sure to delete the %{type} <b>%{name}</b>?
+    yes_delete: Yes, Delete!
+    confirm_delete: Confirm delete %{name}

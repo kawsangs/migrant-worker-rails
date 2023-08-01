@@ -19,7 +19,7 @@ km:
     status_off: 'បិទ'
     setup: 'Setup'
     change: 'Change'
-    learn_more: 'ស្វែង​យល់​បន្ថែម'
+    learn_more: 'ស្វែងយល់បន្ថែម'
     need_help: 'ត្រូវការជំនួយ?'
     no_result_found: 'មិនមានទិន្ន័យ!'
     apply: 'ស្វែងរក'
@@ -30,3 +30,10 @@ km:
     confirm_logout: តើអ្នកនឹងចាកចេញពីគណនីទេ?
     created_at: កាលបរិច្ឆេទបង្កើត
     updated_at: កាលបរិច្ឆេទធ្វើបច្ចុប្បន្នភាព
+    file_size_is_too_big: ទំហំឯកសារធំពេក សូមធ្វើការច្រោះ អ្នកអាចទាញយកធំបំផុត %{max_record} ជួរដេក!
+    url: URL
+    title: ចំណងជើង
+    pagination_title: "បង្ហាញទិន្ន័យ <b>%{from}</b> - <b>%{to}</b> នៃចំនួនសរុប <b>%{total}</b>"
+    are_you_sure_to_delete: តើអ្នកប្រាកដជាលុប%{type} <b>%{name}</b> នេះមែនទេ?
+    yes_delete: បាទ/ចាស, លុប!
+    confirm_delete: បញ្ជាក់ការលុបការ %{name}
