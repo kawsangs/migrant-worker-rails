@@ -37,3 +37,12 @@ en:
     are_you_sure_to_delete: Are you sure to delete the %{type} <b>%{name}</b>?
     yes_delete: Yes, Delete!
     confirm_delete: Confirm delete %{name}
+    search_by_name: Search by name
+    search_by_title: Search by title
+    download_json: Download JSON
+    download_excel: Download Excel
+    import_from_file: Import from Excel(.xlsx)
+    import_from_zip_file: Import from compress(.zip) file
+    importing_wizard: "Importing %{name} Wizard"
+    importing_history: "Importing %{name} history"
+    cannot_delete: Cannot delete, it is currently in used!

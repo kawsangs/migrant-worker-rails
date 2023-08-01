@@ -61,7 +61,7 @@
               %span= t("sidebar.your_story")
 
           - if policy(Video).index?
-            %a.collapse-item{ href: videos_path, class: css_active_class('videos') }
+            %a.collapse-item{ href: videos_path, class: css_active_class('videos', 'video_authors') }
               %i.fas.fa-fw.fa-regular.fa-circle-play
               %span= t("sidebar.video")
 
