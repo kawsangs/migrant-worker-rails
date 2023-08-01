@@ -23,7 +23,7 @@ MW.Common.Sidebar = (() => {
   }
 
   function isExpandSidebar() {
-    return !$(".sidebar-toggled");
+    return !$(".sidebar-toggled") || !$(".sidebar-toggled").length;
   }
 
   function setListActived(dom) {

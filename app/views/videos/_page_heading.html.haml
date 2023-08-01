@@ -1,0 +1,11 @@
+= render 'shared/headers/page_heading', title: t("sidebar.video") do
+
+  %div
+    = render "shared/buttons/add_new_button", url: new_video_path
+
+.d-flex
+  .flex-grow-1
+    %form{ action: videos_path, method: 'get' }
+      = render "shared/filters/filter_name", placeholder: t('shared.search_by_title')
+
+  %div= render "switch_view_buttons"
