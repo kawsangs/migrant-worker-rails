@@ -3,6 +3,14 @@
   %div
     = render "shared/buttons/add_new_button", url: new_video_path
 
+    %button.btn{"aria-expanded" => "false", "aria-haspopup" => "true", "data-toggle" => "dropdown", :type => "button"}
+      %i.fas.fa-ellipsis-v
+
+    .dropdown-menu.dropdown-menu-right
+      %a.btn.dropdown-item{ href: videos_path(format: :json), target: '_blank' }
+        %i.fas.fa-download.drop-menu-icon
+        %span= t('shared.download_json')
+
 .d-flex
   .flex-grow-1
     %form{ action: videos_path, method: 'get' }
