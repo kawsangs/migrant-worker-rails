@@ -14,6 +14,7 @@
               %th= t('shared.title')
               %th= t('video.url')
               %th= t('video.author')
+              %th= t('shared.tags')
               %th
 
           %tbody#body-content
@@ -26,6 +27,7 @@
                     = image_tag video.thumbnail, style: 'width: 50px;'
 
                 %td= video.video_author_name
+                %td= video.tag_list
                 %td
                   .d-flex.justify-content-end
                     = render 'shared/buttons/edit_button', object: video, url: edit_video_path(video)

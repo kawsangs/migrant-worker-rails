@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2023_08_01_015819) do
+ActiveRecord::Schema.define(version: 2023_08_01_102221) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "pgcrypto"
@@ -204,6 +204,22 @@ ActiveRecord::Schema.define(version: 2023_08_01_015819) do
 
   create_table "registered_tokens", force: :cascade do |t|
     t.string "token"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+  end
+
+  create_table "taggings", force: :cascade do |t|
+    t.uuid "tag_id"
+    t.uuid "taggable_id"
+    t.string "taggable_type"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+  end
+
+  create_table "tags", id: :uuid, default: -> { "gen_random_uuid()" }, force: :cascade do |t|
+    t.string "name"
+    t.integer "taggings_count"
+    t.integer "display_order"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end

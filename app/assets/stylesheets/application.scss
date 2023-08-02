@@ -1,13 +1,11 @@
 @import 'bootstrap';
 @import "sb-admin-2";
 
-@import "@yaireo/tagify/src/tagify";
+@import "tagify";
 @import "custom/tagify";
 @import "lightbox2/src/css/lightbox.css";
 @import "custom/lightbox2";
 @import "richtext";
-
-// @import 'tagify';
 
 @import 'shared/base';
 @import 'shared/common';

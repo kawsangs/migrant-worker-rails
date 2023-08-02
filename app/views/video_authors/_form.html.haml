@@ -1,7 +1,6 @@
-.w-75.view-center
-  = simple_form_for @video_author, html: { class: 'main-form' } do |f|
-    .mb-3= f.input :name
+= simple_form_for @video_author, html: { class: 'main-form' } do |f|
+  .mb-3= f.input :name
 
-    .actions.text-right.mb-3
-      = render "shared/buttons/cancel_button", url: video_authors_path
-      = render "shared/buttons/submit_button", f: f
+  .actions.text-right.mb-3
+    = render "shared/buttons/cancel_button", url: video_authors_path
+    = render "shared/buttons/submit_button", f: f

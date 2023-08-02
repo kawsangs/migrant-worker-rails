@@ -34,6 +34,7 @@ Rails.application.routes.draw do
   resources :notifications
   resources :videos
   resources :video_authors
+  resources :video_tags
 
   resources :institutions do
     member do
