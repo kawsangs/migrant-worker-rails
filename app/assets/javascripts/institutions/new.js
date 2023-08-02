@@ -1,8 +1,8 @@
-import country from '../../lib/country'
-
 MW.InstitutionsNew = (() => {
   function init() {
-    country.load();
+    MW.Form.onClickAddAssociation();
+    MW.Form.onClickRemoveField();
+    MW.Common.Country.init();
   }
 
   return { init }

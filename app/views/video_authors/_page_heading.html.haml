@@ -1,0 +1,9 @@
+= render 'shared/headers/page_heading', title: t("video.video_author") do
+  = render "shared/buttons/download_button", label: t('shared.download_json'), url: video_authors_path(filter_params.merge(format: :json))
+
+.d-flex
+  .flex-grow-1
+    %form{ action: video_authors_path, method: 'get' }
+      = render "shared/filters/filter_name"
+
+  %div= render "videos/switch_view_buttons"

@@ -14,7 +14,7 @@ gem "puma", "~> 4.3"
 # Use SCSS for stylesheets
 gem "sass-rails", ">= 6"
 # Transpile app-like JavaScript. Read more: https://github.com/rails/webpacker
-gem "webpacker", "~> 4.0"
+# gem "webpacker", "~> 4.0"
 # Turbolinks makes navigating your web application faster. Read more: https://github.com/turbolinks/turbolinks
 gem "turbolinks", "~> 5"
 # Build JSON APIs with ease. Read more: https://github.com/rails/jbuilder
@@ -55,12 +55,13 @@ gem "sidekiq-scheduler", "~> 3.0.1"
 gem "countries", "~> 3.1"
 gem "cocoon", "~> 1.2", ">= 1.2.15"
 
-gem "roo", "~> 2.8.3"
-
 gem "fcm", "~> 0.0.6"
 
 gem "roo", "~> 2.8.3"
 gem "spreadsheet", "~> 1.2.9"
+# Write excel
+gem "caxlsx"
+gem "caxlsx_rails"
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
