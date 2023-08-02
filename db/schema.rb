@@ -10,10 +10,12 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_08_03_071140) do
+ActiveRecord::Schema.define(version: 2023_08_01_102221) do
 
   # These are extensions that must be enabled in order to support this database
+  enable_extension "pgcrypto"
   enable_extension "plpgsql"
+  enable_extension "uuid-ossp"
 
   create_table "accounts", force: :cascade do |t|
     t.string "email", default: "", null: false
@@ -49,6 +51,19 @@ ActiveRecord::Schema.define(version: 2021_08_03_071140) do
 
   create_table "api_keys", force: :cascade do |t|
     t.string "access_token"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+  end
+
+  create_table "batches", id: :uuid, default: -> { "gen_random_uuid()" }, force: :cascade do |t|
+    t.string "code"
+    t.integer "total_count", default: 0
+    t.integer "valid_count", default: 0
+    t.integer "new_count", default: 0
+    t.integer "province_count", default: 0
+    t.string "reference"
+    t.integer "creator_id"
+    t.string "type"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end
@@ -135,6 +150,14 @@ ActiveRecord::Schema.define(version: 2021_08_03_071140) do
     t.datetime "published_at"
   end
 
+  create_table "importing_items", id: :uuid, default: -> { "gen_random_uuid()" }, force: :cascade do |t|
+    t.uuid "itemable_id"
+    t.string "itemable_type"
+    t.uuid "batch_id"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+  end
+
   create_table "institutions", force: :cascade do |t|
     t.string "name", null: false
     t.integer "kind", default: 2, comment: "ex: ngo, gov. agency, other (default)"
@@ -206,6 +229,22 @@ ActiveRecord::Schema.define(version: 2021_08_03_071140) do
     t.datetime "updated_at", precision: 6, null: false
   end
 
+  create_table "taggings", force: :cascade do |t|
+    t.uuid "tag_id"
+    t.uuid "taggable_id"
+    t.string "taggable_type"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+  end
+
+  create_table "tags", id: :uuid, default: -> { "gen_random_uuid()" }, force: :cascade do |t|
+    t.string "name"
+    t.integer "taggings_count"
+    t.integer "display_order"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+  end
+
   create_table "users", force: :cascade do |t|
     t.string "uuid"
     t.string "full_name"
@@ -213,6 +252,24 @@ ActiveRecord::Schema.define(version: 2021_08_03_071140) do
     t.string "age"
     t.string "audio"
     t.datetime "registered_at"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+  end
+
+  create_table "video_authors", id: :uuid, default: -> { "gen_random_uuid()" }, force: :cascade do |t|
+    t.string "name"
+    t.integer "videos_count", default: 0
+    t.integer "display_order", default: 0
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+  end
+
+  create_table "videos", id: :uuid, default: -> { "gen_random_uuid()" }, force: :cascade do |t|
+    t.string "name"
+    t.text "description"
+    t.string "url"
+    t.integer "display_order"
+    t.uuid "video_author_id"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end

@@ -1,0 +1,16 @@
+= simple_form_for @video do |f|
+  .mb-3= f.input :name, label: t('shared.title')
+  .mb-3= f.input :url, label: t('shared.url')
+
+  .mb-3
+    = f.fields_for :video_author, (@video.video_author || @video.build_video_author ) do |builder|
+      .w-100{ 'data-authors' => VideoAuthor.pluck(:name) }
+        %label= t('video.author')
+        %div= builder.input :name, label: false, input_html: { class: 'typeahead-author' }
+
+  / Tags
+  .mb-3= f.input :tag_list, label: t('shared.tags'), input_html: {  'data-tags': Video.tag_counts.sort_by(&:count).reverse.pluck(:name).to_json }
+
+  .actions.text-right.mb-3
+    = render "shared/buttons/cancel_button", url: videos_path
+    = render "shared/buttons/submit_button", f: f
