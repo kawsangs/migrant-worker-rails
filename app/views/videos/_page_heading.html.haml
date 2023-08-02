@@ -1,0 +1,27 @@
+= render 'shared/headers/page_heading', title: t("sidebar.video") do
+
+  %div
+    = render "shared/buttons/add_new_button", url: new_video_path
+
+    %button.btn{"aria-expanded" => "false", "aria-haspopup" => "true", "data-toggle" => "dropdown", :type => "button"}
+      %i.fas.fa-ellipsis-v
+
+    .dropdown-menu.dropdown-menu-right
+      %a.btn.dropdown-item{ href: new_video_importer_path }
+        %i.fas.fa-file-import.drop-menu-icon
+        %span= t("shared.import_from_file")
+
+      %a.btn.dropdown-item{ href: video_importers_path }
+        %i.fas.fa-history.drop-menu-icon
+        %span= t('shared.importing_history', name: t('sidebar.video'))
+
+      %a.btn.dropdown-item{ href: videos_path(format: :json), target: '_blank' }
+        %i.fas.fa-download.drop-menu-icon
+        %span= t('shared.download_json')
+
+.d-flex
+  .flex-grow-1
+    %form{ action: videos_path, method: 'get' }
+      = render "shared/filters/filter_name", placeholder: t('shared.search_by_title')
+
+  %div= render "switch_view_buttons"

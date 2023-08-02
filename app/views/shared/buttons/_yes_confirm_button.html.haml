@@ -1,0 +1,7 @@
+/ Yes confirm button
+- if @batch.valid_count.positive?
+  %button.btn.btn-primary.btn-sm{'data-toggle' => 'modal', 'data-target' => '#confirmImportModal', type: 'button'}
+    = t('shared._yes')
+- else
+  %span.btn.btn-primary.btn-sm.disabled{ 'data-toggle' => 'tooltip', 'data-html' => 'true', title: t("shared.at_least_one_valid_item") }
+    = t('shared._yes')

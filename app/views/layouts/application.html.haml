@@ -6,19 +6,20 @@
     = csrf_meta_tags
     = csp_meta_tag
     = favicon_link_tag asset_path('favicon.png')
-    %link{:crossorigin => "anonymous", :href => "https://use.fontawesome.com/releases/v5.7.0/css/all.css", :integrity => "sha384-lZN37f5QGtY3VHgisS14W3ExzMWZxybE1SJSEsQp9S+oqd12jhcu+A56Ebc1zFSJ", :rel => "stylesheet"}
+
+    %link{:crossorigin => "anonymous", :href => "https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css", :rel => "stylesheet"}
+
     = stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload'
     = javascript_include_tag 'application', 'data-turbolinks-track': 'reload'
-    = javascript_pack_tag 'application', 'data-turbolinks-track': 'reload'
 
   %body{ id: css_class_name }
     #wrapper
       = render 'shared/sidebar'
 
-      #content-wrapper
+      #content-wrapper.d-flex.flex-column
         = render 'shared/topbar'
 
-        #content.container-fluid
+        .container-fluid
           = render "shared/notify_message"
           = yield
 
