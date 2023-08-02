@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class AddDisplayOrderToInstitutions < ActiveRecord::Migration[6.0]
   def up
     add_column :institutions, :display_order, :integer

@@ -177,6 +177,12 @@ MW.Form = do ->
       appendField(this)
       event.preventDefault()
 
+  onClickAddAssociation = ->
+    $(document).off('click', 'form .add_association')
+    $(document).on 'click', 'form .add_association', (event) ->
+      appendField(this)
+      event.preventDefault()
+
   onClickAddFieldOption = ->
     $(document).off('click', 'form .add_options')
     $(document).on 'click', 'form .add_options', (event) ->
@@ -291,4 +297,8 @@ MW.Form = do ->
         animateListItems($item, container, _super)
         assignDisplayOrderToListItem()
 
-  { init: init }
+  {
+    init: init
+    onClickAddAssociation: onClickAddAssociation
+    onClickRemoveField: onClickRemoveField
+  }

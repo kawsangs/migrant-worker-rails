@@ -10,64 +10,83 @@
   / Divider
   %hr.sidebar-divider.my-0/
 
-  / Wrapper scroll
-  .sidebar-list-wrapper
-    / Nav Item - Dashboard
-    - if ENV['DASHBOARD_URL'].present?
-      %li.nav-item{ class: get_css_active_class('dashboard') }
-        %a.nav-link{href: ENV['DASHBOARD_URL'], target: '_blank'}
-          %i.fas.fa-fw.fa-tachometer-alt
-          %span= t("sidebar.dashboard")
+  / Nav Item - Dashboard
+  - if ENV['DASHBOARD_URL'].present?
+    %li.nav-item{ class: css_active_class('dashboard') }
+      %a.nav-link{href: ENV['DASHBOARD_URL'], target: '_blank'}
+        %i.fas.fa-fw.fa-tachometer-alt
+        %span= t("sidebar.dashboard")
 
-    - if policy(Account).index?
-      %li.nav-item{ class: get_css_active_class('accounts') }
-        = link_to accounts_path, class: 'nav-link' do
-          %i.fas.fa-fw.fa-users
-          %span= t("sidebar.accounts")
+  - if policy(User).index?
+    %li.nav-item{ class: css_active_class('users') }
+      %a.nav-link{:href => users_path}
+        %i.fas.fa-fw.fa-people-carry
+        %span= t("sidebar.app_users")
 
-    - if policy(User).index?
-      %li.nav-item{ class: [get_css_active_class('users'), ('active' if current_page?(root_url))] }
-        %a.nav-link{:href => users_path}
-          %i.fas.fa-fw.fa-people-carry
-          %span= t("sidebar.app_users")
+  - if policy(Notification).index?
+    %li.nav-item{ class: [css_active_class('notifications')] }
+      %a.nav-link{:href => notifications_path}
+        %i.fas.fa-fw.fa-bell
+        %span= t("sidebar.notification")
 
-    - if policy(Categories::Departure).index?
-      %li.nav-item{ class: [get_css_active_class('departures')] }
-        %a.nav-link{:href => departures_path}
-          %i.fas.fa-fw.fa-plane-departure
-          %span= t("sidebar.departure")
+  - if current_account.system_admin?
+    / Manage Content
+    %li.nav-item
+      %a.nav-link.collapsed{"aria-controls" => "collapseContent", "aria-expanded" => "true", "data-target" => "#collapseContent", "data-toggle" => "collapse", :href => "#"}
+        %i.fas.fa-fw.fa-cog
+        %span= t('sidebar.contents')
 
-    - if policy(Categories::Safety).index?
-      %li.nav-item{ class: [get_css_active_class('safeties')] }
-        %a.nav-link{:href => safeties_path}
-          %i.fas.fa-fw.fa-user-shield
-          %span= t("sidebar.safety")
+      #collapseContent.collapse{"aria-labelledby" => "headingTwo", "data-parent" => "#accordionSidebar"}
+        .bg-white.py-2.collapse-inner.rounded
+          %h6.collapse-header For admin only
 
-    - if policy(Institution).index?
-      %li.nav-item{ class: [get_css_active_class('institutions')] }
-        %a.nav-link{:href => institutions_path}
-          %i.fas.fa-fw.fa-question-circle
-          %span= t("sidebar.looking_for_help")
+          - if policy(Categories::Departure).index?
+            %a.collapse-item{ href: departures_path, class: css_active_class('departures') }
+              %i.fas.fa-fw.fa-plane-departure
+              %span= t("sidebar.departure")
 
-    - if policy(Form).index?
-      %li.nav-item{ class: [get_css_active_class('forms')] }
-        %a.nav-link{:href => forms_path}
-          %i.fas.fa-fw.fa-file-audio
-          %span= t("sidebar.your_story")
+          - if policy(Categories::Safety).index?
+            %a.collapse-item{ href: safeties_path, class: css_active_class('safeties') }
+              %i.fas.fa-fw.fa-user-shield
+              %span= t("sidebar.safety")
 
-    - if policy(Notification).index?
-      %li.nav-item{ class: [get_css_active_class('notifications')] }
-        %a.nav-link{:href => notifications_path}
-          %i.fas.fa-fw.fa-bell
-          %span= t("sidebar.notification")
+          - if policy(Institution).index?
+            %a.collapse-item{ href: institutions_path, class: css_active_class('institutions') }
+              %i.fas.fa-fw.fa-question-circle
+              %span= t("sidebar.looking_for_help")
 
-    %li.nav-item{ class: get_css_active_class('about') }
-      %a.nav-link{:href => about_path}
-        %i.fas.fa-fw.fa-exclamation-circle
-        %span= t('sidebar.about')
+          - if policy(Form).index?
+            %a.collapse-item{ href: forms_path, class: css_active_class('forms') }
+              %i.fas.fa-fw.fa-file-audio
+              %span= t("sidebar.your_story")
 
-    / Divider
-    %hr.sidebar-divider.d-none.d-md-block
+          - if policy(Video).index?
+            %a.collapse-item{ href: videos_path, class: css_active_class('videos', 'video_authors', 'video_importers', 'video_tags') }
+              %i.fas.fa-fw.fa-regular.fa-circle-play
+              %span= t("sidebar.video")
+
+    / Manage Settings
+    %li.nav-item
+      %a.nav-link.collapsed{"aria-controls" => "collapseSetting", "aria-expanded" => "true", "data-target" => "#collapseSetting", "data-toggle" => "collapse", :href => "#"}
+        %i.fas.fa-fw.fa-wrench
+        %span= t('sidebar.settings')
+
+      #collapseSetting.collapse{"aria-labelledby" => "headingTwo", "data-parent" => "#accordionSidebar"}
+        .bg-white.py-2.collapse-inner.rounded
+          %h6.collapse-header Application setting
+
+          - if policy(Account).create?
+            %a.collapse-item{ href: accounts_path, class: css_active_class('accounts') }
+              %i.fas.fa-fw.fa-users
+              %span= t('sidebar.accounts')
+
+  %li.nav-item{ class: css_active_class('about') }
+    %a.nav-link{:href => about_path}
+      %i.fas.fa-fw.fa-exclamation-circle
+      %span= t('sidebar.about')
+
+  / Divider
+  %hr.sidebar-divider.d-none.d-md-block
 
   / Sidebar Toggler (Sidebar)
   .text-center.d-none.d-md-inline.mt-3

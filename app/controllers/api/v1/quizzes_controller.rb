@@ -9,7 +9,7 @@ module Api
         if @quiz.save
           render json: @quiz
         else
-          render json: { errors: @quiz_error }
+          render json: { errors: @quiz.error }
         end
       end
 
