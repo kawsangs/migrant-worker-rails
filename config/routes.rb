@@ -32,6 +32,10 @@ Rails.application.routes.draw do
   resources :safeties
   resources :category_images, only: [:create, :destroy]
   resources :notifications
+  resources :videos
+  resources :video_authors
+  resources :video_tags
+  resources :video_importers
 
   resources :institutions do
     member do
@@ -67,6 +71,8 @@ Rails.application.routes.draw do
       resources :quizzes, only: [:create]
       resources :answers, only: [:update]
       resource  :registered_tokens, only: [:update]
+
+      resources :videos
     end
   end
 

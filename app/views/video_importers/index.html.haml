@@ -1,0 +1,7 @@
+= render "shared/headers/page_heading", title: t('shared.importing_history', name: t('sidebar.video')) do
+
+  .d-flex.mt-3.mt-md-0.justify-content-end
+    = render "shared/buttons/back_button", url: videos_path
+    = render "shared/buttons/add_new_button", url: new_video_importer_path, name: t('sidebar.video')
+
+= render "shared/batches/batch_list"

@@ -1,0 +1,20 @@
+- title ||= ""
+- message ||= ""
+
+#confirmImportModal.modal.fade{"aria-hidden" => "true", "aria-labelledby" => "exampleModalLabel", :tabindex => "-1"}
+  .modal-dialog
+    .modal-content
+      .modal-header
+        %h5.modal-title
+          %i.fas.fa-exclamation-triangle.text-danger
+          %span.title= title
+
+        %button.close{"aria-label" => "Close", "data-dismiss" => "modal", :type => "button"}
+          %span{"aria-hidden" => "true"} ×
+
+      .modal-body.text-left
+        = message
+      .modal-footer
+        %button.btn.btn-secondary{"data-dismiss" => "modal", :type => "button"}= t("shared.cancel")
+
+        = f.submit t('shared._yes'), class: 'btn btn-primary'

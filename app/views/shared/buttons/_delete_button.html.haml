@@ -1,0 +1,6 @@
+- message ||= {}
+
+- if policy(object).destroy?
+  %span{ data: { 'toggle': 'tooltip', 'placement': 'top' }, title: t('shared.delete') }
+    %button.btn.btn-circle.btn-sm.btn-outline-danger{ "data-target" => "#confirmModal", "data-toggle" => "modal", "data-message" => message, :type => "button" }
+      %i.fas.fa-trash-alt
