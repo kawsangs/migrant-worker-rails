@@ -1,0 +1,10 @@
+en:
+  video:
+    videos: Videos
+    video: Video
+    new_video: New video
+    edit_video: Edit video
+    author: Author
+    video_author: Video author
+    number_of_video: "# of video"
+    edit_video_author: Edit video author
