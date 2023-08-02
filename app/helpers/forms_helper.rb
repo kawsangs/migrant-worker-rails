@@ -8,6 +8,6 @@ module FormsHelper
       render(association.to_s.singularize + "_fields", f: builder, option: option)
     end
 
-    link_to(name, "#", class: "add_#{association} btn", data: { id: id, fields: fields.gsub("\n", "") })
+    link_to(name, "#", class: "add_#{association} btn add_association #{option[:class]}", data: { id: id, fields: fields.gsub("\n", "") })
   end
 end

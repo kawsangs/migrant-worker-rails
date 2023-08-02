@@ -1,0 +1,21 @@
+= render "shared/no_data", items: @tags
+
+- if @tags.present?
+  = render "shared/headers/pagination_title", objects: @tags
+
+  .table-responsive
+    %table.table.table-hover.pretty
+      %thead
+        %tr
+          %th #
+          %th= t('shared.tag')
+          %th= t('video.number_of_video')
+
+      %tbody
+        - @tags.each_with_index do |tag, index|
+          %tr
+            %td= @pagy.from + index
+            %td= tag.name
+            %td= tag.videos.length
+
+  = render "shared/footers/pagination"
