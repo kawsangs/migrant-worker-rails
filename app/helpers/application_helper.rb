@@ -42,10 +42,41 @@ module ApplicationHelper
     "tagify-item-" + value.to_s.gsub(/[^a-zA-Z0-9]/, "-")
   end
 
-  def timeago(date)
+  def status_class(item)
+    return "invalid" unless item.valid?
+
+    item.new_record? ? "new" : "edit"
+  end
+
+  def status_message(item)
+    return item.errors.full_messages.join(", ") unless item.valid?
+
+    item.new_record? ? I18n.t("shared.new") : I18n.t("shared.edit")
+  end
+
+  def display_date(date)
     return "" unless date.present?
 
-    str = "<span class='timeago' data-date='#{l(date)}'>"
+    format = "YYYY-MM-DD"
+    format = format.downcase.split("-").join("_")
+
+    I18n.l(date, format: :"#{format}")
+  end
+
+  def display_datetime(date)
+    return "" unless date.present?
+
+    format = "YYYY-MM-DD"
+    format = format.downcase.split("-").join("_") + "_time"
+
+    I18n.l(date, format: :"#{format}")
+  end
+
+  def timeago(date, type = "date")
+    return "" unless date.present?
+
+    dis_date = type == "date" ? display_date(date) : display_datetime(date)
+    str = "<span class='timeago' data-date='#{dis_date}'>"
     str += time_ago_in_words(date)
     str += "</span>"
     str

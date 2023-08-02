@@ -55,6 +55,19 @@ ActiveRecord::Schema.define(version: 2023_08_01_102221) do
     t.datetime "updated_at", precision: 6, null: false
   end
 
+  create_table "batches", id: :uuid, default: -> { "gen_random_uuid()" }, force: :cascade do |t|
+    t.string "code"
+    t.integer "total_count", default: 0
+    t.integer "valid_count", default: 0
+    t.integer "new_count", default: 0
+    t.integer "province_count", default: 0
+    t.string "reference"
+    t.integer "creator_id"
+    t.string "type"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+  end
+
   create_table "categories", force: :cascade do |t|
     t.string "name"
     t.string "image"
@@ -135,6 +148,14 @@ ActiveRecord::Schema.define(version: 2023_08_01_102221) do
     t.string "image"
     t.string "audio"
     t.datetime "published_at"
+  end
+
+  create_table "importing_items", id: :uuid, default: -> { "gen_random_uuid()" }, force: :cascade do |t|
+    t.uuid "itemable_id"
+    t.string "itemable_type"
+    t.uuid "batch_id"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
   end
 
   create_table "institutions", force: :cascade do |t|

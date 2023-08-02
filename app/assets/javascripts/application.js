@@ -32,6 +32,7 @@
 //= require tagify.min
 //= require common/form
 //= require common/audio
+//= require common/wizard_form
 
 //= require accounts/index
 //= require category_images
@@ -47,6 +48,7 @@ $(document).on("ready turbolinks:load", () => {
   MW.Common.Timeago.init();
   MW.Common.Sidebar.init();
   MW.Common.ConfirmModal.init();
+  MW.Common.WizardForm.init();
 
   $("[data-toggle='tooltip']").tooltip();
 
