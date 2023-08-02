@@ -15,6 +15,7 @@
 #
 class Video < ApplicationRecord
   include TaggableConcern
+  include ItemableConcern
 
   # Association
   belongs_to :video_author, optional: true, counter_cache: true

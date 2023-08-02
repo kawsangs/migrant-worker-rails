@@ -35,6 +35,7 @@ Rails.application.routes.draw do
   resources :videos
   resources :video_authors
   resources :video_tags
+  resources :video_importers
 
   resources :institutions do
     member do
