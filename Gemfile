@@ -49,7 +49,7 @@ gem "awesome_nested_set", "~> 3.4.0"
 gem "active_model_serializers", "~> 0.10.12"
 gem "jquery-fileupload-rails", "~> 1.0.0"
 
-gem "sidekiq", "~> 6.2.1"
+gem "sidekiq", "~> 6.4.0"
 gem "sidekiq-scheduler", "~> 3.0.1"
 
 gem "countries", "~> 3.1"
