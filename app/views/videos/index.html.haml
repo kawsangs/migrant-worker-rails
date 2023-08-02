@@ -1,0 +1,39 @@
+= render "page_heading"
+
+.card.shadow.mb-4
+  .card-body
+    = render "shared/no_data", items: @videos
+    = render "shared/headers/pagination_title", objects: @videos
+
+    - if @videos.present?
+      .table-responsive.mb-4
+        %table.table.table-hover.pretty
+          %thead
+            %tr
+              %th{width: 60} #
+              %th= t('shared.title')
+              %th= t('video.url')
+              %th= t('video.author')
+              %th= t('shared.tags')
+              %th
+
+          %tbody#body-content
+            - @videos.each_with_index do |video, index|
+              %tr
+                %td= @pagy.from + index
+                %td= video.name
+                %td
+                  = link_to video.url, target: '_blank' do
+                    = image_tag video.thumbnail, style: 'width: 50px;'
+
+                %td= video.video_author_name
+                %td= video.tag_list
+                %td
+                  .d-flex.justify-content-end
+                    = render 'shared/buttons/edit_button', object: video, url: edit_video_path(video)
+
+                    = render 'shared/buttons/delete_button', object: video, message: { type: t('video.video'), name: video.name, url: video_path(video) }
+
+      = render "shared/footers/pagination"
+
+= render "shared/modals/confirm_delete_modal"
