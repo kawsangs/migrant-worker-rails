@@ -14,6 +14,8 @@
 #  updated_at      :datetime         not null
 #
 class Video < ApplicationRecord
+  include TaggableConcern
+
   # Association
   belongs_to :video_author, optional: true, counter_cache: true
 

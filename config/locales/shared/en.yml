@@ -39,6 +39,7 @@ en:
     confirm_delete: Confirm delete %{name}
     search_by_name: Search by name
     search_by_title: Search by title
+    search_by_tag: Search by tag
     download_json: Download JSON
     download_excel: Download Excel
     import_from_file: Import from Excel(.xlsx)
@@ -46,3 +47,5 @@ en:
     importing_wizard: "Importing %{name} Wizard"
     importing_history: "Importing %{name} history"
     cannot_delete: Cannot delete, it is currently in used!
+    tags: Tags
+    tag: Tag

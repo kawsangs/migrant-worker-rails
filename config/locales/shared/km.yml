@@ -39,6 +39,7 @@ km:
     confirm_delete: បញ្ជាក់ការលុបការ %{name}
     search_by_name: ស្វែងរកតាមឈ្មោះ
     search_by_title: ស្វែងរកតាមចំណងជើង
+    search_by_tag: ស្វែងរកតាមថេក
     download_json: ទាញយកជា JSON
     download_excel: ទាញយកជា Excel
     import_from_file: បញ្ចូលទិន្នន័យពី Excel(.xlsx)
@@ -46,3 +47,5 @@ km:
     importing_wizard: "បញ្ចូល%{name} Wizard"
     importing_history: "ប្រវត្តិនៃការបញ្ចូល%{name}តាម Excel"
     cannot_delete: មិនអាចលុប ព្រោះកំពុងប្រើប្រាស់!
+    tags: ថេក/ក្រុម
+    tag: ថេក

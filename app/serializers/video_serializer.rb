@@ -14,7 +14,7 @@
 #  updated_at      :datetime         not null
 #
 class VideoSerializer < ActiveModel::Serializer
-  attributes :id, :name, :url, :display_order, :updated_at
+  attributes :id, :name, :url, :display_order, :tag_list, :updated_at
 
   belongs_to :video_author
 end

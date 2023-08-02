@@ -1,7 +1,11 @@
 .btn-group.btn-group-sm{"aria-label" => "", :role => "group"}
   = link_to video_authors_path, class: ['btn btn-outline-secondary', css_active_class('video_authors')] do
-    %i.fa-solid.fa-tag
+    %i.fa-regular.fa-id-badge
     = t("video.video_author")
+
+  = link_to video_tags_path, class: ['btn btn-outline-secondary', css_active_class('video_tags')] do
+    %i.fa-solid.fa-tag
+    = t("shared.tags")
 
   = link_to videos_path, class: ['btn btn-outline-secondary', css_active_class('videos')] do
     %i.fa-solid.fa-circle-play

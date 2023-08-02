@@ -40,6 +40,7 @@
 //= require forms/new
 //= require notifications
 //= require institutions/new
+//= require videos/form
 
 $(document).on("ready turbolinks:load", () => {
   MW.Common.Topbar.init();
