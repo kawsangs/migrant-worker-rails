@@ -2,11 +2,9 @@
   .flex-1.mr-4
     = simple_form_for @notification do |f|
       .form-group
-        %label
-          = t('notification.notification_title')
-          = "(#{t('notification.max_title')})"
+        - title_label = "#{t('notification.notification_title')}(#{t('notification.max_title')})"
 
-        = f.input :title, label: false, input_html: { maxlength: 64}
+        = f.input :title, label: title_label, input_html: { maxlength: 64}
 
         .text-right.small{style: 'margin-top: -12px'}
           %span.title-count 0
@@ -14,12 +12,9 @@
           %span 64
 
       .form-group
-        %label
-          = t('notification.notification_text')
-          = "(#{t('notification.max_body')})"
-          %abbr.text-danger{title: 'required'} *
+        - body_label = "#{t('notification.notification_text')} (#{t('notification.max_body')})"
 
-        = f.input :body, label: false, input_html: { maxlength: 255}
+        = f.input :body, label: body_label, input_html: { maxlength: 255}
 
         .text-right.small{style: 'margin-top: -12px'}
           %span.body-count 0
@@ -27,8 +22,9 @@
           %span 255
 
       .actions.text-right
-        = link_to t('shared.cancel'), notifications_url, class: 'btn btn-secondary'
-        = f.submit t('notification.push_notification'), class: 'btn btn-primary'
+        = render "shared/buttons/cancel_button", url: notifications_url
+
+        = render "shared/buttons/submit_button", f: f, title: t("notification.save_draft")
 
   %div
     .preview-background

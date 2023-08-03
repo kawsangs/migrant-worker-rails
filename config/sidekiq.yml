@@ -12,4 +12,4 @@ production:
 :schedule:
   clean_category_image:
     cron: "0 0 * * *"
-    class: CategoryImageWorker
+    class: CategoryImageJob

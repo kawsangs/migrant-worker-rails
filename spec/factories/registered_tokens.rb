@@ -11,5 +11,6 @@
 #
 FactoryBot.define do
   factory :registered_token do
+    token       { SecureRandom.hex(10) }
   end
 end

@@ -6,7 +6,7 @@ class StoryFormPolicy < ApplicationPolicy
   end
 
   def update?
-    create?
+    create? && !record.published?
   end
 
   def create?
@@ -14,7 +14,11 @@ class StoryFormPolicy < ApplicationPolicy
   end
 
   def destroy?
-    create?
+    update?
+  end
+
+  def publish?
+    update?
   end
 
   class Scope < Scope

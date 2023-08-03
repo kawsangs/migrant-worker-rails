@@ -2,6 +2,7 @@ km:
   form:
     story_form: ទម្រង់រឿង
     your_stories: សាច់រឿងរបស់អ្នក
+    your_story: សាច់រឿងរបស់អ្នក
     new_form: ទម្រង់ថ្មី
     edit_form: កែតម្រូវទម្រង់
     hint: ព័ត៌មានជំនួយ

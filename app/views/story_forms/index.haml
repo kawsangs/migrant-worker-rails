@@ -26,11 +26,13 @@
               %td= timeago(form.updated_at).html_safe
               %td= timeago(form.published_at).html_safe
 
-              %td.text-right
-                - unless form.published_at.present?
-                  %span{data: { toggle: 'tooltip', placement: 'top', title: t('form.publish')}}
-                    %a.btn.btn-sm.btn-info.btn-circle{"data-target" => "#publishModal_#{form.id}", "data-toggle" => "modal", href: '#'}
-                      %i.fas.fa-globe
-                  = render 'modal_confirm_publish', form: form
+              %td
+                .d-flex.justify-content-end
+                  = render "shared/buttons/publish_button", object: form, message: { type: t('form.your_story'), name: form.name, url: publish_story_form_path(form) }
 
-                = render 'shared/action_buttons', edit_url: edit_story_form_path(form), delete_url: story_form_path(form), object: form
+                  = render "shared/buttons/edit_button", url: edit_story_form_path(form), object: form
+
+                  = render 'shared/buttons/delete_button', object: form,  message: { type: t('form.your_story'), name: form.name, url: story_form_path(form) }
+
+= render 'shared/modals/confirm_delete_modal'
+= render 'shared/modals/confirm_publish_modal'

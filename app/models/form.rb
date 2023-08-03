@@ -34,4 +34,8 @@ class Form < ApplicationRecord
 
   # Callback
   before_create :secure_code
+
+  def published?
+    published_at.present?
+  end
 end

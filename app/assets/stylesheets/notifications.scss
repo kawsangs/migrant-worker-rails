@@ -34,3 +34,22 @@
     word-break: break-all;
   }
 }
+
+.badge {
+  font-weight: normal;
+}
+
+.badge-draft {
+  color: #fff;
+  background-color: #6c757d;
+}
+
+.badge-pending {
+  color: #212529;
+  background-color: #ffc107;
+}
+
+.badge-delivered {
+  color: #fff;
+  background-color: #28a745;
+}

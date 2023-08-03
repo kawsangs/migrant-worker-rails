@@ -1,17 +1,12 @@
-.d-sm-flex.align-items-center.justify-content-between.mb-4
-  %h1.h3.mb-0.text-gray-800= t("notification.notification")
-  - if @notifications.present?
-    = link_to new_notification_path, class: "btn btn-primary btn-sm shadow-sm" do
-      %i.fas.fa-plus.fa-sm.text-white-50
-      = t('shared.add_new')
+= render "shared/headers/page_heading", title: t("notification.notification") do
+  = render "shared/buttons/add_new_button", url: new_notification_path
 
 .card.shadow.mb-4
   .card-body
-    = render partial: "shared/no_data", locals: { items: @notifications, url: new_notification_path, label: t('shared.add_new') }
+    = render "shared/no_data", items: @notifications
+    = render "shared/headers/pagination_title", objects: @notifications
 
     - if @notifications.present?
-      = render 'shared/pagy_label'
-
       %table.table.table-hover
         %thead
           %tr
@@ -19,7 +14,9 @@
             %th= t('notification.notification_title')
             %th= t('notification.notification_text')
             %th= t('shared.created_at')
+            %th= t('shared.status')
             %th
+
         %tbody
           - @notifications.each_with_index do |notification, index|
             %tr
@@ -28,7 +25,15 @@
               %td= notification.body
               %td= timeago(notification.created_at).html_safe
               %td
-                - if notification.success_count.present?
-                  %span.badge.badge-success Delivered
-                - else
-                  %span.badge.badge-info Sent
+                %span.badge{ class: "badge-#{notification.status}" }
+                  = notification.status
+              %td
+                .d-flex.justify-content-end
+                  = render "shared/buttons/publish_button", object: notification, message: { type: t('notification.notification'), name: notification.title, url: publish_notification_path(notification) }
+
+                  = render "shared/buttons/edit_button", url: edit_notification_path(notification), object: notification
+
+                  = render 'shared/buttons/delete_button', object: notification,  message: { type: t('notification.push_notification'), name: notification.title, url: notification_path(notification) }
+
+= render "shared/modals/confirm_delete_modal"
+= render 'shared/modals/confirm_publish_modal'
