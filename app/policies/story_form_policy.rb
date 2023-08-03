@@ -1,16 +1,16 @@
 # frozen_string_literal: true
 
-class VideoBatchPolicy < ApplicationPolicy
+class StoryFormPolicy < ApplicationPolicy
   def index?
     create?
   end
 
-  def create?
-    user.system_admin? || admin?
-  end
-
   def update?
     create?
+  end
+
+  def create?
+    user.system_admin?
   end
 
   def destroy?
@@ -18,7 +18,6 @@ class VideoBatchPolicy < ApplicationPolicy
   end
 
   class Scope < Scope
-    # NOTE: Be explicit about which records you allow access to!
     def resolve
       scope.all
     end

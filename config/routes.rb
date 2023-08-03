@@ -45,7 +45,7 @@ Rails.application.routes.draw do
   end
 
   # User story
-  resources :forms do
+  resources :story_forms do
     put :publish, on: :member
   end
 

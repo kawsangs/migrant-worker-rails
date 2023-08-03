@@ -101,6 +101,8 @@ MW.Criteria = (function () {
 
   function assignOperator(questionSelect) {
     let questionCode = questionSelect.value;
+    if(!questionCode) { return }
+
     let fieldType = $(`.question-code`).filter((i, o) => o.value == questionCode).parents('.fieldset').find('.field-type');
     let operatorDom = $(questionSelect).parents('.criteria').find('.operator-select');
     let opertorOptions = MW.Operator[fieldType.val()];

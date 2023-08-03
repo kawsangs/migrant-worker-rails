@@ -9,4 +9,4 @@
       .modal-body= t("form.confirm_publish")
       .modal-footer
         %button.btn.btn-secondary{"data-dismiss" => "modal", :type => "button"}= t("shared.cancel")
-        = link_to t("form.publish"), publish_form_path(form), method: :put, class: 'btn btn-primary'
+        = link_to t("form.publish"), publish_story_form_path(form), method: :put, class: 'btn btn-primary'
