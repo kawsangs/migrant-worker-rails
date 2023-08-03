@@ -56,7 +56,7 @@
               %span= t("sidebar.looking_for_help")
 
           - if policy(Form).index?
-            %a.collapse-item{ href: forms_path, class: css_active_class('forms') }
+            %a.collapse-item{ href: story_forms_path, class: css_active_class('story_forms') }
               %i.fas.fa-fw.fa-file-audio
               %span= t("sidebar.your_story")
 

@@ -15,9 +15,10 @@
 #  audio        :string
 #  published_at :datetime
 #
-FactoryBot.define do
-  factory :form do
-    name { FFaker::Name.name }
-    form_type { Forms::StoryForm }
+module Forms
+  class StoryForm < ::Form
+    def self.policy_class
+      StoryFormPolicy
+    end
   end
 end

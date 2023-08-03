@@ -1,4 +1,5 @@
-= simple_form_for @form, html: { class: 'main-form skip-logic' } do |f|
+- url = @form.persisted? ? story_form_path(@form) : story_forms_path
+= simple_form_for @form, url: url, html: { class: 'main-form skip-logic' } do |f|
   = f.input :name
 
   %fieldset
@@ -14,7 +15,7 @@
       = link_to_add_fields t('form.add_question'), f, :questions
 
     .actions.text-right.mb-3
-      = link_to t('shared.cancel'), forms_path, class: 'btn btn-secondary'
+      = link_to t('shared.cancel'), story_forms_path, class: 'btn btn-secondary'
       = f.submit t('shared.save'), class: 'btn btn-primary'
 
 :javascript

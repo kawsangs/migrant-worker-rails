@@ -1,10 +1,10 @@
-MW.FormsNew = do ->
+MW.Story_formsNew = do ->
   init = ->
     MW.Form.init()
 
 
   { init: init }
 
-MW.FormsEdit = MW.FormsNew
-MW.FormsUpdate = MW.FormsNew
-MW.FormsCreate = MW.FormsNew
+MW.Story_formsEdit = MW.Story_formsNew
+MW.Story_formsUpdate = MW.Story_formsNew
+MW.Story_formsCreate = MW.Story_formsNew

@@ -1,55 +1,55 @@
 # frozen_string_literal: true
 
-class FormsController < ApplicationController
+class StoryFormsController < ApplicationController
   def index
-    @pagy, @forms = pagy(policy_scope(Form.all))
+    @pagy, @forms = pagy(policy_scope(Forms::StoryForm.all))
   end
 
   def new
-    @form = Form.new
+    @form = Forms::StoryForm.new
   end
 
   def create
-    @form = Form.new(form_params)
+    @form = Forms::StoryForm.new(form_params)
 
     if @form.save
-      redirect_to forms_url
+      redirect_to story_forms_url
     else
       render :new
     end
   end
 
   def edit
-    @form = Form.find(params[:id])
+    @form = Forms::StoryForm.find(params[:id])
   end
 
   def update
-    @form = Form.find(params[:id])
+    @form = Forms::StoryForm.find(params[:id])
 
     if @form.update(form_params)
-      redirect_to forms_url
+      redirect_to story_forms_url
     else
       render :edit
     end
   end
 
   def destroy
-    @form = Form.find(params[:id])
+    @form = Forms::StoryForm.find(params[:id])
     @form.destroy
 
-    redirect_to forms_url
+    redirect_to story_forms_url
   end
 
   def publish
-    @form = Form.find(params[:id])
+    @form = Forms::StoryForm.find(params[:id])
     @form.update(published_at: Time.now)
 
-    redirect_to forms_url
+    redirect_to story_forms_url
   end
 
   private
     def form_params
-      params.require(:form).permit(:name, :form_type,
+      params.require(:forms_story_form).permit(:name,
         questions_attributes: [
           :id, :name, :type, :required, :display_order, :code,
           :_destroy, :hint, :relevant, :audio, :remove_audio,
@@ -58,6 +58,6 @@ class FormsController < ApplicationController
           options_attributes: %i[id name value score alert_audio remove_alert_audio alert_message other warning recursive _destroy],
           criterias_attributes: %i[id question_code operator response_value _destroy]
         ]
-      )
+      ).merge(form_type: Forms::StoryForm)
     end
 end
