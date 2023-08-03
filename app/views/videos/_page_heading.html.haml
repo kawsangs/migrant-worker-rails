@@ -1,6 +1,8 @@
 = render 'shared/headers/page_heading', title: t("sidebar.video") do
 
-  %div
+  .d-flex.align-items-center
+    = render "shared/buttons/download_button", url: videos_path(filter_params.merge(format: :xlsx))
+    .mr-1
     = render "shared/buttons/add_new_button", url: new_video_path
 
     %button.btn{"aria-expanded" => "false", "aria-haspopup" => "true", "data-toggle" => "dropdown", :type => "button"}

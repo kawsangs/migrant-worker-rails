@@ -6,7 +6,7 @@
   / Topbar Navbar
   %ul.navbar-nav.ml-auto
     %li.nav-item.dropdown.no-arrow.mx-1
-      %a#languageDropdown.nav-link.dropdown-toggle{"aria-expanded" => "false", "aria-haspopup" => "true", "data-toggle" => "dropdown", :href => "#", :role => "button"}
+      %a#languageDropdown.nav-link.dropdown-toggle.text-gray-600{"aria-expanded" => "false", "aria-haspopup" => "true", "data-toggle" => "dropdown", :href => "#", :role => "button"}
         - language = { en: "english.png", km: "khmer.png" }
         = image_tag language[I18n.locale], alt: "locale", size: "24x24", class: "mr-2"
         %span= t("shared.#{I18n.locale}")
