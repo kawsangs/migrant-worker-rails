@@ -13,6 +13,7 @@
 #  updated_at    :datetime         not null
 #  published_at  :datetime
 #  status        :integer          default("draft")
+#  form_id       :integer
 #
 class Notification < ApplicationRecord
   # Enum
@@ -27,14 +28,21 @@ class Notification < ApplicationRecord
   validates :body, presence: true
 
   # Association
+  belongs_to :survey_form, foreign_key: :form_id, class_name: "Forms::SurveyForm", optional: true
   has_many :notification_logs
+
+  # Delegation
+  delegate :name, to: :survey_form, prefix: true, allow_nil: true
 
   # Callback
   after_commit :push_notification_async, on: [:update, :create]
 
   # Instant method
   def build_content
-    { notification: { title: title, body: body } }
+    {
+      notification: { title: title, body: body },
+      data: { payload: { data: { form_id: form_id } }.to_json }
+    }
   end
 
   def published?

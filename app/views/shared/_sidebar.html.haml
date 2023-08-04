@@ -24,7 +24,7 @@
         %span= t("sidebar.app_users")
 
   - if policy(Notification).index?
-    %li.nav-item{ class: [css_active_class('notifications')] }
+    %li.nav-item{ class: [css_active_class('notifications', 'survey_forms')] }
       %a.nav-link{:href => notifications_path}
         %i.fas.fa-fw.fa-bell
         %span= t("sidebar.notification")

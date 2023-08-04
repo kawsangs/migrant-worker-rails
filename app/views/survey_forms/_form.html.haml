@@ -1,0 +1,28 @@
+- url = @form.persisted? ? survey_form_path(@form) : survey_forms_path(@notification)
+= simple_form_for @form, url: url, html: { class: 'main-form skip-logic' } do |f|
+  = f.input :name
+
+  %fieldset
+    %legend.d-inline
+      %span Questions
+      %button.btn.collapse-all-trigger{type: :button}
+        %i.fas.fa-caret-right
+
+    %ol.fields.sortable
+      = f.fields_for :questions, f.object.questions do |builder|
+        = render 'question_fields', f: builder
+
+      = link_to_add_fields t('form.add_question'), f, :questions, class: 'btn btn-outline-secondary'
+
+    .actions.text-right.mb-3
+      = render "shared/buttons/cancel_button", url: survey_forms_url
+      = render "shared/buttons/submit_button", f: f
+
+:javascript
+  locale = {
+    please_select: "#{t('shared.please_select')}",
+    select_question_from_list: "#{t('form.select_question_from_list')}",
+    skip_logic_not: "#{t('form.skip_logic_not')}",
+    any_of: "#{t('form.any_of')}",
+    match_all_of: "#{t('form.match_all_of')}"
+  }

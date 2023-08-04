@@ -21,21 +21,12 @@
           %span /
           %span 255
 
+      = f.input :form_id, label: t("notification.questionnaire_to_be_used"), collection: Forms::SurveyForm.all.pluck(:name, :id)
+
       .actions.text-right
         = render "shared/buttons/cancel_button", url: notifications_url
 
         = render "shared/buttons/submit_button", f: f, title: t("notification.save_draft")
 
   %div
-    .preview-background
-      .card-box
-        .d-flex.align-items-center
-          .mr-2
-            = image_tag 'myjourney.png', size: '18x18', class: 'rounded'
-          .flex-1.small ដំណើរឆ្លងដែនរបស់ខ្ញុំ
-          %span.toggle-trigger.pointer
-            %i.fas.fa-chevron-down{style: 'font-size: 12px'}
-
-        .text-wrapper.mt-2
-          .title.text-truncate
-          .text-body.text-truncate
+    = render "preview_mobile"

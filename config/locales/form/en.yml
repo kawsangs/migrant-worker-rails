@@ -23,7 +23,13 @@ en:
     add_option: + Add option
     match_all_criteria: Question should match all of these criteria
     match_any_criteria: Question should match any of these criteria
-    published: Published
-    publish: Publish
-    publish_form: Publish form
-    confirm_publish: Are you sure to publish this form?
+    ok: Ok
+
+    # Survey
+    survey: Survey
+    edit_questionnaire: Edit questionnaire
+    questionnaire: Questionnaire
+    notification_questionnaire: "Notification questionnaire: %{title}"
+    number_of_question: "# of questions"
+    number_of_notification: "# of notifications"
+    new_questionnaire: New questionnaire

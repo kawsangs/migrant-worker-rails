@@ -14,7 +14,7 @@ class SurveyFormPolicy < ApplicationPolicy
   end
 
   def destroy?
-    create?
+    create? && record.notifications.length.zero?
   end
 
   class Scope < Scope

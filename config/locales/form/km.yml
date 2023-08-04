@@ -23,7 +23,13 @@ km:
     add_option: + បន្ថែមជម្រើស
     match_all_criteria: សំណួរគួរតែត្រូវនឹងលក្ខណៈវិនិច្ឆ័យទាំងអស់នេះ
     match_any_criteria: សំណួរគួរតែត្រូវនឹងលក្ខណៈវិនិច្ឆ័យណាមួយ
-    published: បានផ្សព្វផ្សាយ
-    publish: ផ្សព្វផ្សាយ
-    publish_form: ផ្សព្វផ្សាយកម្រងសំនួរ
-    confirm_publish: តើអ្នកប្រាកដជាផ្សព្វផ្សាយកម្រងសំនួរនេះឬទេ?
+    ok: Ok
+
+    # Survey
+    survey: ការស្ទង់មិតិ
+    edit_questionnaire: កែតម្រូវកម្រងសំណួរ
+    questionnaire: កម្រងសំណួរ
+    notification_questionnaire: "កម្រងសំណួរសេចក្ដីជូនដំណឹង: %{title}"
+    number_of_question: "# ចំនួនសំនួរ"
+    number_of_notification: "# ចំនួនសេចក្តីជូនដំណឹង"
+    new_questionnaire: កម្រងសំណួរថ្មី

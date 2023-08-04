@@ -51,6 +51,9 @@ Rails.application.routes.draw do
     put :publish, on: :member
   end
 
+  # Survey
+  resources :survey_forms
+
   # Api
   namespace :api do
     namespace :v1 do
@@ -74,7 +77,8 @@ Rails.application.routes.draw do
       resources :answers, only: [:update]
       resource  :registered_tokens, only: [:update]
 
-      resources :videos
+      resources :videos, only: [:index]
+      resources :survey_forms, only: [:show]
     end
   end
 

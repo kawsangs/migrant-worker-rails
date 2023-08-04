@@ -13,6 +13,7 @@
 #  updated_at    :datetime         not null
 #  published_at  :datetime
 #  status        :integer          default("draft")
+#  form_id       :integer
 #
 FactoryBot.define do
   factory :notification do

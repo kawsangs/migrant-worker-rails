@@ -27,7 +27,7 @@ class Question < ApplicationRecord
   mount_uploader :passing_audio, AudioUploader
   mount_uploader :failing_audio, AudioUploader
 
-  TYPES = %w[Questions::SelectOne Questions::SelectMultiple Questions::Result Questions::Text].freeze
+  TYPES = %w[Questions::SelectOne Questions::SelectMultiple Questions::Result Questions::Text Questions::VoiceRecording].freeze
 
   # Associations
   belongs_to :form
