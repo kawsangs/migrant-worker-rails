@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2023_08_04_040349) do
+ActiveRecord::Schema.define(version: 2023_08_04_034841) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "pgcrypto"
@@ -237,6 +237,9 @@ ActiveRecord::Schema.define(version: 2023_08_04_040349) do
     t.string "token"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.string "device_id"
+    t.string "device_type"
+    t.string "app_version"
   end
 
   create_table "taggings", force: :cascade do |t|
