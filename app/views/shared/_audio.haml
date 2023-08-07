@@ -19,5 +19,5 @@
           %a.remove-file-button.text-danger.mr-2.pointer
             %i.far.fa-trash-alt
 
-          = link_to f.object.audio_url, target: "_blank", class: 'btn btn-link p-0 d-block text-truncate' do
+          = link_to f.object.send("#{field}_url"), target: "_blank", class: 'btn btn-link p-0 d-block text-truncate' do
             = f.object.send("#{field}_identifier")

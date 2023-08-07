@@ -17,6 +17,8 @@
 #
 module Forms
   class SurveyForm < ::Form
+    has_many :notifications, foreign_key: :form_id
+
     def self.policy_class
       SurveyFormPolicy
     end

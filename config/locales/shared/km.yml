@@ -29,7 +29,7 @@ km:
     add_sub_category: បន្ថែម sub category
     confirm_logout: តើអ្នកនឹងចាកចេញពីគណនីទេ?
     created_at: កាលបរិច្ឆេទបង្កើត
-    updated_at: កាលបរិច្ឆេទធ្វើបច្ចុប្បន្នភាព
+    updated_at: ធ្វើបច្ចុប្បន្នភាពនៅ
     file_size_is_too_big: ទំហំឯកសារធំពេក សូមធ្វើការច្រោះ អ្នកអាចទាញយកធំបំផុត %{max_record} ជួរដេក!
     url: URL
     title: ចំណងជើង
@@ -54,6 +54,7 @@ km:
     tag: ថេក
     status: ស្ថានភាព
     publish: ចេញផ្សាយ
+    published_at: ចេញផ្សាយនៅ
 
     # Batch import
     download_sample_form: ទាញយកគម្រូឯកសារទៅបំពេញ (Excel file .xlsx)

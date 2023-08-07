@@ -54,6 +54,7 @@ en:
     tag: Tag
     status: Status
     publish: Publish
+    published_at: Published at
 
     # Batch import
     download_sample_form: Download sample file to complete (Excel file .xlsx)

@@ -50,7 +50,7 @@ class NotificationsController < ApplicationController
   private
     def notification_params
       params.require(:notification).permit(
-        :id, :title, :body, :success_count, :failure_count
+        :id, :title, :body, :form_id
       )
     end
 end

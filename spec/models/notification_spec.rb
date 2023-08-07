@@ -13,6 +13,7 @@
 #  updated_at    :datetime         not null
 #  published_at  :datetime
 #  status        :integer          default("draft")
+#  form_id       :integer
 #
 require "rails_helper"
 
