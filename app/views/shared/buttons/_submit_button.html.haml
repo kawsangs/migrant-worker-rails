@@ -1,1 +1,2 @@
-= f.submit t('shared.save'), class: 'btn btn-primary'
+- title ||= t('shared.save')
+= f.submit title, class: 'btn btn-primary'

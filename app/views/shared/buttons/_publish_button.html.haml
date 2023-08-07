@@ -1,0 +1,7 @@
+- targetModalId ||= "#confirmPublishModal"
+- message ||= {}
+
+- if policy(object).publish?
+  %span.mr-1{ data: { toggle: 'tooltip', placement: 'top', title: t('shared.publish')} }
+    %button.btn.btn-sm.btn-outline-info.btn-circle{"data-target" => targetModalId, "data-toggle" => "modal", "data-message" => message.to_json, :type => "button"}
+      %i.fa-solid.fa-paper-plane{style: 'margin-right: 2px'}

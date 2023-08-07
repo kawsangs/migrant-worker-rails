@@ -35,8 +35,11 @@ en:
     title: Title
     pagination_title: "Displaying items <b>%{from}</b> - <b>%{to}</b> of <b>%{total}</b> in total"
     are_you_sure_to_delete: Are you sure to delete the %{type} <b>%{name}</b>?
+    are_you_sure_to_publish: Are you sure to publish the %{type} <b>%{name}</b>?
     yes_delete: Yes, Delete!
+    yes_publish: Yes, Publish!
     confirm_delete: Confirm delete %{name}
+    confirm_publish: Confirm publish %{name}
     search_by_name: Search by name
     search_by_title: Search by title
     search_by_tag: Search by tag
@@ -49,6 +52,8 @@ en:
     cannot_delete: Cannot delete, it is currently in used!
     tags: Tags
     tag: Tag
+    status: Status
+    publish: Publish
 
     # Batch import
     download_sample_form: Download sample file to complete (Excel file .xlsx)

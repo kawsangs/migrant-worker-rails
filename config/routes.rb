@@ -31,7 +31,9 @@ Rails.application.routes.draw do
   resources :departures
   resources :safeties
   resources :category_images, only: [:create, :destroy]
-  resources :notifications
+  resources :notifications do
+    put :publish, on: :member
+  end
   resources :videos
   resources :video_authors
   resources :video_tags

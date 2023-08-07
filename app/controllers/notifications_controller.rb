@@ -40,6 +40,13 @@ class NotificationsController < ApplicationController
     redirect_to notifications_url
   end
 
+  def publish
+    @notification = Notification.find(params[:id])
+    @notification.publish!
+
+    redirect_to notifications_url
+  end
+
   private
     def notification_params
       params.require(:notification).permit(

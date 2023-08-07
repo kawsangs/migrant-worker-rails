@@ -2,19 +2,23 @@
 
 class NotificationPolicy < ApplicationPolicy
   def index?
-    true
+    create?
   end
 
   def update?
-    true
+    create? && !record.published?
   end
 
   def create?
-    true
+    user.system_admin?
   end
 
   def destroy?
-    true
+    update?
+  end
+
+  def publish?
+    update?
   end
 
   class Scope < Scope

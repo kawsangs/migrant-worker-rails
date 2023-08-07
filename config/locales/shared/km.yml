@@ -35,8 +35,11 @@ km:
     title: ចំណងជើង
     pagination_title: "បង្ហាញទិន្ន័យ <b>%{from}</b> - <b>%{to}</b> នៃចំនួនសរុប <b>%{total}</b>"
     are_you_sure_to_delete: តើអ្នកប្រាកដជាលុប%{type} <b>%{name}</b> នេះមែនទេ?
+    are_you_sure_to_publish: តើអ្នកប្រាកដជាចេញផ្សាយ%{type} <b>%{name}</b> នេះមែនទេ?
     yes_delete: បាទ/ចាស, លុប!
+    yes_publish: បាទ/ចាស, ចេញផ្សាយ!
     confirm_delete: បញ្ជាក់ការលុបការ %{name}
+    confirm_publish: បញ្ជាក់ការចេញផ្សាយ %{name}
     search_by_name: ស្វែងរកតាមឈ្មោះ
     search_by_title: ស្វែងរកតាមចំណងជើង
     search_by_tag: ស្វែងរកតាមថេក
@@ -49,6 +52,8 @@ km:
     cannot_delete: មិនអាចលុប ព្រោះកំពុងប្រើប្រាស់!
     tags: ថេក/ក្រុម
     tag: ថេក
+    status: ស្ថានភាព
+    publish: ចេញផ្សាយ
 
     # Batch import
     download_sample_form: ទាញយកគម្រូឯកសារទៅបំពេញ (Excel file .xlsx)

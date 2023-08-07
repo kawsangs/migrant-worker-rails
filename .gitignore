@@ -41,3 +41,5 @@ yarn-debug.log*
 public/exports/*
 lib/samples/assets/audios/*
 lib/samples/assets/images/*
+
+firebase_service_account_key.json

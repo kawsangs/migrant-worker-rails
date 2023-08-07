@@ -55,7 +55,9 @@ gem "sidekiq-scheduler", "~> 3.0.1"
 gem "countries", "~> 3.1"
 gem "cocoon", "~> 1.2", ">= 1.2.15"
 
-gem "fcm", "~> 0.0.6"
+# push notification
+gem "googleauth", "1.7.0"
+gem "fcm", "1.0.8"
 
 gem "roo", "~> 2.8.3"
 gem "spreadsheet", "~> 1.2.9"
@@ -95,6 +97,7 @@ group :test do
   gem "webdrivers"
   gem "shoulda-matchers",       "~> 4.3.0"
   gem "database_cleaner-active_record", "~> 1.8.0"
+  gem "rspec-sidekiq"
 end
 
 # Windows does not include zoneinfo files, so bundle the tzinfo-data gem

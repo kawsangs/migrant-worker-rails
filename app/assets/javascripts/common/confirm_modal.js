@@ -5,15 +5,16 @@ MW.Common.ConfirmModal = (() => {
     if(!$(`#${modalId}`)) return;
 
     $(`#${modalId}`).on('show.bs.modal', function (event) {
-      var button = $(event.relatedTarget);
-      var modal = $(this);
+      let button = $(event.relatedTarget);
+      let message = button.data('message');
+      let modal = $(this);
 
-      let title = modal.find('.modal-title').data('content').replace(/_type_/, button.data("messageType"));
-      let body = modal.find('.modal-body').data('content').replace(/_type_/, button.data("messageType")).replace(/_name_/, button.data("messageName"));
+      let title = modal.find('.modal-title').data('content').replace(/_type_/, message.type);
+      let body = modal.find('.modal-body').data('content').replace(/_type_/, message.type).replace(/_name_/, message.name);
 
       modal.find('.modal-title .message-title').html(title);
       modal.find('.modal-body').html(body);
-      modal.find('form').attr('action', button.data('messageUrl'));
+      modal.find('form').attr('action', message.url);
     })
   }
 

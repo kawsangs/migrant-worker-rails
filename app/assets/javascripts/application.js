@@ -48,6 +48,7 @@ $(document).on("ready turbolinks:load", () => {
   MW.Common.Timeago.init();
   MW.Common.Sidebar.init();
   MW.Common.ConfirmModal.init();
+  MW.Common.ConfirmModal.init("confirmPublishModal");
   MW.Common.WizardForm.init();
 
   $("[data-toggle='tooltip']").tooltip();

@@ -11,9 +11,49 @@
 #  failure_count :integer
 #  created_at    :datetime         not null
 #  updated_at    :datetime         not null
+#  published_at  :datetime
+#  status        :integer          default("draft")
 #
 require "rails_helper"
 
 RSpec.describe Notification, type: :model do
-  pending "add some examples to (or delete) #{__FILE__}"
+  describe "#after_commit, publish" do
+    context "create" do
+      it "adds job to sidekiq" do
+        expect {
+          create(:notification, published_at: Time.now)
+        }.to change(PushNotificationJob.jobs, :count).by(1)
+      end
+    end
+
+    context "update" do
+      let(:notification) { create(:notification, published_at: nil) }
+
+      it "adds job to sidekiq" do
+        expect {
+          notification.update(published_at: Time.now)
+        }.to change(PushNotificationJob.jobs, :count).by(1)
+      end
+    end
+  end
+
+  describe "#after_commit, not publish" do
+    context "create" do
+      it "adds job to sidekiq" do
+        expect {
+          create(:notification, published_at: nil)
+        }.to change(PushNotificationJob.jobs, :count).by(0)
+      end
+    end
+
+    context "update" do
+      let(:notification) { create(:notification, published_at: nil) }
+
+      it "adds job to sidekiq" do
+        expect {
+          notification.update(title: "test")
+        }.to change(PushNotificationJob.jobs, :count).by(0)
+      end
+    end
+  end
 end
