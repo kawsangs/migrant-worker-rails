@@ -14,6 +14,7 @@
 #  published_at  :datetime
 #  status        :integer          default("draft")
 #  form_id       :integer
+#  token_count   :integer          default(0)
 #
 require "rails_helper"
 
@@ -23,7 +24,7 @@ RSpec.describe Notification, type: :model do
       it "adds job to sidekiq" do
         expect {
           create(:notification, published_at: Time.now)
-        }.to change(PushNotificationJob.jobs, :count).by(1)
+        }.to change(NotificationJob.jobs, :count).by(1)
       end
     end
 
@@ -33,7 +34,7 @@ RSpec.describe Notification, type: :model do
       it "adds job to sidekiq" do
         expect {
           notification.update(published_at: Time.now)
-        }.to change(PushNotificationJob.jobs, :count).by(1)
+        }.to change(NotificationJob.jobs, :count).by(1)
       end
     end
   end
@@ -43,7 +44,7 @@ RSpec.describe Notification, type: :model do
       it "adds job to sidekiq" do
         expect {
           create(:notification, published_at: nil)
-        }.to change(PushNotificationJob.jobs, :count).by(0)
+        }.to change(NotificationJob.jobs, :count).by(0)
       end
     end
 
@@ -53,7 +54,7 @@ RSpec.describe Notification, type: :model do
       it "adds job to sidekiq" do
         expect {
           notification.update(title: "test")
-        }.to change(PushNotificationJob.jobs, :count).by(0)
+        }.to change(NotificationJob.jobs, :count).by(0)
       end
     end
   end

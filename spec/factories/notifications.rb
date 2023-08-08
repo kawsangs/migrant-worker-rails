@@ -14,6 +14,7 @@
 #  published_at  :datetime
 #  status        :integer          default("draft")
 #  form_id       :integer
+#  token_count   :integer          default(0)
 #
 FactoryBot.define do
   factory :notification do
