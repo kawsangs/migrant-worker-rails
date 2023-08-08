@@ -23,7 +23,7 @@ km:
     add_option: + បន្ថែមជម្រើស
     match_all_criteria: សំណួរគួរតែត្រូវនឹងលក្ខណៈវិនិច្ឆ័យទាំងអស់នេះ
     match_any_criteria: សំណួរគួរតែត្រូវនឹងលក្ខណៈវិនិច្ឆ័យណាមួយ
-    ok: Ok
+    ok: យល់ព្រម
 
     # Survey
     survey: ការស្ទង់មិតិ
@@ -33,3 +33,6 @@ km:
     number_of_question: "# ចំនួនសំនួរ"
     number_of_notification: "# ចំនួនសេចក្តីជូនដំណឹង"
     new_questionnaire: កម្រងសំណួរថ្មី
+    question_maximum: សំណួរ (អតិបរមា 255តួ)
+    answer_maximum: ចម្លើយ (អតិបរមា 255តួ)
+    value: តម្លៃ

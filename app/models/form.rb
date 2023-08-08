@@ -24,6 +24,7 @@ class Form < ApplicationRecord
 
   # Association
   has_many :questions, dependent: :destroy
+  has_many :quizzes
 
   # Scope
   default_scope { order("created_at") }
