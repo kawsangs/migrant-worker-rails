@@ -9,7 +9,8 @@ production:
 
 :max_retries: 15
 
-:schedule:
-  clean_category_image:
-    cron: "0 0 * * *"
-    class: CategoryImageJob
+:scheduler:
+  :schedule:
+    clean_category_image:
+      cron: "0 0 * * *"
+      class: CategoryImageJob
