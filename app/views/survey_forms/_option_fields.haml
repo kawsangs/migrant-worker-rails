@@ -7,9 +7,9 @@
     %div.flex-1
       .d-flex.flex-1
         .flex-1.mr-2
-          = f.input :name, label: false, placeholder: "This option has no name"
+          = f.input :name, label: false, placeholder: t("form.answer_maximum")
         .flex-1.mr-2
-          = f.input :value, label: false, placeholder: "value"
+          = f.input :value, label: false, placeholder: t("form.value")
         .mr-2
           = link_to "Advanced", "#", class: 'btn btn-advance'
 

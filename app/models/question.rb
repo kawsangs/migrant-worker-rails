@@ -23,6 +23,7 @@
 #  updated_at      :datetime         not null
 #
 class Question < ApplicationRecord
+  # Mount file
   mount_uploader :audio, AudioUploader
   mount_uploader :passing_audio, AudioUploader
   mount_uploader :failing_audio, AudioUploader
@@ -34,6 +35,7 @@ class Question < ApplicationRecord
   has_many   :options, dependent: :destroy
   has_many   :criterias, dependent: :destroy
 
+  # Scope
   default_scope { order(display_order: :asc) }
 
   # validates :code, presence: true, uniqueness: { scope: :form_id, message: 'already exist' }
@@ -46,6 +48,7 @@ class Question < ApplicationRecord
   before_create :set_display_order
   before_create :set_field_code, if: -> { name.present? }
 
+  # Nested attribute
   accepts_nested_attributes_for :options, allow_destroy: true, reject_if: ->(attributes) { attributes["name"].blank? }
   accepts_nested_attributes_for :criterias, allow_destroy: true
 
