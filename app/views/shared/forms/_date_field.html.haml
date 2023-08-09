@@ -1,0 +1,20 @@
+- errors = f.object.errors[field]
+- label ||= ""
+- required ||= false
+- id = field
+
+.form-group
+  %label
+    = label
+    - if required
+      %abbr{title: "required"} *
+
+  .input-group.date.datetimepicker{ id: id, "data-target-input" => "nearest" }
+    - value = date_format(f.object[field])
+
+    = f.text_field field, value: value, class: ['form-control datetimepicker-input', ('is-invalid' if errors.present?)], autocomplete: 'off', "data-target" => "##{id}", "data-toggle" => "datetimepicker", placeholder: 'YYYY-MM-DD'
+    .input-group-append{"data-target" => "##{id}", "data-toggle" => "datetimepicker"}
+      .input-group-text
+        %i.fa-solid.fa-calendar-days
+
+  .invalid-feedback.d-block= errors.join(';')

@@ -50,7 +50,8 @@ class NotificationsController < ApplicationController
   private
     def notification_params
       params.require(:notification).permit(
-        :id, :title, :body, :form_id
+        :id, :title, :body, :form_id, :schedule_mode,
+        :start_time, :end_time, :recurrence_rule
       )
     end
 end

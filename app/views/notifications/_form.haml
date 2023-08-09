@@ -1,4 +1,4 @@
-.d-flex.notifications-form
+.d-flex.notifications-form.mb-4
   .flex-1.mr-4
     = simple_form_for @notification do |f|
       .form-group
@@ -22,6 +22,24 @@
           %span 255
 
       = f.input :form_id, label: t("notification.questionnaire_to_be_used"), collection: Forms::SurveyForm.all.pluck(:name, :id)
+
+      / Schedule mode
+      = f.input :schedule_mode, label: t('notification.schedule_setting'), collection: Notification.schedule_mode_list, include_blank: false
+
+      / For sending onetime
+      .onetime-wrapper
+        = render "shared/forms/date_field", f: f, field: :start_time, label: t("notification.pushing_notification_date"), required: true
+
+      / For sending multiple time
+      .recurrence-wrapper
+        / recurrence_rule
+        .form-group
+          %label= t('notification.set_schedule').html_safe
+
+          = f.select_recurring :recurrence_rule, [IceCube::Rule.weekly.day(:monday), IceCube::Rule.monthly.day_of_month(1)]
+
+        / end_time
+        = render "shared/forms/date_field", f: f, field: :end_time, label: t("notification.notification_end_date"), required: true
 
       .actions.text-right
         = render "shared/buttons/cancel_button", url: notifications_url

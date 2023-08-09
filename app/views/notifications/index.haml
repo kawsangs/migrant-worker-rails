@@ -16,10 +16,13 @@
             %th #
             %th= t('notification.notification_title')
             %th= t('notification.notification_text')
-            %th= t('shared.status')
             %th= t('form.questionnaire')
+            %th= t('notification.schedule')
+            %th= t('notification.notification_end_date')
+            %th= t('shared.description')
             %th= t('shared.created_at')
             %th= t('shared.updated_at')
+            %th= t('shared.status')
             %th
 
         %tbody
@@ -28,12 +31,16 @@
               %td= @pagy.from + index
               %td= notification.title
               %td= notification.body
+              %td= notification.survey_form_name
+              %td= notification.display_schedule
+              %td
+                = display_date(notification.end_time) if notification.recurrence?
+              %td= description(notification).html_safe
+              %td= timeago(notification.created_at).html_safe
+              %td= timeago(notification.updated_at).html_safe
               %td
                 %span.badge{ class: "badge-#{notification.status}" }
                   = notification.status
-              %td= notification.survey_form_name
-              %td= timeago(notification.created_at).html_safe
-              %td= timeago(notification.updated_at).html_safe
               %td
                 .d-flex.justify-content-end
                   = render "shared/buttons/publish_button", object: notification, message: { type: t('notification.notification'), name: notification.title, url: publish_notification_path(notification) }

@@ -13,6 +13,11 @@
 
 //= require jquery.richtext
 
+// Push notification form
+//= require moment
+//= require tempusdominus-bootstrap-4.js
+//= require recurring_select
+
 //= require application/namespace
 //= require application/util
 
@@ -31,8 +36,10 @@
 //= require jquery-sortable
 //= require tagify.min
 //= require common/form
+//= require common/datetime_picker
 //= require common/audio
 //= require common/wizard_form
+//= require common/select_recurring_translation
 
 //= require accounts/index
 //= require category_images
@@ -46,6 +53,7 @@
 $(document).on("ready turbolinks:load", () => {
   MW.Common.Topbar.init();
   MW.Common.Timeago.init();
+  MW.Common.DatetimePicker.init();
   MW.Common.Sidebar.init();
   MW.Common.ConfirmModal.init();
   MW.Common.ConfirmModal.init("confirmPublishModal");

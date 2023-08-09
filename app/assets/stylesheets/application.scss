@@ -2,10 +2,14 @@
 @import "sb-admin-2";
 
 @import "tagify";
-@import "custom/tagify";
 @import "lightbox2/src/css/lightbox.css";
-@import "custom/lightbox2";
 @import "richtext";
+
+@import "tempusdominus-bootstrap-4.css";
+@import "recurring_select";
+@import "custom/tagify";
+@import "custom/lightbox2";
+@import "custom/recurring_select";
 
 @import 'shared/base';
 @import 'shared/common';

@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2023_08_08_065424) do
+ActiveRecord::Schema.define(version: 2023_08_09_073857) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "pgcrypto"
@@ -191,6 +191,10 @@ ActiveRecord::Schema.define(version: 2023_08_08_065424) do
     t.integer "status", default: 0
     t.integer "form_id"
     t.integer "token_count", default: 0
+    t.integer "schedule_mode", default: 0
+    t.string "recurrence_rule"
+    t.datetime "start_time"
+    t.datetime "end_time"
   end
 
   create_table "options", force: :cascade do |t|

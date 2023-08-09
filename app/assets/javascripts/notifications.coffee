@@ -7,6 +7,11 @@ MW.NotificationsNew = do ->
     onKeypressBody()
     onClickToggleCollapse()
 
+    # Notification Shedule
+    onChangeScheduleMode()
+    handleDisplayScheduleSetting($("#notification_schedule_mode").val())
+    MW.Common.SelectRecurringTranslation.init()
+
   onClickToggleCollapse = ->
     $(document).off 'click', ".toggle-trigger"
     $(document).on 'click', ".toggle-trigger", (event)->
@@ -49,6 +54,32 @@ MW.NotificationsNew = do ->
     $(document).on 'keypress', "[name='notification[body]']", (event)->
       $('.body-count').html(event.target.value.length)
 
+  onChangeScheduleMode = ->
+    $("#notification_schedule_mode").on 'change', (event) ->
+      handleDisplayScheduleSetting(@.value)
+
+  handleDisplayScheduleSetting = (value)->
+    if value == 'onetime'
+      hideRecurrenceContent()
+      showOnetimeContent()
+    else if value == 'recurrence'
+      hideOnetimeContent()
+      showRecurrenceContent()
+    else
+      hideOnetimeContent()
+      hideRecurrenceContent()
+
+  showOnetimeContent = ->
+    $('.onetime-wrapper').removeClass('d-none')
+
+  showRecurrenceContent = ->
+    $('.recurrence-wrapper').removeClass('d-none')
+
+  hideOnetimeContent = ->
+    $('.onetime-wrapper').addClass('d-none')
+
+  hideRecurrenceContent = ->
+    $('.recurrence-wrapper').addClass('d-none')
 
   { init: init }
 
