@@ -14,8 +14,11 @@
 #  published_at  :datetime
 #  status        :integer          default("draft")
 #  form_id       :integer
+#  token_count   :integer          default(0)
 #
 class Notification < ApplicationRecord
+  include Notifications::NotifiableConcern
+
   # Enum
   enum status: {
     draft: 0,
@@ -34,9 +37,6 @@ class Notification < ApplicationRecord
   # Delegation
   delegate :name, to: :survey_form, prefix: true, allow_nil: true
 
-  # Callback
-  after_commit :push_notification_async, on: [:update, :create]
-
   # Instant method
   def build_content
     {
@@ -52,9 +52,4 @@ class Notification < ApplicationRecord
   def publish!
     self.update!(published_at: Time.zone.now, status: "pending")
   end
-
-  private
-    def push_notification_async
-      PushNotificationJob.perform_async(id) if published?
-    end
 end

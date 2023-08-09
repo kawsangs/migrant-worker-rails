@@ -5,33 +5,16 @@
 require "googleauth"
 
 class PushNotificationService
-  attr_reader :success_count, :failure_count, :notification
+  attr_reader :notification
 
   def initialize(notification)
     @notification = notification
-    @success_count = 0
-    @failure_count = 0
   end
 
-  def notify_all(registered_tokens)
-    registered_tokens.each do |registered_token|
-      notify(registered_token)
-    end
+  def notify(token)
+    message = { 'token': token }.merge(notification.build_content)
 
-    { success_count: success_count, failure_count: failure_count }
-  end
-
-  def notify(registered_token)
-    message = { 'token': registered_token.token }.merge(notification.build_content)
-    res = fcm.send_v1(message)
-
-    if res[:status_code] == 200
-      @success_count += 1
-    else
-      @failure_count += 1
-
-      notification.notification_logs.create(registered_token_id: registered_token.id, failed_reason: res[:body])
-    end
+    fcm.send_v1(message)
   end
 
   private
