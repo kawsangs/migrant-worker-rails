@@ -22,6 +22,8 @@ en:
     schedule: Schedule
     success: Success
     failure: Failure
+    delivery_progress: Delivery progress
+    release_successfully: "The notification has been released successfully!"
 
   recurring_select:
     not_recurring: "Please determine"

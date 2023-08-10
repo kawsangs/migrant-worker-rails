@@ -22,6 +22,8 @@ km:
     schedule: កាលវិភាគ
     success: ជោគជ័យ
     failure: បរាជ័យ
+    delivery_progress: ដំណើរការចែកចាយដំណឹង
+    release_successfully: ការជូនដំណឹងនេះត្រូវបានដាក់ដំណើរការដោយជោគជ័យ
 
   recurring_select:
     not_recurring: "សូមកំណត់"
