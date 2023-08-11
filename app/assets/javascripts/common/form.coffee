@@ -177,9 +177,9 @@ MW.Form = do ->
       appendField(this)
       event.preventDefault()
 
-  onClickAddAssociation = ->
-    $(document).off('click', 'form .add_association')
-    $(document).on 'click', 'form .add_association', (event) ->
+  onClickAddAssociation = (css_class='form .add_association')->
+    $(document).off('click', css_class)
+    $(document).on 'click', css_class, (event) ->
       appendField(this)
       event.preventDefault()
 

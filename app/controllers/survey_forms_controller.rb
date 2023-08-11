@@ -43,12 +43,15 @@ class SurveyFormsController < ApplicationController
   private
     def form_params
       params.require(:forms_survey_form).permit(:name,
-        questions_attributes: [
-          :id, :name, :type, :required, :display_order, :code,
-          :_destroy, :hint, :relevant, :audio, :remove_audio,
-          options_attributes: %i[id name value is_important _destroy],
-          criterias_attributes: %i[id question_code operator response_value _destroy]
+        sections_attributes: [
+          :id, :name, :_destroy,
+          questions_attributes: [
+            :id, :name, :type, :required, :display_order, :code,
+            :_destroy, :hint, :relevant, :audio, :remove_audio,
+            options_attributes: %i[id name value is_important _destroy],
+            criterias_attributes: %i[id question_code operator response_value _destroy]
+          ]
         ]
-      ).merge(form_type: Forms::SurveyForm)
+      )
     end
 end

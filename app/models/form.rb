@@ -23,8 +23,9 @@ class Form < ApplicationRecord
   mount_uploader :image, ImageUploader
 
   # Association
-  has_many :questions, dependent: :destroy
+  has_many :questions, inverse_of: :form
   has_many :quizzes
+  has_many :sections, dependent: :destroy, inverse_of: :form
 
   # Scope
   default_scope { order("created_at") }
@@ -32,6 +33,7 @@ class Form < ApplicationRecord
 
   # Nested attribute
   accepts_nested_attributes_for :questions, allow_destroy: true
+  accepts_nested_attributes_for :sections, allow_destroy: true
 
   # Callback
   before_create :secure_code

@@ -15,13 +15,16 @@
 #  audio        :string
 #  published_at :datetime
 #
-module Forms
-  class SurveyForm < ::Form
-    has_many :notifications, foreign_key: :form_id
-    has_many :questions, through: :sections
+class SurveyFormSerializer < ActiveModel::Serializer
+  attributes :id, :code, :name, :audio_url, :image_url
 
-    def self.policy_class
-      SurveyFormPolicy
-    end
+  has_many :sections
+
+  def image_url
+    return object.image_url if object.image.present?
+  end
+
+  def audio_url
+    return object.audio_url if object.audio.present?
   end
 end

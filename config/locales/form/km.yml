@@ -36,3 +36,5 @@ km:
     question_maximum: សំណួរ (អតិបរមា 255តួ)
     answer_maximum: ចម្លើយ (អតិបរមា 255តួ)
     value: តម្លៃ
+    add_section: + Add section
+    section_name: ផ្នែក

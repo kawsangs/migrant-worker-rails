@@ -243,6 +243,7 @@ ActiveRecord::Schema.define(version: 2023_08_11_074029) do
     t.integer "form_id"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.uuid "section_id"
   end
 
   create_table "quizzes", force: :cascade do |t|
@@ -261,6 +262,14 @@ ActiveRecord::Schema.define(version: 2023_08_11_074029) do
     t.string "device_id"
     t.string "device_type"
     t.string "app_version"
+  end
+
+  create_table "sections", id: :uuid, default: -> { "gen_random_uuid()" }, force: :cascade do |t|
+    t.string "name"
+    t.integer "form_id"
+    t.integer "display_order"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
   end
 
   create_table "taggings", force: :cascade do |t|

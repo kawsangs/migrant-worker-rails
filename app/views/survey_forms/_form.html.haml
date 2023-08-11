@@ -2,21 +2,14 @@
 = simple_form_for @form, url: url, html: { class: 'main-form skip-logic' } do |f|
   = f.input :name
 
-  %fieldset
-    %legend.d-inline
-      %span Questions
-      %button.btn.collapse-all-trigger{type: :button}
-        %i.fas.fa-caret-right
+  = f.fields_for :sections, f.object.sections do |sf|
+    = render 'section_fields', f: sf
 
-    %ol.fields.sortable
-      = f.fields_for :questions, f.object.questions do |builder|
-        = render 'question_fields', f: builder
+  = link_to_add_fields t('form.add_section'), f, :sections, class: 'btn btn-outline-secondary'
 
-      = link_to_add_fields t('form.add_question'), f, :questions, class: 'btn btn-outline-secondary'
-
-    .actions.text-right.mb-3
-      = render "shared/buttons/cancel_button", url: survey_forms_url
-      = render "shared/buttons/submit_button", f: f
+  .actions.text-right.mb-3
+    = render "shared/buttons/cancel_button", url: survey_forms_url
+    = render "shared/buttons/submit_button", f: f
 
 :javascript
   locale = {

@@ -36,3 +36,5 @@ en:
     question_maximum: Question (maximum 255)
     answer_maximum: Answer (maximum 255)
     value: Value
+    add_section: + Add section
+    section_name: Section name

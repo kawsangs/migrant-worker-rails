@@ -21,6 +21,7 @@
 #  form_id         :integer
 #  created_at      :datetime         not null
 #  updated_at      :datetime         not null
+#  section_id      :uuid
 #
 class QuestionSerializer < ActiveModel::Serializer
   attributes :id, :code, :name, :type, :hint, :audio_url, :display_order,
