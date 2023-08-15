@@ -24,6 +24,9 @@ en:
     failure: Failure
     delivery_progress: Delivery progress
     release_successfully: "The notification has been released successfully!"
+    released_at: Released at
+    released_by: Released by
+    drafted_at: Drafted at
 
   recurring_select:
     not_recurring: "Please determine"

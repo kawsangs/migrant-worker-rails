@@ -42,14 +42,12 @@ class NotificationsController < ApplicationController
 
   def release
     @notification = Notification.find(params[:id])
-    @notification.release!
-    flash[:notice] = I18n.t("notification.release_successfully")
 
-    redirect_to notifications_url
-  rescue
-    flash[:alert] = @notification.errors
-
-    redirect_to notifications_url
+    if @notification.released_by(current_account.id)
+      redirect_to notifications_url, flash: { notice: I18n.t("notification.release_successfully") }
+    else
+      redirect_to notifications_url, flash: { alert: @notification.errors.full_messages }
+    end
   end
 
   private

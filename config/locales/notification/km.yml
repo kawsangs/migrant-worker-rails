@@ -24,6 +24,9 @@ km:
     failure: បរាជ័យ
     delivery_progress: ដំណើរការចែកចាយដំណឹង
     release_successfully: ការជូនដំណឹងនេះត្រូវបានដាក់ដំណើរការដោយជោគជ័យ
+    released_at: ដាក់ដំណើរការនៅ
+    released_by: ដាក់ដំណើរការដោយ
+    drafted_at: ធ្វើសេចក្តីព្រៀងនៅ
 
   recurring_select:
     not_recurring: "សូមកំណត់"
