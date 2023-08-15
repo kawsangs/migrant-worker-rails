@@ -6,10 +6,10 @@
 #
 #  id                  :uuid             not null, primary key
 #  notification_id     :integer
-#  registered_token_id :uuid
 #  failed_reason       :text
 #  created_at          :datetime         not null
 #  updated_at          :datetime         not null
+#  registered_token_id :integer
 #
 class NotificationLog < ApplicationRecord
   belongs_to :notification
