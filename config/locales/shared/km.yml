@@ -36,6 +36,7 @@ km:
     pagination_title: "បង្ហាញទិន្ន័យ <b>%{from}</b> - <b>%{to}</b> នៃចំនួនសរុប <b>%{total}</b>"
     are_you_sure_to_delete: តើអ្នកប្រាកដជាលុប%{type} <b>%{name}</b> នេះមែនទេ?
     are_you_sure_to_publish: តើអ្នកប្រាកដជាចេញផ្សាយ%{type} <b>%{name}</b> នេះមែនទេ?
+    are_you_sure_to_release: តើអ្នកប្រាកដជាដាក់ដំណើរការ%{type} <b>%{name}</b> នេះមែនទេ?
     yes_delete: បាទ/ចាស, លុប!
     yes_publish: បាទ/ចាស, ចេញផ្សាយ!
     confirm_delete: បញ្ជាក់ការលុបការ %{name}
@@ -82,3 +83,5 @@ km:
     confirm_message_no_province: "មានទិន្នន័យសរុប <b>%{total_count}</b> នឹងត្រូវបញ្ចូលក្នុងប្រព័ន្ធ! តើអ្នកយល់ព្រមឬទេ?"
     some_invalid_records: មានទិន្នន័យ មួយចំនួនមិនត្រឹមត្រូវ សូមធ្វើការត្រួតពិនិត្យ និងបញ្ចូលឡើងវិញ!
     import_success: "ទិន្នន័យចំនួន %{count} ត្រូវបានបញ្ចូលដោយជោគជ័យ"
+    description: បរិយាយ
+    release: ដាក់ដំណើរការ

@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2023_08_08_065424) do
+ActiveRecord::Schema.define(version: 2023_08_11_074029) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "pgcrypto"
@@ -180,6 +180,19 @@ ActiveRecord::Schema.define(version: 2023_08_08_065424) do
     t.datetime "updated_at", precision: 6, null: false
   end
 
+  create_table "notification_occurrences", id: :uuid, default: -> { "gen_random_uuid()" }, force: :cascade do |t|
+    t.integer "notification_id"
+    t.datetime "occurrence_date"
+    t.integer "token_count", default: 0
+    t.integer "success_count", default: 0
+    t.integer "failure_count", default: 0
+    t.integer "status", default: 1
+    t.string "job_id"
+    t.datetime "cancel_at"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+  end
+
   create_table "notifications", force: :cascade do |t|
     t.string "title"
     t.text "body"
@@ -187,10 +200,16 @@ ActiveRecord::Schema.define(version: 2023_08_08_065424) do
     t.integer "failure_count"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
-    t.datetime "published_at"
+    t.datetime "released_at"
     t.integer "status", default: 0
     t.integer "form_id"
     t.integer "token_count", default: 0
+    t.integer "schedule_mode", default: 0
+    t.string "recurrence_rule"
+    t.datetime "start_time"
+    t.datetime "end_time"
+    t.integer "occurrences_count", default: 0
+    t.integer "occurrences_delivered_count", default: 0
   end
 
   create_table "options", force: :cascade do |t|

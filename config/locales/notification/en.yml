@@ -10,3 +10,25 @@ en:
     push_notification: Push Notification
     save_draft: Save draft
     questionnaire_to_be_used: Questionnaire to be used
+    set_schedule: "Set schedule <abbr title='required'>*</abbr>"
+    schedule_mode: Schedule mode
+    schedule_setting: Schedule setting
+    as_soon_as_release: Send out as soon as notification is released
+    onetime: Send out at one time
+    recurrence: Send out at recurrence time
+    pushing_notification_date: "Pushing notification date"
+    notification_end_date: "Notification end date"
+    please_determine: "Please determine"
+    schedule: Schedule
+    success: Success
+    failure: Failure
+    delivery_progress: Delivery progress
+    release_successfully: "The notification has been released successfully!"
+
+  recurring_select:
+    not_recurring: "Please determine"
+    change_schedule: "Change schedule"
+    set_schedule: "Set schedule"
+    new_custom_schedule: "New custom schedule"
+    custom_schedule: "Custom schedule"
+    or: or

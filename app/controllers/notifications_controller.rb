@@ -2,7 +2,7 @@
 
 class NotificationsController < ApplicationController
   def index
-    @pagy, @notifications = pagy(Notification.order("updated_at DESC"))
+    @pagy, @notifications = pagy(Notification.order("updated_at DESC").includes(:notification_occurrences, survey_form: [questions: :options]))
   end
 
   def new
@@ -40,9 +40,14 @@ class NotificationsController < ApplicationController
     redirect_to notifications_url
   end
 
-  def publish
+  def release
     @notification = Notification.find(params[:id])
-    @notification.publish!
+    @notification.release!
+    flash[:notice] = I18n.t("notification.release_successfully")
+
+    redirect_to notifications_url
+  rescue
+    flash[:alert] = @notification.errors
 
     redirect_to notifications_url
   end
@@ -50,7 +55,8 @@ class NotificationsController < ApplicationController
   private
     def notification_params
       params.require(:notification).permit(
-        :id, :title, :body, :form_id
+        :id, :title, :body, :form_id, :schedule_mode,
+        :start_time, :end_time, :recurrence_rule
       )
     end
 end

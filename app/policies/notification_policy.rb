@@ -6,7 +6,7 @@ class NotificationPolicy < ApplicationPolicy
   end
 
   def update?
-    create? && !record.published?
+    create? && !record.released?
   end
 
   def create?

@@ -1,3 +1,4 @@
+- body_message ||= t('shared.are_you_sure_to_publish', type: "_type_", name: '_name_')
 #confirmPublishModal.modal.fade{"aria-hidden" => "true", "aria-labelledby" => "exampleModalLabel", :tabindex => "-1"}
   .modal-dialog
     .modal-content
@@ -9,7 +10,7 @@
         %button.close{"aria-label" => "Close", "data-dismiss" => "modal", :type => "button"}
           %span{"aria-hidden" => "true"} ×
 
-      .modal-body{'data-content': t('shared.are_you_sure_to_publish', type: "_type_", name: '_name_')}
+      .modal-body{'data-content': body_message}
         / Message body to replace
 
       .modal-footer

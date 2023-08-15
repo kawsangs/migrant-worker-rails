@@ -81,4 +81,13 @@ module ApplicationHelper
     str += "</span>"
     str
   end
+
+  def date_format(date)
+    return unless date.present?
+
+    date = Time.parse(date) if date.is_a?(String)
+    date.strftime("%Y-%m-%d")
+  rescue
+    nil
+  end
 end

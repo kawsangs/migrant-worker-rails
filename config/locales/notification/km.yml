@@ -10,3 +10,25 @@ km:
     push_notification: បញ្ជូនការជូនដំណឹង
     save_draft: រក្សាទុកសេចក្តីព្រាង
     questionnaire_to_be_used: កម្រងសំនួរដែលត្រូវប្រើ
+    set_schedule: "កំណត់កាលវិភាគ <abbr title='required'>*</abbr>"
+    schedule_mode: ប្រភេទកាលវិភាគ
+    schedule_setting: កំណត់ប្រភេទកាលវិភាគ
+    as_soon_as_release: ផ្ញើរចេញពេលដំណើរការការជូនដំណឹង
+    onetime: ផ្ញើរចេញនៅពេលណាមួយ
+    recurrence: ផ្ញើរចេញកើតឡើងវិញ
+    pushing_notification_date: "កាលបរិច្ឆេទដែលនឹងផ្ញើរចេញការជូនដំណឹង"
+    notification_end_date: "កាលបរិច្ឆេទបញ្ចប់ការជូនដំណឹង"
+    please_determine: សូមកំណត់
+    schedule: កាលវិភាគ
+    success: ជោគជ័យ
+    failure: បរាជ័យ
+    delivery_progress: ដំណើរការចែកចាយដំណឹង
+    release_successfully: ការជូនដំណឹងនេះត្រូវបានដាក់ដំណើរការដោយជោគជ័យ
+
+  recurring_select:
+    not_recurring: "សូមកំណត់"
+    change_schedule: "ផ្លាស់ប្តូរកាលវិភាគ"
+    set_schedule: "កំណត់កាលវិភាគ"
+    new_custom_schedule: "កំណត់កាលវិភាគថ្មី"
+    custom_schedule: "កំណត់កាលវិភាគថ្មី"
+    or: ឬ

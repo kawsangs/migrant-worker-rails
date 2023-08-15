@@ -3,11 +3,11 @@
 class PushNotificationJob
   include Sidekiq::Job
 
-  def perform(notification_id, token_id)
-    notification = Notification.find(notification_id)
+  def perform(notification_occurrence_id, token_id)
+    notification_occurence = NotificationOccurence.find(notification_occurrence_id)
     registered_token = RegisteredToken.find(token_id)
 
-    response = notification.notify(registered_token)
-    notification.update_progress_status(response, registered_token)
+    response = notification_occurence.notify(registered_token)
+    notification_occurence.update_progress_status(response, registered_token)
   end
 end

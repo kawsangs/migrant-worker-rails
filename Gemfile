@@ -67,6 +67,11 @@ gem "caxlsx_rails"
 
 gem "net-http"
 
+# Notification schedule
+gem "recurring_select", "~> 3.0.1"
+gem "momentjs-rails", "~> 2.29.4.1"
+gem "bootstrap4-datetime-picker-rails", "~> 0.3.1"
+
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
   gem "byebug", platforms: [:mri, :mingw, :x64_mingw]
