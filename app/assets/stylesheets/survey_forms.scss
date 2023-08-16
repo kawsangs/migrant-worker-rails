@@ -1,0 +1,19 @@
+#survey_forms-new,
+#survey_forms-edit,
+#survey_forms-create,
+#survey_forms-update {
+  .section {
+    padding: 10px;
+    border: 1px solid #ccc;
+    margin-bottom: 10px;
+
+    legend {
+      font-size: 16px;
+      width: auto;
+    }
+
+    .remove-section {
+      margin-bottom: 10px;
+    }
+  }
+}

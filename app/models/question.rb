@@ -6,10 +6,10 @@
 #
 #  id              :bigint           not null, primary key
 #  code            :string
+#  name            :text
+#  type            :string
 #  hint            :string
 #  display_order   :integer
-#  type            :string
-#  name            :text
 #  relevant        :string
 #  required        :boolean
 #  audio           :string
@@ -21,6 +21,7 @@
 #  form_id         :integer
 #  created_at      :datetime         not null
 #  updated_at      :datetime         not null
+#  section_id      :uuid
 #
 class Question < ApplicationRecord
   # Mount file
@@ -31,7 +32,8 @@ class Question < ApplicationRecord
   TYPES = %w[Questions::SelectOne Questions::SelectMultiple Questions::Result Questions::Text Questions::VoiceRecording].freeze
 
   # Associations
-  belongs_to :form
+  belongs_to :form, optional: true
+  belongs_to :section, optional: true
   has_many   :options, dependent: :destroy
   has_many   :criterias, dependent: :destroy
 

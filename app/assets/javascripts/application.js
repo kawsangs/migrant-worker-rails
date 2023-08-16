@@ -49,6 +49,7 @@
 //= require notifications
 //= require institutions/new
 //= require videos/form
+//= require survey_form
 
 $(document).on("ready turbolinks:load", () => {
   MW.Common.Topbar.init();

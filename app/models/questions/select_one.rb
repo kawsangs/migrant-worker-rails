@@ -6,10 +6,10 @@
 #
 #  id              :bigint           not null, primary key
 #  code            :string
+#  name            :text
+#  type            :string
 #  hint            :string
 #  display_order   :integer
-#  type            :string
-#  name            :text
 #  relevant        :string
 #  required        :boolean
 #  audio           :string
@@ -21,6 +21,7 @@
 #  form_id         :integer
 #  created_at      :datetime         not null
 #  updated_at      :datetime         not null
+#  section_id      :uuid
 #
 module Questions
   class SelectOne < Question
