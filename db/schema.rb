@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2023_08_11_074029) do
+ActiveRecord::Schema.define(version: 2023_08_15_035237) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "pgcrypto"
@@ -210,6 +210,7 @@ ActiveRecord::Schema.define(version: 2023_08_11_074029) do
     t.datetime "end_time"
     t.integer "occurrences_count", default: 0
     t.integer "occurrences_delivered_count", default: 0
+    t.integer "releasor_id"
   end
 
   create_table "options", force: :cascade do |t|

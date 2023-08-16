@@ -21,6 +21,7 @@
 #  end_time                    :datetime
 #  occurrences_count           :integer          default(0)
 #  occurrences_delivered_count :integer          default(0)
+#  releasor_id                 :integer
 #
 FactoryBot.define do
   factory :notification do

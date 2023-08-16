@@ -26,11 +26,15 @@ module NotificationsHelper
   end
 
   def status_draft_html(notification)
-    "<span class='badge badge-secondary' data-toggle='tooltip' data-placement='top' data-title='Drafted at: #{I18n.l(notification.updated_at)}'>Draft</span>"
+    title = "#{I18n.t('notification.drafted_at')}: #{I18n.l(notification.updated_at)}"
+    "<span class='badge badge-secondary' data-toggle='tooltip' data-html='true' data-placement='top' data-title='#{sanitize(title)}'>Draft</span>"
   end
 
   def status_released_html(notification)
-    "<span class='badge badge-success' data-toggle='tooltip' data-placement='top' data-title='Released at: #{I18n.l(notification.released_at)}'>Released</span>"
+    title = "<div class='text-left'>#{I18n.t('notification.released_at')}: #{I18n.l(notification.released_at)}</div>"
+    title += "<div class='text-left'>#{I18n.t('notification.released_by')}: #{notification.releasor.display_name}</div>"
+
+    "<span class='badge badge-success' data-toggle='tooltip' data-html='true' data-placement='top' data-title='#{sanitize(title)}'>Released</span>"
   end
 
   private
