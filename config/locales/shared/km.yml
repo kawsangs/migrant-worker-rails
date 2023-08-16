@@ -85,3 +85,4 @@ km:
     import_success: "ទិន្នន័យចំនួន %{count} ត្រូវបានបញ្ចូលដោយជោគជ័យ"
     description: បរិយាយ
     release: ដាក់ដំណើរការ
+    name: ឈ្មោះ

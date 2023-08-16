@@ -50,6 +50,7 @@
 //= require institutions/new
 //= require videos/form
 //= require survey_form
+//= require telegram_bot
 
 $(document).on("ready turbolinks:load", () => {
   MW.Common.Topbar.init();

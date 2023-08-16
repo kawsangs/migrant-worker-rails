@@ -17,3 +17,5 @@ en:
     app_name: My Journeys
     video: Video
     contents: Manage Contents
+    settings: Settings
+    telegram_bot: Telegram bot

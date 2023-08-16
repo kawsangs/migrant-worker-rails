@@ -85,3 +85,4 @@ en:
     import_success: "%{count} items were successfully imported!"
     description: Description
     release: Release
+    name: Name

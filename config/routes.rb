@@ -55,8 +55,22 @@ Rails.application.routes.draw do
   # Survey
   resources :survey_forms
 
+  # Telegram bot
+  resource :telegram_bot, only: [:show] do
+    put :upsert, on: :collection
+  end
+
+  resources :chat_groups, only: [:index]
+
   # Api
   namespace :api do
+    namespace :integration do
+      # Telegram
+      constraints Whitelist do
+        telegram_webhook Api::Integration::TelegramWebhooksController
+      end
+    end
+
     namespace :v1 do
       resources :users, only: [:create]
 
