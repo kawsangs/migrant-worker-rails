@@ -10,7 +10,11 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
+<<<<<<< HEAD
 ActiveRecord::Schema.define(version: 2023_08_15_035237) do
+=======
+ActiveRecord::Schema.define(version: 2023_08_15_062703) do
+>>>>>>> 92a61cf (Notification log: change column registered_token_id)
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "pgcrypto"
@@ -174,10 +178,10 @@ ActiveRecord::Schema.define(version: 2023_08_15_035237) do
 
   create_table "notification_logs", id: :uuid, default: -> { "gen_random_uuid()" }, force: :cascade do |t|
     t.integer "notification_id"
-    t.uuid "registered_token_id"
     t.text "failed_reason"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.integer "registered_token_id"
   end
 
   create_table "notification_occurrences", id: :uuid, default: -> { "gen_random_uuid()" }, force: :cascade do |t|
