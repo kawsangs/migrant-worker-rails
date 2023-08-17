@@ -12,7 +12,7 @@
 #  failure_count   :integer          default(0)
 #  status          :integer          default("pending")
 #  job_id          :string
-#  cancel_at       :datetime
+#  cancelled_at    :datetime
 #  created_at      :datetime         not null
 #  updated_at      :datetime         not null
 #
@@ -84,6 +84,21 @@ RSpec.describe NotificationOccurrence, type: :model do
     it "returns false" do
       notification_occurrence = build(:notification_occurrence, success_count: 1, failure_count: 5, token_count: 15)
       expect(notification_occurrence.finished?).to be_falsey
+    end
+  end
+
+  describe "#cancel" do
+    let(:notification_occurrence) { create(:notification_occurrence, occurrence_date: 2.days.from_now) }
+
+    it "updates status to cancelled" do
+      expect { notification_occurrence.cancel }.to change(notification_occurrence, :status).to("cancelled")
+    end
+
+    it "delete job from sidekiq" do
+      allow(notification_occurrence).to receive(:delete_sidekiq_job)
+      notification_occurrence.cancel
+
+      expect(notification_occurrence).to have_received(:delete_sidekiq_job)
     end
   end
 end

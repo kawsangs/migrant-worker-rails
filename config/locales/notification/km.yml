@@ -23,10 +23,16 @@ km:
     success: ជោគជ័យ
     failure: បរាជ័យ
     delivery_progress: ដំណើរការចែកចាយដំណឹង
-    release_successfully: ការជូនដំណឹងនេះត្រូវបានដាក់ដំណើរការដោយជោគជ័យ
+    release_successfully: ការជូនដំណឹងនេះត្រូវបានដាក់ដំណើរការដោយជោគជ័យ!
+    cancel_successfully: ការជូនដំណឹងនេះត្រូវបានបញ្ឈប់ដំណើរការដោយជោគជ័យ!
+    delete_successfully: ការជូនដំណឹងនេះត្រូវបានលុបដោយជោគជ័យ!
     released_at: ដាក់ដំណើរការនៅ
     released_by: ដាក់ដំណើរការដោយ
+    cancelled_at: បញ្ឈប់ដំណើរការនៅ
+    cancelled_by: បញ្ឈប់ដំណើរការដោយ
     drafted_at: ធ្វើសេចក្តីព្រៀងនៅ
+    cancel_notification: បញ្ឈប់ការជូនដំណឹង
+    cannot_cancell: មិនអាចបញ្ឈប់ដំណើរការការជូនដំណឹងបានទេ ព្រោះវាត្រូវបានបញ្ជូនរួចរាល់អស់ហើយ!
 
   recurring_select:
     not_recurring: "សូមកំណត់"

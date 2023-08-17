@@ -22,10 +22,18 @@
 #  occurrences_count           :integer          default(0)
 #  occurrences_delivered_count :integer          default(0)
 #  releasor_id                 :integer
+#  cancelled_at                :datetime
+#  canceller_id                :integer
 #
 FactoryBot.define do
   factory :notification do
     title { FFaker::Name.name }
     body  { FFaker::Name.name }
+
+    trait :recurrence do
+      schedule_mode   { "recurrence" }
+      recurrence_rule { "{\"validations\":{\"day\":[1]},\"rule_type\":\"IceCube::WeeklyRule\",\"interval\":1,\"week_start\":0}" }
+      end_time { 2.weeks.from_now }
+    end
   end
 end

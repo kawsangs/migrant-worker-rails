@@ -1,8 +1,10 @@
 # frozen_string_literal: true
 
 class ApplicationController < ActionController::Base
-  include Pundit
+  include Pundit::Authorization
   include Pagy::Backend
+
+  rescue_from ::Pundit::NotAuthorizedError, with: :render_unauthorized
 
   protect_from_forgery prepend: true
 
@@ -22,5 +24,10 @@ class ApplicationController < ActionController::Base
 
     def set_locale
       I18n.locale = current_account.try(:language_code) || I18n.default_locale
+    end
+
+    def render_unauthorized
+      flash[:alert] = I18n.t("shared.unauthorized_alert_message")
+      redirect_to(request.referrer || root_path)
     end
 end

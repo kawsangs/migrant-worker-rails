@@ -34,7 +34,17 @@
               %td= status_html(notification).html_safe
               %td
                 .d-flex.justify-content-end
-                  = render "shared/buttons/publish_button", object: notification, message: { type: t('notification.notification'), name: notification.title, url: release_notification_path(notification) }, title: t('shared.release')
+                  - if policy(notification).cancel?
+                    %span{ data: { 'toggle': 'tooltip', 'placement': 'top' }, title: t('notification.cancel_notification') }
+                      - message = { type: t('notification.notification'), name: notification.title, url: cancel_notification_path(notification) }
+
+                      %button.btn.btn-circle.btn-sm.btn-outline-danger{ "data-target" => "#confirmCancelModal", "data-toggle" => "modal", "data-message" => message.to_json, :type => "button" }
+                        %i.fa-solid.fa-bell-slash
+
+                  - if policy(notification).release?
+                    %span.mr-1{ data: { toggle: 'tooltip', placement: 'top', title: t('shared.release')} }
+                      %button.btn.btn-sm.btn-outline-info.btn-circle{"data-target" => "#confirmPublishModal", "data-toggle" => "modal", "data-message" => { type: t('notification.notification'), name: notification.title, url: release_notification_path(notification) }.to_json, :type => "button"}
+                        %i.fa-solid.fa-bell{style: 'margin-right: 2px'}
 
                   = render "shared/buttons/edit_button", url: edit_notification_path(notification), object: notification
 
@@ -42,3 +52,4 @@
 
 = render "shared/modals/confirm_delete_modal"
 = render "shared/modals/confirm_publish_modal", body_message: t('shared.are_you_sure_to_release', type: "_type_", name: '_name_')
+= render "shared/modals/confirm_cancel_modal"
