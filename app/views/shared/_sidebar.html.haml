@@ -80,6 +80,11 @@
               %i.fas.fa-fw.fa-users
               %span= t('sidebar.accounts')
 
+          - if policy(TelegramBot).create?
+            %a.collapse-item{ href: telegram_bot_path, class: css_active_class('telegram_bots', 'chat_groups') }
+              %i.fa-brands.fa-telegram
+              %span= t('sidebar.telegram_bot')
+
   %li.nav-item{ class: css_active_class('about') }
     %a.nav-link{:href => about_path}
       %i.fas.fa-fw.fa-exclamation-circle

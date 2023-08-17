@@ -10,11 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-<<<<<<< HEAD
-ActiveRecord::Schema.define(version: 2023_08_15_035237) do
-=======
-ActiveRecord::Schema.define(version: 2023_08_15_062703) do
->>>>>>> 92a61cf (Notification log: change column registered_token_id)
+ActiveRecord::Schema.define(version: 2023_08_15_103535) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "pgcrypto"
@@ -101,6 +97,17 @@ ActiveRecord::Schema.define(version: 2023_08_15_062703) do
     t.string "image"
     t.string "category_uuid"
     t.integer "category_id"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+  end
+
+  create_table "chat_groups", id: :uuid, default: -> { "gen_random_uuid()" }, force: :cascade do |t|
+    t.string "title"
+    t.string "chat_id"
+    t.string "chat_type", default: "group"
+    t.boolean "active", default: true
+    t.text "reason"
+    t.string "telegram_bot_user_id"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end
@@ -289,6 +296,16 @@ ActiveRecord::Schema.define(version: 2023_08_15_062703) do
     t.string "name"
     t.integer "taggings_count"
     t.integer "display_order"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+  end
+
+  create_table "telegram_bots", id: :uuid, default: -> { "gen_random_uuid()" }, force: :cascade do |t|
+    t.string "token"
+    t.string "username"
+    t.string "telegram_bot_user_id"
+    t.boolean "enabled", default: false
+    t.boolean "active", default: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end
