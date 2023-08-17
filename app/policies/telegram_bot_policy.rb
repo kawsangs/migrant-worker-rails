@@ -13,6 +13,10 @@ class TelegramBotPolicy < ApplicationPolicy
     create?
   end
 
+  def help?
+    create?
+  end
+
   def update?
     create?
   end

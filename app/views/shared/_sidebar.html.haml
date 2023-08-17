@@ -81,7 +81,7 @@
               %span= t('sidebar.accounts')
 
           - if policy(TelegramBot).create?
-            %a.collapse-item{ href: telegram_bot_path, class: css_active_class('telegram_bots', 'chat_groups') }
+            %a.collapse-item{ href: telegram_bot_path, class: css_active_class('telegram_bots', 'chat_groups', 'helps') }
               %i.fa-brands.fa-telegram
               %span= t('sidebar.telegram_bot')
 
