@@ -33,7 +33,8 @@ class Notification < ApplicationRecord
   enum status: {
     draft: 0,
     released: 1,
-    cancelled: 2
+    cancelled: 2,
+    completed: 3
   }
 
   # Validation
@@ -61,7 +62,17 @@ class Notification < ApplicationRecord
     }
   end
 
-  def completed?
+  def delivery_completed?
     occurrences_count.positive? && occurrences_delivered_count == occurrences_count
+  end
+
+  def self.filter(params = {})
+    scope = all
+    scope = scope.where(status: params[:status]) if params[:status].present? && valid_status(params[:status])
+    scope
+  end
+
+  def self.valid_status(param_statuses)
+    (statuses.keys & param_statuses).length == param_statuses.length
   end
 end

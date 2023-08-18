@@ -36,6 +36,15 @@ RSpec.describe Notifications::SchedulableConcern, type: :model do
 
       expect(notification.reload.occurrences_delivered_count).to eq(1)
     end
+
+    context "delivery_completed? is true" do
+      it "marks notification as completed" do
+        allow(notification).to receive(:delivery_completed?).and_return(true)
+        notification.increase_delivered_count
+
+        expect(notification.reload.status).to eq("completed")
+      end
+    end
   end
 
   describe "#occurrence_dates" do

@@ -31,8 +31,13 @@ km:
     cancelled_at: បញ្ឈប់ដំណើរការនៅ
     cancelled_by: បញ្ឈប់ដំណើរការដោយ
     drafted_at: ធ្វើសេចក្តីព្រៀងនៅ
+    completed_at: បញ្ជូនរួចរាល់នៅ
     cancel_notification: បញ្ឈប់ការជូនដំណឹង
     cannot_cancell: មិនអាចបញ្ឈប់ដំណើរការការជូនដំណឹងបានទេ ព្រោះវាត្រូវបានបញ្ជូនរួចរាល់អស់ហើយ!
+    all: ទាំងអស់
+    draft: សេចក្តីព្រៀង
+    to_be_delivered: នឹងត្រូវបញ្ជូន
+    delivered_or_cancel: រួចរាល់ / បញ្ឈប់
 
   recurring_select:
     not_recurring: "សូមកំណត់"

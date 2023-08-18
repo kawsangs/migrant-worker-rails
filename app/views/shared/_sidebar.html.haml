@@ -20,13 +20,13 @@
   - if policy(User).index?
     %li.nav-item{ class: css_active_class('users') }
       %a.nav-link{:href => users_path}
-        %i.fas.fa-fw.fa-people-carry
+        %i.fa-fw.fa-solid.fa-user-group
         %span= t("sidebar.app_users")
 
   - if policy(Notification).index?
     %li.nav-item{ class: [css_active_class('notifications', 'survey_forms')] }
       %a.nav-link{:href => notifications_path}
-        %i.fas.fa-fw.fa-bell
+        %i.fa-fw.fa-solid.fa-bell
         %span= t("sidebar.notification")
 
   - if current_account.system_admin?

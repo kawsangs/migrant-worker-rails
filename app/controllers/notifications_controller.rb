@@ -4,7 +4,7 @@ class NotificationsController < ApplicationController
   before_action :set_notification, only: [:edit, :update, :destroy, :release, :cancel]
 
   def index
-    @pagy, @notifications = pagy(authorize Notification.includes(:notification_occurrences, :canceller, :releasor, survey_form: [questions: :options]))
+    @pagy, @notifications = pagy(authorize Notification.filter(filter_params).includes(:notification_occurrences, :canceller, :releasor, survey_form: [questions: :options]))
   end
 
   def new
@@ -66,5 +66,9 @@ class NotificationsController < ApplicationController
 
     def set_notification
       @notification = authorize Notification.find(params[:id])
+    end
+
+    def filter_params
+      params.permit(status: [])
     end
 end
