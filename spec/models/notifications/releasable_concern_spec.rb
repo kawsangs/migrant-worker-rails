@@ -45,7 +45,7 @@ RSpec.describe Notifications::ReleasableConcern, type: :model do
   end
 
   describe "#cancel_pending_notification_occurrence" do
-    let(:notification) { create(:notification, :recurrence) }
+    let(:notification) { create(:notification, :with_recurrence) }
     let(:releasor) { create(:account) }
     let(:first_occurrence) { notification.notification_occurrences.first }
 
@@ -61,6 +61,43 @@ RSpec.describe Notifications::ReleasableConcern, type: :model do
 
     it "has 1 cancelled notification_occurrence" do
       expect(notification.notification_occurrences.cancelled.length).to eq(1)
+    end
+  end
+
+  describe "#after_update, published_survey_form" do
+    let!(:releasor) { create(:account) }
+    let!(:notification) { create(:notification, :with_survey_form) }
+    let!(:survey_form) { notification.survey_form }
+
+    before {
+      allow(notification).to receive(:published_survey_form)
+    }
+
+    context "notification is released" do
+      it "calls method published_survey_form" do
+        notification.released_by(releasor.id)
+
+        expect(notification).to have_received(:published_survey_form)
+      end
+    end
+
+    context "notification is not released" do
+      it "calls method published_survey_form" do
+        notification.update(title: "test")
+
+        expect(notification).not_to have_received(:published_survey_form)
+      end
+    end
+  end
+
+  describe "#published_survey_form" do
+    let!(:survey_form) { create(:survey_form, published_at: nil) }
+    let!(:notification) { create(:notification, survey_form: survey_form) }
+
+    it "publishes the form" do
+      notification.send(:published_survey_form)
+
+      expect(survey_form.reload.published_at).not_to be_nil
     end
   end
 end

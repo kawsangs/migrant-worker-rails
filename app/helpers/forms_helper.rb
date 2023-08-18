@@ -10,4 +10,22 @@ module FormsHelper
 
     link_to(name, "#", class: "add_#{association} btn add_association #{option[:class]}", data: { id: id, fields: fields.gsub("\n", "") })
   end
+
+  def form_status_html(form)
+    status_method = ["form_status", form.status, "html"].compact.join("_")
+
+    send(status_method, form) rescue form.status
+  end
+
+  def form_status_draft_html(form)
+    title = "#{I18n.t('notification.drafted_at')}: #{I18n.l(form.updated_at)}"
+
+    "<span class='badge badge-secondary' data-toggle='tooltip' data-html='true' data-placement='top' data-title='#{sanitize(title)}'>Draft</span>"
+  end
+
+  def form_status_published_html(form)
+    title = "<div class='text-left'>#{I18n.t('shared.published_at')}: #{display_date(form.published_at)}</div>"
+
+    "<span class='badge badge-success' data-toggle='tooltip' data-html='true' data-placement='top' data-title='#{sanitize(title)}'>Released</span>"
+  end
 end

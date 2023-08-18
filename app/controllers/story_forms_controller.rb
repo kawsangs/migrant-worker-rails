@@ -42,7 +42,7 @@ class StoryFormsController < ApplicationController
 
   def publish
     @form = Forms::StoryForm.find(params[:id])
-    @form.update(published_at: Time.now)
+    @form.publish
 
     redirect_to story_forms_url
   end

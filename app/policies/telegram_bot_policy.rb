@@ -6,7 +6,7 @@ class TelegramBotPolicy < ApplicationPolicy
   end
 
   def create?
-    user.system_admin? || user.admin?
+    user.system_admin?
   end
 
   def upsert?

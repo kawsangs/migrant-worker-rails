@@ -5,7 +5,7 @@ require "rails_helper"
 RSpec.describe "Api::V1::SurveyFormsController", type: :request do
   describe "GET #show" do
     let!(:api_key) { ApiKey.create }
-    let!(:form)    { create(:form, :survey_form) }
+    let!(:form)    { create(:survey_form) }
     let(:json_response) { JSON.parse(response.body) }
 
     before {
