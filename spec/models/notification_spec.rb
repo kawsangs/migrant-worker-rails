@@ -22,6 +22,8 @@
 #  occurrences_count           :integer          default(0)
 #  occurrences_delivered_count :integer          default(0)
 #  releasor_id                 :integer
+#  cancelled_at                :datetime
+#  canceller_id                :integer
 #
 require "rails_helper"
 
@@ -30,4 +32,28 @@ RSpec.describe Notification, type: :model do
   it { is_expected.to belong_to(:releasor).class_name("Account").optional }
   it { is_expected.to have_many(:notification_logs) }
   it { is_expected.to have_many(:notification_occurrences) }
+
+  describe "#completed?" do
+    context "occurrences_count is zero" do
+      let(:notification) { build(:notification, occurrences_count: 0, occurrences_delivered_count: 0) }
+
+      it "returns false" do
+        expect(notification.completed?).to be_falsey
+      end
+    end
+
+    context "occurrences_count is positive" do
+      let(:notification) { build(:notification, occurrences_count: 1, occurrences_delivered_count: 0) }
+
+      it "returns false" do
+        expect(notification.completed?).to be_falsey
+      end
+
+      it "returns true" do
+        notification.occurrences_delivered_count = 1
+
+        expect(notification.completed?).to be_truthy
+      end
+    end
+  end
 end

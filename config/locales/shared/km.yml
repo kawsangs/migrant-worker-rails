@@ -37,10 +37,13 @@ km:
     are_you_sure_to_delete: តើអ្នកប្រាកដជាលុប%{type} <b>%{name}</b> នេះមែនទេ?
     are_you_sure_to_publish: តើអ្នកប្រាកដជាចេញផ្សាយ%{type} <b>%{name}</b> នេះមែនទេ?
     are_you_sure_to_release: តើអ្នកប្រាកដជាដាក់ដំណើរការ%{type} <b>%{name}</b> នេះមែនទេ?
+    are_you_sure_to_cancel: តើអ្នកប្រាកដជាបញ្ឈប់ដំណើរការ%{type} <b>%{name}</b> នេះមែនទេ?
     yes_delete: បាទ/ចាស, លុប!
     yes_publish: បាទ/ចាស, ចេញផ្សាយ!
+    yes_cancel: បាទ/ចាស, បញ្ឈប់!
     confirm_delete: បញ្ជាក់ការលុបការ %{name}
     confirm_publish: បញ្ជាក់ការចេញផ្សាយ %{name}
+    confirm_cancel: បញ្ជាក់ការបញ្ឈប់ %{name}
     search_by_name: ស្វែងរកតាមឈ្មោះ
     search_by_title: ស្វែងរកតាមចំណងជើង
     search_by_tag: ស្វែងរកតាមថេក
@@ -86,3 +89,4 @@ km:
     description: បរិយាយ
     release: ដាក់ដំណើរការ
     name: ឈ្មោះ
+    unauthorized_alert_message: អ្នកមិនត្រូវបានអនុញ្ញាតឱ្យអនុវត្តសកម្មភាពនេះទេ

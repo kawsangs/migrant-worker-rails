@@ -12,7 +12,7 @@
 #  failure_count   :integer          default(0)
 #  status          :integer          default("pending")
 #  job_id          :string
-#  cancel_at       :datetime
+#  cancelled_at    :datetime
 #  created_at      :datetime         not null
 #  updated_at      :datetime         not null
 #
@@ -27,7 +27,8 @@ class NotificationOccurrence < ApplicationRecord
   enum status: {
     pending: 1,
     in_progress: 2,
-    delivered: 3
+    delivered: 3,
+    cancelled: 4
   }
 
   # Callback
@@ -62,9 +63,21 @@ class NotificationOccurrence < ApplicationRecord
     success_count.to_i + failure_count.to_i >= token_count
   end
 
+  def mark_as_delivered
+    update(status: "delivered")
+
+    notification.increase_delivered_count
+  end
+
+  def cancel
+    self.update(cancelled_at: Time.zone.now, status: "cancelled")
+
+    delete_sidekiq_job
+  end
+
   private
     def notify_occurence_async
-      job_id = NotificationOccurenceJob.perform_at(occurrence_date, id)
+      job_id = NotificationOccurrenceJob.perform_at(occurrence_date, id)
 
       self.update(job_id: job_id)
     end
@@ -73,9 +86,8 @@ class NotificationOccurrence < ApplicationRecord
       @registered_tokens ||= RegisteredToken.all
     end
 
-    def mark_as_delivered
-      update(status: "delivered")
-
-      notification.increase_delivered_count
+    def delete_sidekiq_job
+      schedule = Sidekiq::ScheduledSet.new.find_job(job_id)
+      schedule.try(:delete)
     end
 end

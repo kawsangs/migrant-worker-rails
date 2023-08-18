@@ -6,7 +6,7 @@ class NotificationPolicy < ApplicationPolicy
   end
 
   def update?
-    create? && !record.released?
+    create? && record.draft?
   end
 
   def create?
@@ -17,8 +17,12 @@ class NotificationPolicy < ApplicationPolicy
     update?
   end
 
-  def publish?
+  def release?
     update?
+  end
+
+  def cancel?
+    create? && record.released? && !record.completed?
   end
 
   class Scope < Scope

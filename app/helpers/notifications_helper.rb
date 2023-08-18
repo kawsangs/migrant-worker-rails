@@ -31,10 +31,17 @@ module NotificationsHelper
   end
 
   def status_released_html(notification)
-    title = "<div class='text-left'>#{I18n.t('notification.released_at')}: #{I18n.l(notification.released_at)}</div>"
+    title = "<div class='text-left'>#{I18n.t('notification.released_at')}: #{display_date(notification.released_at)}</div>"
     title += "<div class='text-left'>#{I18n.t('notification.released_by')}: #{notification.releasor.display_name}</div>"
 
     "<span class='badge badge-success' data-toggle='tooltip' data-html='true' data-placement='top' data-title='#{sanitize(title)}'>Released</span>"
+  end
+
+  def status_cancelled_html(notification)
+    title = "<div class='text-left'>#{I18n.t('notification.cancelled_at')}: #{display_date(notification.cancelled_at)}</div>"
+    title += "<div class='text-left'>#{I18n.t('notification.cancelled_by')}: #{notification.canceller.try(:display_name)}</div>"
+
+    "<span class='badge badge-warning' data-toggle='tooltip' data-html='true' data-placement='top' data-title='#{sanitize(title)}'>Cancelled</span>"
   end
 
   private
@@ -44,7 +51,7 @@ module NotificationsHelper
       str += "<ol>"
 
       notification.notification_occurrences.each do |occurrence|
-        str += "<li>Success: #{occurrence.success_count} / Total: #{occurrence.failure_count} (#{occurrence.status}) </li>"
+        str += "<li>#{display_date(occurrence.occurrence_date)}៖ Success: #{occurrence.success_count} / Total: #{occurrence.failure_count} (#{occurrence.status}) </li>"
       end
 
       str += "</ol>"

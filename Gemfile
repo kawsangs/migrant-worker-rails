@@ -36,7 +36,7 @@ gem "bootstrap",      "~> 4.5.2"
 gem "coffee-rails",   "~> 5.0.0"
 
 gem "simple_form",    "~> 5.1.0"
-gem "pundit",         "~> 2.1.0"
+gem "pundit",         "~> 2.2.0"
 gem "pagy",           "~> 3.5"
 gem "carrierwave",    "~> 2.1.1"
 

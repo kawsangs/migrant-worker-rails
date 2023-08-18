@@ -12,7 +12,7 @@
 #  failure_count   :integer          default(0)
 #  status          :integer          default("pending")
 #  job_id          :string
-#  cancel_at       :datetime
+#  cancelled_at    :datetime
 #  created_at      :datetime         not null
 #  updated_at      :datetime         not null
 #

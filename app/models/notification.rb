@@ -22,29 +22,36 @@
 #  occurrences_count           :integer          default(0)
 #  occurrences_delivered_count :integer          default(0)
 #  releasor_id                 :integer
+#  cancelled_at                :datetime
+#  canceller_id                :integer
 #
 class Notification < ApplicationRecord
   include Notifications::SchedulableConcern
+  include Notifications::ReleasableConcern
 
   # Enum
   enum status: {
     draft: 0,
-    released: 1
+    released: 1,
+    cancelled: 2
   }
 
   # Validation
   validates :title, presence: true
   validates :body, presence: true
-  validates :releasor_id, presence: true, if: -> { released? }
 
   # Association
   belongs_to :survey_form, foreign_key: :form_id, class_name: "Forms::SurveyForm", optional: true
   belongs_to :releasor, class_name: "Account", optional: true
+  belongs_to :canceller, class_name: "Account", optional: true
   has_many :notification_logs
-  has_many :notification_occurrences
+  has_many :notification_occurrences, dependent: :destroy
 
   # Delegation
   delegate :name, to: :survey_form, prefix: true, allow_nil: true
+
+  # Scope
+  default_scope { order(created_at: :desc) }
 
   # Instant method
   def build_content
@@ -54,7 +61,7 @@ class Notification < ApplicationRecord
     }
   end
 
-  def released_by(releasor_id)
-    self.update(released_at: Time.zone.now, status: "released", releasor_id: releasor_id)
+  def completed?
+    occurrences_count.positive? && occurrences_delivered_count == occurrences_count
   end
 end

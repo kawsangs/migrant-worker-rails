@@ -24,9 +24,15 @@ en:
     failure: Failure
     delivery_progress: Delivery progress
     release_successfully: "The notification has been released successfully!"
+    cancel_successfully: The notification has been cancelled successfully!
+    delete_successfully: The notification has been deleted successfully!
     released_at: Released at
     released_by: Released by
+    cancelled_at: Cancelled at
+    cancelled_by: Cancelled by
     drafted_at: Drafted at
+    cancel_notification: Cancel notification
+    cannot_cancell: Cannot cancell the notification, it is already deliverd completed!
 
   recurring_select:
     not_recurring: "Please determine"
