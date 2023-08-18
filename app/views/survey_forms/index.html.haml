@@ -20,6 +20,7 @@
             %th= t('form.number_of_notification')
             %th= t('shared.created_at')
             %th= t('shared.updated_at')
+            %th= t('shared.status')
             %th
         %tbody
           - @forms.each_with_index do |form, index|
@@ -30,6 +31,7 @@
               %td= form.notifications.length
               %td= timeago(form.created_at).html_safe
               %td= timeago(form.updated_at).html_safe
+              %td= form_status_html(form).html_safe
               %td
                 .d-flex.justify-content-end
                   = render "shared/buttons/edit_button", url: edit_survey_form_path(form), object: form

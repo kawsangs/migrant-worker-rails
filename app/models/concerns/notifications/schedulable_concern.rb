@@ -23,7 +23,7 @@ module Notifications::SchedulableConcern
     START_TIME = Date.today + 8.hours
 
     # Callback
-    after_commit :create_notification_occurrence, on: [:update]
+    after_update :create_notification_occurrence, if: -> { released? }
 
     # Instance method
     def increase_delivered_count
@@ -55,8 +55,6 @@ module Notifications::SchedulableConcern
 
     private
       def create_notification_occurrence
-        return unless released?
-
         occurrence_dates.each do |occurrence_date|
           notification_occurrences.create(occurrence_date: occurrence_date)
         end

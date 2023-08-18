@@ -11,6 +11,7 @@ module Notifications::ReleasableConcern
 
     # Callback
     after_update :cancel_pending_notification_occurrence, if: -> { cancelled? }
+    after_update :published_survey_form, if: -> { released? && form_id.present? }
 
     # Instance method
     def cancelled_by(canceller_id)
@@ -31,6 +32,10 @@ module Notifications::ReleasableConcern
           errors.add :base, I18n.t("notification.cannot_cancell")
           throw(:abort)
         end
+      end
+
+      def published_survey_form
+        survey_form.publish unless survey_form.published?
       end
   end
 end

@@ -6,7 +6,7 @@ class VideoBatchPolicy < ApplicationPolicy
   end
 
   def create?
-    user.system_admin? || admin?
+    user.system_admin?
   end
 
   def update?

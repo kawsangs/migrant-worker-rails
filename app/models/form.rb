@@ -41,4 +41,12 @@ class Form < ApplicationRecord
   def published?
     published_at.present?
   end
+
+  def status
+    published? ? "published" : "draft"
+  end
+
+  def publish
+    update(published_at: Time.now)
+  end
 end

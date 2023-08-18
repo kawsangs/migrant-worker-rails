@@ -6,7 +6,7 @@ class SurveyFormPolicy < ApplicationPolicy
   end
 
   def update?
-    create?
+    create? && !record.published?
   end
 
   def create?
@@ -14,7 +14,7 @@ class SurveyFormPolicy < ApplicationPolicy
   end
 
   def destroy?
-    create? && record.notifications.length.zero?
+    update?
   end
 
   class Scope < Scope

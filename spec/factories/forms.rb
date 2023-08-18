@@ -18,10 +18,14 @@
 FactoryBot.define do
   factory :form do
     name { FFaker::Name.name }
-    form_type { Forms::StoryForm }
+    form_type { "Forms::StoryForm" }
+  end
 
-    trait :survey_form do
-      form_type { Forms::SurveyForm }
-    end
+  factory :survey_form, class: "Forms::SurveyForm" do
+    name { FFaker::Name.name }
+  end
+
+  factory :story_form, class: "Forms::StoryForm" do
+    name { FFaker::Name.name }
   end
 end
