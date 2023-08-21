@@ -48,7 +48,7 @@ class SurveyFormsController < ApplicationController
           questions_attributes: [
             :id, :name, :type, :required, :display_order, :code,
             :_destroy, :hint, :relevant, :audio, :remove_audio,
-            options_attributes: %i[id name value is_important _destroy],
+            options_attributes: [:id, :name, :value, :_destroy, chat_group_ids: []],
             criterias_attributes: %i[id question_code operator response_value _destroy]
           ]
         ]

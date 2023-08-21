@@ -26,4 +26,8 @@ class User < ApplicationRecord
     scope = scope.where("LOWER(full_name) LIKE ?", "%#{params[:keyword].downcase}%") if params[:keyword].present?
     scope
   end
+
+  def profile_html
+    "#{I18n.t('users.username')}: <b>#{full_name}</b>, #{I18n.t('users.gender')}: <b>#{sex}</b>, #{I18n.t('users.age')}: <b>#{age}</b>"
+  end
 end

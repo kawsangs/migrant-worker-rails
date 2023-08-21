@@ -17,6 +17,8 @@
 class ChatGroup < ApplicationRecord
   # Association
   belongs_to :telegram_bot, foreign_key: :telegram_bot_user_id, primary_key: :telegram_bot_user_id
+  has_many :options_chat_groups
+  has_many :options, through: :options_chat_groups
 
   # Constant
   TELEGRAM_CHAT_TYPES = %w[group supergroup]

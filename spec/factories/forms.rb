@@ -19,6 +19,12 @@ FactoryBot.define do
   factory :form do
     name { FFaker::Name.name }
     form_type { "Forms::StoryForm" }
+
+    trait :with_question_and_options do
+      after(:create) do |form, evaluator|
+        create(:question, :with_option, form_id: form.id)
+      end
+    end
   end
 
   factory :survey_form, class: "Forms::SurveyForm" do

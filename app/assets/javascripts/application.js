@@ -5,6 +5,7 @@
 //= require jquery3
 //= require popper
 //= require bootstrap
+//= require bootstrap-select
 
 //= require jquery-fileupload/basic
 //= require jquery-fileupload/vendor/tmpl
@@ -26,6 +27,7 @@
 //= require common/country
 //= require common/sidebar
 //= require common/confirm_modal
+//= require common/select_picker
 
 // For building question skip logic
 //= require common/skip_logic_constant
@@ -57,6 +59,7 @@
 $(document).on("ready turbolinks:load", () => {
   MW.Common.Topbar.init();
   MW.Common.Timeago.init();
+  MW.Common.SelectPicker.init();
   MW.Common.DatetimePicker.init();
   MW.Common.Sidebar.init();
   MW.Common.ConfirmModal.init();

@@ -54,3 +54,23 @@
 .filter-input {
   width: 300px;
 }
+
+// Custom select Select picker
+.bootstrap-select > .dropdown-toggle.bs-placeholder {
+  color: #6e707e;
+}
+
+.bootstrap-select .dropdown-menu li a {
+  color: #6e707e;
+  font-size: 0.95rem;
+}
+
+.bootstrap-select.form-control {
+  border: 1px solid #d1d3e2 !important;
+}
+
+.bootstrap-select button {
+  color: #6e707e;
+  background-color: #fff;
+}
+// End -- Custom select Select picker
