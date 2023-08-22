@@ -94,6 +94,28 @@ Rails.application.routes.draw do
       resources :quizzes, only: [:create]
       resources :answers, only: [:update]
       resource  :registered_tokens, only: [:update]
+    end
+
+    namespace :v2 do
+      resources :users, only: [:create]
+
+      resources :countries, only: [:index] do
+        resources :institutions, only: [:index]
+        resources :country_institutions, only: :index
+      end
+
+      resources :pdfs, only: [] do
+        get :download, on: :collection
+      end
+
+      resources :categories
+      resources :departures, controller: :categories, type: "Categories::Departure", only: [:index, :show]
+      resources :safeties, controller: :categories, type: "Categories::Safety", only: [:index, :show]
+
+      resources :forms, only: [:index, :show]
+      resources :quizzes, only: [:create]
+      resources :answers, only: [:update]
+      resource  :registered_tokens, only: [:update]
 
       resources :videos, only: [:index]
       resources :survey_forms, only: [:show]

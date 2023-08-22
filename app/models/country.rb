@@ -32,8 +32,7 @@ class Country < ApplicationRecord
   end
 
   def self.having_institutions
-    ids = joins(:institutions).group("countries.id").count.keys
-    where(id: ids)
+    select("countries.*, count(country_institutions.country_id) as count").joins(:country_institutions).group("countries.id")
   end
 
   private

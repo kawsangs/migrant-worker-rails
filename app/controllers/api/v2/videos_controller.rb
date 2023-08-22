@@ -1,8 +1,8 @@
 # frozen_string_literal: true
 
 module Api
-  module V1
-    class VideosController < ApplicationController
+  module V2
+    class VideosController < ApiController
       def index
         pagy, videos = pagy(Video.includes(:video_author))
 
