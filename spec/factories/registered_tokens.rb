@@ -11,6 +11,7 @@
 #  device_id   :string
 #  device_type :string
 #  app_version :string
+#  device_os   :integer
 #
 FactoryBot.define do
   factory :registered_token do

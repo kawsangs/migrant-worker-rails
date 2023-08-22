@@ -4,16 +4,17 @@
 #
 # Table name: quizzes
 #
-#  id         :bigint           not null, primary key
-#  uuid       :string
-#  user_uuid  :string
-#  form_id    :integer
-#  quizzed_at :datetime
-#  created_at :datetime         not null
-#  updated_at :datetime         not null
+#  id              :bigint           not null, primary key
+#  uuid            :string
+#  user_uuid       :string
+#  form_id         :integer
+#  quizzed_at      :datetime
+#  created_at      :datetime         not null
+#  updated_at      :datetime         not null
+#  notification_id :integer
 #
 require "rails_helper"
 
 RSpec.describe Quiz, type: :model do
-  pending "add some examples to (or delete) #{__FILE__}"
+  it { is_expected.to belong_to(:notification).optional }
 end

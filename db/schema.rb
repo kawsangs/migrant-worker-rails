@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2023_08_21_034608) do
+ActiveRecord::Schema.define(version: 2023_08_22_041022) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "pgcrypto"
@@ -247,6 +247,22 @@ ActiveRecord::Schema.define(version: 2023_08_21_034608) do
     t.datetime "updated_at", precision: 6, null: false
   end
 
+  create_table "pages", id: :uuid, default: -> { "gen_random_uuid()" }, force: :cascade do |t|
+    t.string "code"
+    t.string "name_km"
+    t.string "name_en"
+    t.uuid "parent_id"
+    t.integer "visits_count"
+    t.integer "lft", null: false
+    t.integer "rgt", null: false
+    t.integer "depth", default: 0, null: false
+    t.integer "children_count", default: 0, null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["lft"], name: "index_pages_on_lft"
+    t.index ["rgt"], name: "index_pages_on_rgt"
+  end
+
   create_table "questions", force: :cascade do |t|
     t.string "code"
     t.text "name"
@@ -274,6 +290,7 @@ ActiveRecord::Schema.define(version: 2023_08_21_034608) do
     t.datetime "quizzed_at"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.integer "notification_id"
   end
 
   create_table "registered_tokens", force: :cascade do |t|
@@ -283,6 +300,7 @@ ActiveRecord::Schema.define(version: 2023_08_21_034608) do
     t.string "device_id"
     t.string "device_type"
     t.string "app_version"
+    t.integer "device_os"
   end
 
   create_table "sections", id: :uuid, default: -> { "gen_random_uuid()" }, force: :cascade do |t|
@@ -344,6 +362,17 @@ ActiveRecord::Schema.define(version: 2023_08_21_034608) do
     t.string "url"
     t.integer "display_order"
     t.uuid "video_author_id"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+  end
+
+  create_table "visits", id: :uuid, default: -> { "gen_random_uuid()" }, force: :cascade do |t|
+    t.string "page_id"
+    t.string "pageable_id"
+    t.string "pageable_type"
+    t.integer "user_id"
+    t.string "device_id"
+    t.datetime "visit_date"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end
