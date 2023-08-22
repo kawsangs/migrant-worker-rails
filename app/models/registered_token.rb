@@ -11,9 +11,18 @@
 #  device_id   :string
 #  device_type :string
 #  app_version :string
+#  device_os   :integer
 #
 class RegisteredToken < ApplicationRecord
+  # Validation
   validates :token, presence: true
+
+  # Enum
+  enum device_os: {
+    android: 1,
+    ios: 2,
+    other: 3
+  }
 
   def self.from_param(params = {})
     return self.find_or_initialize_by(id: params[:id]) if params[:id].present?

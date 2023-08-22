@@ -119,6 +119,7 @@ Rails.application.routes.draw do
 
       resources :videos, only: [:index]
       resources :survey_forms, only: [:show]
+      resources :visits, only: [:create]
     end
   end
 
