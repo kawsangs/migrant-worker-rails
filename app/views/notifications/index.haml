@@ -1,8 +1,9 @@
 = render "shared/headers/page_heading", title: t("notification.notification") do
   = render "shared/buttons/add_new_button", url: new_notification_path
 
-.d-flex.justify-content-end.mb-1
-  = render "notifications/switch_view_buttons"
+.d-flex
+  .flex-grow-1= render "nav_tabs"
+  .mb-1= render "notifications/switch_view_buttons"
 
 .card.shadow.mb-4
   .card-body
@@ -39,12 +40,12 @@
                       - message = { type: t('notification.notification'), name: notification.title, url: cancel_notification_path(notification) }
 
                       %button.btn.btn-circle.btn-sm.btn-outline-danger{ "data-target" => "#confirmCancelModal", "data-toggle" => "modal", "data-message" => message.to_json, :type => "button" }
-                        %i.fa-solid.fa-bell-slash
+                        %i.fa-solid.fa-stop
 
                   - if policy(notification).release?
                     %span.mr-1{ data: { toggle: 'tooltip', placement: 'top', title: t('shared.release')} }
                       %button.btn.btn-sm.btn-outline-info.btn-circle{"data-target" => "#confirmPublishModal", "data-toggle" => "modal", "data-message" => { type: t('notification.notification'), name: notification.title, url: release_notification_path(notification) }.to_json, :type => "button"}
-                        %i.fa-solid.fa-bell{style: 'margin-right: 2px'}
+                        %i.fa-solid.fa-play{style: 'margin-left: 2px'}
 
                   = render "shared/buttons/edit_button", url: edit_notification_path(notification), object: notification
 

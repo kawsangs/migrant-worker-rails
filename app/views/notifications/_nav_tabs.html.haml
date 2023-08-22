@@ -1,0 +1,16 @@
+%ul.nav.nav-tabs
+  %li.nav-item{class: css_active_tab('all')}
+    %a.nav-link{href: notifications_path}
+      = t('notification.all').titleize
+
+  %li.nav-item{class: css_active_tab('draft')}
+    %a.nav-link{href: notifications_path(status: ['draft'])}
+      = t('notification.draft').titleize
+
+  %li.nav-item{class: css_active_tab('released')}
+    %a.nav-link{href: notifications_path(status: ['released'])}
+      = t('notification.to_be_delivered').titleize
+
+  %li.nav-item{class: css_active_tab('cancelled,completed')}
+    %a.nav-link{href: notifications_path(status: ['cancelled', 'completed'])}
+      = t('notification.delivered_or_cancel').titleize

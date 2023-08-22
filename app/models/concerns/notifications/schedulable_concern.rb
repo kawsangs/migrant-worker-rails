@@ -28,6 +28,8 @@ module Notifications::SchedulableConcern
     # Instance method
     def increase_delivered_count
       self.class.increment_counter(:occurrences_delivered_count, id)
+
+      mark_as_completed if reload && delivery_completed?
     end
 
     def occurrence_dates
@@ -78,6 +80,10 @@ module Notifications::SchedulableConcern
         if end_time.present? && end_time < Date.tomorrow.in_time_zone("Bangkok")
           errors.add(:end_time, "must be bigger than today")
         end
+      end
+
+      def mark_as_completed
+        update(status: "completed")
       end
   end
 end

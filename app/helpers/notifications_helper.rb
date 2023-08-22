@@ -44,6 +44,18 @@ module NotificationsHelper
     "<span class='badge badge-warning' data-toggle='tooltip' data-html='true' data-placement='top' data-title='#{sanitize(title)}'>Cancelled</span>"
   end
 
+  def status_completed_html(notification)
+    title = "<div class='text-left'>#{I18n.t('notification.completed_at')}: #{display_date(notification.updated_at)}</div>"
+
+    "<span class='badge badge-primary' data-toggle='tooltip' data-html='true' data-placement='top' data-title='#{sanitize(title)}'>Completed</span>"
+  end
+
+  def css_active_tab(status)
+    return "active" if params[:status].to_a.join(",") == status
+
+    "active" if status == "all" && params[:status].blank?
+  end
+
   private
     def occurrences_list(notification, number)
       str = "<div class='text-left'>"

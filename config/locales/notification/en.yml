@@ -31,8 +31,13 @@ en:
     cancelled_at: Cancelled at
     cancelled_by: Cancelled by
     drafted_at: Drafted at
+    completed_at: Completed at
     cancel_notification: Cancel notification
     cannot_cancell: Cannot cancell the notification, it is already deliverd completed!
+    all: All
+    draft: Draft
+    to_be_delivered: To be deliverd
+    delivered_or_cancel: Delivered/Cancelled
 
   recurring_select:
     not_recurring: "Please determine"
