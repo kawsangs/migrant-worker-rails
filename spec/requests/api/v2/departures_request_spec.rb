@@ -2,7 +2,7 @@
 
 require "rails_helper"
 
-RSpec.describe "Api::V1::CategoriesController", type: :request do
+RSpec.describe "Api::V2::CategoriesController", type: :request do
   describe "GET #index" do
     let!(:api_key)  { create(:api_key) }
     let!(:departure_category) { create(:category) }
@@ -12,7 +12,7 @@ RSpec.describe "Api::V1::CategoriesController", type: :request do
     let(:body) { JSON.parse(response.body) }
 
     before {
-      get "/api/v1/departures", headers: headers
+      get "/api/v2/departures", headers: headers
     }
 
     it { expect(response.content_type).to eq("application/json; charset=utf-8") }

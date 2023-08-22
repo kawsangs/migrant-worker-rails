@@ -2,18 +2,18 @@
 
 require "rails_helper"
 
-RSpec.describe "Api::V1::SurveyFormsController", type: :request do
-  describe "GET #show" do
+RSpec.describe "Api::V2::VideosController", type: :request do
+  describe "GET #index" do
     let!(:api_key) { ApiKey.create }
-    let!(:form)    { create(:survey_form) }
+    let!(:video)   { create(:video) }
     let(:json_response) { JSON.parse(response.body) }
 
     before {
       headers = { "ACCEPT" => "application/json", "Authorization" => "Token #{api_key.access_token}" }
-      get "/api/v1/survey_forms/#{form.id}", headers: headers
+      get "/api/v2/videos", headers: headers
     }
 
     it { expect(response.status).to eq(200) }
-    it { expect(json_response["id"]).not_to be_nil }
+    it { expect(json_response["videos"].length).to eq(1) }
   end
 end

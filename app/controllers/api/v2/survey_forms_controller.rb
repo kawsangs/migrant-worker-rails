@@ -1,8 +1,8 @@
 # frozen_string_literal: true
 
 module Api
-  module V1
-    class SurveyFormsController < ApplicationController
+  module V2
+    class SurveyFormsController < ApiController
       def show
         form = Forms::SurveyForm.find(params[:id])
 

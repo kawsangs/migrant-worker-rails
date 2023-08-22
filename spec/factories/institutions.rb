@@ -19,6 +19,11 @@
 FactoryBot.define do
   factory :institution do
     name { "child help" }
+    name_km { FFaker::Name.name }
     kind { "ngo" }
+
+    trait :with_country do
+      country_institutions_attributes { [{ country_name: FFaker::Name.name, country_code: FFaker::Name.name.downcase.split(" ").join("")[0..1] }] }
+    end
   end
 end

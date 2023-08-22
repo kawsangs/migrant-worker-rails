@@ -2,7 +2,7 @@
 
 require "rails_helper"
 
-RSpec.describe "Api::V1::RegisteredTokensController", type: :request do
+RSpec.describe "Api::V2::RegisteredTokensController", type: :request do
   describe "PUT #update" do
     let(:api_key) { create(:api_key) }
     let(:headers) { { "ACCEPT" => "application/json", "Authorization" => "Token #{api_key.access_token}" } }
@@ -13,7 +13,7 @@ RSpec.describe "Api::V1::RegisteredTokensController", type: :request do
 
       it "creates a registered_token" do
         expect {
-          put "/api/v1/registered_tokens", params: { registered_token: params }, headers: headers
+          put "/api/v2/registered_tokens", params: { registered_token: params }, headers: headers
         }.to change { RegisteredToken.count }.by(1)
       end
     end
@@ -24,13 +24,13 @@ RSpec.describe "Api::V1::RegisteredTokensController", type: :request do
 
       it "doesn't creates a registered_token" do
         expect {
-          put "/api/v1/registered_tokens", params: { registered_token: params }, headers: headers
+          put "/api/v2/registered_tokens", params: { registered_token: params }, headers: headers
         }.to change { RegisteredToken.count }.by (0)
       end
 
       it "update the registered_token" do
         expect {
-          put "/api/v1/registered_tokens", params: { registered_token: params }, headers: headers
+          put "/api/v2/registered_tokens", params: { registered_token: params }, headers: headers
         }.to change { registered_token.reload.token }.from("aaaa").to("abcdefg")
       end
     end

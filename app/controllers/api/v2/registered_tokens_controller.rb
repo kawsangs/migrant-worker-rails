@@ -1,10 +1,10 @@
 # frozen_string_literal: true
 
 module Api
-  module V1
-    class RegisteredTokensController < ApplicationController
+  module V2
+    class RegisteredTokensController < ApiController
       def update
-        @token = RegisteredToken.find_or_initialize_by(id: token_params["id"])
+        @token = RegisteredToken.from_param(token_params)
 
         if @token.update(token_params)
           render json: @token
@@ -15,7 +15,9 @@ module Api
 
       private
         def token_params
-          params.require(:registered_token).permit(:id, :token)
+          params.require(:registered_token).permit(
+            :id, :token, :device_id, :device_type, :device_os, :app_version
+          )
         end
     end
   end

@@ -13,14 +13,17 @@
 #
 FactoryBot.define do
   factory :country do
-    name { "Cambodia" }
-  end
+    name { FFaker::Name.name }
+    code { name.downcase.split(" ").join("_") }
 
-  trait :cambodia do
-    name { "Cambodia" }
-  end
+    trait :cambodia do
+      name { "Cambodia" }
+      code { "km" }
+    end
 
-  trait :canada do
-    name { "Canada" }
+    trait :canada do
+      name { "Canada" }
+      code { "ca" }
+    end
   end
 end
