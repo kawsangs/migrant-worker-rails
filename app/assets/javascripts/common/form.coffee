@@ -272,6 +272,9 @@ MW.Form = do ->
     $(dom).before(field)
     assignDisplayOrderToListItem()
 
+    MW.Common.SelectPicker.init()
+    $("[data-toggle='tooltip']").tooltip()
+
     return field
 
   initOneOption = (dom)->

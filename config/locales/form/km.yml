@@ -24,6 +24,7 @@ km:
     match_all_criteria: សំណួរគួរតែត្រូវនឹងលក្ខណៈវិនិច្ឆ័យទាំងអស់នេះ
     match_any_criteria: សំណួរគួរតែត្រូវនឹងលក្ខណៈវិនិច្ឆ័យណាមួយ
     ok: យល់ព្រម
+    chat_group: ក្រុមជជែក
 
     # Survey
     survey: ការស្ទង់មិតិ
@@ -38,3 +39,6 @@ km:
     value: តម្លៃ
     add_section: + Add section
     section_name: ផ្នែក
+    telegram_chat_group: ក្រុម Telegram ដែលទទួលការជូនដំណឹង
+    group_selected: ក្រុមត្រូវបានជ្រើសរើស
+    chat_group_description: ពេលចម្លើយនេះត្រូវបានជ្រើសរើស នោះព័ត៌មានទាក់ទងនឹងការស្ទង់មតិមួយនេះនឹងត្រូវបញ្ជូនទៅកាន់ក្រុម Telegram ដែលអ្នកបានកំណត់

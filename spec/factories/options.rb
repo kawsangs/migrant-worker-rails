@@ -19,5 +19,12 @@
 #
 FactoryBot.define do
   factory :option do
+    name  { FFaker::Name.name }
+    value { name.downcase.split(" ").join("_") }
+    question { create(:question) }
+
+    trait :with_chat_group do
+      chat_group_ids { [ create(:chat_group).id ] }
+    end
   end
 end

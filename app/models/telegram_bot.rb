@@ -41,6 +41,11 @@ class TelegramBot < ApplicationRecord
     self.first || self.new
   end
 
+  def self.client_send_message(chat_id, message)
+    ::Telegram::Bot::Client.new(instance.token)
+                           .send_message(chat_id: chat_id, text: message, parse_mode: :HTML)
+  end
+
   private
     def set_status_active_and_user_id(request)
       self.active = request["ok"]

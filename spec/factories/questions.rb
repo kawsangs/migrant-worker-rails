@@ -25,5 +25,18 @@
 #
 FactoryBot.define do
   factory :question do
+    name  { FFaker::Name.name }
+    type  { "Questions::SelectOne" }
+    form  { create(:form) }
+
+    trait :with_option do
+      transient do
+        count { 1 }
+      end
+
+      after(:create) do |question, evaluator|
+        create_list(:option, evaluator.count, question: question)
+      end
+    end
   end
 end

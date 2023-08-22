@@ -22,4 +22,15 @@ class Answer < ApplicationRecord
   belongs_to :question
   belongs_to :quiz, primary_key: "uuid", foreign_key: "quiz_uuid", optional: true
   belongs_to :user, primary_key: "uuid", foreign_key: "user_uuid", optional: true
+
+  # Callback
+  after_create :notify_telegram_groups
+
+  def notify_telegram_groups
+    option = question.options.find_by(value: value)
+
+    if option&.chat_groups.present?
+      quiz.notify_groups_async(option.chat_groups)
+    end
+  end
 end

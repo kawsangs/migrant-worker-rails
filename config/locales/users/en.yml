@@ -13,3 +13,6 @@ en:
     registered_at: 'Registered at'
     view_game: View Games
     id: ID
+    username: User name
+    gender: gender
+    age: age

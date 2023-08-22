@@ -24,6 +24,7 @@ en:
     match_all_criteria: Question should match all of these criteria
     match_any_criteria: Question should match any of these criteria
     ok: Ok
+    chat_group: Chat group
 
     # Survey
     survey: Survey
@@ -38,3 +39,6 @@ en:
     value: Value
     add_section: + Add section
     section_name: Section name
+    telegram_chat_group: Receiving notification Telegram group
+    group_selected: groups selected
+    chat_group_description: Once this answer has been selected, information related to this survey will be sent to your designated Telegram team.

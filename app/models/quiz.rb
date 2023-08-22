@@ -13,6 +13,8 @@
 #  updated_at :datetime         not null
 #
 class Quiz < ApplicationRecord
+  include Quizzes::NotifiableConcern
+
   # Association
   belongs_to :user, primary_key: "uuid", foreign_key: "user_uuid"
   belongs_to :form
