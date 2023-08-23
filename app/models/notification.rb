@@ -56,10 +56,7 @@ class Notification < ApplicationRecord
 
   # Instant method
   def build_content
-    {
-      notification: { title: title, body: body },
-      data: { payload: { data: { form_id: form_id } }.to_json }
-    }
+    { notification: { title: title, body: body } }
   end
 
   def delivery_completed?

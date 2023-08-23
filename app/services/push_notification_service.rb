@@ -5,14 +5,14 @@
 require "googleauth"
 
 class PushNotificationService
-  attr_reader :notification
+  attr_reader :notification_occurrence
 
-  def initialize(notification)
-    @notification = notification
+  def initialize(notification_occurrence)
+    @notification_occurrence = notification_occurrence
   end
 
   def notify(token)
-    message = { 'token': token }.merge(notification.build_content)
+    message = { 'token': token }.merge(notification_occurrence.build_content)
 
     fcm.send_v1(message)
   end
