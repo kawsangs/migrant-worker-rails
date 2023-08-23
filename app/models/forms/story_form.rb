@@ -14,6 +14,7 @@
 #  image        :string
 #  audio        :string
 #  published_at :datetime
+#  description  :text
 #
 module Forms
   class StoryForm < ::Form

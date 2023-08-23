@@ -14,6 +14,7 @@
 #  image        :string
 #  audio        :string
 #  published_at :datetime
+#  description  :text
 #
 class FormSerializer < ActiveModel::Serializer
   attributes :id, :code, :name, :audio_url, :image_url

@@ -20,8 +20,12 @@
 
             = f.text_field :hint, placeholder: t('form.hint'), class: "form-control field-definition no-style as-hint"
 
-          .w-25.ml-2{style: 'margin-bottom: -16px;'}
-            = render "shared/audio", field: :audio, f: f
+          .w-25.ml-2.d-flex.align-items-center
+            %div{style: 'width: 90%'}
+              = render "shared/audio", field: :audio, f: f
+
+            %span.ml-1{'data-toggle': 'tooltip', 'data-title': t('form.question_audio_hint')}
+              %i.fa-regular.fa-circle-question.text-gray-800
 
           %button.btn.btn-outline-primary.btn-add-field{type: 'button'}= t('form.ok')
 

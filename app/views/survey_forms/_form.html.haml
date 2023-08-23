@@ -6,6 +6,9 @@
   / Tags
   = f.input :tag_list, label: t('shared.tags'), input_html: {  'data-tags': Forms::SurveyForm.tag_counts.sort_by(&:count).reverse.pluck(:name).to_json }
 
+  / Description
+  = f.input :description, label: t('shared.description')
+
   / Sections
   = f.fields_for :sections, f.object.sections do |sf|
     = render 'section_fields', f: sf

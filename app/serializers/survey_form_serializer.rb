@@ -14,9 +14,10 @@
 #  image        :string
 #  audio        :string
 #  published_at :datetime
+#  description  :text
 #
 class SurveyFormSerializer < ActiveModel::Serializer
-  attributes :id, :code, :name, :audio_url, :image_url
+  attributes :id, :code, :name, :audio_url, :image_url, :description
 
   has_many :sections
 

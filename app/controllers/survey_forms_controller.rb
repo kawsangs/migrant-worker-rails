@@ -40,7 +40,8 @@ class SurveyFormsController < ApplicationController
 
   private
     def form_params
-      params.require(:forms_survey_form).permit(:name, :tag_list,
+      params.require(:forms_survey_form).permit(
+        :name, :tag_list, :description,
         sections_attributes: [
           :id, :name, :_destroy,
           questions_attributes: [
