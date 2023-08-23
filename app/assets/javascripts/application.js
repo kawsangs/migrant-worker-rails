@@ -42,6 +42,7 @@
 //= require common/audio
 //= require common/wizard_form
 //= require common/select_recurring_translation
+//= require common/tag_list
 
 //= require accounts/index
 //= require category_images

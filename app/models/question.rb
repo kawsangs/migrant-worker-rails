@@ -24,6 +24,8 @@
 #  section_id      :uuid
 #
 class Question < ApplicationRecord
+  include TaggableConcern
+
   # Mount file
   mount_uploader :audio, AudioUploader
   mount_uploader :passing_audio, AudioUploader

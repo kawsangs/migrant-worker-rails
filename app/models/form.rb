@@ -16,6 +16,8 @@
 #  published_at :datetime
 #
 class Form < ApplicationRecord
+  include TaggableConcern
+
   self.inheritance_column = :form_type
 
   # Mount file
@@ -26,6 +28,9 @@ class Form < ApplicationRecord
   has_many :questions, inverse_of: :form
   has_many :surveys
   has_many :sections, dependent: :destroy, inverse_of: :form
+
+  # Validation
+  validates :name, presence: true
 
   # Scope
   default_scope { order("created_at") }

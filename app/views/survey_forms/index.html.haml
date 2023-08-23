@@ -18,6 +18,7 @@
             %th= t('form.name')
             %th= t('form.number_of_question')
             %th= t('form.number_of_notification')
+            %th= t('shared.tags')
             %th= t('shared.created_at')
             %th= t('shared.updated_at')
             %th= t('shared.status')
@@ -29,6 +30,7 @@
               %td= form.name
               %td= form.questions.length
               %td= form.notifications.length
+              %td= form.tag_list
               %td= timeago(form.created_at).html_safe
               %td= timeago(form.updated_at).html_safe
               %td= form_status_html(form).html_safe

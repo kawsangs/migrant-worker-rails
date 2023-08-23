@@ -14,6 +14,8 @@
 class Tag < ApplicationRecord
   has_many :taggings
   has_many :videos, through: :taggings, source: :taggable, source_type: "Video"
+  has_many :forms, through: :taggings, source: :taggable, source_type: "Form"
+  has_many :questions, through: :taggings, source: :taggable, source_type: "Question"
 
   before_create :set_display_order
   before_destroy :validate_if_in_use
