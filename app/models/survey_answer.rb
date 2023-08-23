@@ -2,7 +2,7 @@
 
 # == Schema Information
 #
-# Table name: answers
+# Table name: survey_answers
 #
 #  id            :bigint           not null, primary key
 #  uuid          :string
@@ -11,16 +11,17 @@
 #  value         :string
 #  score         :integer
 #  user_uuid     :string
-#  quiz_uuid     :string
+#  survey_uuid   :string
 #  voice         :string
 #  created_at    :datetime         not null
 #  updated_at    :datetime         not null
 #
-class Answer < ApplicationRecord
+class SurveyAnswer < ApplicationRecord
   mount_uploader :voice, AudioUploader
 
+  # Association
   belongs_to :question
-  belongs_to :quiz, primary_key: "uuid", foreign_key: "quiz_uuid", optional: true
+  belongs_to :survey, primary_key: "uuid", foreign_key: "survey_uuid", optional: true
   belongs_to :user, primary_key: "uuid", foreign_key: "user_uuid", optional: true
 
   # Callback
@@ -30,7 +31,7 @@ class Answer < ApplicationRecord
     option = question.options.find_by(value: value)
 
     if option&.chat_groups.present?
-      quiz.notify_groups_async(option.chat_groups)
+      survey.notify_groups_async(option.chat_groups)
     end
   end
 end

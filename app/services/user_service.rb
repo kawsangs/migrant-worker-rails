@@ -49,14 +49,14 @@ class UserService
     end
 
     def build_quiz_body(sheet, form)
-      quizzes = Quiz.where(form_id: form.id).includes(:user, :answers)
-      quizzes.find_each(batch_size: 1000).with_index do |quiz, index|
+      surveys = Survey.where(form_id: form.id).includes(:user, :answers)
+      surveys.find_each(batch_size: 1000).with_index do |quiz, index|
         # User info
-        sheet.row(index + 1).push(quiz.quizzed_at, quiz.user.id, quiz.user.full_name)
+        sheet.row(index + 1).push(survey.quizzed_at, survey.user.id, survey.user.full_name)
 
-        # Quiz answer info
+        # Survey answer info
         form.questions.each do |question|
-          answer = quiz.answers.select { |ans| ans.question_id == question.id }.first
+          answer = survey.survey_answers.select { |ans| ans.question_id == question.id }.first
           sheet.row(index + 1).push(answer.try(:value))
         end
       end

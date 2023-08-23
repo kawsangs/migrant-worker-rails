@@ -4,7 +4,7 @@ module Api
   module V1
     class AnswersController < ApplicationController
       def update
-        @answer = Answer.find_by(uuid: params[:id])
+        @answer = SurveyAnswer.find_by(uuid: params[:id])
 
         if @answer.update(answer_params)
           render json: @answer

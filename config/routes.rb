@@ -23,7 +23,7 @@ Rails.application.routes.draw do
   resources :users do
     get :download, on: :collection
 
-    resources :quizzes, only: [:index, :show], module: :users
+    resources :surveys, only: [:index, :show], module: :users
   end
 
   resource :about, only: [:show]
@@ -113,8 +113,8 @@ Rails.application.routes.draw do
       resources :safeties, controller: :categories, type: "Categories::Safety", only: [:index, :show]
 
       resources :forms, only: [:index, :show]
-      resources :quizzes, only: [:create]
-      resources :answers, only: [:update]
+      resources :surveys, only: [:create]
+      resources :survey_answers, only: [:update]
       resource  :registered_tokens, only: [:update]
 
       resources :videos, only: [:index]

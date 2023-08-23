@@ -48,8 +48,8 @@
                     %source{src: user.audio_url}
               %td= timeago(user.registered_at).html_safe
               %td.text-right
-                - if user.quizzes.present?
-                  = link_to t("users.view_game"), user_quizzes_path(user), class: 'btn'
+                - if user.surveys.present?
+                  = link_to t("users.view_quiz"), user_surveys_path(user), class: 'btn'
 
       - if @pagy.pages > 1
         .pagy-wrapper

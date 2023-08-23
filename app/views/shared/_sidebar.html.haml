@@ -18,13 +18,13 @@
         %span= t("sidebar.dashboard")
 
   - if policy(User).index?
-    %li.nav-item{ class: css_active_class('users') }
+    %li.nav-item{ class: css_active_class('users', 'users/surveys') }
       %a.nav-link{:href => users_path}
         %i.fa-fw.fa-solid.fa-user-group
         %span= t("sidebar.app_users")
 
   - if policy(Notification).index?
-    %li.nav-item{ class: [css_active_class('notifications', 'survey_forms')] }
+    %li.nav-item{ class: css_active_class('notifications', 'survey_forms') }
       %a.nav-link{:href => notifications_path}
         %i.fa-fw.fa-solid.fa-bell
         %span= t("sidebar.notification")

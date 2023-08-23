@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2023_08_22_041022) do
+ActiveRecord::Schema.define(version: 2023_08_23_021149) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "pgcrypto"
@@ -34,19 +34,6 @@ ActiveRecord::Schema.define(version: 2023_08_22_041022) do
     t.index ["confirmation_token"], name: "index_accounts_on_confirmation_token", unique: true
     t.index ["email"], name: "index_accounts_on_email", unique: true
     t.index ["reset_password_token"], name: "index_accounts_on_reset_password_token", unique: true
-  end
-
-  create_table "answers", force: :cascade do |t|
-    t.string "uuid"
-    t.integer "question_id"
-    t.string "question_code"
-    t.string "value"
-    t.integer "score"
-    t.string "user_uuid"
-    t.string "quiz_uuid"
-    t.string "voice"
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
   end
 
   create_table "api_keys", force: :cascade do |t|
@@ -283,16 +270,6 @@ ActiveRecord::Schema.define(version: 2023_08_22_041022) do
     t.uuid "section_id"
   end
 
-  create_table "quizzes", force: :cascade do |t|
-    t.string "uuid"
-    t.string "user_uuid"
-    t.integer "form_id"
-    t.datetime "quizzed_at"
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
-    t.integer "notification_id"
-  end
-
   create_table "registered_tokens", force: :cascade do |t|
     t.string "token"
     t.datetime "created_at", precision: 6, null: false
@@ -309,6 +286,29 @@ ActiveRecord::Schema.define(version: 2023_08_22_041022) do
     t.integer "display_order"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+  end
+
+  create_table "survey_answers", force: :cascade do |t|
+    t.string "uuid"
+    t.integer "question_id"
+    t.string "question_code"
+    t.string "value"
+    t.integer "score"
+    t.string "user_uuid"
+    t.string "survey_uuid"
+    t.string "voice"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+  end
+
+  create_table "surveys", force: :cascade do |t|
+    t.string "uuid"
+    t.string "user_uuid"
+    t.integer "form_id"
+    t.datetime "quizzed_at"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.integer "notification_id"
   end
 
   create_table "taggings", force: :cascade do |t|

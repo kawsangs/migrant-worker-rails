@@ -24,7 +24,7 @@ class Form < ApplicationRecord
 
   # Association
   has_many :questions, inverse_of: :form
-  has_many :quizzes
+  has_many :surveys
   has_many :sections, dependent: :destroy, inverse_of: :form
 
   # Scope

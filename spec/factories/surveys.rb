@@ -2,7 +2,7 @@
 
 # == Schema Information
 #
-# Table name: quizzes
+# Table name: surveys
 #
 #  id              :bigint           not null, primary key
 #  uuid            :string
@@ -14,6 +14,9 @@
 #  notification_id :integer
 #
 FactoryBot.define do
-  factory :quiz do
+  factory :survey do
+    uuid { SecureRandom.uuid }
+    user
+    form
   end
 end

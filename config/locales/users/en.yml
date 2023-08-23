@@ -11,7 +11,7 @@ en:
     search: 'Search'
     file_size_is_too_big: 'The file size is too big, please filter it!'
     registered_at: 'Registered at'
-    view_game: View Games
+    view_quiz: View quizzes
     id: ID
     username: User name
     gender: gender

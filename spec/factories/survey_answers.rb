@@ -2,7 +2,7 @@
 
 # == Schema Information
 #
-# Table name: answers
+# Table name: survey_answers
 #
 #  id            :bigint           not null, primary key
 #  uuid          :string
@@ -11,12 +11,12 @@
 #  value         :string
 #  score         :integer
 #  user_uuid     :string
-#  quiz_uuid     :string
+#  survey_uuid   :string
 #  voice         :string
 #  created_at    :datetime         not null
 #  updated_at    :datetime         not null
 #
 FactoryBot.define do
-  factory :answer do
+  factory :survey_answer do
   end
 end

@@ -2,7 +2,7 @@
 
 require "rails_helper"
 
-RSpec.describe "Api::V1::QuizzesController", type: :request do
+RSpec.describe "Api::V2::SurveysController", type: :request do
   describe "PUT #create" do
     let(:api_key) { create(:api_key) }
     let(:headers) { { "ACCEPT" => "application/json", "Authorization" => "Token #{api_key.access_token}" } }
@@ -17,28 +17,28 @@ RSpec.describe "Api::V1::QuizzesController", type: :request do
           user_uuid: user.uuid,
           form_id: form.id,
           quizzed_at: Date.today,
-          answers_attributes: [
+          survey_answers_attributes: [
             {
               uuid: "123",
               question_id: question.id,
               question_code: question.code,
               value: question.options.first.value,
               user_uuid: user.uuid,
-              quiz_uuid: "abc"
+              survey_uuid: "abc"
             }
           ]
         }
       }
 
-      it "creates a quiz" do
+      it "creates a survey" do
         expect {
-          post "/api/v1/quizzes", params: { quiz: params }, headers: headers
+          post "/api/v2/surveys", params: { survey: params }, headers: headers
         }.to change { Survey.count }.by(1)
       end
 
       it "doesn't send notification" do
         expect {
-          post "/api/v1/quizzes", params: { quiz: params }, headers: headers
+          post "/api/v2/surveys", params: { survey: params }, headers: headers
         }.to change { TelegramNotificationJob.jobs.count }.by(0)
       end
     end
@@ -51,22 +51,20 @@ RSpec.describe "Api::V1::QuizzesController", type: :request do
           user_uuid: user.uuid,
           form_id: form.id,
           quizzed_at: Date.today,
-          answers_attributes: [
+          survey_answers_attributes: [
             {
               uuid: "123",
               question_id: question.id,
               question_code: question.code,
               value: question.options.first.value,
-              user_uuid: user.uuid,
-              quiz_uuid: "abc"
+              user_uuid: user.uuid
             },
             {
               uuid: "456",
               question_id: question.id,
               question_code: question.code,
               value: option.value,
-              user_uuid: user.uuid,
-              quiz_uuid: "abc"
+              user_uuid: user.uuid
             }
           ]
         }
@@ -74,7 +72,7 @@ RSpec.describe "Api::V1::QuizzesController", type: :request do
 
       it "sends notification to group" do
         expect {
-          post "/api/v1/quizzes", params: { quiz: params }, headers: headers
+          post "/api/v2/surveys", params: { survey: params }, headers: headers
         }.to change { TelegramNotificationJob.jobs.count }.by(1)
       end
     end

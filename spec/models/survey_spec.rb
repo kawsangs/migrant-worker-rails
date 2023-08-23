@@ -2,7 +2,7 @@
 
 # == Schema Information
 #
-# Table name: quizzes
+# Table name: surveys
 #
 #  id              :bigint           not null, primary key
 #  uuid            :string
@@ -15,6 +15,6 @@
 #
 require "rails_helper"
 
-RSpec.describe Quiz, type: :model do
+RSpec.describe Survey, type: :model do
   it { is_expected.to belong_to(:notification).optional }
 end
