@@ -271,8 +271,8 @@ MW.Form = do ->
 
     $(dom).before(field)
     assignDisplayOrderToListItem()
-
     MW.Common.SelectPicker.init()
+    MW.Common.tagList.init($(field).find('.tag-list')) if !!$(field).find('.tag-list').length
     $("[data-toggle='tooltip']").tooltip()
 
     return field

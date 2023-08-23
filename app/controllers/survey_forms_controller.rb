@@ -1,6 +1,8 @@
 # frozen_string_literal: true
 
 class SurveyFormsController < ApplicationController
+  before_action :set_form, only: [:edit, :update, :destroy]
+
   def index
     @pagy, @forms = pagy(policy_scope(Forms::SurveyForm.includes(:questions, :notifications)))
   end
@@ -20,12 +22,9 @@ class SurveyFormsController < ApplicationController
   end
 
   def edit
-    @form = authorize Forms::SurveyForm.find(params[:id])
   end
 
   def update
-    @form = authorize Forms::SurveyForm.find(params[:id])
-
     if @form.update(form_params)
       redirect_to survey_forms_url
     else
@@ -34,7 +33,6 @@ class SurveyFormsController < ApplicationController
   end
 
   def destroy
-    @form = authorize Forms::SurveyForm.find(params[:id])
     @form.destroy
 
     redirect_to survey_forms_url
@@ -42,16 +40,20 @@ class SurveyFormsController < ApplicationController
 
   private
     def form_params
-      params.require(:forms_survey_form).permit(:name,
+      params.require(:forms_survey_form).permit(:name, :tag_list,
         sections_attributes: [
           :id, :name, :_destroy,
           questions_attributes: [
             :id, :name, :type, :required, :display_order, :code,
-            :_destroy, :hint, :relevant, :audio, :remove_audio,
+            :_destroy, :hint, :relevant, :audio, :remove_audio, :tag_list,
             options_attributes: [:id, :name, :value, :_destroy, chat_group_ids: []],
             criterias_attributes: %i[id question_code operator response_value _destroy]
           ]
         ]
       )
+    end
+
+    def set_form
+      @form = authorize Forms::SurveyForm.find(params[:id])
     end
 end

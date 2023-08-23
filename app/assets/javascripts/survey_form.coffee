@@ -3,6 +3,20 @@ MW.Survey_formsNew = do ->
     MW.Form.init()
     MW.Form.onClickAddAssociation("form .add_sections")
 
+    initFormTagList()
+    initQuestionTagList()
+
+  initFormTagList = ->
+    MW.Common.tagList.init("#forms_survey_form_tag_list")
+
+  initQuestionTagList = ->
+    questions = $(".fieldset")
+    count = 0
+
+    while count < questions.length
+      MW.Common.tagList.init($(questions[count]).find('.tag-list'))
+      count++
+
   { init: init }
 
 # Survey
