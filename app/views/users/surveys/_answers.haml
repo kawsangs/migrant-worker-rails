@@ -1,6 +1,6 @@
 .modal-body
-  - @quiz.form.questions.each do |question|
-    - if answer = @quiz.answers.select{|a| a.question_id == question.id}.first.presence
+  - @survey.form.questions.each do |question|
+    - if answer = @survey.survey_answers.select{|a| a.question_id == question.id}.first.presence
       %div.mb-3.p-1.card{style: 'background-color: rgba(0, 0, 0, 0.05)'}
         %div= question.name
         .d-flex.mt-1

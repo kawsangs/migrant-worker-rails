@@ -17,7 +17,7 @@
 class User < ApplicationRecord
   mount_uploader :audio, AudioUploader
 
-  has_many :quizzes, foreign_key: :user_uuid, primary_key: :uuid
+  has_many :surveys, foreign_key: :user_uuid, primary_key: :uuid
 
   scope :newest, -> { order("registered_at DESC") }
 

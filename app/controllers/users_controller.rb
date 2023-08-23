@@ -2,7 +2,7 @@
 
 class UsersController < ApplicationController
   def index
-    @pagy, @users = pagy(policy_scope(authorize User.filter(params).newest.includes(:quizzes)))
+    @pagy, @users = pagy(policy_scope(authorize User.filter(params).newest.includes(:surveys)))
   end
 
   def download

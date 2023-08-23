@@ -1,15 +1,15 @@
 # frozen_string_literal: true
 
 module Users
-  class QuizzesController < ApplicationController
+  class SurveysController < ApplicationController
     before_action :assign_user
 
     def index
-      @pagy, @quizzes = pagy(@user.quizzes.includes(:answers, :user, :form))
+      @pagy, @surveys = pagy(@user.surveys.includes(:survey_answers, :user, :form))
     end
 
     def show
-      @quiz = Quiz.find(params[:id])
+      @survey = Survey.find(params[:id])
 
       respond_to do |format|
         format.js

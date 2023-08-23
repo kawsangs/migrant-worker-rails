@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-module Quizzes::NotifiableConcern
+module Surveys::NotifiableConcern
   extend ActiveSupport::Concern
 
   included do
