@@ -15,7 +15,8 @@ module Api
 
       private
         def survey_params
-          params.require(:survey).permit(:id, :uuid, :user_uuid, :form_id, :quizzed_at, :notification_id,
+          params.require(:survey).permit(:id, :uuid, :user_uuid, :form_id, :quizzed_at,
+            :notification_id, :notification_occurrence_id,
             survey_answers_attributes: [
               :uuid, :question_id, :question_code, :value, :score, :user_uuid
             ]

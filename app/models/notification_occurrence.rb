@@ -17,6 +17,8 @@
 #  updated_at      :datetime         not null
 #
 class NotificationOccurrence < ApplicationRecord
+  include NotificationOccurrences::NotifiableConcern
+
   # Association
   belongs_to :notification, counter_cache: :occurrences_count
 
@@ -31,36 +33,17 @@ class NotificationOccurrence < ApplicationRecord
     cancelled: 4
   }
 
-  # Callback
-  after_commit :notify_occurence_async, on: [:create]
-
   # Instance method
-  def notify_all_token_async
-    self.update(token_count: registered_tokens.length, status: "in_progress")
-
-    registered_tokens.find_each do |token|
-      PushNotificationJob.perform_async(id, token.id)
-    end
-  end
-
-  def notify(registered_token)
-    PushNotificationService.new(notification).notify(registered_token.token)
-  end
-
-  def update_progress_status(response, registered_token)
-    if response[:status_code] == 200
-      self.class.increment_counter(:success_count, id)
-    else
-      self.class.increment_counter(:failure_count, id)
-
-      NotificationLog.create(notification_id: notification_id, registered_token_id: registered_token.id, failed_reason: response[:body])
-    end
-
-    mark_as_delivered if self.reload.finished?
-  end
-
-  def finished?
-    success_count.to_i + failure_count.to_i >= token_count
+  def build_content
+    {
+      data: {
+        payload: {
+          form_id: notification.form_id,
+          notification_id: notification_id,
+          notification_occurrence_id: id
+        }.to_json
+      }
+    }.merge(notification.build_content)
   end
 
   def mark_as_delivered
@@ -76,16 +59,6 @@ class NotificationOccurrence < ApplicationRecord
   end
 
   private
-    def notify_occurence_async
-      job_id = NotificationOccurrenceJob.perform_at(occurrence_date, id)
-
-      self.update(job_id: job_id)
-    end
-
-    def registered_tokens
-      @registered_tokens ||= RegisteredToken.all
-    end
-
     def delete_sidekiq_job
       schedule = Sidekiq::ScheduledSet.new.find_job(job_id)
       schedule.try(:delete)

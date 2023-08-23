@@ -4,14 +4,15 @@
 #
 # Table name: surveys
 #
-#  id              :bigint           not null, primary key
-#  uuid            :string
-#  user_uuid       :string
-#  form_id         :integer
-#  quizzed_at      :datetime
-#  created_at      :datetime         not null
-#  updated_at      :datetime         not null
-#  notification_id :integer
+#  id                         :bigint           not null, primary key
+#  uuid                       :string
+#  user_uuid                  :string
+#  form_id                    :integer
+#  quizzed_at                 :datetime
+#  created_at                 :datetime         not null
+#  updated_at                 :datetime         not null
+#  notification_id            :integer
+#  notification_occurrence_id :uuid
 #
 
 class Survey < ApplicationRecord
@@ -21,6 +22,7 @@ class Survey < ApplicationRecord
   belongs_to :user, primary_key: "uuid", foreign_key: "user_uuid"
   belongs_to :form
   belongs_to :notification, optional: true
+  belongs_to :notification_occurrence, optional: true
   has_many :survey_answers, foreign_key: :survey_uuid, primary_key: :uuid, dependent: :destroy
 
   # Nested attribute

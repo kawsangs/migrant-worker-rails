@@ -4,14 +4,15 @@
 #
 # Table name: surveys
 #
-#  id              :bigint           not null, primary key
-#  uuid            :string
-#  user_uuid       :string
-#  form_id         :integer
-#  quizzed_at      :datetime
-#  created_at      :datetime         not null
-#  updated_at      :datetime         not null
-#  notification_id :integer
+#  id                         :bigint           not null, primary key
+#  uuid                       :string
+#  user_uuid                  :string
+#  form_id                    :integer
+#  quizzed_at                 :datetime
+#  created_at                 :datetime         not null
+#  updated_at                 :datetime         not null
+#  notification_id            :integer
+#  notification_occurrence_id :uuid
 #
 FactoryBot.define do
   factory :survey do
