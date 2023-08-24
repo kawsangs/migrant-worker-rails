@@ -49,8 +49,8 @@ class UserService
     end
 
     def build_quiz_body(sheet, form)
-      surveys = Survey.where(form_id: form.id).includes(:user, :answers)
-      surveys.find_each(batch_size: 1000).with_index do |quiz, index|
+      surveys = Survey.where(form_id: form.id).includes(:user, :survey_answers)
+      surveys.find_each(batch_size: 1000).with_index do |survey, index|
         # User info
         sheet.row(index + 1).push(survey.quizzed_at, survey.user.id, survey.user.full_name)
 

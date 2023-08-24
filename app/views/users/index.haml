@@ -1,19 +1,7 @@
-.d-sm-flex.align-items-center.justify-content-between.mb-4
-  %h1.h3.mb-0.text-gray-800= t('sidebar.app_users')
+= render "shared/headers/page_heading", title: t('sidebar.app_users') do
+  = render "shared/buttons/download_button", url: download_users_path(filter_params)
 
-%form.d-flex{ action: '/users', method: 'get' }
-  .form-group
-    .input-group
-      = text_field_tag(:keyword, params[:keyword], class: 'form-control keyword', placeholder: t('users.search'))
-
-      %a#info.input-group-append
-        .input-group-text
-          %i.fas.fa-search
-
-  .col-auto.form-group
-    %a.btn.btn-outline-info{href: download_users_path(keyword: params[:keyword]), target: '_blank'}
-      %i.fas.fa-download
-      = t('users.download_excel')
+= render "filter"
 
 .card.shadow.mb-4
   .card-body

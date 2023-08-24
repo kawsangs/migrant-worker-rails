@@ -17,3 +17,10 @@ km:
     username: អ្នកប្រើប្រាស់ឈ្មោះ
     gender: ភេទ
     age: អាយុ
+    search_by_registered_at: ស្វែងរកតាមកាលបរិច្ឆេទចុះឈ្មោះ
+    male: ប្រុស
+    female: ស្រី
+    other: ផ្សេងៗ
+    any_gender: គ្រប់យេនឌ័រ
+    age_range: អាយុចាប់ពី start_age ដល់ end_age
+    genders_selected: ភេទត្រូវបានជ្រើសរើស

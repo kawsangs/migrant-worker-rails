@@ -1,0 +1,30 @@
+%form{ action: '/users', method: 'get' }
+  .d-flex
+    = render "shared/filters/filter_name", field_name: :full_name
+
+    .ml-3
+      = render "shared/buttons/advance_search_button", toggler_variable: "advance_search_app_user"
+
+  #collapseOne.accordion-collapse.collapse.collapse-filter
+    .d-flex.m-2
+      / Filter by date
+      = render 'shared/filters/filter_date'
+
+      / Filter by genders
+      .filter-input.tooltips.ml-2.mr-3{ 'data-toggle' => 'tooltip' }
+        = select_tag 'genders[]', options_for_select(User::GENDERS.map {|g| [t("users.#{g}"), g]}, params[:genders]), multiple: true, "data-count-selected-text" => "{0} #{t('users.genders_selected')}", "data-selected-text-format" => "count > 1", "data-none-selected-text" => t("users.any_gender"), class: 'selectpicker form-control'
+
+      / Filter by age range
+      %div.mr-3
+        #age-range-label.text-center.mb-1{'data-label': t('users.age_range')}= t('users.age_range')
+
+        #slider-round{ style: 'width: 250px;' }
+
+        %input#start-age{ type: 'hidden', name: 'start_age', value: params[:start_age] }
+        %input#end-age{ type: 'hidden', name: 'end_age', value: params[:end_age] }
+
+      / Search button
+      .ms-3
+        %button.btn.btn-primary.ml-md-2{type: :submit}
+          %i.fas.fa-search
+          %span.d-none.d-lg-inline= t('shared.search')
