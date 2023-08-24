@@ -5,45 +5,63 @@
 //= require jquery3
 //= require popper
 //= require bootstrap
-//= require bootstrap-select
+//= require moment
+//= require jquery.richtext
 
 //= require jquery-fileupload/basic
 //= require jquery-fileupload/vendor/tmpl
 
+// *** layout sb-admin
 //= require sb-admin-2
 
-//= require jquery.richtext
-
-// Push notification form
-//= require moment
-//= require tempusdominus-bootstrap-4.js
-//= require recurring_select
+//= require "nouislider.min"
 
 //= require application/namespace
 //= require application/util
+
+// *** Select input with multiple value with search
+//= require bootstrap-select
+//= require common/select_picker
+
+// *** Select date input field
+//= require tempusdominus-bootstrap-4.js
+//= require common/datetime_picker
+
+// *** Scheduling
+//= require recurring_select
+//= require common/select_recurring_translation
+
+// *** Daterange picker
+//= require daterangepicker
+//= require common/daterange_locale
+//= require common/daterange_picker
 
 //= require common/topbar
 //= require common/timeago
 //= require common/country
 //= require common/sidebar
 //= require common/confirm_modal
-//= require common/select_picker
+//= require common/tag_list
+//= require common/toggle_advance_search
 
-// For building question skip logic
+// *** For building questionnaire skip logic
 //= require common/skip_logic_constant
 //= require common/question_type
 //= require common/skip_logic
 //= require common/criteria
 
+// *** Questionnaire form
+//= require common/form
+//= require common/audio
+
+// *** Sort order
 //= require jquery-sortable
 //= require tagify.min
-//= require common/form
-//= require common/datetime_picker
-//= require common/audio
-//= require common/wizard_form
-//= require common/select_recurring_translation
-//= require common/tag_list
 
+// *** Form wizard
+//= require common/wizard_form
+
+// *** All pages
 //= require accounts/index
 //= require category_images
 //= require categories
@@ -56,6 +74,7 @@
 //= require videos/form
 //= require survey_form
 //= require telegram_bot
+//= require users/index
 
 $(document).on("ready turbolinks:load", () => {
   MW.Common.Topbar.init();

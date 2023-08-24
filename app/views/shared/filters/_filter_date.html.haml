@@ -1,0 +1,10 @@
+- placeholder ||= t('users.search_by_registered_at')
+
+%div{style: 'min-width: 280px;'}
+  #daterange.form-control.pointer.d-flex.align-items-center
+    %span{'data-placeholder' => placeholder}= placeholder
+    .flex-grow-1
+    %i.fa.fa-calendar.ml-2
+
+  %input.start-date{ type: 'hidden', name: 'start_date', value: params[:start_date] }
+  %input.end-date{ type: 'hidden', name: 'end_date', value: params[:end_date] }

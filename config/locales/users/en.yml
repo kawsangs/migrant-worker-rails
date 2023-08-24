@@ -16,3 +16,10 @@ en:
     username: User name
     gender: gender
     age: age
+    search_by_registered_at: Search by registered date
+    male: Male
+    female: Female
+    other: Other
+    any_gender: Any gender
+    age_range: Age is from start_age to end_age
+    genders_selected: gender selected

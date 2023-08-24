@@ -76,6 +76,9 @@ gem "bootstrap4-datetime-picker-rails", "~> 0.3.1"
 gem "telegram-bot", "~> 0.15.7"
 gem "ipaddress", "~> 0.8.3"
 
+# Daterange picker
+gem "bootstrap-daterangepicker-rails", "~> 3.0.4"
+
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
   gem "byebug", platforms: [:mri, :mingw, :x64_mingw]

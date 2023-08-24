@@ -12,17 +12,21 @@ RSpec.describe UsersController, type: :controller do
 
     context "over limit" do
       before do
-        ENV["MAXIMUM_DOWNLOAD_RECORDS"] = "2"
+        Settings = double("Settings")
+        allow(Settings).to receive(:max_download_record).and_return(2)
+
         get :download
       end
 
       it { expect(response.status).to eq(302) }
-      it { expect(flash[:alert]).to eq(I18n.t("users.file_size_is_too_big")) }
+      it { expect(flash[:alert]).to eq(I18n.t("shared.file_size_is_too_big", max_record: Settings.max_download_record)) }
     end
 
     context "under limit" do
       before do
-        ENV["MAXIMUM_DOWNLOAD_RECORDS"] = "4"
+        Settings = double("Settings")
+        allow(Settings).to receive(:max_download_record).and_return(4)
+
         get :download
       end
 

@@ -1,10 +1,17 @@
 @import 'bootstrap';
 @import "sb-admin-2";
+
+// Select picker for multiple value with search
 @import "bootstrap-select.min";
+
+// Daterange picker
+@import "daterangepicker";
 
 @import "tagify";
 @import "lightbox2/src/css/lightbox.css";
 @import "richtext";
+
+@import "nouislider.min";
 
 @import "tempusdominus-bootstrap-4.css";
 @import "recurring_select";
