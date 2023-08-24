@@ -41,7 +41,7 @@ module NotificationsHelper
     title = "<div class='text-left'>#{I18n.t('notification.cancelled_at')}: #{display_date(notification.cancelled_at)}</div>"
     title += "<div class='text-left'>#{I18n.t('notification.cancelled_by')}: #{notification.canceller.try(:display_name)}</div>"
 
-    "<span class='badge badge-warning' data-toggle='tooltip' data-html='true' data-placement='top' data-title='#{sanitize(title)}'>Cancelled</span>"
+    "<span class='badge badge-danger' data-toggle='tooltip' data-html='true' data-placement='top' data-title='#{sanitize(title)}'>Cancelled</span>"
   end
 
   def status_completed_html(notification)
