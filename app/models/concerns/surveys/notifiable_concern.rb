@@ -17,15 +17,22 @@ module Surveys::NotifiableConcern
     end
 
     def message
-      sms = [user.profile_html]
-      sms.push("#{I18n.t('form.survey')}: ")
-
-      form.questions.each do |question|
-        answer = answers.select { |ans| ans.question_id == question.id }.first
-        sms.push("#{question.name} <b>(#{answer.try(:value)})</b>") if answer.present?
-      end
-
-      sms.join(" | ")
+      sms = user.profile_html + "\n\n"
+      sms += "ការស្ទង់មតិ៖ <code>#{form.name}</code>" + "\n"
+      sms + survey_answer_list
     end
+
+    private
+      def survey_answer_list
+        list = []
+
+        form.questions.each do |question|
+          answer = survey_answers.select { |ans| ans.question_id == question.id }.first
+
+          list.push("សំនួរ៖ #{question.name}\nចម្លើយ៖ <b>#{answer.try(:value)}</b>") if answer.present?
+        end
+
+        list.join("\n\n")
+      end
   end
 end
