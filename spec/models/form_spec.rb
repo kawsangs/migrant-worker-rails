@@ -14,6 +14,7 @@
 #  image        :string
 #  audio        :string
 #  published_at :datetime
+#  description  :text
 #
 require "rails_helper"
 

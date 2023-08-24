@@ -14,6 +14,7 @@
 #  image        :string
 #  audio        :string
 #  published_at :datetime
+#  description  :text
 #
 FactoryBot.define do
   factory :form do

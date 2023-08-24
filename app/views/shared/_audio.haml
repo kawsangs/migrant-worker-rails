@@ -2,7 +2,7 @@
 - errors = f.object.errors[field]
 - label ||= ""
 
-.form-group.file-wrapper.d-flex
+.file-wrapper.d-flex
   .w-100{class: ('form-group-invalid' if errors.present?)}
     - if label.present?
       %label= label
