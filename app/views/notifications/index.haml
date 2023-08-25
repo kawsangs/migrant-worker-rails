@@ -5,6 +5,8 @@
   .flex-grow-1= render "nav_tabs"
   .mb-1= render "notifications/switch_view_buttons"
 
+= render "filter"
+
 .card.shadow.mb-4
   .card-body
     = render "shared/no_data", items: @notifications
@@ -20,6 +22,7 @@
             %th= t('form.questionnaire')
             %th= t('notification.schedule')
             %th= t('notification.delivery_progress')
+            %th= t('shared.created_at')
             %th= t('shared.status')
             %th
 
@@ -32,6 +35,7 @@
               %td= survey_form_description(notification).html_safe
               %td= notification.display_schedule
               %td= occurrence_description(notification).html_safe
+              %td= timeago(notification.created_at).html_safe
               %td= status_html(notification).html_safe
               %td
                 .d-flex.justify-content-end

@@ -5,6 +5,13 @@
     .ml-3
       = render "shared/buttons/advance_search_button", toggler_variable: "advance_search_app_user"
 
+    / Search button
+    .ml-2
+      %button.btn.btn-outline-primary.ml-md-2{type: :submit}
+        %i.fas.fa-search
+        %span.d-none.d-lg-inline= t('shared.search')
+
+
   #collapseOne.accordion-collapse.collapse.collapse-filter
     .d-flex.m-2
       / Filter by date
@@ -22,9 +29,3 @@
 
         %input#start-age{ type: 'hidden', name: 'start_age', value: params[:start_age] }
         %input#end-age{ type: 'hidden', name: 'end_age', value: params[:end_age] }
-
-      / Search button
-      .ms-3
-        %button.btn.btn-primary.ml-md-2{type: :submit}
-          %i.fas.fa-search
-          %span.d-none.d-lg-inline= t('shared.search')
