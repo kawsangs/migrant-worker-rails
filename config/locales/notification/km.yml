@@ -39,6 +39,7 @@ km:
     to_be_delivered: នឹងត្រូវបញ្ជូន
     delivered_or_cancel: រួចរាល់ / បញ្ឈប់
     search_by_created_at: ស្វែងរកតាមកាលបរិច្ឆេទបង្កើត
+    any_survey_form: គ្រប់កម្រងសំណួរ
 
   recurring_select:
     not_recurring: "សូមកំណត់"
