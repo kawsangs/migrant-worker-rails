@@ -25,5 +25,12 @@
 #
 module Questions
   class SelectOne < Question
+    def icon
+      "<i class=\'far fa-dot-circle icon\'></i>"
+    end
+
+    def label
+      "Select One"
+    end
   end
 end

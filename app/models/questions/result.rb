@@ -25,5 +25,12 @@
 #
 module Questions
   class Result < Question
+    def icon
+      "<i class=\'fas fa-cash-register icon\'></i>"
+    end
+
+    def label
+      "Result"
+    end
   end
 end

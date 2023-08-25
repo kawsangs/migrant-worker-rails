@@ -1,18 +1,7 @@
 .field-type-wrapper
   .flex-row
     .flex1
-      .field-type-list{'data-field_type' => 'Questions::SelectOne'}
-        %i.far.fa-dot-circle.icon
-        Select one
-
-      .field-type-list{'data-field_type' => 'Questions::SelectMultiple'}
-        %i.fas.fa-list-ul.icon
-        Select Multiple
-
-      .field-type-list{'data-field_type' => 'Questions::Text'}
-        %strong.icon abc
-        Text
-
-      .field-type-list{'data-field_type' => 'Questions::VoiceRecording'}
-        %i.fa-solid.fa-microphone.icon
-        Voice Recording
+      - [Questions::SelectOne, Questions::SelectMultiple, Questions::Text, Questions::VoiceRecording].each do |klass|
+        .field-type-list{ 'data-field_type' => klass.name }
+          = klass.new.icon.html_safe
+          = klass.new.label
