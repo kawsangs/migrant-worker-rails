@@ -1,6 +1,7 @@
 # frozen_string_literal: true
 
 class NotificationsController < ApplicationController
+  helper_method :filter_params
   before_action :set_notification, only: [:edit, :update, :destroy, :release, :cancel]
 
   def index
@@ -69,6 +70,6 @@ class NotificationsController < ApplicationController
     end
 
     def filter_params
-      params.permit(status: [])
+      params.permit(:start_date, :end_date, status: [])
     end
 end

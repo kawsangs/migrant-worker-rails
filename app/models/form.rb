@@ -34,7 +34,7 @@ class Form < ApplicationRecord
   validates :name, presence: true
 
   # Scope
-  default_scope { order("created_at") }
+  default_scope { order("created_at desc") }
   scope :published, -> { where.not(published_at: nil) }
 
   # Nested attribute

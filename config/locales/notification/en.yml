@@ -38,6 +38,7 @@ en:
     draft: Draft
     to_be_delivered: To be deliverd
     delivered_or_cancel: Delivered/Cancelled
+    search_by_created_at: Search by created date
 
   recurring_select:
     not_recurring: "Please determine"

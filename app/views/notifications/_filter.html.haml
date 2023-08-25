@@ -1,0 +1,11 @@
+%form{ action: notifications_path, method: 'get' }
+  .d-flex.py-2
+    .d-none= select_tag 'status[]', options_for_select(Notification.statuses.keys, params[:status]), multiple: true
+
+    = render 'shared/filters/filter_date', placeholder: t('notification.search_by_created_at')
+
+    / Search button
+    .ms-3
+      %button.btn.btn-outline-primary.ml-md-2{type: :submit}
+        %i.fas.fa-search
+        %span.d-none.d-lg-inline= t('shared.search')
