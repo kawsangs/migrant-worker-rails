@@ -28,4 +28,20 @@ module FormsHelper
 
     "<span class='badge badge-success' data-toggle='tooltip' data-html='true' data-placement='top' data-title='#{sanitize(title)}'>Released</span>"
   end
+
+  def chat_group_list_html(groups)
+    return "" unless groups.present?
+    "<div class='text-left'>" +
+    "<span>#{t('form.chat_group')}</span>: " +
+    "<ol>" + groups.map { |group| "<li>#{group.title}</li>" }.join("") + "</ol>" +
+    "</div>"
+  end
+
+  def tag_list_html(tags)
+    return "" unless tags.present?
+
+    tags.map { |tag|
+      "<small class='tag rounded mr-1'>#{tag}</small>"
+    }.join("")
+  end
 end

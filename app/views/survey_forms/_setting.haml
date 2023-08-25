@@ -6,13 +6,13 @@
 
   .contents.flex-1
     .content.setting-content
+      / Code
       = f.input :code, label: 'Data column name', input_html: {class: 'question-code'}
 
       / Tags
       = f.input :tag_list, label: t('shared.tags'), input_html: { 'data-tags': Question.tag_counts.sort_by(&:count).reverse.pluck(:name).to_json, class: 'tag-list' }
 
-      = f.input :required, label: 'Mandatory Response', input_html: { class: 'form-check-input field-required' }
-
+    / Criteria
     .content.skip-logic-content.w-100.position-relative
       = f.simple_fields_for :criterias, f.object.criterias do |builder|
         = render 'criteria_fields', f: builder
