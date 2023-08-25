@@ -21,4 +21,4 @@
               %i.fa-regular.fa-circle-question
 
           .filter-input.tooltips{ 'data-toggle' => 'tooltip' }
-            = f.input :chat_group_ids, label: false, collection: TelegramBot.instance.chat_groups.pluck(:title, :id), input_html: {class: 'custom-select selectpicker', multiple: true, "data-live-search" => "true", "data-count-selected-text" => "{0} #{t('form.group_selected')}", "data-selected-text-format" => "count > 1", "data-none-selected-text" => t('shared.please_select') }
+            = f.input :chat_group_ids, label: false, collection: TelegramBot.instance.chat_groups.pluck(:title, :id), input_html: {class: 'custom-select selectpicker chat_group_ids', multiple: true, "data-live-search" => "true", "data-count-selected-text" => "{0} #{t('form.group_selected')}", "data-selected-text-format" => "count > 1", "data-none-selected-text" => t('shared.please_select') }

@@ -1,5 +1,5 @@
 MW.Common.tagList = (() => {
-  function init(dom) {
+  function init(dom, callback) {
     let input = $(dom);
     let tagify = new Tagify(input[0], {
       whitelist: input.data('tags'),
@@ -15,6 +15,7 @@ MW.Common.tagList = (() => {
       let tagList = tagify.value.map((v,i) => v.value).join(',');
 
       input.val(tagList);
+      !!callback && (typeof callback === 'function') && callback(input, tagList);
     }
   }
 

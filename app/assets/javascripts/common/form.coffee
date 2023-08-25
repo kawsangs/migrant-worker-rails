@@ -272,10 +272,27 @@ MW.Form = do ->
     $(dom).before(field)
     assignDisplayOrderToListItem()
     MW.Common.SelectPicker.init()
-    MW.Common.tagList.init($(field).find('.tag-list')) if !!$(field).find('.tag-list').length
+    MW.Common.tagList.init($(field).find('.tag-list'), handleDisplayTagListWrapper) if !!$(field).find('.tag-list').length
     $("[data-toggle='tooltip']").tooltip()
 
     return field
+
+  handleDisplayTagListWrapper = (dom, tagList) ->
+    return hideTagListWrapper(dom) if !tagList
+
+    showTagListWrapper(dom)
+    updateDisplayTagList(dom, tagList)
+
+  showTagListWrapper = (dom) ->
+    $(dom).parents(".fieldset").find(".tag-list-wrapper").removeClass("d-none")
+
+  hideTagListWrapper = (dom) ->
+    $(dom).parents(".fieldset").find(".tag-list-wrapper").addClass("d-none")
+
+  updateDisplayTagList = (dom, tagList) ->
+    wrapper = dom.parents(".fieldset").find(".tag-list-wrapper .tag-wrapper")
+    tags = tagList.split(",").map((tag) => "<small class='tag rounded mr-1'>" + tag + "</small>").join("")
+    wrapper.html(tags)
 
   initOneOption = (dom)->
     $(dom).parents('.fieldset').find('.add_options').click()
@@ -304,4 +321,5 @@ MW.Form = do ->
     init: init
     onClickAddAssociation: onClickAddAssociation
     onClickRemoveField: onClickRemoveField
+    handleDisplayTagListWrapper: handleDisplayTagListWrapper
   }
