@@ -28,7 +28,8 @@
               %td= @pagy.from + index
               %td= form.name
               %td= form.questions.length
-              %td= form.notifications.length
+              %td
+                = link_to form.notifications.length, notifications_path(form_id: form.id), class: 'text-primary' if form.notifications.length.positive?
               %td= form.tag_list
               %td= form.description
               %td= form_status_html(form).html_safe

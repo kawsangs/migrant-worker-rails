@@ -70,6 +70,6 @@ class NotificationsController < ApplicationController
     end
 
     def filter_params
-      params.permit(:start_date, :end_date, status: [])
+      params.permit(:start_date, :end_date, :form_id, status: [])
     end
 end

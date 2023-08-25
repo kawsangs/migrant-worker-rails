@@ -24,5 +24,9 @@ module Forms
     def self.policy_class
       SurveyFormPolicy
     end
+
+    def self.notification_counts
+      joins(:notifications)
+    end
   end
 end
