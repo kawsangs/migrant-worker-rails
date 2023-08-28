@@ -17,15 +17,15 @@
     }
   }
 
-  .tag {
-    padding-left: 0.25rem;
-    padding-right: 0.25rem;
-    background-color: #E5E5E5;
-  }
-
   .fieldset legend {
     top: -11px;
     left: 60px;
     background-color: #F8F9FC;
   }
+}
+
+.tag {
+  padding-left: 0.25rem;
+  padding-right: 0.25rem;
+  background-color: #E5E5E5;
 }
