@@ -13,9 +13,9 @@ km:
     set_schedule: "កំណត់កាលវិភាគ <abbr title='required'>*</abbr>"
     schedule_mode: ប្រភេទកាលវិភាគ
     schedule_setting: កំណត់ប្រភេទកាលវិភាគ
-    as_soon_as_release: ផ្ញើរចេញពេលដំណើរការការជូនដំណឹង
-    onetime: ផ្ញើរចេញនៅពេលណាមួយ
-    recurrence: ផ្ញើរចេញកើតឡើងវិញ
+    as_soon_as_release: ផ្ញើរចេញពេលដំណើរការការជូនដំណឹង - Immediately
+    onetime: ផ្ញើរចេញនៅពេលវេលាជាក់លាក់មួយ - Oncetime
+    recurrence: ផ្ញើរចេញតាមកាលកំណត់(ច្រើនដង) - Schedule
     pushing_notification_date: "កាលបរិច្ឆេទដែលនឹងផ្ញើរចេញការជូនដំណឹង"
     notification_end_date: "កាលបរិច្ឆេទបញ្ចប់ការជូនដំណឹង"
     please_determine: សូមកំណត់
@@ -40,6 +40,7 @@ km:
     delivered_or_cancel: រួចរាល់ / បញ្ឈប់
     search_by_created_at: ស្វែងរកតាមកាលបរិច្ឆេទបង្កើត
     any_survey_form: គ្រប់កម្រងសំណួរ
+    view_all_survey_form: ចូលមើលកម្រងសំនួរ
 
   recurring_select:
     not_recurring: "សូមកំណត់"

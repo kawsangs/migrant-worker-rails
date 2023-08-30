@@ -5,9 +5,9 @@ module NotificationsHelper
     return "" if notification.draft?
 
     number = "#{number_with_delimiter(notification.occurrences_delivered_count)} / #{number_with_delimiter(notification.occurrences_count)}"
-    tooltip_title = sanitize(occurrences_list(notification, number))
+    tooltip_title = occurrences_list(notification, number)
 
-    "<span data-toggle='tooltip' data-placement='top' data-html='true' data-title='#{tooltip_title}'>#{number}</span>"
+    "<span data-toggle='tooltip' data-placement='top' data-html='true' data-title='#{sanitize(tooltip_title)}'>#{number}</span>"
   rescue
     ""
   end
@@ -15,8 +15,8 @@ module NotificationsHelper
   def survey_form_description(notification)
     return "" if notification.survey_form.nil?
 
-    tooltip_title = sanitize(survey_form_preview(notification))
-    "<span data-toggle='tooltip' data-placement='top' data-html='true' data-title='#{tooltip_title}'>#{notification.survey_form_name}</span>"
+    tooltip_title = survey_form_preview(notification)
+    "<span data-toggle=\"tooltip\" data-placement=\"top\" data-html=\"true\" data-title=\"#{tooltip_title}\">#{notification.survey_form_name}</span>"
   end
 
   def status_html(notification)
@@ -73,23 +73,19 @@ module NotificationsHelper
     def survey_form_preview(notification)
       form = notification.survey_form
       str = "<div class='text-left'>"
-      str += "Form: #{form.name}"
-      str += "<div>Question</div>"
+      str += "#{t('form.questionnaire')}: #{form.name}"
+      str += "<div>#{t('form.question')}:</div>"
       str += "<ol>"
-      form.questions.each do |question|
-        str += question_list(question)
-      end
-
+      str += form.questions.map { |question| question_list(question) }.join
       str += "</ol>"
       str + "</div>"
     end
 
     def question_list(question)
-      str = "<li> #{question.name}"
+      str = "<li>#{question.icon} #{question.name}"
       str += "<ul>"
-      question.options.each do |option|
-        str += "<li>#{option.name}</li>"
-      end
-      str + "</ul></li>"
+      str += question.options.map { |option| "<li>#{option.name}</li>" }.join
+      str += "</ul>"
+      str + "</li>"
     end
 end

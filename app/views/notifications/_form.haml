@@ -21,7 +21,12 @@
           %span /
           %span 255
 
-      = f.input :form_id, label: t("notification.questionnaire_to_be_used"), collection: Forms::SurveyForm.all.map{|f| ["#{f.name} (#{f.status})", f.id]}, input_html: {class: 'custom-select'}
+      .form-group
+        %label
+          = t("notification.questionnaire_to_be_used")
+          %small= link_to "(#{t('notification.view_all_survey_form')})", survey_forms_path, class: 'text-primary', target: '_blank'
+
+        = f.input :form_id, label: false, collection: Forms::SurveyForm.all.map{|f| ["#{f.name} (#{f.status})", f.id]}, input_html: {class: 'custom-select'}
 
       / Schedule mode
       = f.input :schedule_mode, label: t('notification.schedule_setting'), collection: Notification.schedule_mode_list, include_blank: false

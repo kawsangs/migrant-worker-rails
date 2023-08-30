@@ -40,6 +40,7 @@ en:
     delivered_or_cancel: Delivered/Cancelled
     search_by_created_at: Search by created date
     any_survey_form: Any survey form
+    view_all_survey_form: View all survey forms
 
   recurring_select:
     not_recurring: "Please determine"

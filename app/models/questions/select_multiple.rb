@@ -25,5 +25,12 @@
 #
 module Questions
   class SelectMultiple < Question
+    def icon
+      "<i class=\'fas fa-list-ul icon\'></i>"
+    end
+
+    def label
+      "Select Multiple"
+    end
   end
 end
