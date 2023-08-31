@@ -1,10 +1,13 @@
 # frozen_string_literal: true
 
 class SurveyFormsController < ApplicationController
-  before_action :set_form, only: [:edit, :update, :destroy]
+  before_action :set_form, only: [:show, :edit, :update, :destroy]
 
   def index
     @pagy, @forms = pagy(policy_scope(Forms::SurveyForm.includes(:questions, :notifications)))
+  end
+
+  def show
   end
 
   def new
