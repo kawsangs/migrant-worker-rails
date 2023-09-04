@@ -1,0 +1,40 @@
+- if account.deleted?
+  / Restore
+  = link_to restore_account_path(account), class: "btn btn-circle btn-sm btn-outline-warning mr-1", data: { toggle: 'tooltip', placement: 'top', title: t('shared.restore') }, method: :put do
+    %i.fas.fa-trash-restore
+
+  / Really destroy
+  - if policy(account).destroy?
+    = render 'shared/buttons/delete_button', object: account,  message: { type: t('account.account'), name: account.email, url: account_path(account) }
+
+  - else
+    = render "shared/buttons/delete_disable_button"
+
+- else
+  - if policy(account).enable_dashboard?
+    = link_to enable_dashboard_account_path(account), class: "btn btn-circle btn-sm btn-outline-secondary mr-1", data: {toggle: 'tooltip', placement: 'top', title: t('account.enable_dashboard')}, method: :put do
+      %i.fas.fa-user-plus
+
+  - if policy(account).disable_dashboard?
+    = link_to disable_dashboard_account_path(account), class: "btn btn-circle btn-sm btn-outline-secondary mr-1", data: {toggle: 'tooltip', placement: 'top', title: t('account.disable_dashboard')}, method: :put do
+      %i.fas.fa-user-minus
+
+  - if !account.confirmed?
+    / Resend confirmation
+    = link_to resend_confirmation_account_path(account), :method => :post, class: "btn btn-circle btn-sm btn-outline-success mr-1", data: { toggle: 'tooltip', placement: 'top', title: t('account.resend_confirmation') } do
+      %i.fas.fa-share-square
+
+    / Copy confirm link
+    %input.confirm-link{ value: confirmation_url(account, confirmation_token: account.confirmation_token) }
+
+    = link_to '#', class: "btn btn-circle btn-sm btn-outline-secondary mr-1 btn-copy", data: { toggle: 'tooltip', placement: 'top', title: t('account.copy_confirm_link') } do
+      %i.far.fa-copy
+
+  / Edit
+  = render "shared/buttons/edit_button", object: account, url: edit_account_path(account)
+
+
+  / Archive
+  - if policy(account).archive?
+    = link_to archive_account_path(account), class: "btn btn-circle btn-sm btn-outline-danger", data: {toggle: 'tooltip', placement: 'top', title: t('shared.archive')}, method: :put do
+      %i.fas.fa-user-times

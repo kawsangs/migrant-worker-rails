@@ -14,3 +14,14 @@ km:
     add_new: បន្ថែមអ្នកប្រើប្រាស់ថ្មី
     resend_confirmation: ផ្ញើតំណភ្ជាប់ម្តងទៀត
     resend_confirmation_successfully: ផ្ញើតំណភ្ជាប់ម្តងទៀតដោយជោគជ័យ!
+    grafana: គណនីស្ថិតិ
+
+    enable_dashboard_successfully: បញ្ជូនសំណើបើកគណនីស្ថិតិដោយជោគជ័យ! គណនី %{email} នឹងអាចចូលប្រើផ្ទាំងស្ថិតិនៅបន្តិចទៀត!
+    disable_dashboard_successfully: បញ្ជូនសំណើបិទគណនីស្ថិតិដោយជោគជ័យ! គណនី %{email} នឹងមិនអាចចូលប្រើផ្ទាំងស្ថិតិនៅនៅបន្តិចទៀត!
+    enable_dashboard: បើកដំណើរការគណនីស្ថិតិ
+    disable_dashboard: បិទដំណើរការគណនីស្ថិតិ
+
+    all: ទាំងអស់
+    archived: Archived
+    archive_successfully: "អ្នកប្រើប្រាស់ %{email} ត្រូវបាន archived ដោយជោគជ័យ!"
+    restore_successfully: "អ្នកប្រើប្រាស់ %{email} ត្រូវបានស្តារដោយជោគជ័យ!"

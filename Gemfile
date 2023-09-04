@@ -79,6 +79,18 @@ gem "ipaddress", "~> 0.8.3"
 # Daterange picker
 gem "bootstrap-daterangepicker-rails", "~> 3.0.4"
 
+# Oauth authentication
+gem "doorkeeper", "~> 5.6.6"
+
+# Cross-origin
+gem "rack-cors", "~> 2.0.1"
+
+# Soft delete
+gem "paranoia", "~> 2.6.2"
+
+# Client request
+gem "httparty", "~> 0.21.0"
+
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
   gem "byebug", platforms: [:mri, :mingw, :x64_mingw]

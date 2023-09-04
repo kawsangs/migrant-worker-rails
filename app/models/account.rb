@@ -18,9 +18,18 @@
 #  created_at             :datetime         not null
 #  updated_at             :datetime         not null
 #  language_code          :string           default("en")
+#  gf_user_id             :integer
+#  deleted_at             :datetime
+#  actived                :boolean          default(TRUE)
 #
 class Account < ApplicationRecord
+  acts_as_paranoid
+
+  attr_accessor :skip_callback
+
   include Accounts::Confirmable
+  include Accounts::GrafanaConcern
+  include Accounts::OauthProvider
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable, :trackable and :omniauthable
   devise :database_authenticatable, :registerable, :recoverable,
@@ -28,6 +37,7 @@ class Account < ApplicationRecord
 
   enum role: {
     system_admin: 1,
+    admin: 3,
     guest: 2
   }
 
@@ -36,6 +46,7 @@ class Account < ApplicationRecord
   def self.filter(params)
     scope = all
     scope = scope.where("email LIKE ?", "%#{params[:email]}%") if params[:email].present?
+    scope = scope.only_deleted if params[:archived] == "true"
     scope
   end
 
@@ -45,5 +56,13 @@ class Account < ApplicationRecord
 
   def display_name
     email.split("@").first.upcase
+  end
+
+  def status
+    return "archived" if deleted?
+    return "actived" if confirmed? && actived?
+    return "deactivated" unless actived?
+
+    "pending"
   end
 end
