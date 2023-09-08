@@ -15,6 +15,7 @@
               %th= t('video.url')
               %th= t('video.author')
               %th= t('shared.tags')
+              %th= t('shared.created_at')
               %th
 
           %tbody#body-content
@@ -28,6 +29,7 @@
 
                 %td= video.video_author_name
                 %td= video.tag_list
+                %td= timeago(video.created_at).html_safe
                 %td
                   .d-flex.justify-content-end
                     = render 'shared/buttons/edit_button', object: video, url: edit_video_path(video)

@@ -42,6 +42,7 @@ class Video < ApplicationRecord
   def self.filter(params = {})
     scope = all
     scope = scope.where("name LIKE ?", "%#{params[:name].strip}%") if params[:name].present?
+    scope = scope.where("created_at BETWEEN ? AND ?", DateTime.parse(params[:start_date]).beginning_of_day, DateTime.parse(params[:end_date]).end_of_day) if params[:start_date].present? && params[:end_date].present?
     scope = scope.joins(:importing_items).joins(:batches).where("batches.code = ?", params[:batch_code]) if params[:batch_code].present?
     scope = scope.joins(:video_author).where("video_authors.name IN (?)", params[:video_author]) if params[:video_author].present?
     scope

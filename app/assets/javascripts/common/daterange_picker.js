@@ -2,6 +2,8 @@ MW.Common.DaterangePicker = (() => {
   var tr = {};
 
   function init() {
+    if(!$('#daterange')) return;
+
     setDefaultLocale();
     handleDisplayDate();
     initDateRangePicker();
