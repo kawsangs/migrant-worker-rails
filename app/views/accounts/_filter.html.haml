@@ -1,0 +1,8 @@
+%form{ action: accounts_path, method: 'get' }
+  .d-flex
+    = render "shared/filters/filter_name", field_name: :email, placeholder: t('account.search_by_email')
+
+    .ml-2= render 'shared/filters/filter_date', placeholder: t('account.search_by_created_at')
+
+    / Search button
+    .ml-2= render "shared/buttons/search_button"

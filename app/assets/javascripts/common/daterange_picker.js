@@ -67,7 +67,14 @@ MW.Common.DaterangePicker = (() => {
       $('.end-date').val(picker.endDate.locale('en').format('YYYY-MM-DD'));
 
       displayDate(picker.startDate, picker.endDate);
+      submitForm(this);
     });
+  }
+
+  function submitForm(dom) {
+    let form = $(dom).parents('form');
+
+    !!form && form.submit();
   }
 
   function onCancelDateRange() {
@@ -76,6 +83,7 @@ MW.Common.DaterangePicker = (() => {
       $('.end-date').val('');
 
       displayDate('', '');
+      submitForm(this);
     });
   }
 

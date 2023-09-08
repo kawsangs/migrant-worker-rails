@@ -7,10 +7,7 @@
 
     / Search button
     .ml-2
-      %button.btn.btn-outline-primary.ml-md-2{type: :submit}
-        %i.fas.fa-search
-        %span.d-none.d-lg-inline= t('shared.search')
-
+      = render "shared/buttons/search_button"
 
   #collapseOne.accordion-collapse.collapse.collapse-filter
     .d-flex.m-2

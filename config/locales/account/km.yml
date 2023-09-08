@@ -25,3 +25,5 @@ km:
     archived: Archived
     archive_successfully: "អ្នកប្រើប្រាស់ %{email} ត្រូវបាន archived ដោយជោគជ័យ!"
     restore_successfully: "អ្នកប្រើប្រាស់ %{email} ត្រូវបានស្តារដោយជោគជ័យ!"
+    search_by_email: ស្វែងរកតាមអ៊ីមែល
+    search_by_created_at: ស្វែងរកតាមកាលបរិច្ឆេទបញ្ចូល

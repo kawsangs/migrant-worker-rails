@@ -43,9 +43,10 @@ class Account < ApplicationRecord
 
   ROLES = roles.keys.map { |r| [r.titlecase, r] }
 
-  def self.filter(params)
+  def self.filter(params = {})
     scope = all
-    scope = scope.where("email LIKE ?", "%#{params[:email]}%") if params[:email].present?
+    scope = scope.where("email LIKE ?", "%#{params[:email].strip}%") if params[:email].present?
+    scope = scope.where("created_at BETWEEN ? AND ?", DateTime.parse(params[:start_date]).beginning_of_day, DateTime.parse(params[:end_date]).end_of_day) if params[:start_date].present? && params[:end_date].present?
     scope = scope.only_deleted if params[:archived] == "true"
     scope
   end
