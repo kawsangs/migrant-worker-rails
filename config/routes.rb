@@ -77,6 +77,8 @@ Rails.application.routes.draw do
 
   resources :chat_groups, only: [:index]
 
+  resources :pages
+
   # Api
   namespace :api do
     namespace :integration do

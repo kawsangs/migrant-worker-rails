@@ -1,0 +1,27 @@
+/ Page Heading
+= render "shared/headers/page_heading", title: t("sidebar.page") do
+  = render "shared/buttons/add_new_button", url: new_page_path
+
+%form.d-flex{ action: pages_path, method: 'get' }
+  = render 'shared/filters/filter_name', placeholder: t('shared.filter_by_code_or_name')
+
+.card.shadow.mb-4
+  .card-body
+    .table-responsive.mb-4
+      %table.table.table-hover.pretty
+        %thead
+          %tr
+            %th{width: 60} #
+            %th= t('shared.code')
+            %th= t('shared.name_km')
+            %th= t('shared.name_en')
+            %th= t('shared.number_of_visit')
+            %th= t('shared.created_at')
+            %th= t('shared.updated_at')
+            %th
+
+        %tbody#body-content
+          - @pages.roots.each_with_index do |page, index|
+            = render "page", page: page, num: index + 1
+
+= render "shared/modals/confirm_delete_modal"

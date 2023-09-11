@@ -94,3 +94,8 @@ km:
     restore: ស្តារឡើងវិញ
     archive: Archive
     search_by_created_at: ស្វែងរកតាមកាលបរិច្ឆេទបញ្ចូល
+    filter_by_code_or_name: ស្វែងរកតាមកូដឬឈ្មោះ
+    code: លេខកូដ
+    name_en: ឈ្មោះជាភាសាអង់គ្លេស
+    name_km: ឈ្មោះជាភាសាខ្មែរ
+    number_of_visit: "ចំនួនទស្សនៈកិច្ច"
