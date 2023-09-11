@@ -25,3 +25,5 @@ en:
     archived: Archived
     archive_successfully: "User %{email} is archived successfully!"
     restore_successfully: "User %{email} is restored successfully!"
+    search_by_email: Search by email
+    search_by_created_at: Search by created at

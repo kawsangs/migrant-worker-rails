@@ -83,4 +83,8 @@ class AccountsController < ApplicationController
     def filter_params
       params.permit(:email, :archived)
     end
+
+    def filter_params
+      params.permit(:email, :start_date, :end_date)
+    end
 end

@@ -1,4 +1,5 @@
-= render "shared/page_title", title: t('account.accounts'), url: new_account_path, label: t('shared.add_new')
+= render "shared/headers/page_heading", title: t("account.accounts") do
+  = render "shared/buttons/add_new_button", url: new_account_path
 
 / Nav tabs
 %ul.nav.nav-tabs
@@ -11,6 +12,8 @@
     %a.nav-link{ href: accounts_path(archived: true), class:  ('active' if params[:archived].present?) }
       %i.fas.fa-user-times
       %span.d-none.d-lg-inline= t("account.archived")
+
+.mt-2= render "filter"
 
 .card.shadow.mb-4
   .card-body
@@ -27,6 +30,7 @@
             %th= t('account.role')
             %th= t('account.status')
             %th= t('account.grafana')
+            %th= t('shared.created_at')
             %th
         %tbody
           - @accounts.each_with_index do |account, index|
@@ -37,6 +41,19 @@
 
               %td.status{ class: account.status }
                 = t("account.#{account.status}")
+              %td.status{ class: ('active' if account.confirmed?) }
+                = account.confirmed? ? t('account.active') : t('account.pending')
+              %td= timeago(account.created_at).html_safe
+              %td.text-right
+                - if policy(account).destroy?
+                  - unless account.confirmed?
+                    = link_to resend_confirmation_account_path(account), :method => :post, class: "btn btn-circle btn-sm btn-success", data: { toggle: 'tooltip', placement: 'top', title: t('account.resend_confirmation') } do
+                      %i.fas.fa-share-square
+
+                    %input.confirm-link{ value: confirmation_url(account, confirmation_token: account.confirmation_token) }
+
+                    = link_to '#', class: "btn btn-circle btn-sm btn-info mr-1 btn-copy", data: { toggle: 'tooltip', placement: 'top', title: t('account.copy_confirm_link') } do
+                      %i.far.fa-copy
 
               %td= account.gf_user_id.present? ? "Yes" : nil
               %td
