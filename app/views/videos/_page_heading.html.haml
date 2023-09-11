@@ -21,9 +21,15 @@
         %i.fas.fa-download.drop-menu-icon
         %span= t('shared.download_json')
 
-.d-flex
+.d-flex.flex-wrap
   .flex-grow-1
     %form{ action: videos_path, method: 'get' }
-      = render "shared/filters/filter_name", placeholder: t('shared.search_by_title')
+      .d-flex
+        %div= render "shared/filters/filter_name", placeholder: t('shared.search_by_title')
+
+        .ml-2
+          = render "shared/filters/filter_date", placeholder: t('shared.search_by_created_at')
+        .ml-2
+          = render "shared/buttons/search_button"
 
   %div= render "switch_view_buttons"

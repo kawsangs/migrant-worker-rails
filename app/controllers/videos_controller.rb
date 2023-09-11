@@ -74,7 +74,7 @@ class VideosController < ApplicationController
 
   private
     def filter_params
-      params.permit(:name)
+      params.permit(:name, :start_date, :end_date)
     end
 
     def video_params
