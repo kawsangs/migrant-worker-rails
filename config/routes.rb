@@ -4,20 +4,32 @@ require "sidekiq/web"
 require "sidekiq-scheduler/web"
 
 Rails.application.routes.draw do
+  use_doorkeeper do
+    controllers token_info: "token_info"
+  end
+
   devise_for :accounts, path: "/", controllers: { confirmations: "confirmations", omniauth_callbacks: "accounts/omniauth_callbacks" }
+  # https://github.com/plataformatec/devise/wiki/How-To:-Override-confirmations-so-users-can-pick-their-own-passwords-as-part-of-confirmation-activation
+  as :account do
+    match "/confirmation" => "confirmations#update", via: :put, as: :update_account_confirmation
+  end
+
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
   root to: "users#index"
 
   get "/terms-and-conditions", to: "terms_and_conditions#index"
   get "/privacy-policy", to: "privacy_policy#index"
 
-  resources :accounts do
-    post :update_locale, on: :collection
-    post :resend_confirmation, on: :member
-  end
+  resource :locale, only: :update
 
-  as :account do
-    match "/confirmation" => "confirmations#update", :via => :put, :as => :update_account_confirmation
+  resources :accounts do
+    member do
+      post :resend_confirmation
+      put :archive
+      put :restore
+      put :enable_dashboard
+      put :disable_dashboard
+    end
   end
 
   resources :users do

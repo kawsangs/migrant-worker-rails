@@ -18,6 +18,9 @@
 #  created_at             :datetime         not null
 #  updated_at             :datetime         not null
 #  language_code          :string           default("en")
+#  gf_user_id             :integer
+#  deleted_at             :datetime
+#  actived                :boolean          default(TRUE)
 #
 require "rails_helper"
 

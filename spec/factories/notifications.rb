@@ -33,7 +33,7 @@ FactoryBot.define do
     trait :with_recurrence do
       schedule_mode   { "recurrence" }
       recurrence_rule { "{\"validations\":{\"day\":[1]},\"rule_type\":\"IceCube::WeeklyRule\",\"interval\":1,\"week_start\":0}" }
-      end_time { 2.weeks.from_now }
+      end_time { 2.weeks.from_now - 1.day }
     end
 
     trait :with_survey_form do

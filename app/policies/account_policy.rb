@@ -14,9 +14,29 @@ class AccountPolicy < ApplicationPolicy
   end
 
   def destroy?
+    archive? && record.deleted?
+  end
+
+  def restore?
+    record.deleted?
+  end
+
+  def archive?
     return false if record.id == user.id
-    return true if user.system_admin?
-    false
+
+    create? && !record.system_admin?
+  end
+
+  def resend_confirmation?
+    update?
+  end
+
+  def enable_dashboard?
+    record.confirmed? && record.gf_user_id.blank?
+  end
+
+  def disable_dashboard?
+    record.confirmed? && record.gf_user_id.present?
   end
 
   def roles

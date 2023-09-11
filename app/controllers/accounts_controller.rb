@@ -1,8 +1,10 @@
 # frozen_string_literal: true
 
 class AccountsController < ApplicationController
+  before_action :set_account, only: %i[edit update archive resend_confirmation enable_dashboard disable_dashboard]
+
   def index
-    @pagy, @accounts = pagy(policy_scope(authorize Account.filter(params)))
+    @pagy, @accounts = pagy(policy_scope(authorize Account.filter(filter_params)))
   end
 
   def new
@@ -21,41 +23,52 @@ class AccountsController < ApplicationController
   end
 
   def edit
-    @account = authorize Account.find(params[:id])
   end
 
   def update
-    @account = authorize Account.find(params[:id])
-
-    if @account.update_attributes(account_params)
-      redirect_to accounts_url
+    if @account.update(account_params)
+      redirect_to accounts_url, notice: "Account was successfully updated."
     else
-      flash.now[:alert] = @account.errors.full_messages
-      render :edit
+      render :edit, status: :unprocessable_entity
     end
+  end
+
+  def archive
+    @account.destroy
+
+    redirect_to accounts_url, status: :see_other, notice: I18n.t("account.archive_successfully", email: @account.email)
+  end
+
+  def restore
+    @account = authorize Account.only_deleted.find(params[:id])
+    @account.restore
+
+    redirect_to accounts_url, notice: I18n.t("account.restore_successfully", email: @account.email)
   end
 
   def destroy
-    @account = authorize Account.find(params[:id])
-    @account.destroy
+    @account = authorize Account.only_deleted.find(params[:id])
+    @account.really_destroy!
 
-    redirect_to accounts_url
-  end
-
-  def update_locale
-    current_account.language_code = locale_params[:language_code]
-    if current_account.save
-      head :ok
-    else
-      render json: current_account.errors.messages
-    end
+    redirect_to accounts_url(archived: true)
   end
 
   def resend_confirmation
-    @account = Account.find_by(id: params[:id])
     @account.send_confirmation_instructions
 
     redirect_to accounts_url, notice: I18n.t("account.resend_confirmation_successfully")
+  end
+
+  def enable_dashboard
+    @account.add_to_grafana_async
+
+    redirect_to accounts_url, notice: I18n.t("account.enable_dashboard_successfully", email: @account.email)
+  end
+
+  def disable_dashboard
+    @account.remove_from_grafana_async
+
+    redirect_to accounts_url, notice: I18n.t("account.disable_dashboard_successfully", email: @account.email)
   end
 
   private
@@ -63,7 +76,11 @@ class AccountsController < ApplicationController
       params.require(:account).permit(:email, :role)
     end
 
-    def locale_params
-      params.require(:account).permit(:language_code)
+    def set_account
+      @account = authorize Account.find(params[:id])
+    end
+
+    def filter_params
+      params.permit(:email, :archived)
     end
 end

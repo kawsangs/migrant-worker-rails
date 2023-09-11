@@ -7,6 +7,14 @@
     .sidebar-brand-text.mx-3
       = t('sidebar.app_name')
 
+  - if policy(:grafana).show?
+    %hr.sidebar-divider.my-0/
+
+    %li.nav-item
+      %a.nav-link{href: ENV['GF_DASHBOARD_URL'], target: '_blank'}
+        %i.fa-solid.fa-chart-column
+        %span= t("sidebar.dashboard")
+
   / Divider
   %hr.sidebar-divider.my-0/
 
@@ -82,8 +90,13 @@
 
           - if policy(TelegramBot).create?
             %a.collapse-item{ href: telegram_bot_path, class: css_active_class('telegram_bots', 'chat_groups', 'helps') }
-              %i.fa-brands.fa-telegram
+              %i.fa-fw.fa-brands.fa-telegram
               %span= t('sidebar.telegram_bot')
+
+          - if current_account.system_admin?
+            %a.collapse-item{ href: '/oauth/applications' }
+              %i.fa-fw.fa-solid.fa-o
+              %span= t('sidebar.oauth_application')
 
   %li.nav-item{ class: css_active_class('about') }
     %a.nav-link{:href => about_path}

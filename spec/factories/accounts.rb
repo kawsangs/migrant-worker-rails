@@ -18,6 +18,9 @@
 #  created_at             :datetime         not null
 #  updated_at             :datetime         not null
 #  language_code          :string           default("en")
+#  gf_user_id             :integer
+#  deleted_at             :datetime
+#  actived                :boolean          default(TRUE)
 #
 
 FactoryBot.define do
@@ -25,6 +28,23 @@ FactoryBot.define do
     email         { FFaker::Internet.email }
     role          { "system_admin" }
     password      { "123456" }
+    skip_callback { true }
+
+    trait :allow_callback do
+      skip_callback { false }
+    end
+
+    trait :system_admin do
+      role { "system_admin" }
+    end
+
+    trait :admin do
+      role { "admin" }
+    end
+
+    trait :guest do
+      role { "guest" }
+    end
 
     after(:create) do |account, evaluator|
       account.confirm

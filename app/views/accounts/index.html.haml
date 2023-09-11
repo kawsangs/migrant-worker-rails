@@ -1,5 +1,17 @@
 = render "shared/page_title", title: t('account.accounts'), url: new_account_path, label: t('shared.add_new')
 
+/ Nav tabs
+%ul.nav.nav-tabs
+  %li.nav-item
+    %a.nav-link{href: accounts_path, class: ('active' if params[:archived].blank?) }
+      %i.fas.fa-users
+      %span.d-none.d-lg-inline= t("account.all")
+
+  %li.nav-item
+    %a.nav-link{ href: accounts_path(archived: true), class:  ('active' if params[:archived].present?) }
+      %i.fas.fa-user-times
+      %span.d-none.d-lg-inline= t("account.archived")
+
 .card.shadow.mb-4
   .card-body
     = render partial: "shared/no_data", locals: { items: @accounts }
@@ -14,6 +26,7 @@
             %th= t('account.email')
             %th= t('account.role')
             %th= t('account.status')
+            %th= t('account.grafana')
             %th
         %tbody
           - @accounts.each_with_index do |account, index|
@@ -22,20 +35,13 @@
               %td= account.email
               %td= account.role.titlecase
 
-              %td.status{ class: ('active' if account.confirmed?) }
-                = account.confirmed? ? t('account.active') : t('account.pending')
-              %td.text-right
-                - if policy(account).destroy?
-                  - unless account.confirmed?
-                    = link_to resend_confirmation_account_path(account), :method => :post, class: "btn btn-circle btn-sm btn-success", data: { toggle: 'tooltip', placement: 'top', title: t('account.resend_confirmation') } do
-                      %i.fas.fa-share-square
+              %td.status{ class: account.status }
+                = t("account.#{account.status}")
 
-                    %input.confirm-link{ value: confirmation_url(account, confirmation_token: account.confirmation_token) }
-
-                    = link_to '#', class: "btn btn-circle btn-sm btn-info mr-1 btn-copy", data: { toggle: 'tooltip', placement: 'top', title: t('account.copy_confirm_link') } do
-                      %i.far.fa-copy
-
-                  = render 'shared/action_buttons', edit_url: edit_account_path(account), delete_url: account_path(account), object: account
+              %td= account.gf_user_id.present? ? "Yes" : nil
+              %td
+                .d-flex.justify-content-end
+                  = render 'action_buttons', account: account
 
       - if @pagy.pages > 1
         .pagy-wrapper
@@ -45,3 +51,4 @@
     .toast
       .toast-body= t('account.copied')
 
+= render "shared/modals/confirm_delete_modal"

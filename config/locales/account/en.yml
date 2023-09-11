@@ -14,3 +14,14 @@ en:
     add_new: Add new account
     resend_confirmation: Resend confirmation
     resend_confirmation_successfully: Resend the confirmation successfully!
+    grafana: Dashboard account
+
+    enable_dashboard_successfully: enable account in dashboard successfully! The account %{email} will be able to access dashboard in the next few minutes!
+    disable_dashboard_successfully: disable account from dashboard successfully! The account %{email} will not be able access dashboard in the next few minutes!
+    enable_dashboard: enable account in dashboard
+    disable_dashboard: disable account from dashboard
+
+    all: All
+    archived: Archived
+    archive_successfully: "User %{email} is archived successfully!"
+    restore_successfully: "User %{email} is restored successfully!"

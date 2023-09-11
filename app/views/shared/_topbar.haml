@@ -15,7 +15,7 @@
 
       - if current_account.present?
         .dropdown-list.dropdown-menu.dropdown-menu-right.shadow.animated--grow-in{"aria-labelledby" => "languageDropdown"}
-          = simple_form_for(current_account, url: update_locale_accounts_path, method: :post, remote: true, html: { id: "switch-language" }) do |f|
+          = simple_form_for(current_account, url: locale_path, method: :put, remote: true, html: { id: "switch-language" }) do |f|
             = f.hidden_field :language_code
 
             - program_languages.each do |language|

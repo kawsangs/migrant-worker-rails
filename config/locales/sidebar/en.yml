@@ -19,3 +19,5 @@ en:
     contents: Manage Contents
     settings: Settings
     telegram_bot: Telegram bot
+    oauth_application: Oauth Application
+    dashboard: Dashboard
