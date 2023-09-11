@@ -94,3 +94,8 @@ en:
     restore: Restore
     archive: Archive
     search_by_created_at: Search by created at
+    filter_by_code_or_name: Filter by code or name
+    code: Code
+    name_en: Name in English
+    name_km: Name in Khmer
+    number_of_visit: "# of visit"

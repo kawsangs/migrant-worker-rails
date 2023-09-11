@@ -73,6 +73,11 @@
               %i.fas.fa-fw.fa-regular.fa-circle-play
               %span= t("sidebar.video")
 
+          - if policy(Page).index?
+            %a.collapse-item{ href: pages_path, class: css_active_class('pages') }
+              %i.fas.fa-fw.fa-regular.fa-file-lines
+              %span= t("sidebar.page")
+
     / Manage Settings
     %li.nav-item
       %a.nav-link.collapsed{"aria-controls" => "collapseSetting", "aria-expanded" => "true", "data-target" => "#collapseSetting", "data-toggle" => "collapse", :href => "#"}
