@@ -8,16 +8,16 @@
 #  page_id       :string
 #  pageable_id   :string
 #  pageable_type :string
-#  user_id       :integer
 #  device_id     :string
 #  visit_date    :datetime
 #  created_at    :datetime         not null
 #  updated_at    :datetime         not null
+#  user_uuid     :string
 #
 require "rails_helper"
 
 RSpec.describe Visit, type: :model do
-  it { is_expected.to belong_to(:user).optional(true) }
+  it { is_expected.to belong_to(:user).with_foreign_key(:user_uuid).with_primary_key(:uuid).optional(true) }
   it { is_expected.to belong_to(:page) }
   it { is_expected.to belong_to(:pageable).optional(true) }
   it { is_expected.to belong_to(:device).with_foreign_key(:device_id).with_primary_key(:device_id).class_name("RegisteredToken").optional(true) }
@@ -84,7 +84,7 @@ RSpec.describe Visit, type: :model do
   describe "#last_visit" do
     let!(:user) { create(:user) }
     let(:valid_params) { {
-      user_id: user.id, visit_date: Time.now,
+      user_uuid: user.uuid, visit_date: Time.now,
       page_attributes: { code: "page_one", name_km: "Page one", parent_code: nil },
     }}
 

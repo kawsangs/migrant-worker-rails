@@ -8,16 +8,16 @@
 #  page_id       :string
 #  pageable_id   :string
 #  pageable_type :string
-#  user_id       :integer
 #  device_id     :string
 #  visit_date    :datetime
 #  created_at    :datetime         not null
 #  updated_at    :datetime         not null
+#  user_uuid     :string
 #
 class Visit < ApplicationRecord
   # Association
   belongs_to :page, counter_cache: true
-  belongs_to :user, optional: true
+  belongs_to :user, primary_key: :uuid, foreign_key: :user_uuid, optional: true
   belongs_to :pageable, polymorphic: true, optional: true
   belongs_to :device, primary_key: :device_id, foreign_key: :device_id, class_name: "RegisteredToken", optional: true
 
@@ -49,7 +49,7 @@ class Visit < ApplicationRecord
   end
 
   def last_visit
-    self.class.where(user_id: user_id, pageable_type: pageable_type, pageable_id: pageable_id)
+    self.class.where(user_uuid: user_uuid, pageable_type: pageable_type, pageable_id: pageable_id)
               .where("visit_date >= ?", visit_date - 30.minutes)
               .first
   end

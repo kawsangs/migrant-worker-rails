@@ -7,7 +7,7 @@ RSpec.describe "Api::V2::VisitsController", type: :request do
     let!(:api_key) { create(:api_key) }
     let(:json_response) { JSON.parse(response.body) }
     let(:valid_params) { {
-      user_id: SecureRandom.uuid, visit_date: Time.now,
+      user_uuid: SecureRandom.uuid, visit_date: Time.now,
       pageable_id: "", pageable_type: "Page",
       page_attributes: { code: "page_one", name: "Page one", parent_code: nil }
     }}
