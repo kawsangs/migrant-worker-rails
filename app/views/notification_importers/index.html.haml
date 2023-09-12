@@ -1,0 +1,7 @@
+= render "shared/headers/page_heading", title: t('shared.importing_history', name: t('sidebar.notification')) do
+
+  .d-flex.mt-3.mt-md-0.justify-content-end
+    = render "shared/buttons/back_button", url: notifications_path
+    = render "shared/buttons/add_new_button", url: new_notification_importer_path, name: t('sidebar.notification')
+
+= render "shared/batches/batch_list"

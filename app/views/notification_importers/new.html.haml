@@ -1,0 +1,3 @@
+= render "shared/headers/progress_arrow_header", title: t("shared.importing_wizard", name: t("sidebar.notification"))
+
+= render "shared/forms/wizard_form", cancel_url: notifications_path, sample_url: '/sample/notification.xlsx', item: @batch, form_url: notification_importers_path
