@@ -21,6 +21,8 @@
               = fff.hidden_field :body
               = fff.hidden_field :schedule_mode
               = fff.hidden_field :start_time
+              = fff.hidden_field :status, value: "released"
+              = fff.hidden_field :releasor_id, value: current_account.id
 
         %tr
           %td
@@ -30,7 +32,7 @@
           %td= item.body
           %td= item.start_time
           %td
-            %span.badge.badge-secondary Draft
+            %span.badge.badge-success Released
 
           / Validation status
           %td= render "shared/validation_status", item: item

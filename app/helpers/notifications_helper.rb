@@ -63,7 +63,7 @@ module NotificationsHelper
       str += "<ol>"
 
       notification.notification_occurrences.each do |occurrence|
-        str += "<li>#{display_datetime(occurrence.occurrence_date)}៖ Success: #{occurrence.success_count} / Total: #{occurrence.failure_count} (#{occurrence.status}) </li>"
+        str += "<li>#{display_datetime(occurrence.occurrence_date)}៖ Success: #{occurrence.success_count} / Total: #{occurrence.token_count} (#{occurrence.status}) </li>"
       end
 
       str += "</ol>"

@@ -17,6 +17,6 @@ class NotificationImportersController < ApplicationController
     end
 
     def itemable_attributes
-      [:id, :title, :body, :schedule_mode, :start_time]
+      [:id, :title, :body, :schedule_mode, :start_time, :status, :releasor_id]
     end
 end

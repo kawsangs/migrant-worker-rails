@@ -24,6 +24,7 @@ module Notifications::SchedulableConcern
 
     # Callback
     after_update :create_notification_occurrence, if: -> { saved_change_to_status? && released? }
+    after_create :create_notification_occurrence, if: -> { released? }
 
     # Instance method
     def increase_delivered_count
