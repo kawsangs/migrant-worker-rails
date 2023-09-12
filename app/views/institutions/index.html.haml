@@ -6,13 +6,13 @@
       = t('shared.add_new')
 
 %form.d-flex{ action: '/institutions', method: 'get' }
-  .form-group
-    .input-group
-      = text_field_tag(:keyword, params[:keyword], class: 'form-control keyword', placeholder: t('shared.search'))
+  = render "shared/filters/filter_name"
 
-      %a#info.input-group-append
-        .input-group-text
-          %i.fas.fa-search
+  .ml-2
+    = render "shared/filters/filter_date", placeholder: t("shared.search_by_created_at")
+
+  .ml-2
+    = render "shared/buttons/search_button"
 
 .card.shadow.mb-4
   .card-body
@@ -32,6 +32,7 @@
             %th= t('institution.logo')
             %th= t('institution.audio')
             %th= t('institution.address')
+            %th= t('shared.created_at')
             %th
         %tbody
           = render @institutions

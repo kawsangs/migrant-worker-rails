@@ -30,6 +30,7 @@
         = link_to delete_audio_institution_path(institution), method: :delete, class: 'position-absolute btn btn-danger rounded-circle btn-sm attachment__delete', data: { confirm: 'are you sure?' } do
           %i.fa.fa-trash-alt
   %td= institution.address
+  %td= timeago(institution.created_at).html_safe
   %td
     %div{ style: 'min-width: 80px'}
       = link_to edit_institution_path(institution), id: dom_id(institution, :edit), class: "btn btn-sm rounded-circle btn-warning mr-3" do

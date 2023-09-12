@@ -4,7 +4,7 @@ class InstitutionsController < ApplicationController
   before_action :set_institution, only: [:edit, :update, :destroy, :delete_logo, :delete_audio]
 
   def index
-    @pagy, @institutions = pagy(Institution.filter(params).includes(:contacts, :country_institutions).order("updated_at DESC"))
+    @pagy, @institutions = pagy(Institution.filter(filter_params).includes(:contacts, :country_institutions).order("updated_at DESC"))
   end
 
   def new
@@ -63,5 +63,9 @@ class InstitutionsController < ApplicationController
         country_institutions_attributes: [:id, :country_name, :country_code, :_destroy],
         contacts_attributes: [:id, :type, :value, :_destroy]
       )
+    end
+
+    def filter_params
+      params.permit(:name, :start_date, :end_date)
     end
 end

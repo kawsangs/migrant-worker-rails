@@ -34,7 +34,8 @@ class Institution < ApplicationRecord
 
   def self.filter(params = {})
     scope = all
-    scope = scope.where("LOWER(name) LIKE ?", "%#{params[:keyword].downcase}%") if params[:keyword].present?
+    scope = scope.where("LOWER(name) LIKE ?", "%#{params[:name].strip.downcase}%") if params[:name].present?
+    scope = scope.where("created_at BETWEEN ? AND ?", DateTime.parse(params[:start_date]).beginning_of_day, DateTime.parse(params[:end_date]).end_of_day) if params[:start_date].present? && params[:end_date].present?
     scope
   end
 
