@@ -27,7 +27,7 @@ MW.CategoriesNew = do ->
       imageUpload: false
       fileUpload: false
       videoEmbed: false
-      urls: false
+      urls: true
       table: true
       removeStyles: true
       code: true
