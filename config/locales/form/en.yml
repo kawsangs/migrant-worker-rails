@@ -43,3 +43,4 @@ en:
     group_selected: groups selected
     chat_group_description: Once this answer has been selected, information related to this survey will be sent to your designated Telegram team.
     question_audio_hint: The recording should include question and all options
+    tracking: Tracking

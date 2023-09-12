@@ -45,7 +45,7 @@ module Samples
     private
       def click_on_page_detail(pageable, page_attributes = {})
         ::Visit.create(
-          user_id: user_id,
+          user_uuid: user_uuid,
           visit_date: rand(1..100).days.ago,
           pageable: pageable,
           page_attributes: page_attributes,
@@ -54,14 +54,14 @@ module Samples
 
       def click_on_main_page(page_attributes = {})
         ::Visit.create(
-          user_id: user_id,
+          user_uuid: user_uuid,
           visit_date: rand(1..100).days.ago,
           page_attributes: page_attributes,
         )
       end
 
-      def user_id
-        ::User.all.sample.id
+      def user_uuid
+        ::User.all.sample.uuid
       end
   end
 end

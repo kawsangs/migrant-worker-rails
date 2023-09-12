@@ -18,6 +18,9 @@
 #
 module Forms
   class StoryForm < ::Form
+    # Validation
+    validates_associated :questions
+
     def self.policy_class
       StoryFormPolicy
     end

@@ -1,10 +1,7 @@
 MW.Common.tagList = (() => {
-  function init(dom, callback) {
+  function init(dom, params={}) {
     let input = $(dom);
-    let tagify = new Tagify(input[0], {
-      whitelist: input.data('tags'),
-      dropdown: { maxItems: 20, classname: "tags-look", enabled: 0, closeOnSelect: false }
-    });
+    let tagify = new Tagify(input[0], getTagOptions(input, params.options));
 
     setValueToTagListInput();
 
@@ -15,8 +12,20 @@ MW.Common.tagList = (() => {
       let tagList = tagify.value.map((v,i) => v.value).join(',');
 
       input.val(tagList);
-      !!callback && (typeof callback === 'function') && callback(input, tagList);
+      !!params.callback && (typeof params.callback === 'function') && params.callback(input, tagList);
     }
+  }
+
+  function getTagOptions(input, options={}) {
+    let option = {
+      whitelist: input.data('tags'),
+      dropdown: { maxItems: 20, classname: "tags-look", enabled: 0, closeOnSelect: false }
+    }
+    if (!!options) {
+      option = {...option, ...options}
+    }
+
+    return option;
   }
 
   return { init }

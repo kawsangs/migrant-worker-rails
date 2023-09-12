@@ -18,8 +18,12 @@
 #
 module Forms
   class SurveyForm < ::Form
+    # Association
     has_many :notifications, foreign_key: :form_id
     has_many :questions, through: :sections
+
+    # Validation
+    validates_associated :sections
 
     def self.policy_class
       SurveyFormPolicy
