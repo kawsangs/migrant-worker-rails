@@ -1,8 +1,13 @@
 = render "shared/headers/page_heading", title: t("form.questionnaire") do
   = render "shared/buttons/add_new_button", url: new_survey_form_path
 
-.d-flex.justify-content-end.mb-1
-  = render "notifications/switch_view_buttons"
+.d-flex.mb-2
+  %form.flex-grow-1.d-flex{ action: survey_forms_path, method: 'get'}
+    = render "shared/filters/filter_name"
+    .ml-2= render "shared/buttons/search_button"
+
+  %div
+    = render "notifications/switch_view_buttons"
 
 .card.shadow.mb-4
   .card-body

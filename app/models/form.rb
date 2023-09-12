@@ -55,4 +55,10 @@ class Form < ApplicationRecord
   def publish
     update(published_at: Time.now)
   end
+
+  def self.filter(params = {})
+    scope = all
+    scope = scope.where("LOWER(name) LIKE ?", "%#{params[:name].downcase.strip}%") if params[:name].present?
+    scope
+  end
 end
