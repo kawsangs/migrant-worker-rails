@@ -6,7 +6,7 @@ RSpec.describe VisitJob, type: :job do
   describe "perfom" do
     let!(:user) { create(:user) }
     let(:valid_params) { {
-      user_id: user.id, visit_date: Time.now,
+      user_uuid: user.uuid, visit_date: Time.now,
       device_id: SecureRandom.hex(8),
       pageable_id: "", pageable_type: "Page",
       page_attributes: { code: "page_one", name_km: "Page one", parent_code: nil }

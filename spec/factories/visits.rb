@@ -8,11 +8,11 @@
 #  page_id       :string
 #  pageable_id   :string
 #  pageable_type :string
-#  user_id       :integer
 #  device_id     :string
 #  visit_date    :datetime
 #  created_at    :datetime         not null
 #  updated_at    :datetime         not null
+#  user_uuid     :string
 #
 FactoryBot.define do
   factory :visit do

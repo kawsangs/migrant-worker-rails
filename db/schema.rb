@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2023_09_01_062534) do
+ActiveRecord::Schema.define(version: 2023_09_12_024654) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "pgcrypto"
@@ -417,11 +417,11 @@ ActiveRecord::Schema.define(version: 2023_09_01_062534) do
     t.string "page_id"
     t.string "pageable_id"
     t.string "pageable_type"
-    t.integer "user_id"
     t.string "device_id"
     t.datetime "visit_date"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.string "user_uuid"
   end
 
   add_foreign_key "contacts", "institutions"
