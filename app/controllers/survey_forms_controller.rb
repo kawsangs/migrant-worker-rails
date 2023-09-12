@@ -1,10 +1,10 @@
 # frozen_string_literal: true
 
 class SurveyFormsController < ApplicationController
-  before_action :set_form, only: [:show, :edit, :update, :destroy]
+  before_action :authorize_form, only: [:show, :edit, :update, :destroy]
 
   def index
-    @pagy, @forms = pagy(policy_scope(Forms::SurveyForm.includes(:questions, :notifications)))
+    @pagy, @forms = pagy(policy_scope(Forms::SurveyForm.filter(filter_params).includes(:questions, :notifications)))
   end
 
   def show
@@ -57,7 +57,11 @@ class SurveyFormsController < ApplicationController
       )
     end
 
-    def set_form
+    def authorize_form
       @form = authorize Forms::SurveyForm.find(params[:id])
+    end
+
+    def filter_params
+      params.permit(:name)
     end
 end
