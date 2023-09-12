@@ -15,6 +15,8 @@
 #  updated_at    :datetime         not null
 #
 class User < ApplicationRecord
+  audited
+
   # Constant
   GENDERS = %w(male female other)
 
