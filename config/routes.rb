@@ -48,6 +48,7 @@ Rails.application.routes.draw do
     put :release, on: :member
     put :cancel, on: :member
   end
+  resources :notification_importers
   resources :videos
   resources :video_authors
   resources :video_tags

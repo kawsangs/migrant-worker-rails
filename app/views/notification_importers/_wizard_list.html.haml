@@ -1,0 +1,36 @@
+.table-responsive
+  %table.table.table-hover.pretty
+    %thead
+      %tr
+        %th #
+        %th= t('notification.notification_title')
+        %th= t('notification.notification_text')
+        %th= t('notification.pushing_notification_date')
+        %th= t('shared.status')
+        %th= t('shared.is_valid')
+
+    %tbody
+      - @batch.importing_items.each_with_index do |importing_item, index|
+        - item = importing_item.itemable
+        - if item.valid?
+          = f.fields_for :importing_items, importing_item do |ff|
+            = ff.hidden_field :itemable_id
+            = ff.hidden_field :itemable_type
+            = ff.fields_for :itemable, item do |fff|
+              = fff.hidden_field :title
+              = fff.hidden_field :body
+              = fff.hidden_field :schedule_mode
+              = fff.hidden_field :start_time
+
+        %tr
+          %td
+            .line-badge{ class: status_class(item), 'data-bs-toggle' => 'tooltip', title: status_message(item) }
+              = index + 1
+          %td= item.title
+          %td= item.body
+          %td= item.start_time
+          %td
+            %span.badge.badge-secondary Draft
+
+          / Validation status
+          %td= render "shared/validation_status", item: item
