@@ -13,11 +13,11 @@
 - else
   - if policy(account).enable_dashboard?
     = link_to enable_dashboard_account_path(account), class: "btn btn-circle btn-sm btn-outline-secondary mr-1", data: {toggle: 'tooltip', placement: 'top', title: t('account.enable_dashboard')}, method: :put do
-      %i.fas.fa-user-plus
+      %i.fa-solid.fa-eye
 
   - if policy(account).disable_dashboard?
     = link_to disable_dashboard_account_path(account), class: "btn btn-circle btn-sm btn-outline-secondary mr-1", data: {toggle: 'tooltip', placement: 'top', title: t('account.disable_dashboard')}, method: :put do
-      %i.fas.fa-user-minus
+      %i.fa-solid.fa-eye-slash
 
   - if !account.confirmed?
     / Resend confirmation

@@ -1,4 +1,7 @@
 = simple_form_for @account do |f|
+  .form-group
+    = form_check_toggle({name: "account[dashboard_accessible]", checked: f.object.dashboard_accessible, label: t('account.dashboard_accessible')}).html_safe
+
   = f.input :email, label: t('account.email'), input_html: { readonly: @account.persisted? }
   = f.input :role, label: t('account.role'), collection: policy(Account).roles, input_html: { class: 'role' }
 

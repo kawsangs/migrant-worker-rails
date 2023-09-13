@@ -41,21 +41,9 @@
 
               %td.status{ class: account.status }
                 = t("account.#{account.status}")
-              %td.status{ class: ('active' if account.confirmed?) }
-                = account.confirmed? ? t('account.active') : t('account.pending')
+              %td
+                = "Yes" if account.dashboard_accessible? && account.gf_user_id.present?
               %td= timeago(account.created_at).html_safe
-              %td.text-right
-                - if policy(account).destroy?
-                  - unless account.confirmed?
-                    = link_to resend_confirmation_account_path(account), :method => :post, class: "btn btn-circle btn-sm btn-success", data: { toggle: 'tooltip', placement: 'top', title: t('account.resend_confirmation') } do
-                      %i.fas.fa-share-square
-
-                    %input.confirm-link{ value: confirmation_url(account, confirmation_token: account.confirmation_token) }
-
-                    = link_to '#', class: "btn btn-circle btn-sm btn-info mr-1 btn-copy", data: { toggle: 'tooltip', placement: 'top', title: t('account.copy_confirm_link') } do
-                      %i.far.fa-copy
-
-              %td= account.gf_user_id.present? ? "Yes" : nil
               %td
                 .d-flex.justify-content-end
                   = render 'action_buttons', account: account

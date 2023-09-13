@@ -32,11 +32,11 @@ class AccountPolicy < ApplicationPolicy
   end
 
   def enable_dashboard?
-    record.confirmed? && record.gf_user_id.blank?
+    update? && record.confirmed? && !record.dashboard_accessible?
   end
 
   def disable_dashboard?
-    record.confirmed? && record.gf_user_id.present?
+    update? && record.confirmed? && record.dashboard_accessible?
   end
 
   def roles

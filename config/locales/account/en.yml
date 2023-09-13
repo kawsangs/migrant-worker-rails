@@ -15,6 +15,7 @@ en:
     resend_confirmation: Resend confirmation
     resend_confirmation_successfully: Resend the confirmation successfully!
     grafana: Dashboard account
+    dashboard_accessible: Dashboard accessible
 
     enable_dashboard_successfully: enable account in dashboard successfully! The account %{email} will be able to access dashboard in the next few minutes!
     disable_dashboard_successfully: disable account from dashboard successfully! The account %{email} will not be able access dashboard in the next few minutes!

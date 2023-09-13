@@ -6,15 +6,16 @@ km:
     status: ស្ថានភាព
     copy_confirm_link: ថតចម្លងតំណភ្ជាប់
     copied: ត្រូវបានថតចម្លង!
-    new_account: អ្នកប្រើប្រាស់ថ្មី
+    new_account: គណនីប្រើប្រាស់ថ្មី
     actived: សកម្ម
     pending: រង់ចាំ
     number: លេខរៀង
-    edit_account: កែតម្រូវអ្នកប្រើប្រាស់
+    edit_account: កែតម្រូវគណនីប្រើប្រាស់
     add_new: បន្ថែមអ្នកប្រើប្រាស់ថ្មី
     resend_confirmation: ផ្ញើតំណភ្ជាប់ម្តងទៀត
     resend_confirmation_successfully: ផ្ញើតំណភ្ជាប់ម្តងទៀតដោយជោគជ័យ!
     grafana: គណនីស្ថិតិ
+    dashboard_accessible: អនុញ្ញាតិសិទ្ធិចូលមើលផ្ទាំងស្ថិតិប្រើប្រាស់
 
     enable_dashboard_successfully: បញ្ជូនសំណើបើកគណនីស្ថិតិដោយជោគជ័យ! គណនី %{email} នឹងអាចចូលប្រើផ្ទាំងស្ថិតិនៅបន្តិចទៀត!
     disable_dashboard_successfully: បញ្ជូនសំណើបិទគណនីស្ថិតិដោយជោគជ័យ! គណនី %{email} នឹងមិនអាចចូលប្រើផ្ទាំងស្ថិតិនៅនៅបន្តិចទៀត!

@@ -21,6 +21,7 @@
 #  gf_user_id             :integer
 #  deleted_at             :datetime
 #  actived                :boolean          default(TRUE)
+#  dashboard_accessible   :boolean          default(FALSE)
 #
 class Account < ApplicationRecord
   acts_as_paranoid
@@ -40,6 +41,8 @@ class Account < ApplicationRecord
     admin: 3,
     guest: 2
   }
+
+  default_scope { order("created_at desc") }
 
   ROLES = roles.keys.map { |r| [r.titlecase, r] }
 
@@ -61,8 +64,7 @@ class Account < ApplicationRecord
 
   def status
     return "archived" if deleted?
-    return "actived" if confirmed? && actived?
-    return "deactivated" unless actived?
+    return "actived" if confirmed?
 
     "pending"
   end

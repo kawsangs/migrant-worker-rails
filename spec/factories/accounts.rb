@@ -21,6 +21,7 @@
 #  gf_user_id             :integer
 #  deleted_at             :datetime
 #  actived                :boolean          default(TRUE)
+#  dashboard_accessible   :boolean          default(FALSE)
 #
 
 FactoryBot.define do

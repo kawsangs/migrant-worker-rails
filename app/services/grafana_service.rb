@@ -2,7 +2,7 @@
 
 require "httparty"
 
-class Grafana
+class GrafanaService
   include HTTParty
   base_uri ENV["GF_DASHBOARD_BASE_URL"]
 
