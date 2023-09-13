@@ -16,6 +16,11 @@
           %small.mr-1= "#{t('shared.tags')}: "
           .tag-wrapper= tag_list_html(tag_list).html_safe
 
+      / Tracking
+      .tracking{ class: ('d-none' unless f.object.tracking)}
+        .d-flex
+          = image_tag "barchart.png", width: 20, height: 20
+
     .field-wrapper
       %button.btn.move{type: :button}
         %i.fa.fa-arrows-alt

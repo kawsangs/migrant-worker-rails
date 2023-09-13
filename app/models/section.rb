@@ -13,11 +13,14 @@
 #
 class Section < ApplicationRecord
   # Association
-  belongs_to :form
+  belongs_to :form, inverse_of: :sections
   has_many :questions, dependent: :destroy, inverse_of: :section
 
   # Nested attribute
   accepts_nested_attributes_for :questions, allow_destroy: true, reject_if: ->(attributes) { attributes["name"].blank? }
+
+  # Validation
+  validates_associated :questions
 
   # Callback
   before_create :set_display_order

@@ -34,9 +34,8 @@ MW.Form = do ->
     $(document).on 'change', '.field-name', (e)->
       value = e.currentTarget.value
       if !!value
-        value = value.split(" ").join("_").toLowerCase()
+        value = value.split(" ").join("_").toLowerCase().replace(/[^a-zA-Z0-9\_]/g, '')
       $(e.currentTarget).parents('.fieldset').find('.question-code').val(value)
-
 
   onClickCollapseAllTrigger = ->
     $(document).off 'click', '.collapse-all-trigger'
@@ -272,7 +271,7 @@ MW.Form = do ->
     $(dom).before(field)
     assignDisplayOrderToListItem()
     MW.Common.SelectPicker.init()
-    MW.Common.tagList.init($(field).find('.tag-list'), handleDisplayTagListWrapper) if !!$(field).find('.tag-list').length
+    MW.Common.tagList.init($(field).find('.tag-list'), { callback: handleDisplayTagListWrapper }) if !!$(field).find('.tag-list').length
     $("[data-toggle='tooltip']").tooltip()
 
     return field

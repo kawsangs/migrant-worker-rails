@@ -22,6 +22,7 @@
 #  created_at      :datetime         not null
 #  updated_at      :datetime         not null
 #  section_id      :uuid
+#  tracking        :boolean          default(FALSE)
 #
 module Questions
   class SelectMultiple < Question

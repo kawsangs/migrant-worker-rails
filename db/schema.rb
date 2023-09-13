@@ -314,6 +314,7 @@ ActiveRecord::Schema.define(version: 2023_09_12_024654) do
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.uuid "section_id"
+    t.boolean "tracking", default: false
   end
 
   create_table "registered_tokens", force: :cascade do |t|

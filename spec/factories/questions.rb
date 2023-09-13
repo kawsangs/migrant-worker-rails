@@ -22,9 +22,11 @@
 #  created_at      :datetime         not null
 #  updated_at      :datetime         not null
 #  section_id      :uuid
+#  tracking        :boolean          default(FALSE)
 #
 FactoryBot.define do
   factory :question do
+    code  { SecureRandom.uuid }
     name  { FFaker::Name.name }
     type  { "Questions::SelectOne" }
     form  { create(:form) }

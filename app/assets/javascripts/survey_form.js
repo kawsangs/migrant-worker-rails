@@ -10,6 +10,7 @@ MW.Survey_formsNew = (() => {
     initFormTagList()
     initQuestionTagList()
     onChangeChatGroupSelect();
+    onChangeTracking();
   }
 
   function onChangeChatGroupSelect() {
@@ -21,6 +22,12 @@ MW.Survey_formsNew = (() => {
 
       showChatGroup(select);
       updateChatGroupTooltip(select, chatGroupNames);
+    })
+  }
+
+  function onChangeTracking() {
+    $(document).on("change", "input.tracking-checkbox", function(e) {
+      $(this).parents(".fieldset").find(".tracking").toggleClass("d-none", !this.checked);
     })
   }
 
@@ -51,14 +58,23 @@ MW.Survey_formsNew = (() => {
   }
 
   function initFormTagList() {
-    MW.Common.tagList.init("#forms_survey_form_tag_list")
+    MW.Common.tagList.init("#forms_survey_form_tag_list", {
+      options: {
+        maxTags: 1
+      }
+    })
   }
 
   function initQuestionTagList() {
     let questions = $(".fieldset")
 
     for(let i=0; i<questions.length; i++) {
-      MW.Common.tagList.init($(questions[i]).find('.tag-list'), MW.Form.handleDisplayTagListWrapper)
+      MW.Common.tagList.init($(questions[i]).find('.tag-list'), {
+        options: {
+          maxTags: 1
+        },
+        callback: MW.Form.handleDisplayTagListWrapper
+      })
     }
   }
 })();

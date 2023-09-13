@@ -22,6 +22,7 @@
 #  created_at      :datetime         not null
 #  updated_at      :datetime         not null
 #  section_id      :uuid
+#  tracking        :boolean          default(FALSE)
 #
 class Question < ApplicationRecord
   include TaggableConcern
@@ -32,10 +33,11 @@ class Question < ApplicationRecord
   mount_uploader :failing_audio, AudioUploader
 
   TYPES = %w[Questions::SelectOne Questions::SelectMultiple Questions::Result Questions::Text Questions::VoiceRecording].freeze
+  SPECIAL_CHARATER_REG_EXP="[^0-9A-Za-z\_]"
 
   # Associations
   belongs_to :form, optional: true
-  belongs_to :section, optional: true
+  belongs_to :section, optional: true, inverse_of: :questions
   has_many   :options, dependent: :destroy
   has_many   :criterias, dependent: :destroy
   has_many   :chat_groups, through: :options
@@ -43,12 +45,13 @@ class Question < ApplicationRecord
   # Scope
   default_scope { order(display_order: :asc) }
 
-  # validates :code, presence: true, uniqueness: { scope: :form_id, message: 'already exist' }
+  validates :code, presence: true, uniqueness: { scope: :form_id, message: "already exist" }
   validates :name, presence: true, uniqueness: { scope: :form_id, message: "already exist" }
   validates :type, presence: true, inclusion: { in: TYPES }
 
   validates :passing_message, presence: true, if: -> { type == "Questions::Result" }
   validates :failing_message, presence: true, if: -> { type == "Questions::Result" }
+  validates :tag_list, presence: true, if: :tracking?
 
   before_create :set_display_order
   before_create :set_field_code, if: -> { name.present? }
@@ -67,6 +70,10 @@ class Question < ApplicationRecord
     end
 
     def set_field_code
-      self.code ||= name.downcase.split(" ").join("_")
+      self.code ||= format_code
+    end
+
+    def format_code
+      name.downcase.split(" ").join("_").gsub(/#{SPECIAL_CHARATER_REG_EXP}/, "")
     end
 end
