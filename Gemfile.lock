@@ -71,6 +71,9 @@ GEM
       activerecord (>= 3.2, < 7.0)
       rake (>= 10.4, < 14.0)
     ast (2.4.2)
+    audited (5.3.3)
+      activerecord (>= 5.0, < 7.1)
+      request_store (~> 1.2)
     autoprefixer-rails (10.4.13.0)
       execjs (~> 2)
     awesome_nested_set (3.4.0)
@@ -349,6 +352,8 @@ GEM
     redis-client (0.15.0)
       connection_pool
     regexp_parser (2.8.1)
+    request_store (1.5.1)
+      rack (>= 1.4)
     responders (3.1.0)
       actionpack (>= 5.2)
       railties (>= 5.2)
@@ -492,6 +497,7 @@ PLATFORMS
 DEPENDENCIES
   active_model_serializers (~> 0.10.12)
   annotate (~> 3.1.0)
+  audited (~> 5.3.3)
   awesome_nested_set (~> 3.4.0)
   bootsnap (>= 1.4.4)
   bootstrap (~> 4.5.2)
@@ -500,8 +506,8 @@ DEPENDENCIES
   byebug
   capybara (>= 3.26)
   carrierwave (~> 2.1.1)
-  caxlsx
-  caxlsx_rails
+  caxlsx (~> 3.4.1)
+  caxlsx_rails (~> 0.6.3)
   cocoon (~> 1.2, >= 1.2.15)
   coffee-rails (~> 5.0.0)
   countries (~> 3.1)
@@ -520,7 +526,7 @@ DEPENDENCIES
   jquery-rails (~> 4.4.0)
   listen (~> 3.3)
   momentjs-rails (~> 2.29.4.1)
-  net-http
+  net-http (~> 0.3.2)
   omniauth-google-oauth2 (~> 1.0.0)
   omniauth-rails_csrf_protection (~> 1.0.1)
   pagy (~> 3.5)

@@ -62,10 +62,12 @@ gem "fcm", "1.0.8"
 gem "roo", "~> 2.8.3"
 gem "spreadsheet", "~> 1.2.9"
 # Write excel
-gem "caxlsx"
-gem "caxlsx_rails"
+gem "caxlsx", "~> 3.4.1"
+gem "caxlsx_rails", "~> 0.6.3"
 
-gem "net-http"
+gem "net-http", "~> 0.3.2"
+
+gem "audited", "~> 5.3.3"
 
 # Notification schedule
 gem "recurring_select", "~> 3.0.1"
