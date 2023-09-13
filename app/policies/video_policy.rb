@@ -2,7 +2,7 @@
 
 class VideoPolicy < ApplicationPolicy
   def index?
-    user.system_admin?
+    create?
   end
 
   def show?
@@ -10,7 +10,7 @@ class VideoPolicy < ApplicationPolicy
   end
 
   def create?
-    user.system_admin?
+    user.system_admin? || user.admin?
   end
 
   def update?

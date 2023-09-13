@@ -37,7 +37,7 @@
         %i.fa-fw.fa-solid.fa-bell
         %span= t("sidebar.notification")
 
-  - if current_account.system_admin?
+  - if current_account.system_admin? || current_account.admin?
     / Manage Content
     %li.nav-item
       %a.nav-link.collapsed{"aria-controls" => "collapseContent", "aria-expanded" => "true", "data-target" => "#collapseContent", "data-toggle" => "collapse", :href => "#"}

@@ -2,11 +2,11 @@
 
 class AccountPolicy < ApplicationPolicy
   def index?
-    user.system_admin?
+    create?
   end
 
   def create?
-    user.system_admin?
+    user.system_admin? || user.admin?
   end
 
   def update?
@@ -49,7 +49,9 @@ class AccountPolicy < ApplicationPolicy
 
   class Scope < Scope
     def resolve
-      scope.all
+      return scope.all if user.system_admin?
+
+      scope.where.not(role: :system_admin)
     end
   end
 end

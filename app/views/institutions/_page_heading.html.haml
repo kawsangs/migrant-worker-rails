@@ -1,0 +1,12 @@
+= render 'shared/headers/page_heading', title: t("institution.title") do
+  = render "shared/buttons/add_new_button", url: new_institution_path
+
+.d-flex
+  .flex-grow-1
+    %form.d-flex{ action: institutions_path, method: 'get' }
+      = render "shared/filters/filter_name"
+
+      .ml-2
+        = render "shared/filters/filter_date", placeholder: t("shared.search_by_created_at")
+      .ml-2
+        = render "shared/buttons/search_button"
