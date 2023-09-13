@@ -2,7 +2,7 @@
 
 class CategoryPolicy < ApplicationPolicy
   def index?
-    user.system_admin?
+    create?
   end
 
   def show?
@@ -10,7 +10,7 @@ class CategoryPolicy < ApplicationPolicy
   end
 
   def create?
-    user.system_admin?
+    user.system_admin? || user.admin?
   end
 
   def update?

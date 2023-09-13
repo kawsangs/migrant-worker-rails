@@ -15,3 +15,5 @@
 
       - @categories.each_with_index do |category, index|
         = render 'categories/category', category: category, num: index + 1, type: 'departure'
+
+= render "shared/modals/confirm_delete_modal"

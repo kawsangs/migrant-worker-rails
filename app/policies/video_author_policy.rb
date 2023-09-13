@@ -6,7 +6,7 @@ class VideoAuthorPolicy < ApplicationPolicy
   end
 
   def create?
-    user.system_admin?
+    user.system_admin? || user.admin?
   end
 
   def update?
@@ -18,7 +18,7 @@ class VideoAuthorPolicy < ApplicationPolicy
   end
 
   def sort?
-    user.system_admin?
+    create?
   end
 
   class Scope < Scope

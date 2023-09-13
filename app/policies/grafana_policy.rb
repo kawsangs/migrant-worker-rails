@@ -8,7 +8,8 @@ class GrafanaPolicy
   end
 
   def show?
-    ENV["GF_DASHBOARD_URL"].present? &&
-    (user.system_admin? || user.gf_user_id.present?)
+    return false if ENV["GF_DASHBOARD_URL"].blank?
+
+    user.gf_user_id.present?
   end
 end

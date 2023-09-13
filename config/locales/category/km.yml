@@ -4,8 +4,8 @@ km:
     your_safety: សុវត្ថិភាពរបស់អ្នក
     new_departure: New departure
     new_safety: New safety
-    edit_departure: Edit departure
-    edit_safety: Edit safety
+    edit_departure: កែតម្រូវដំណើរឆ្លងដែនរបស់អ្នក
+    edit_safety: កែតម្រូវសុវត្ថិភាពរបស់អ្នក
     audio: សំលេង
     image: រូបភាព
     icon: រូបតំណាង
@@ -13,3 +13,4 @@ km:
     parent_category: Category មេ
     mark_leaf_category: សម្គាល់ថាជាប្រភេទចុងក្រោយ
     leaf_category: ប្រភេទចុងក្រោយ
+    category: Category

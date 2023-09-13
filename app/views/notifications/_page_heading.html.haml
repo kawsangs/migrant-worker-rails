@@ -2,7 +2,7 @@
   .d-flex.align-items-center
     = render "shared/buttons/add_new_button", url: new_notification_path
 
-    %button.btn{"aria-expanded" => "false", "aria-haspopup" => "true", "data-toggle" => "dropdown", :type => "button"}
+    %button.btn.btn-sm.ml-1{"aria-expanded" => "false", "aria-haspopup" => "true", "data-toggle" => "dropdown", :type => "button"}
       %i.fas.fa-ellipsis-v
 
     .dropdown-menu.dropdown-menu-right

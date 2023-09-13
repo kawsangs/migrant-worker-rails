@@ -6,7 +6,7 @@ class TagPolicy < ApplicationPolicy
   end
 
   def create?
-    user.system_admin?
+    user.system_admin? || user.admin?
   end
 
   def update?

@@ -14,12 +14,14 @@
       %audio{controls: true}
         %source{src: category.audio_url}
 
-  .action-buttons
+  .action-buttons.d-flex.justify-content-end
     - if policy(Categories::Departure).create? && !category.last?
-      = link_to new_url, class: "btn btn-circle btn-sm btn-info mr-2", data: { toggle: 'tooltip', placement: 'top', title: t('shared.add_sub_category')} do
+      = link_to new_url, class: "btn btn-circle btn-sm btn-outline-info mr-1", data: { toggle: 'tooltip', placement: 'top', title: t('shared.add_sub_category')} do
         %i.fas.fa-plus
 
-    = render 'shared/action_buttons', edit_url: edit_url, delete_url: delete_url, object: category
+    = render 'shared/buttons/edit_button', object: category, url: edit_url
+
+    = render 'shared/buttons/delete_button', object: category, message: { type: t("category.category"), name: category.name, url: delete_url }
 
 - category.children.each_with_index do |child, index|
   = render "category", category: child, num: "#{num}.#{index + 1}", type: type
