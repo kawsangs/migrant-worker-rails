@@ -60,20 +60,20 @@ class AccountsController < ApplicationController
   end
 
   def enable_dashboard
-    @account.add_to_grafana_async
+    @account.enable_dashboard
 
     redirect_to accounts_url, notice: I18n.t("account.enable_dashboard_successfully", email: @account.email)
   end
 
   def disable_dashboard
-    @account.remove_from_grafana_async
+    @account.disable_dashboard
 
     redirect_to accounts_url, notice: I18n.t("account.disable_dashboard_successfully", email: @account.email)
   end
 
   private
     def account_params
-      params.require(:account).permit(:email, :role)
+      params.require(:account).permit(:email, :role, :dashboard_accessible)
     end
 
     def set_account
@@ -81,10 +81,6 @@ class AccountsController < ApplicationController
     end
 
     def filter_params
-      params.permit(:email, :archived)
-    end
-
-    def filter_params
-      params.permit(:email, :start_date, :end_date)
+      params.permit(:email, :archived, :start_date, :end_date)
     end
 end

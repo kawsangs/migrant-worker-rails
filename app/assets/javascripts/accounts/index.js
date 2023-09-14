@@ -4,7 +4,6 @@ MW.AccountsIndex = (function() {
   }
 
   function init() {
-    MW.Common.DaterangePicker.init();
     onClickBtnCopyConfirmLink();
   }
 
