@@ -28,3 +28,4 @@ en:
     restore_successfully: "User %{email} is restored successfully!"
     search_by_email: Search by email
     search_by_created_at: Search by created at
+    dashboard_accessible_hint: Turn it on if you allow the user to be able to access the dashboard

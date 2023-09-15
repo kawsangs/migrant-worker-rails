@@ -65,8 +65,6 @@ gem "spreadsheet", "~> 1.2.9"
 gem "caxlsx", "~> 3.4.1"
 gem "caxlsx_rails", "~> 0.6.3"
 
-gem "net-http", "~> 0.3.2"
-
 gem "audited", "~> 5.3.3"
 
 # Notification schedule

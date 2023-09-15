@@ -247,8 +247,6 @@ GEM
     msgpack (1.7.2)
     multi_json (1.15.0)
     multi_xml (0.6.0)
-    net-http (0.3.2)
-      uri
     net-imap (0.3.7)
       date
       net-protocol
@@ -471,7 +469,6 @@ GEM
       concurrent-ruby (~> 1.0)
     unicode-display_width (2.4.2)
     unicode_utils (1.4.0)
-    uri (0.12.2)
     warden (1.2.9)
       rack (>= 2.0.9)
     web-console (4.2.0)
@@ -526,7 +523,6 @@ DEPENDENCIES
   jquery-rails (~> 4.4.0)
   listen (~> 3.3)
   momentjs-rails (~> 2.29.4.1)
-  net-http (~> 0.3.2)
   omniauth-google-oauth2 (~> 1.0.0)
   omniauth-rails_csrf_protection (~> 1.0.1)
   pagy (~> 3.5)

@@ -28,12 +28,12 @@ en:
 
     # Survey
     survey: Survey
-    edit_questionnaire: Edit questionnaire
-    questionnaire: Questionnaire
-    notification_questionnaire: "Notification questionnaire: %{title}"
+    edit_questionnaire: Edit survey form
+    questionnaire: Survey form
+    notification_questionnaire: "Notification survey form: %{title}"
     number_of_question: "# of questions"
     number_of_notification: "# of notifications"
-    new_questionnaire: New questionnaire
+    new_questionnaire: New survey form
     question_maximum: Question (maximum 255)
     answer_maximum: Answer (maximum 255)
     value: Value
