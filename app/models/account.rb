@@ -33,7 +33,7 @@ class Account < ApplicationRecord
   include Accounts::OauthProvider
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable, :trackable and :omniauthable
-  devise :database_authenticatable, :registerable, :recoverable,
+  devise :database_authenticatable, :recoverable,
          :rememberable, :validatable, :confirmable, :omniauthable, omniauth_providers: [:google_oauth2]
 
   enum role: {
