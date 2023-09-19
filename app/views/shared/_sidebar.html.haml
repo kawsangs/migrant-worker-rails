@@ -15,6 +15,12 @@
         %i.fa-solid.fa-chart-column
         %span= t("sidebar.dashboard")
 
+  - if policy(:google_play).show?
+    %li.nav-item
+      %a.nav-link{href: ENV['GOOGLE_PLAY_DASHBOARD_URL'], target: '_blank'}
+        %i.fa-brands.fa-google-play
+        %span= t("sidebar.app_install_statistic")
+
   / Divider
   %hr.sidebar-divider.my-0/
 
