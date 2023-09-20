@@ -34,7 +34,7 @@ MW.Form = do ->
     $(document).on 'change', '.field-name', (e)->
       value = e.currentTarget.value
       if !!value
-        value = value.split(" ").join("_").toLowerCase().replace(/[^a-zA-Z0-9\_]/g, '')
+        value = value.split(" ").join("_").toLowerCase().replace(/[`~!@#$%^&*()|+\-=?;:'",.<>\{\}\[\]\\\/]/g, '')
       $(e.currentTarget).parents('.fieldset').find('.question-code').val(value)
 
   onClickCollapseAllTrigger = ->
@@ -103,17 +103,24 @@ MW.Form = do ->
     if dom.value == selectOne || dom.value == selectMultiple
       showCollapseTrigger(dom)
       showOption(dom)
+      showContentUnderClass(dom, ['d-for-select-one', 'd-for-select-multiple'])
     else if dom.value == resultType
       showResultField(dom)
       showCollapseTrigger(dom)
     return
+
+  showContentUnderClass = (dom, css_classes) =>
+    i = 0
+    while i < css_classes.length
+      css_class = '.' + css_classes[i]
+      $(dom).parents('.fieldset').find(css_class).removeClass('d-none')
+      i++
 
   hideCollapseContent = (dom)->
     $(dom).parents('.fieldset').find('.collapse-content').hide()
 
   showCollapseTrigger = (dom)->
     $(dom).parents('.fieldset').find('.collapse-trigger').show()
-
 
   initFieldNameStyleAsTitle = (dom) ->
     parentDom = $(dom).parents('.fieldset')
@@ -216,11 +223,11 @@ MW.Form = do ->
     fieldName.addClass('as-title')
 
   handleCollapseContent = (dom, field_type) ->
-    console.log(field_type)
     if field_type == selectOne || field_type == selectMultiple
       showOption(dom)
       initOneOption(dom)
       showArrowDownIcon(dom)
+      showContentUnderClass(dom, ['d-for-select-one', 'd-for-select-multiple'])
     else if field_type == resultType
       showResultField(dom)
       showArrowDownIcon(dom)

@@ -1,4 +1,4 @@
-- url = @form.persisted? ? survey_form_path(@form) : survey_forms_path(@notification)
+- url = @form.persisted? ? survey_form_path(@form) : survey_forms_path
 = simple_form_for @form, url: url, html: { class: 'main-form skip-logic' } do |f|
   / Name
   = f.input :name

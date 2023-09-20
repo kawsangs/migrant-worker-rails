@@ -1,7 +1,7 @@
 .d-flex.flex-1
   %ul.d-flex.flex-column.items
     %label.p-1.border-bottom= t('form.setting')
-    %li.item.item-setting{'data-target' => '.setting-content'} Question Option
+    %li.item.item-setting{'data-target' => '.setting-content'} Question Setting
     %li.item.skip-logic{'data-target' => '.skip-logic-content'}= t('form.skip_logic')
 
   .contents.flex-1
@@ -13,10 +13,14 @@
       = f.input :tag_list, label: t('shared.tags'), input_html: { 'data-tags': Question.tag_counts.sort_by(&:count).reverse.pluck(:name).to_json, class: 'tag-list' }
 
       / Tracking
-      .d-flex
-        = f.input :tracking, label: t('form.tracking'), input_html: {class: 'tracking-checkbox'}
-        .ml-2.d-flex
-          = image_tag "barchart.png", width: 20, height: 20
+      .d-none.d-for-select-one.d-for-select-multiple
+        .d-flex.align-items-center
+          = f.input :tracking, label: false, input_html: {class: 'tracking-checkbox'}
+
+          = f.label :tracking do
+            .d-flex.align-items-center
+              = image_tag "barchart.png", width: 14, height: 14
+              .ml-1= t('form.tracking')
 
     / Criteria
     .content.skip-logic-content.w-100.position-relative

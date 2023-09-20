@@ -31,7 +31,7 @@
           - @forms.each_with_index do |form, index|
             %tr
               %td= @pagy.from + index
-              %td= link_to form.name, survey_form_path(form), class: 'text-primary'
+              %td= link_to form.name, survey_form_path(form), class: 'text-primary', remote: true
               %td= form.questions.length
               %td
                 = link_to form.notifications.length, notifications_path(form_id: form.id), class: 'text-primary' if form.notifications.length.positive?
@@ -48,3 +48,4 @@
                     = render "shared/buttons/delete_disable_button"
 
 = render 'shared/modals/confirm_delete_modal'
+= render 'form_detail_modal'

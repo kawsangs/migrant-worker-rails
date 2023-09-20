@@ -2,7 +2,7 @@
   .flex-1.mr-4
     = simple_form_for @notification do |f|
       .form-group
-        - title_label = "#{t('notification.notification_title')}(#{t('notification.max_title')})"
+        - title_label = "#{t('notification.notification_title')} (#{t('notification.max_title')})"
 
         = f.input :title, label: title_label, input_html: { maxlength: 64}
 
