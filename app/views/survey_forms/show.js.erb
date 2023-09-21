@@ -1,0 +1,5 @@
+$('#formDetailModal .modal-title').html("<%= t('form.questionnaire') + ': ' + @form.name %>");
+$('#formDetailModal .modal-body').html("<%= j render('detail') %>");
+$("#formDetailModal").modal("show");
+
+$("[data-toggle='tooltip']").tooltip();

@@ -9,10 +9,10 @@ en:
     max_body: max 255 characters
     push_notification: Push Notification
     save_draft: Save draft
-    questionnaire_to_be_used: Questionnaire to be used
+    questionnaire_to_be_used: Survey form to be used
     set_schedule: "Set schedule <abbr title='required'>*</abbr>"
     schedule_mode: Schedule mode
-    schedule_setting: Schedule setting
+    schedule_setting: Schedule to be sent
     as_soon_as_release: Send out as soon as notification is released
     onetime: Send out at one time
     recurrence: Send out at recurrence time
