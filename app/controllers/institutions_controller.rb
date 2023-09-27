@@ -4,7 +4,17 @@ class InstitutionsController < ApplicationController
   before_action :set_institution, only: [:edit, :update, :destroy, :delete_logo, :delete_audio]
 
   def index
-    @pagy, @institutions = pagy(Institution.filter(filter_params).includes(:contacts, :country_institutions).order("updated_at DESC"))
+    respond_to do |format|
+      format.html {
+        @pagy, @institutions = pagy(Institution.filter(filter_params).includes(:contacts, :country_institutions).order("updated_at DESC"))
+      }
+
+      format.json {
+        @institutions = authorize Institution.filter(filter_params).includes(:contacts, :country_institutions).order("updated_at DESC")
+
+        render json: @institutions
+      }
+    end
   end
 
   def new
@@ -68,4 +78,5 @@ class InstitutionsController < ApplicationController
     def filter_params
       params.permit(:name, :start_date, :end_date)
     end
+    helper_method :filter_params
 end

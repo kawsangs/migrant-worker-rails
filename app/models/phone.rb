@@ -20,6 +20,6 @@ class Phone < Contact
 
   private
     def remove_whitespace
-      self.value = value.gsub(/\s/, "")
+      self.value = value.to_s.strip
     end
 end

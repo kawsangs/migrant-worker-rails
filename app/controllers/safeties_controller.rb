@@ -2,7 +2,17 @@
 
 class SafetiesController < CategoriesController
   def index
-    @pagy, @categories = pagy(Categories::Safety.roots)
+    respond_to do |format|
+      format.html {
+        @pagy, @categories = pagy(authorize Categories::Safety.roots)
+      }
+
+      format.json {
+        @categories = authorize Categories::Safety.all
+
+        render json: @categories
+      }
+    end
   end
 
   private

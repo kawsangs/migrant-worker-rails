@@ -2,7 +2,17 @@
 
 class DeparturesController < CategoriesController
   def index
-    @pagy, @categories = pagy(Categories::Departure.roots)
+    respond_to do |format|
+      format.html {
+        @pagy, @categories = pagy(authorize Categories::Departure.roots)
+      }
+
+      format.json {
+        @categories = authorize Categories::Departure.all
+
+        render json: @categories
+      }
+    end
   end
 
   private
