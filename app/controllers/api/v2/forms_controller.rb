@@ -4,7 +4,7 @@ module Api
   module V2
     class FormsController < ApiController
       def index
-        forms = Forms::StoryForm.published
+        forms = Forms::StoryForm.published.includes(questions: [:options, :criterias])
 
         render json: forms, include: ["questions", "questions.options"]
       end

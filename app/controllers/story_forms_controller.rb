@@ -1,16 +1,28 @@
 # frozen_string_literal: true
 
 class StoryFormsController < ApplicationController
+  before_action :authorize_form, only: [:edit, :update, :destroy, :publish]
+
   def index
-    @pagy, @forms = pagy(policy_scope(Forms::StoryForm.all))
+    respond_to do |format|
+      format.html {
+        @pagy, @forms = pagy(authorize Forms::StoryForm.all)
+      }
+
+      format.json {
+        @forms = authorize Forms::StoryForm.all.includes(questions: [:options, :criterias])
+
+        render json: @forms, include: ["questions", "questions.options"]
+      }
+    end
   end
 
   def new
-    @form = Forms::StoryForm.new
+    @form = authorize Forms::StoryForm.new
   end
 
   def create
-    @form = Forms::StoryForm.new(form_params)
+    @form = authorize Forms::StoryForm.new(form_params)
 
     if @form.save
       redirect_to story_forms_url
@@ -20,12 +32,9 @@ class StoryFormsController < ApplicationController
   end
 
   def edit
-    @form = Forms::StoryForm.find(params[:id])
   end
 
   def update
-    @form = Forms::StoryForm.find(params[:id])
-
     if @form.update(form_params)
       redirect_to story_forms_url
     else
@@ -34,14 +43,12 @@ class StoryFormsController < ApplicationController
   end
 
   def destroy
-    @form = Forms::StoryForm.find(params[:id])
     @form.destroy
 
     redirect_to story_forms_url
   end
 
   def publish
-    @form = Forms::StoryForm.find(params[:id])
     @form.publish
 
     redirect_to story_forms_url
@@ -59,5 +66,9 @@ class StoryFormsController < ApplicationController
           criterias_attributes: %i[id question_code operator response_value _destroy]
         ]
       ).merge(form_type: Forms::StoryForm)
+    end
+
+    def authorize_form
+      @form = authorize Forms::StoryForm.find(params[:id])
     end
 end

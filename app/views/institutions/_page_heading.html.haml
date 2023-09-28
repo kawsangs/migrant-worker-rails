@@ -1,5 +1,14 @@
 = render 'shared/headers/page_heading', title: t("institution.title") do
-  = render "shared/buttons/add_new_button", url: new_institution_path
+  .d-flex.align-items-center
+    = render "shared/buttons/add_new_button", url: new_institution_path
+
+    %button.btn.btn-sm.ml-1{"aria-expanded" => "false", "aria-haspopup" => "true", "data-toggle" => "dropdown", :type => "button"}
+      %i.fas.fa-ellipsis-v
+
+    .dropdown-menu.dropdown-menu-right
+      %a.btn.dropdown-item{ href: institutions_path(filter_params.merge(format: :json)), target: '_blank' }
+        %i.fas.fa-download.drop-menu-icon
+        %span= t('shared.download_json')
 
 .d-flex
   .flex-grow-1
