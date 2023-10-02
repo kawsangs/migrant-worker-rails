@@ -44,3 +44,4 @@ en:
     chat_group_description: Once this answer has been selected, information related to this survey will be sent to your designated Telegram team.
     question_audio_hint: The audio file(.mp3) should include question and all options
     tracking: Visualize in Dashboard
+    option_icon_hint: The icon file(*.png, and 80px x 80px)

@@ -28,7 +28,11 @@ class SectionSerializer < ActiveModel::Serializer
     end
 
     class OptionSerializer < ActiveModel::Serializer
-      attributes :id, :name, :value, :question_id
+      attributes :id, :name, :value, :question_id, :icon
+
+      def icon
+        object.image_url if object.image.present?
+      end
     end
   end
 end

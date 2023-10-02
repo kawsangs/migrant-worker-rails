@@ -32,7 +32,7 @@ class Question < ApplicationRecord
   mount_uploader :passing_audio, AudioUploader
   mount_uploader :failing_audio, AudioUploader
 
-  TYPES = %w[Questions::SelectOne Questions::SelectMultiple Questions::Result Questions::Text Questions::VoiceRecording].freeze
+  TYPES = %w[Questions::SelectOne Questions::SelectMultiple Questions::Result Questions::Text Questions::VoiceRecording Questions::Note].freeze
   SPECIAL_CHARATER_REG_EXP="[^0-9A-Za-z\_]"
 
   # Associations
