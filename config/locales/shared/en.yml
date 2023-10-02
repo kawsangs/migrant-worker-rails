@@ -99,3 +99,4 @@ en:
     name_en: Name in English
     name_km: Name in Khmer
     number_of_visit: "# of visit"
+    upload_invalid_file: The file is invalid, please check it again!
