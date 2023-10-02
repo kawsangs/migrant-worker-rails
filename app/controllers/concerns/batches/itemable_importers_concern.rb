@@ -18,9 +18,7 @@ module Batches::ItemableImportersConcern
       authorize batch_model, :create?
 
       if file = params[:batch][:file].presence
-        @batch = spreadsheet_model.new.import(file)
-
-        render :wizard_review, status: :see_other
+        assign_batch(file)
       else
         create_batch
       end
@@ -62,6 +60,17 @@ module Batches::ItemableImportersConcern
           redirect_to redirect_success_url, notice: I18n.t("shared.import_success", count: @batch.importing_items.length)
         else
           redirect_to redirect_error_url, alert: I18n.t("shared.some_invalid_records")
+        end
+      end
+
+      def assign_batch(file)
+        if @batch = spreadsheet_model.new.import(file).presence
+          flash[:alert] = nil
+          render :wizard_review, status: :see_other
+        else
+          @batch = authorize batch_model.new
+          flash[:alert] = I18n.t("shared.upload_invalid_file")
+          render :new
         end
       end
 
