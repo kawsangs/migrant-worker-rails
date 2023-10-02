@@ -1,16 +1,20 @@
 MW.Form = do ->
-  selectOne = 'Questions::SelectOne'
-  selectMultiple = 'Questions::SelectMultiple'
   resultType = 'Questions::Result'
+
+  havingOptionQuestionTypes = {
+    'Questions::SelectOne': 'd-for-select-one',
+    'Questions::SelectMultiple': 'd-for-select-multiple',
+    'Questions::Note': 'd-for-note'
+  }
 
   init = ->
     initView()
     initSortable()
     initSetting()
 
-    onClickAddField()
+    onClickAddAssociation('form .add_questions')
+    onClickAddAssociation('form .add_options')
     onClickRemoveField()
-    onClickAddFieldOption()
     onChooseFieldType()
 
     onClickCollapseTrigger()
@@ -100,21 +104,18 @@ MW.Form = do ->
   initCollapseContent = (dom) ->
     hideCollapseContent(dom)
 
-    if dom.value == selectOne || dom.value == selectMultiple
+    if Object.keys(havingOptionQuestionTypes).includes(dom.value)
       showCollapseTrigger(dom)
       showOption(dom)
-      showContentUnderClass(dom, ['d-for-select-one', 'd-for-select-multiple'])
+      showContentUnderClass(dom, havingOptionQuestionTypes[dom.value])
     else if dom.value == resultType
       showResultField(dom)
       showCollapseTrigger(dom)
     return
 
-  showContentUnderClass = (dom, css_classes) =>
-    i = 0
-    while i < css_classes.length
-      css_class = '.' + css_classes[i]
-      $(dom).parents('.fieldset').find(css_class).removeClass('d-none')
-      i++
+  showContentUnderClass = (dom, css_class) =>
+    klass = '.' + css_class
+    $(dom).parents('.fieldset').find(klass).removeClass('d-none')
 
   hideCollapseContent = (dom)->
     $(dom).parents('.fieldset').find('.collapse-content').hide()
@@ -177,21 +178,9 @@ MW.Form = do ->
     $(dom).parent().find('input[type=hidden]').val('1')
     $(dom).closest('fieldset').hide()
 
-  onClickAddField = ->
-    $(document).off('click', 'form .add_questions')
-    $(document).on 'click', 'form .add_questions', (event) ->
-      appendField(this)
-      event.preventDefault()
-
   onClickAddAssociation = (css_class='form .add_association')->
     $(document).off('click', css_class)
     $(document).on 'click', css_class, (event) ->
-      appendField(this)
-      event.preventDefault()
-
-  onClickAddFieldOption = ->
-    $(document).off('click', 'form .add_options')
-    $(document).on 'click', 'form .add_options', (event) ->
       appendField(this)
       event.preventDefault()
 
@@ -223,11 +212,11 @@ MW.Form = do ->
     fieldName.addClass('as-title')
 
   handleCollapseContent = (dom, field_type) ->
-    if field_type == selectOne || field_type == selectMultiple
+    if Object.keys(havingOptionQuestionTypes).includes(field_type)
       showOption(dom)
       initOneOption(dom)
       showArrowDownIcon(dom)
-      showContentUnderClass(dom, ['d-for-select-one', 'd-for-select-multiple'])
+      showContentUnderClass(dom, havingOptionQuestionTypes[field_type])
     else if field_type == resultType
       showResultField(dom)
       showArrowDownIcon(dom)
@@ -281,7 +270,13 @@ MW.Form = do ->
     MW.Common.tagList.init($(field).find('.tag-list'), { callback: handleDisplayTagListWrapper }) if !!$(field).find('.tag-list').length
     $("[data-toggle='tooltip']").tooltip()
 
+    handleShowingContentForSpecificType(field)
+
     return field
+
+  handleShowingContentForSpecificType = (field) ->
+    fieldType = field.parents('.fieldset').find('.field-type').val()
+    showContentUnderClass(field, havingOptionQuestionTypes[fieldType])
 
   handleDisplayTagListWrapper = (dom, tagList) ->
     return hideTagListWrapper(dom) if !tagList
