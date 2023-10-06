@@ -1,8 +1,9 @@
 %fieldset.flex-1.criteria
   .d-flex.flex-1
-    = f.hidden_field :_destroy
-    = link_to '#', class: "remove_fields btn btn-link" do
-      %i.fa.fa-trash-alt.text-danger
+    %div
+      = f.hidden_field :_destroy
+      = link_to '#', class: "remove_fields btn btn-link" do
+        %i.fa.fa-trash-alt.text-danger
 
     .flex-1
       = f.input :question_code, collection: [], label: false, prompt: t('form.select_question_from_list'), input_html: { class: 'custom-select question-select', "data-value" => f.object.question_code }

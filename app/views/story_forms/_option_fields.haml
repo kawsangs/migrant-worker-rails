@@ -1,8 +1,9 @@
 %fieldset.option-field
   .field-wrapper{style: 'margin-top: 1em'}
-    = f.hidden_field :_destroy
-    = link_to '#', class: "remove_fields btn btn-link" do
-      %i.fa.fa-trash-alt.text-danger
+    %div
+      = f.hidden_field :_destroy
+      = link_to '#', class: "remove_fields btn btn-link" do
+        %i.fa.fa-trash-alt.text-danger
 
     %div.flex-1
       .d-flex.flex-1
