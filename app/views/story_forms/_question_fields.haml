@@ -30,9 +30,10 @@
           %button.btn.btn-outline-primary.btn-add-field{type: 'button'}= t('form.ok')
 
         .action.d-flex.flex-column
-          = f.hidden_field :_destroy
           .btn-setting.pointer.flex-1.d-flex.align-items-center.justify-content-center
             %i.fas.fa-cog.text-secondary
+
+          = f.hidden_field :_destroy
           .remove_fields.pointer.flex-1.d-flex.align-items-center.justify-content-center
             %i.fas.fa-trash-alt.text-danger
 
