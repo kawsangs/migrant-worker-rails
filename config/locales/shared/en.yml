@@ -101,3 +101,4 @@ en:
     number_of_visit: "# of visit"
     upload_invalid_file: The file is invalid, please check it again!
     at_least_one_valid_item: There must be at least 1 valid item
+    close: Close

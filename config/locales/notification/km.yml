@@ -41,6 +41,7 @@ km:
     search_by_created_at: ស្វែងរកតាមកាលបរិច្ឆេទបង្កើត
     any_survey_form: គ្រប់កម្រងសំណួរ
     view_all_survey_form: ចូលមើលកម្រងសំនួរ
+    notify_to: ជូនដំណឹងទៅកាន់
 
   recurring_select:
     not_recurring: "សូមកំណត់"

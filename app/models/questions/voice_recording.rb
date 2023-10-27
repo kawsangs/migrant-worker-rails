@@ -27,7 +27,7 @@
 module Questions
   class VoiceRecording < Question
     def icon
-      "<i class=\'fa-solid fa-microphone icon\'></i>"
+      "<i class=\'fa-solid fa-microphone icon voice-recording-icon\'></i>"
     end
 
     def label
