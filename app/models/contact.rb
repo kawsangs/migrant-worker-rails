@@ -19,5 +19,6 @@ class Contact < ApplicationRecord
     ["Facebook", "Facebook"],
     ["Whatsapp", "WhatsApp"],
     ["Website", "Website"],
+    ["Telegram", "Telegram"]
   ]
 end

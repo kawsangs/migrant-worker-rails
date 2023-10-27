@@ -41,6 +41,7 @@ en:
     search_by_created_at: Search by created date
     any_survey_form: Any survey form
     view_all_survey_form: View all survey forms
+    notify_to: Notify to
 
   recurring_select:
     not_recurring: "Please determine"
