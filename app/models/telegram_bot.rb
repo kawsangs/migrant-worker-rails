@@ -23,7 +23,8 @@ class TelegramBot < ApplicationRecord
   validates :token, :username, presence: true, if: :enabled?
 
   # Callback
-  before_commit :post_webhook_to_telegram, on: [:create, :update], unless: :skip_callback
+  before_create :post_webhook_to_telegram, unless: :skip_callback
+  before_update :post_webhook_to_telegram, unless: :skip_callback
 
   def post_webhook_to_telegram
     bot = Telegram::Bot::Client.new(token: token, username: username)
