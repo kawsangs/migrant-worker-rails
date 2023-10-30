@@ -11,8 +11,11 @@
 #  created_at     :datetime         not null
 #  updated_at     :datetime         not null
 #
-class Whatsapp < Contact
-  def fa
-    "fab fa-whatsapp"
-  end
+require "rails_helper"
+
+RSpec.describe Contacts::Phone, type: :model do
+  subject { build(:contact, :phone) }
+
+  it { is_expected.to have_db_column(:value) }
+  specify { expect(subject.type).to eq "Contacts::Phone" }
 end

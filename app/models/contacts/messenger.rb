@@ -11,8 +11,8 @@
 #  created_at     :datetime         not null
 #  updated_at     :datetime         not null
 #
-FactoryBot.define do
-  factory :whatsapp do
-    value { FFaker::PhoneNumber.phone_number }
+class Contacts::Messenger < Contact
+  def fa
+    "fa-brands fa-facebook-messenger"
   end
 end

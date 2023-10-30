@@ -11,10 +11,8 @@
 #  created_at     :datetime         not null
 #  updated_at     :datetime         not null
 #
-class ContactSerializer < ActiveModel::Serializer
-  attributes :id, :type, :value
-
-  def type
-    object.type.to_s.split("::").last
+class Contacts::Facebook < Contact
+  def fa
+    "fab fa-facebook"
   end
 end

@@ -11,8 +11,8 @@
 #  created_at     :datetime         not null
 #  updated_at     :datetime         not null
 #
-FactoryBot.define do
-  factory :facebook do
-    value { "https://www.facebook.com/ilabs" }
+class Contacts::Signal < Contact
+  def fa
+    "fa-regular fa-comment"
   end
 end

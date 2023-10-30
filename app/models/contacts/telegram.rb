@@ -11,15 +11,8 @@
 #  created_at     :datetime         not null
 #  updated_at     :datetime         not null
 #
-class Phone < Contact
-  before_save :remove_whitespace
-
+class Contacts::Telegram < Contact
   def fa
-    "fas fa-phone"
+    "fa-brands fa-telegram"
   end
-
-  private
-    def remove_whitespace
-      self.value = value.to_s.strip
-    end
 end

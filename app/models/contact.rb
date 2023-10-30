@@ -15,13 +15,13 @@ class Contact < ApplicationRecord
   belongs_to :institution
 
   TYPES = [
-    ["Phone", "Phone"],
-    ["Facebook", "Facebook"],
-    ["Whatsapp", "WhatsApp"],
-    ["Website", "Website"],
-    ["Telegram", "Telegram"],
-    ["Messenger", "Messenger"],
-    ["Signal", "Signal"],
-    ["Line", "Line"]
+    ["Contacts::Phone", "Phone"],
+    ["Contacts::Facebook", "Facebook"],
+    ["Contacts::Whatsapp", "WhatsApp"],
+    ["Contacts::Website", "Website"],
+    ["Contacts::Telegram", "Telegram"],
+    ["Contacts::Messenger", "Messenger"],
+    ["Contacts::Signal", "Signal"],
+    ["Contacts::Line", "Line"]
   ]
 end

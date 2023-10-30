@@ -11,8 +11,8 @@
 #  created_at     :datetime         not null
 #  updated_at     :datetime         not null
 #
-FactoryBot.define do
-  factory :phone do
-    value { FFaker::PhoneNumber.phone_number }
+class Contacts::Line < Contact
+  def fa
+    "fa-brands fa-line"
   end
 end

@@ -13,9 +13,9 @@
 #
 require "rails_helper"
 
-RSpec.describe Facebook, type: :model do
-  subject { build(:facebook) }
+RSpec.describe Contacts::Facebook, type: :model do
+  subject { build(:contact, :facebook) }
 
   it { is_expected.to have_db_column(:value) }
-  specify { expect(subject.type).to eq "Facebook" }
+  specify { expect(subject.type).to eq "Contacts::Facebook" }
 end
