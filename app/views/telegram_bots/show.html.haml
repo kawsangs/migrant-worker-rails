@@ -1,11 +1,12 @@
-.d-sm-flex.align-items-center.justify-content-between.mb-4
-  .d-flex.flex-grow-1
-    %h1.h3.mb-0.text-gray-800= t("sidebar.telegram_bot")
-    .ml-1= bot_status(@telegram_bot).html_safe
-    .ml-2= link_to t("shared.need_help"), helps_how_to_connect_telegram_bot_path, target: '_blank', class: 'btn btn-link'
+= content_for :title do
+  .d-sm-flex.align-items-center.justify-content-between
+    .d-flex.flex-grow-1
+      = t("sidebar.telegram_bot")
+      %small.ml-1= bot_status(@telegram_bot).html_safe
+      .ml-2= link_to t("shared.need_help"), helps_how_to_connect_telegram_bot_path, target: '_blank', class: 'btn btn-link'
 
-  .d-flex
-    = render "telegram_bots/switch_view_buttons"
+.text-right.mb-2
+  = render "telegram_bots/switch_view_buttons"
 
 = simple_form_for @telegram_bot, url: '/telegram_bot/upsert', method: :put, class: 'setting' do |f|
   .modal-body

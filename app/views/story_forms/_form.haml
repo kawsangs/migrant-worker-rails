@@ -1,22 +1,22 @@
 - url = @form.persisted? ? story_form_path(@form) : story_forms_path
-= simple_form_for @form, url: url, html: { class: 'main-form skip-logic' } do |f|
-  = f.input :name
 
-  %fieldset
-    %legend.d-inline
-      %span Questions
-      %button.btn.collapse-all-trigger{type: :button}
-        %i.fas.fa-caret-right
+.view-center.medium-width
+  = simple_form_for @form, url: url, html: { class: 'main-form skip-logic' } do |f|
+    = f.input :name
 
-    %ol.fields.sortable
-      = f.fields_for :questions, f.object.questions do |builder|
-        = render 'question_fields', f: builder
+    %fieldset
+      %legend.d-inline
+        %span Questions
+        %button.btn.collapse-all-trigger{type: :button}
+          %i.fas.fa-caret-right
 
-      = link_to_add_fields t('form.add_question'), f, :questions
+      %ol.fields.sortable
+        = f.fields_for :questions, f.object.questions do |builder|
+          = render 'question_fields', f: builder
 
-    .actions.text-right.mb-3
-      = link_to t('shared.cancel'), story_forms_path, class: 'btn btn-secondary'
-      = f.submit t('shared.save'), class: 'btn btn-primary'
+        = link_to_add_fields t('form.add_question'), f, :questions
+
+      = render "shared/buttons/submit_and_cancel_button", cancel_url: story_forms_path, f: f
 
 :javascript
   locale = {

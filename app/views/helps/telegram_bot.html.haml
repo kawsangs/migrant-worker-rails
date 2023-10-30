@@ -1,4 +1,5 @@
-= render "shared/headers/page_heading", title: t('telegram_bot.telegram_bot_help')
+= content_for :title do
+  = t('telegram_bot.telegram_bot_help')
 
 .card.shadow.mb-4
   .card-body

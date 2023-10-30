@@ -3,7 +3,11 @@ MW.Common.toggleAdvanceSearch = (function () {
     init: init
   }
 
-  function init(localstorageKey) {
+  function init() {
+    let localstorageKey = $("[data-toggler-variable]").data("togglerVariable");
+
+    if(!localstorageKey) return;
+
     handleDisplayCollapseContent(localstorageKey);
     onShowCollapse(localstorageKey);
     onHideCollapse(localstorageKey);

@@ -17,7 +17,9 @@ class Country < ApplicationRecord
   validates :name, presence: true,
                     uniqueness: { case_sensitive: false }
 
+  # Scope
   scope :query, -> (query) { where("LOWER(name) LIKE ?", "#{query.to_s.downcase}%") }
+  scope :exclude_country_all, -> { where.not(code: 'all') }
 
   delegate :emoji_flag, to: :country_iso, allow_nil: true
 

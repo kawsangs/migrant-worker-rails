@@ -1,4 +1,7 @@
-= render "shared/headers/page_heading", title: t('telegram_bot.telegram_chat_group') do
+= content_for :title do
+  = t('telegram_bot.telegram_chat_group')
+
+.text-right.mb-2
   = render "telegram_bots/switch_view_buttons"
 
 .card.shadow.mb-4

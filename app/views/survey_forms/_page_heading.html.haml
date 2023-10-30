@@ -1,0 +1,12 @@
+= content_for :title do
+  = t("form.questionnaire")
+
+.text-right.mb-2
+  = render "notifications/switch_view_buttons"
+
+.d-flex
+  %form.flex-grow-1.d-flex{ action: survey_forms_path, method: 'get'}
+    = render "shared/filters/filter_name"
+    .ml-2= render "shared/buttons/search_button"
+
+  = render "shared/buttons/add_new_button", url: new_survey_form_path

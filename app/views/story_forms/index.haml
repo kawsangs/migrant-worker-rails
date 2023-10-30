@@ -1,14 +1,4 @@
-= render "shared/headers/page_heading", title: t("sidebar.your_story") do
-  .d-flex.align-items-center
-    = render "shared/buttons/add_new_button", url: new_story_form_path
-
-    %button.btn.btn-sm.ml-1{"aria-expanded" => "false", "aria-haspopup" => "true", "data-toggle" => "dropdown", :type => "button"}
-      %i.fas.fa-ellipsis-v
-
-    .dropdown-menu.dropdown-menu-right
-      %a.btn.dropdown-item{ href: story_forms_path(format: :json), target: '_blank' }
-        %i.fas.fa-download.drop-menu-icon
-        %span= t('shared.download_json')
+= render "page_heading"
 
 .card.shadow.mb-4
   .card-body

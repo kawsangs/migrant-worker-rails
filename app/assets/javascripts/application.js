@@ -85,6 +85,7 @@ $(document).on("ready turbolinks:load", () => {
   MW.Common.ConfirmModal.init();
   MW.Common.WizardForm.init();
   MW.Common.DaterangePicker.init();
+  MW.Common.toggleAdvanceSearch.init();
 
   $("[data-toggle='tooltip']").tooltip();
 

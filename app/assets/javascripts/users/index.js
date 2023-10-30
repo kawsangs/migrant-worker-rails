@@ -1,7 +1,5 @@
 MW.UsersIndex = (() => {
   function init() {
-    MW.Common.toggleAdvanceSearch.init("user_advance_search");
-
     initAgeRageSlider();
   }
 

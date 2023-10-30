@@ -1,5 +1,4 @@
-.view-center.medium-width
-  %h1.h3.mb-4.text-gray-800
-    = t('form.new_questionnaire')
+= content_for :title do
+  = t('form.new_questionnaire')
 
-  = render "form"
+= render "form"

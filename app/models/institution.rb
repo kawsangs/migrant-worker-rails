@@ -32,10 +32,14 @@ class Institution < ApplicationRecord
   accepts_nested_attributes_for :country_institutions, allow_destroy: true
   accepts_nested_attributes_for :contacts, reject_if: :all_blank, allow_destroy: true
 
+  # scope
+  default_scope { order("updated_at DESC") }
+
   def self.filter(params = {})
     scope = all
     scope = scope.where("LOWER(name) LIKE ?", "%#{params[:name].strip.downcase}%") if params[:name].present?
     scope = scope.where("created_at BETWEEN ? AND ?", DateTime.parse(params[:start_date]).beginning_of_day, DateTime.parse(params[:end_date]).end_of_day) if params[:start_date].present? && params[:end_date].present?
+    scope = scope.joins(:country_institutions).where("country_institutions.country_code in (?)", params[:countries]) if params[:countries].present?
     scope
   end
 

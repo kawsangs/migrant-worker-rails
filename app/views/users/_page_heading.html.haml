@@ -1,14 +1,22 @@
-%form{ action: '/users', method: 'get' }
-  .d-flex
-    = render "shared/filters/filter_name", field_name: :full_name
+= content_for :title do
+  = t('sidebar.app_users')
 
-    .ml-3
-      = render "shared/buttons/advance_search_button", toggler_variable: "advance_search_app_user"
+= form_for "", url: users_path, method: 'get' do |f|
+  .d-flex.flex-row-reverse.flex-wrap
+    = render "shared/buttons/download_button", url: download_users_path(filter_params)
 
-    / Search button
-    .ml-2
-      = render "shared/buttons/search_button"
+    / Filter
+    .d-flex.flex-grow-1
+      = render 'shared/filters/filter_name', field_name: :full_name
 
+      .ml-3
+        = render "shared/buttons/advance_search_button", toggler_variable: "advance_search_app_user"
+
+      / Search button
+      .ml-2
+        = render "shared/buttons/search_button"
+
+  / Advance filter
   #collapseOne.accordion-collapse.collapse.collapse-filter
     .d-flex.m-2
       / Filter by date
