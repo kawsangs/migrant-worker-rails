@@ -46,10 +46,7 @@
         / end_time
         = render "shared/forms/date_field", f: f, field: :end_time, label: t("notification.notification_end_date"), required: true
 
-      .actions.text-right
-        = render "shared/buttons/cancel_button", url: notifications_url
-
-        = render "shared/buttons/submit_button", f: f, title: t("notification.save_draft")
+      = render "shared/buttons/submit_and_cancel_button", cancel_url: notifications_url, f: f
 
   %div
     = render "preview_mobile"

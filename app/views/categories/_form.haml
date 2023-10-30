@@ -1,19 +1,18 @@
-= simple_form_for @category, as: :category, url: form_url do |f|
-  = render "categories/form/image", f: f
+.w-75.view-center
+  = simple_form_for @category, as: :category, url: form_url do |f|
+    = render "categories/form/image", f: f
 
-  - if @category.parent.present?
-    .form-group
-      %label= t('category.parent_category')
-      .form-control
-        = @category.parent.name
+    - if @category.parent.present?
+      .form-group
+        %label= t('category.parent_category')
+        .form-control
+          = @category.parent.name
 
-  = f.input :uuid, as: :hidden
-  = f.input :parent_id, as: :hidden
-  = f.input :name, label: t('category.name')
-  = render "categories/form/audio", f: f
+    = f.input :uuid, as: :hidden
+    = f.input :parent_id, as: :hidden
+    = f.input :name, label: t('category.name')
+    = render "categories/form/audio", f: f
 
-  = f.input :description, input_html: {id: 'description'}
+    = f.input :description, input_html: {id: 'description'}
 
-  .actions.text-right.position-absolute.pb-4{style: 'bottom: -70px; right: 0;'}
-    = link_to t('shared.cancel'), cancel_url, class: 'btn btn-secondary'
-    = f.submit t('shared.save'), class: 'btn btn-primary'
+    = render "shared/buttons/submit_and_cancel_button", cancel_url: cancel_url, f: f

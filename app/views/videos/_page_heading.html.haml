@@ -1,35 +1,40 @@
-= render 'shared/headers/page_heading', title: t("sidebar.video") do
+= content_for :title do
+  = t('sidebar.video')
 
-  .d-flex.align-items-center
-    = render "shared/buttons/download_button", url: videos_path(filter_params.merge(format: :xlsx))
-    .mr-1
-    = render "shared/buttons/add_new_button", url: new_video_path
+.text-right.mb-2
+  = render "switch_view_buttons"
 
-    %button.btn.btn-sm.ml-1{"aria-expanded" => "false", "aria-haspopup" => "true", "data-toggle" => "dropdown", :type => "button"}
-      %i.fas.fa-ellipsis-v
+= form_for "", url: videos_path, method: 'get' do |f|
+  .d-flex.flex-row-reverse.flex-wrap
+    .d-flex
+      .mr-1= render "shared/buttons/download_button", url: videos_path(filter_params.merge(format: :xlsx))
 
-    .dropdown-menu.dropdown-menu-right
-      %a.btn.dropdown-item{ href: new_video_importer_path }
-        %i.fas.fa-file-import.drop-menu-icon
-        %span= t("shared.import_from_file")
+      = render "shared/buttons/add_new_button", url: new_video_path
 
-      %a.btn.dropdown-item{ href: video_importers_path }
-        %i.fas.fa-history.drop-menu-icon
-        %span= t('shared.importing_history', name: t('sidebar.video'))
+      = render "shared/buttons/more_button" do
+        %a.btn.dropdown-item{ href: new_video_importer_path }
+          %i.fas.fa-file-import.drop-menu-icon
+          %span= t("shared.import_from_file")
 
-      %a.btn.dropdown-item{ href: videos_path(format: :json), target: '_blank' }
-        %i.fas.fa-download.drop-menu-icon
-        %span= t('shared.download_json')
+        %a.btn.dropdown-item{ href: video_importers_path }
+          %i.fas.fa-history.drop-menu-icon
+          %span= t('shared.importing_history', name: t('sidebar.video'))
 
-.d-flex.flex-wrap
-  .flex-grow-1
-    %form{ action: videos_path, method: 'get' }
-      .d-flex
-        %div= render "shared/filters/filter_name", placeholder: t('shared.search_by_title')
+        %a.btn.dropdown-item{ href: videos_path(format: :json), target: '_blank' }
+          %i.fas.fa-download.drop-menu-icon
+          %span= t('shared.download_json')
 
-        .ml-2
-          = render "shared/filters/filter_date", placeholder: t('shared.search_by_created_at')
-        .ml-2
-          = render "shared/buttons/search_button"
+    .d-flex.flex-grow-1
+      = render "shared/filters/filter_name", placeholder: t('shared.search_by_title')
 
-  %div= render "switch_view_buttons"
+      .ml-3
+        = render "shared/buttons/advance_search_button", toggler_variable: "advance_search_video"
+
+      / Search button
+      .ml-2
+        = render "shared/buttons/search_button"
+
+  / Advance filter
+  #collapseOne.accordion-collapse.collapse.collapse-filter
+    .d-flex.m-2
+      = render "shared/filters/filter_date", placeholder: t('shared.search_by_created_at')

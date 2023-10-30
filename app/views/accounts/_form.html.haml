@@ -1,13 +1,12 @@
-= simple_form_for @account do |f|
-  .form-group.d-flex
-    = form_check_toggle({name: "account[dashboard_accessible]", checked: f.object.dashboard_accessible, label: t('account.dashboard_accessible')}).html_safe
+.w-75.view-center
+  = simple_form_for @account do |f|
+    .form-group.d-flex
+      = form_check_toggle({name: "account[dashboard_accessible]", checked: f.object.dashboard_accessible, label: t('account.dashboard_accessible')}).html_safe
 
-    %span.ml-2{'data-toggle': 'tooltip', 'data-title': t('account.dashboard_accessible_hint')}
-      %i.fa-solid.fa-circle-info{style: 'font-size: 20px;'}
+      %span.ml-2{'data-toggle': 'tooltip', 'data-title': t('account.dashboard_accessible_hint')}
+        %i.fa-solid.fa-circle-info{style: 'font-size: 20px;'}
 
-  = f.input :email, label: t('account.email'), input_html: { readonly: @account.persisted? }
-  = f.input :role, label: t('account.role'), collection: policy(Account).roles, input_html: { class: 'role' }
+    = f.input :email, label: t('account.email'), input_html: { readonly: @account.persisted? }
+    = f.input :role, label: t('account.role'), collection: policy(Account).roles, input_html: { class: 'role' }
 
-  .actions.text-right
-    = link_to t('shared.cancel'), accounts_path, class: 'btn btn-secondary'
-    = f.submit t('shared.save'), class: 'btn btn-primary'
+    = render "shared/buttons/submit_and_cancel_button", cancel_url: accounts_path, f: f

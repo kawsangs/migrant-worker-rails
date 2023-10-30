@@ -1,28 +1,27 @@
-= simple_form_for @institution do |f|
-  = f.input :name, label: t('institution.name')
-  = f.input :name_km, label: t('institution.name_km')
-  = f.input :address, label: t('institution.address')
-  = f.input :logo, label: t('institution.logo_form'), input_html: { accept: 'image/png, image/jpg' }
-  = f.input :audio, label: t('institution.audio_form'), input_html: { accept: 'audio/mpeg' }
+.view-center.medium-width
+  = simple_form_for @institution do |f|
+    = f.input :name, label: t('institution.name')
+    = f.input :name_km, label: t('institution.name_km')
+    = f.input :address, label: t('institution.address')
+    = f.input :logo, label: t('institution.logo_form'), input_html: { accept: 'image/png, image/jpg' }
+    = f.input :audio, label: t('institution.audio_form'), input_html: { accept: 'audio/mpeg' }
 
-  %label= t('institution.countries')
-  .form-group
-    %input{ type: 'text', value: @institution.countries.map(&:name).join(","), placeholder: t('institution.input_placeholder'), class: 'form-control tagify-country', 'data-country': Country.all.map { |c| { name: c.name, code: c.code}}.to_json }
+    %label= t('institution.countries')
+    .form-group
+      %input{ type: 'text', value: @institution.countries.map(&:name).join(","), placeholder: t('institution.input_placeholder'), class: 'form-control tagify-country', 'data-country': Country.all.map { |c| { name: c.name, code: c.code}}.to_json }
 
-    - @institution.country_institutions.each.with_index do |c, index|
-      %input{ type: 'hidden', name: "institution[country_institutions_attributes][#{index}][id]", value: c.id }
-      %input{ type: 'hidden', name: "institution[country_institutions_attributes][#{index}][_destroy]", class: "del-" + tagify_class(c.c_name), value: '' }
+      - @institution.country_institutions.each.with_index do |c, index|
+        %input{ type: 'hidden', name: "institution[country_institutions_attributes][#{index}][id]", value: c.id }
+        %input{ type: 'hidden', name: "institution[country_institutions_attributes][#{index}][_destroy]", class: "del-" + tagify_class(c.c_name), value: '' }
 
-    .error-message.text-danger.small
-      = @institution.errors["country_institutions"].join("; ")
+      .error-message.text-danger.small
+        = @institution.errors["country_institutions"].join("; ")
 
-  %label= t('institution.contacts')
-  #contacts
-    = f.simple_fields_for :contacts do |contact|
-      = render 'contact_fields', f: contact
-    .links.mb-3
-      = link_to_add_fields t('institution.add_contact'), f, :contacts, class: 'btn btn-sm btn-outline-secondary'
+    %label= t('institution.contacts')
+    #contacts
+      = f.simple_fields_for :contacts do |contact|
+        = render 'contact_fields', f: contact
+      .links.mb-3
+        = link_to_add_fields t('institution.add_contact'), f, :contacts, class: 'btn btn-sm btn-outline-secondary'
 
-  .actions.text-right.mb-3
-    = link_to t('shared.cancel'), institutions_path, class: 'btn btn-secondary'
-    = f.submit t('shared.save'), class: 'btn btn-primary'
+    = render "shared/buttons/submit_and_cancel_button", cancel_url: institutions_path, f: f

@@ -21,3 +21,5 @@ en:
     institution_name: Institution name
     institution_address: Institution address
     name_km: Name in khmer
+    any_country: Any country
+    countries_selected: countries selected

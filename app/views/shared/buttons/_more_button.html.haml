@@ -1,0 +1,6 @@
+%div
+  %button.btn.btn-sm{"aria-expanded" => "false", "aria-haspopup" => "true", "data-toggle" => "dropdown", :type => "button"}
+    %i.fas.fa-ellipsis-v
+
+  .dropdown-menu.dropdown-menu-right
+    = yield

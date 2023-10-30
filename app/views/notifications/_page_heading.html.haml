@@ -1,21 +1,43 @@
-= render "shared/headers/page_heading", title: t("notification.notification") do
-  .d-flex.align-items-center
-    = render "shared/buttons/add_new_button", url: new_notification_path
-
-    %button.btn.btn-sm.ml-1{"aria-expanded" => "false", "aria-haspopup" => "true", "data-toggle" => "dropdown", :type => "button"}
-      %i.fas.fa-ellipsis-v
-
-    .dropdown-menu.dropdown-menu-right
-      %a.btn.dropdown-item{ href: new_notification_importer_path }
-        %i.fas.fa-file-import.drop-menu-icon
-        %span= t("shared.import_from_file")
-
-      %a.btn.dropdown-item{ href: notification_importers_path }
-        %i.fas.fa-history.drop-menu-icon
-        %span= t('shared.importing_history', name: t('sidebar.notification'))
+= content_for :title do
+  = t("notification.notification")
 
 .d-flex
   .flex-grow-1= render "nav_tabs"
   .mb-1= render "notifications/switch_view_buttons"
 
-= render "filter"
+%form{ action: notifications_path, method: 'get' }
+  .d-flex.flex-row-reverse.flex-wrap.mt-2
+    .d-flex
+      = render "shared/buttons/add_new_button", url: new_notification_path
+
+      = render "shared/buttons/more_button" do
+        %a.btn.dropdown-item{ href: new_notification_importer_path }
+          %i.fas.fa-file-import.drop-menu-icon
+          %span= t("shared.import_from_file")
+
+        %a.btn.dropdown-item{ href: notification_importers_path }
+          %i.fas.fa-history.drop-menu-icon
+          %span= t('shared.importing_history', name: t('sidebar.notification'))
+
+    .d-flex.flex-grow-1
+      / filter status
+      .d-none= select_tag 'status[]', options_for_select(Notification.statuses.keys, params[:status]), multiple: true
+
+      / filter date
+      .form-group.filter-input
+        = render 'shared/filters/filter_date', placeholder: t('notification.search_by_created_at')
+
+      .ml-3
+        = render "shared/buttons/advance_search_button", toggler_variable: "advance_search_notification"
+
+      / Search button
+      .ml-2
+        %button.btn.btn-outline-primary.ml-md-2{type: :submit}
+          %i.fas.fa-search
+          %span.d-none.d-lg-inline= t('shared.search')
+
+  / Advance filter
+  #collapseOne.accordion-collapse.collapse.collapse-filter
+    .d-flex.m-2
+      / filter by survey form
+      .filter-input= select_tag 'form_id', options_for_select(Forms::SurveyForm.notification_counts.map {|f| [f.name, f.id]}, params[:form_id]), include_blank: t('notification.any_survey_form'), class: 'form-control custom-select'

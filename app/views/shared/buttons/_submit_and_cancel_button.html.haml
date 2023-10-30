@@ -1,0 +1,5 @@
+- cancel_url ||= ""
+
+.actions.text-right.mb-3
+  = link_to t('shared.cancel'), cancel_url, class: 'btn btn-secondary'
+  = f.submit t('shared.save'), class: 'btn btn-primary'

@@ -6,11 +6,11 @@ class InstitutionsController < ApplicationController
   def index
     respond_to do |format|
       format.html {
-        @pagy, @institutions = pagy(Institution.filter(filter_params).includes(:contacts, :country_institutions).order("updated_at DESC"))
+        @pagy, @institutions = pagy(Institution.filter(filter_params).includes(:contacts, country_institutions: :country))
       }
 
       format.json {
-        @institutions = authorize Institution.filter(filter_params).includes(:contacts, :country_institutions).order("updated_at DESC")
+        @institutions = authorize Institution.filter(filter_params).includes(:contacts, country_institutions: :country)
 
         render json: @institutions
       }
@@ -76,7 +76,7 @@ class InstitutionsController < ApplicationController
     end
 
     def filter_params
-      params.permit(:name, :start_date, :end_date)
+      params.permit(:name, :start_date, :end_date, countries: [])
     end
     helper_method :filter_params
 end

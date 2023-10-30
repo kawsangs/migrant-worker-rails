@@ -2,8 +2,8 @@ km:
   category:
     your_departure: ដំណើរឆ្លងដែនរបស់អ្នក
     your_safety: សុវត្ថិភាពរបស់អ្នក
-    new_departure: New departure
-    new_safety: New safety
+    new_departure: ដំណើរឆ្លងដែនថ្មី
+    new_safety: សុវត្ថិភាពរបស់អ្នកថ្មី
     edit_departure: កែតម្រូវដំណើរឆ្លងដែនរបស់អ្នក
     edit_safety: កែតម្រូវសុវត្ថិភាពរបស់អ្នក
     audio: សំលេង

@@ -1,10 +1,12 @@
-= render 'shared/headers/page_heading', title: "#{t('video.videos')}: #{t('shared.tags')}" do
+= content_for :title do
+  = "#{t('video.videos')}: #{t('shared.tags')}"
 
-  = render "shared/buttons/download_button", url: video_tags_path(filter_params.merge(format: :json)), label: t('shared.download_json')
+.text-right.mb-2
+  = render "videos/switch_view_buttons"
 
 .d-flex
   .flex-grow-1
     %form{ action: video_tags_path, method: 'get' }
       = render "shared/filters/filter_name", placeholder: t('shared.search_by_tag')
 
-  %div= render "videos/switch_view_buttons"
+  = render "shared/buttons/download_button", url: video_tags_path(filter_params.merge(format: :json)), label: t('shared.download_json')

@@ -1,9 +1,4 @@
-/ Page Heading
-= render "shared/headers/page_heading", title: t("sidebar.page") do
-  = render "shared/buttons/add_new_button", url: new_page_path
-
-%form.d-flex{ action: pages_path, method: 'get' }
-  = render 'shared/filters/filter_name', placeholder: t('shared.filter_by_code_or_name')
+= render "page_heading"
 
 .card.shadow.mb-4
   .card-body

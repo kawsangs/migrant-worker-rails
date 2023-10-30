@@ -1,4 +1,4 @@
-.w-75.view-center.position-relative.pb-1
-  %h1.h3.mb-4.text-gray-800= t("category.edit_safety")
+= content_for :title do
+  = t("category.edit_safety")
 
-  = render "categories/form", form_url: safety_path(@category), cancel_url: safeties_path
+= render "categories/form", form_url: safety_path(@category), cancel_url: safeties_path
