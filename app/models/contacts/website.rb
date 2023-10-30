@@ -11,11 +11,8 @@
 #  created_at     :datetime         not null
 #  updated_at     :datetime         not null
 #
-require "rails_helper"
-
-RSpec.describe Phone, type: :model do
-  subject { build(:phone) }
-
-  it { is_expected.to have_db_column(:value) }
-  specify { expect(subject.type).to eq "Phone" }
+class Contacts::Website < Contact
+  def fa
+    "fas fa-globe-europe"
+  end
 end

@@ -11,8 +11,8 @@
 #  created_at     :datetime         not null
 #  updated_at     :datetime         not null
 #
-class Facebook < Contact
+class Contacts::Whatsapp < Contact
   def fa
-    "fab fa-facebook"
+    "fab fa-whatsapp"
   end
 end

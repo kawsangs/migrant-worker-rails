@@ -11,8 +11,15 @@
 #  created_at     :datetime         not null
 #  updated_at     :datetime         not null
 #
-class Website < Contact
+class Contacts::Phone < Contact
+  before_save :remove_whitespace
+
   def fa
-    "fas fa-globe-europe"
+    "fas fa-phone"
   end
+
+  private
+    def remove_whitespace
+      self.value = value.to_s.strip
+    end
 end
