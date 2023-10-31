@@ -2,7 +2,7 @@
   = t("category.your_departure")
 
 .d-flex.justify-content-end.mb-2
-  = render "shared/buttons/add_new_button", url: new_departure_path
+  = render "shared/buttons/add_new_button", url: new_departure_path, name: t('category.your_departure')
 
   = render "shared/buttons/more_button" do
     %a.btn.dropdown-item{ href: departures_path(format: :json), target: '_blank' }

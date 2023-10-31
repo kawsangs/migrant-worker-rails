@@ -2,7 +2,7 @@ km:
   shared:
     no_data_found: 'រកមិនឃើញទិន្នន័យ'
     use_plus_to_add_item: 'សូមប្រើប៊ូតុង (+) ដើម្បីបង្កើតទិន្ន័យ!'
-    add_new: បញ្ចូលទិន្នន័យ
+    add_new: បន្ថែម%{name}ថ្មី
     edit: 'កែសម្រួល'
     delete: 'លុប'
     cancel: 'បោះបង់'

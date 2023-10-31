@@ -5,7 +5,7 @@
   .d-flex.flex-row-reverse.flex-wrap
     / More button
     .d-flex
-      = render "shared/buttons/add_new_button", url: new_institution_path
+      = render "shared/buttons/add_new_button", url: new_institution_path, name: t('institution.title')
 
       = render "shared/buttons/more_button" do
         %a.btn.dropdown-item{ href: institutions_path(filter_params.merge(format: :json)), target: '_blank' }

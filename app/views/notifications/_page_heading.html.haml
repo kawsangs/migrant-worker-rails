@@ -8,7 +8,7 @@
 %form{ action: notifications_path, method: 'get' }
   .d-flex.flex-row-reverse.flex-wrap.mt-2
     .d-flex
-      = render "shared/buttons/add_new_button", url: new_notification_path
+      = render "shared/buttons/add_new_button", url: new_notification_path, name: t('sidebar.notification')
 
       = render "shared/buttons/more_button" do
         %a.btn.dropdown-item{ href: new_notification_importer_path }
