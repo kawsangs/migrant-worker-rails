@@ -4,7 +4,7 @@
 
 = form_for "", url: pages_path, method: 'get' do |f|
   .d-flex.flex-row-reverse.flex-wrap
-    = render "shared/buttons/add_new_button", url: new_page_path
+    = render "shared/buttons/add_new_button", url: new_page_path, name: t('sidebar.page')
 
     .d-flex.flex-grow-1
       = render 'shared/filters/filter_name', placeholder: t('shared.filter_by_code_or_name')

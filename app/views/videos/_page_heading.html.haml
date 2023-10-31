@@ -9,7 +9,7 @@
     .d-flex
       .mr-1= render "shared/buttons/download_button", url: videos_path(filter_params.merge(format: :xlsx))
 
-      = render "shared/buttons/add_new_button", url: new_video_path
+      = render "shared/buttons/add_new_button", url: new_video_path, name: t('sidebar.video')
 
       = render "shared/buttons/more_button" do
         %a.btn.dropdown-item{ href: new_video_importer_path }

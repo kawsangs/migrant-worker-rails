@@ -1,4 +1,4 @@
-.view-center.medium-width
-  %h1.h3.mb-4.text-gray-800= t("notification.edit_notification")
+= content_for :title do
+  = t("notification.edit_notification")
 
-  = render "form"
+= render "form"
