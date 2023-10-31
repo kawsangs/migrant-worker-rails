@@ -40,4 +40,4 @@
   #collapseOne.accordion-collapse.collapse.collapse-filter
     .d-flex.m-2
       / filter by survey form
-      .filter-input= select_tag 'form_id', options_for_select(Forms::SurveyForm.notification_counts.map {|f| [f.name, f.id]}, params[:form_id]), include_blank: t('notification.any_survey_form'), class: 'form-control custom-select'
+      .filter-input= select_tag 'form_id', options_for_select(Forms::SurveyForm.notification_counts.map {|f| [f.name, f.id]}.uniq, params[:form_id]), include_blank: t('notification.any_survey_form'), class: 'form-control custom-select'
