@@ -33,6 +33,9 @@ class NotificationOccurrence < ApplicationRecord
     cancelled: 4
   }
 
+  # Scope
+  default_scope { order(created_at: :asc) }
+
   # Instance method
   def build_content
     {

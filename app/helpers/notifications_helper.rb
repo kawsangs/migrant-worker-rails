@@ -4,19 +4,15 @@ module NotificationsHelper
   def occurrence_description(notification)
     return "" if notification.draft?
 
-    number = "#{number_with_delimiter(notification.occurrences_delivered_count)} / #{number_with_delimiter(notification.occurrences_count)}"
-    tooltip_title = occurrences_list(notification, number)
+    number = notification_occurence_number(notification)
 
-    "<span data-toggle='tooltip' data-placement='top' data-html='true' data-title='#{sanitize(tooltip_title)}'>#{number}</span>"
+    link_to number, notification_path(notification), class: "text-primary", remote: true
   rescue
     ""
   end
 
-  def survey_form_description(notification)
-    return "" if notification.survey_form.nil?
-
-    tooltip_title = survey_form_preview(notification)
-    "<span data-toggle=\"tooltip\" data-placement=\"top\" data-html=\"true\" data-title=\"#{tooltip_title}\">#{notification.survey_form_name}</span>"
+  def notification_occurence_number(notification)
+    "#{number_with_delimiter(notification.occurrences_delivered_count)} / #{number_with_delimiter(notification.occurrences_count)}"
   end
 
   def status_html(notification)
@@ -55,37 +51,4 @@ module NotificationsHelper
 
     "active" if status == "all" && params[:status].blank?
   end
-
-  private
-    def occurrences_list(notification, number)
-      str = "<div class='text-left'>"
-      str += "Delivered/Total: #{number}"
-      str += "<ol>"
-
-      notification.notification_occurrences.each do |occurrence|
-        str += "<li>#{display_datetime(occurrence.occurrence_date)}៖ Success: #{occurrence.success_count} / Total: #{occurrence.token_count} (#{occurrence.status}) </li>"
-      end
-
-      str += "</ol>"
-      str + "</div>"
-    end
-
-    def survey_form_preview(notification)
-      form = notification.survey_form
-      str = "<div class='text-left'>"
-      str += "#{t('form.questionnaire')}: #{form.name}"
-      str += "<div>#{t('form.question')}:</div>"
-      str += "<ol>"
-      str += form.questions.map { |question| question_list(question) }.join
-      str += "</ol>"
-      str + "</div>"
-    end
-
-    def question_list(question)
-      str = "<li>#{question.icon} #{question.name}"
-      str += "<ul>"
-      str += question.options.map { |option| "<li>#{option.name}</li>" }.join
-      str += "</ul>"
-      str + "</li>"
-    end
 end

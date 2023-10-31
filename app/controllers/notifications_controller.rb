@@ -1,11 +1,13 @@
 # frozen_string_literal: true
 
 class NotificationsController < ApplicationController
-  helper_method :filter_params
-  before_action :set_notification, only: [:edit, :update, :destroy, :release, :cancel]
+  before_action :authorize_notification, only: [:show, :edit, :update, :destroy, :release, :cancel]
 
   def index
     @pagy, @notifications = pagy(authorize Notification.filter(filter_params).includes(:notification_occurrences, :canceller, :releasor, survey_form: [questions: :options]))
+  end
+
+  def show
   end
 
   def new
@@ -65,11 +67,12 @@ class NotificationsController < ApplicationController
       )
     end
 
-    def set_notification
+    def authorize_notification
       @notification = authorize Notification.find(params[:id])
     end
 
     def filter_params
       params.permit(:start_date, :end_date, :form_id, status: [])
     end
+    helper_method :filter_params
 end

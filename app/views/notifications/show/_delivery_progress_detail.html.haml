@@ -1,0 +1,33 @@
+#delivery-progress-table.d-flex.flex-column-reverse
+  .table
+    .d-flex.border
+      .p-2.w-10 #
+      .p-2.w-35= t('notification.delivery_date')
+      .p-2.w-35= t('notification.delivery_progress')
+      .p-2.w-25= t('shared.status')
+
+    .d-flex.flex-column-reverse
+      - next_schedule = nil
+      - @notification.notification_occurrences.each_with_index do |occurrence, index|
+        / Notification occurrent item
+        - next_schedule ||= occurrence if occurrence.pending?
+        %div{ class: (next_schedule.present? ? 'd-none' : 'item' ) }
+          .d-flex.border
+            .p-2.w-10= index + 1
+            .p-2.w-35= display_datetime(occurrence.occurrence_date)
+            .p-2.w-35= t('notification.progess', success_count: occurrence.success_count, total_count: occurrence.token_count)
+            .p-2.w-25
+              %span.text-capitalize{class: "noti-occu-#{occurrence.status}"}
+                = occurrence.status
+
+    / No data
+    .no-data-label.justify-content-center.text-muted.mt-3
+      = t('notification.no-data')
+
+  / Next schedule
+  - if next_schedule.present?
+    .d-flex.mb-2
+      .text-muted.mr-1= t('notification.next_schedule') + ": "
+      .d-inline-block.px-2.rounded.highlight
+        %i.fa-solid.fa-circle-info
+        %strong= display_datetime(next_schedule.occurrence_date)

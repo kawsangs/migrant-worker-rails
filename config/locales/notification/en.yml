@@ -42,6 +42,10 @@ en:
     any_survey_form: Any survey form
     view_all_survey_form: View all survey forms
     notify_to: Notify to
+    delivery_date: Delivery date
+    progess: "Success: %{success_count} / Total: %{total_count}"
+    next_schedule: "Next schedule"
+    no-data: No data
 
   recurring_select:
     not_recurring: "Please determine"
