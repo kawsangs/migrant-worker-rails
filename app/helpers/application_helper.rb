@@ -54,22 +54,16 @@ module ApplicationHelper
     item.new_record? ? I18n.t("shared.new") : I18n.t("shared.edit")
   end
 
-  def display_date(date)
+  def display_date(date, format = nil)
     return "" unless date.present?
-
-    format = "YYYY-MM-DD"
-    format = format.downcase.split("-").join("_")
+    format ||= ENV.fetch("DATE_FORMAT") { "yyyy_mm_dd" }
 
     I18n.l(date, format: :"#{format}")
   end
 
   def display_datetime(date)
-    return "" unless date.present?
-
-    format = "YYYY-MM-DD"
-    format = format.downcase.split("-").join("_") + "_time"
-
-    I18n.l(date, format: :"#{format}")
+    format = ENV.fetch("DATETIME_FORMAT") { "yyyy_mm_dd_time" }
+    display_date(date, format)
   end
 
   def timeago(date, type = "date")

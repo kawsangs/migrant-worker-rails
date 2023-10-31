@@ -42,6 +42,10 @@ km:
     any_survey_form: គ្រប់កម្រងសំណួរ
     view_all_survey_form: ចូលមើលកម្រងសំនួរ
     notify_to: ជូនដំណឹងទៅកាន់
+    delivery_date: កាលបរិច្ឆេទ
+    progess: "ជោគជ័យ: %{success_count} / សរុប: %{total_count}"
+    next_schedule: "កាលបរិច្ឆេទជូនដំណឹងបន្ទាប់"
+    no-data: មិនមានទិន្នន័យ
 
   recurring_select:
     not_recurring: "សូមកំណត់"
