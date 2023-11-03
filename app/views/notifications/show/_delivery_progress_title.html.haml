@@ -1,0 +1,7 @@
+.d-flex.align-items-center
+  = "#{t('notification.delivery_progress')}: #{@notification.title} "
+  %strong.ml-1= "(#{notification_occurence_number(@notification)})"
+
+  - if @notification.cancelled?
+    %small.ml-2
+      %span.badge.badge-danger.text-capitalize= @notification.status

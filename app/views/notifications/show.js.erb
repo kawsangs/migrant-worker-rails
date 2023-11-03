@@ -1,6 +1,5 @@
-<% title = "#{t('notification.delivery_progress')}: #{@notification.title} <b>(#{notification_occurence_number(@notification)})</b>" %>
 
-$('#deliveryProgressModal .modal-title').html("<%= title.html_safe %>");
+$('#deliveryProgressModal .modal-title').html("<%= j render('notifications/show/delivery_progress_title') %>");
 $('#deliveryProgressModal .modal-body').html("<%= j render('notifications/show/delivery_progress_detail') %>");
 
 var dom = $("#delivery-progress-table")
