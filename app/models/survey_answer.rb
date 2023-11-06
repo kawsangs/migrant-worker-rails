@@ -34,4 +34,8 @@ class SurveyAnswer < ApplicationRecord
       survey.notify_groups_async(option.chat_groups)
     end
   end
+
+  def display_value
+    voice_url || value
+  end
 end
