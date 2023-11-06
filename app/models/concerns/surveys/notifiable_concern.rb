@@ -29,7 +29,7 @@ module Surveys::NotifiableConcern
         form.questions.each do |question|
           answer = survey_answers.select { |ans| ans.question_id == question.id }.first
 
-          list.push("សំនួរ៖ #{question.name}\nចម្លើយ៖ <b>#{answer.try(:value)}</b>") if answer.present?
+          list.push("សំនួរ៖ #{question.name}\nចម្លើយ៖ <b>#{answer.try(:display_value)}</b>") if answer.present?
         end
 
         list.join("\n\n")
