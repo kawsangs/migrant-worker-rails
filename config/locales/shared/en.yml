@@ -41,9 +41,9 @@ en:
     yes_delete: Yes, Delete!
     yes_publish: Yes, Publish!
     yes_cancel: Yes, Cancel!
-    confirm_delete: Confirm delete %{name}
-    confirm_publish: Confirm publish %{name}
-    confirm_cancel: Confirm cancel %{name}
+    confirm_delete: Confirm delete <b>"%{name}"</b>
+    confirm_publish: Confirm publish <b>"%{name}"</b>
+    confirm_cancel: Confirm cancel <b>"%{name}"</b>
     search_by_name: Search by name
     search_by_title: Search by title
     search_by_tag: Search by tag
@@ -102,3 +102,4 @@ en:
     upload_invalid_file: The file is invalid, please check it again!
     at_least_one_valid_item: There must be at least 1 valid item
     close: Close
+    save_draft: Save draft

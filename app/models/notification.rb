@@ -32,7 +32,7 @@ class Notification < ApplicationRecord
   # Enum
   enum status: {
     draft: 0,
-    released: 1,
+    in_progress: 1,
     cancelled: 2,
     completed: 3
   }

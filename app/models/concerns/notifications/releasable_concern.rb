@@ -5,13 +5,13 @@ module Notifications::ReleasableConcern
 
   included do
     # Validation
-    validates :releasor_id, presence: true, if: -> { released? }
+    validates :releasor_id, presence: true, if: -> { in_progress? }
     validates :canceller_id, presence: true, if: -> { cancelled? }
     validate :cancellable, if: -> { cancelled? }
 
     # Callback
     after_update :cancel_pending_notification_occurrence, if: -> { cancelled? }
-    after_update :published_survey_form, if: -> { released? && form_id.present? }
+    after_update :published_survey_form, if: -> { in_progress? && form_id.present? }
 
     # Instance method
     def cancelled_by(canceller_id)
@@ -19,7 +19,7 @@ module Notifications::ReleasableConcern
     end
 
     def released_by(releasor_id)
-      self.update(released_at: Time.zone.now, status: "released", releasor_id: releasor_id)
+      self.update(released_at: Time.zone.now, status: "in_progress", releasor_id: releasor_id)
     end
 
     private

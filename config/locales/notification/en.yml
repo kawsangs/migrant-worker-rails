@@ -46,6 +46,11 @@ en:
     progess: "Success: %{success_count} / Total: %{total_count}"
     next_schedule: "Next schedule"
     no-data: No data
+    cancelled: Cancelled
+    completed: Completed
+    in_progress: In progress
+    pending: Pending
+    delivered: Delivered
 
   recurring_select:
     not_recurring: "Please determine"
