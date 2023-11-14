@@ -54,7 +54,7 @@
   color: #ffc107!important;
 }
 .noti-occu-in_progress {
-  color: #17a2b8!important;
+  color: #ffc107!important;
 }
 .noti-occu-delivered {
   color: #28a745!important;
@@ -89,5 +89,65 @@
 
   .highlight {
     background-color: #eee;
+  }
+}
+
+.ribbon-parent {
+  position: relative;
+  overflow: hidden;
+
+  .ribbon {
+    color: transparent;
+    position: absolute;
+    background: transparent;
+    box-shadow: 0 0 0 999px transparent;
+    clip-path: inset(0 -100%);
+    font-size: 0.8em;
+  }
+
+  .left {
+    inset: 0 auto auto 0; /* top and left equal to 0 */
+    transform-origin: 100% 0; /* OR top right */
+    transform: translate(-29.3%) rotate(-45deg);
+  }
+
+  .right {
+    inset: 0 0 auto auto; /* top and right equal to 0 */
+    transform-origin: 0 0; /* OR top left */
+    transform: translate(29.3%) rotate(45deg);
+  }
+
+  .completed {
+    color: #fff;
+    box-shadow: 0 0 0 999px #28a745;
+    background-color: #28a745;
+  }
+
+  .cancelled {
+    color: #fff;
+    box-shadow: 0 0 0 999px #dc3545;
+    background-color: #dc3545;
+  }
+
+  .in_progress {
+    color: #fff;
+    box-shadow: 0 0 0 999px #ffc107;
+    background-color: #ffc107;
+  }
+
+  .ribbon.completed + h5 {
+    margin-left: 30px;
+  }
+
+  .ribbon.cancelled + h5 {
+    margin-left: 30px;
+  }
+
+  .ribbon.in_progress + h5 {
+    margin-left: 40px;
+  }
+
+  .ribbon.en + h5 {
+    margin-left: 40px;
   }
 }

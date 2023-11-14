@@ -1,10 +1,10 @@
 #delivery-progress-table.d-flex.flex-column-reverse
   .table
     .d-flex.border
-      .p-2.w-10 #
-      .p-2.w-35= t('notification.delivery_date')
-      .p-2.w-35= t('notification.delivery_progress')
-      .p-2.w-25= t('shared.status')
+      %strong.p-2.w-10 #
+      %strong.p-2.w-35= t('notification.delivery_date')
+      %strong.p-2.w-35= t('notification.delivery_progress')
+      %strong.p-2.w-25= t('shared.status')
 
     .d-flex.flex-column-reverse
       - next_schedule = nil
@@ -18,7 +18,7 @@
             .p-2.w-35= t('notification.progess', success_count: occurrence.success_count, total_count: occurrence.token_count)
             .p-2.w-25
               %span.text-capitalize{class: "noti-occu-#{occurrence.status}"}
-                = occurrence.status.split('_').join(' ')
+                = t("notification.#{occurrence.status}")
 
     / No data
     .no-data-label.justify-content-center.text-muted.mt-3

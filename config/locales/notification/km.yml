@@ -22,7 +22,7 @@ km:
     schedule: កាលវិភាគ
     success: ជោគជ័យ
     failure: បរាជ័យ
-    delivery_progress: ដំណើរការចែកចាយដំណឹង
+    delivery_progress: ដំណើរការជូនដំណឹង
     release_successfully: ការជូនដំណឹងនេះត្រូវបានដាក់ដំណើរការដោយជោគជ័យ!
     cancel_successfully: ការជូនដំណឹងនេះត្រូវបានបញ្ឈប់ដំណើរការដោយជោគជ័យ!
     delete_successfully: ការជូនដំណឹងនេះត្រូវបានលុបដោយជោគជ័យ!
@@ -46,6 +46,11 @@ km:
     progess: "ជោគជ័យ: %{success_count} / សរុប: %{total_count}"
     next_schedule: "កាលបរិច្ឆេទជូនដំណឹងបន្ទាប់"
     no-data: មិនមានទិន្នន័យ
+    cancelled: បោះបង់
+    completed: បានបញ្ចប់
+    in_progress: ដាក់ដំណើរការ
+    pending: រង់ចាំ
+    delivered: ចែកចាយរួចរាល់
 
   recurring_select:
     not_recurring: "សូមកំណត់"

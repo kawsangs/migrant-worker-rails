@@ -1,7 +1,6 @@
-.d-flex.align-items-center
+.ribbon.left{class: [@notification.status, I18n.locale]}
+  = t("notification.#{@notification.status}")
+
+%h5.mb-0
   = "#{t('notification.delivery_progress')}: #{@notification.title} "
   %strong.ml-1= "(#{notification_occurence_number(@notification)})"
-
-  - if @notification.cancelled?
-    %small.ml-2
-      %span.badge.badge-danger.text-capitalize= @notification.status

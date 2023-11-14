@@ -32,7 +32,7 @@ module NotificationOccurrences::NotifiableConcern
     end
 
     def finished?
-      success_count.to_i + failure_count.to_i >= token_count
+      success_count.to_i + failure_count.to_i == token_count
     end
 
     private

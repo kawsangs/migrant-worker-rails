@@ -41,9 +41,9 @@ km:
     yes_delete: បាទ/ចាស, លុប!
     yes_publish: បាទ/ចាស, ចេញផ្សាយ!
     yes_cancel: បាទ/ចាស, បញ្ឈប់!
-    confirm_delete: បញ្ជាក់ការលុបការ %{name}
-    confirm_publish: បញ្ជាក់ការចេញផ្សាយ %{name}
-    confirm_cancel: បញ្ជាក់ការបញ្ឈប់ %{name}
+    confirm_delete: បញ្ជាក់ការលុបការ <b>"%{name}"</b>
+    confirm_publish: បញ្ជាក់ការចេញផ្សាយ <b>"%{name}"</b>
+    confirm_cancel: បញ្ជាក់ការបញ្ឈប់ <b>"%{name}"</b>
     search_by_name: ស្វែងរកតាមឈ្មោះ
     search_by_title: ស្វែងរកតាមចំណងជើង
     search_by_tag: ស្វែងរកតាមថេក
@@ -102,3 +102,4 @@ km:
     upload_invalid_file: ឯកសារមិនត្រឹមត្រូវទេ សូមពិនិត្យមើលវាម្តងទៀត!
     at_least_one_valid_item: ត្រូវមានទិន្នន័យដែលត្រឹមត្រូវយ៉ាងហោចណាស់ 1
     close: បិទ
+    save_draft: រក្សាទុកសេចក្ដីព្រៀង

@@ -22,7 +22,7 @@ class NotificationPolicy < ApplicationPolicy
   end
 
   def cancel?
-    create? && record.released? && !record.completed?
+    create? && record.in_progress? && !record.completed?
   end
 
   class Scope < Scope

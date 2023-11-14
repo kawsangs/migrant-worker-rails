@@ -23,8 +23,8 @@ module Notifications::SchedulableConcern
     START_TIME = Date.today + 8.hours
 
     # Callback
-    after_update :create_notification_occurrence, if: -> { saved_change_to_status? && released? }
-    after_create :create_notification_occurrence, if: -> { released? }
+    after_update :create_notification_occurrence, if: -> { saved_change_to_status? && in_progress? }
+    after_create :create_notification_occurrence, if: -> { in_progress? }
 
     # Instance method
     def increase_delivered_count
@@ -45,6 +45,10 @@ module Notifications::SchedulableConcern
       return I18n.l(start_time, format: :yyyy_mm_dd_time) if onetime?
 
       RecurringSelect.dirty_hash_to_rule(recurrence_rule)
+    end
+
+    def next_schedule
+      @next_schedule ||= notification_occurrences.select { |occu| occu.pending? }.first
     end
 
     # Class method

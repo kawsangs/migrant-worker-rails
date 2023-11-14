@@ -49,7 +49,7 @@
 
                   = render "shared/buttons/edit_button", url: edit_notification_path(notification), object: notification
 
-                  = render 'shared/buttons/delete_button', object: notification,  message: { type: t('notification.push_notification'), name: notification.title, url: notification_path(notification) }
+                  = render 'shared/buttons/delete_button', object: notification,  message: { type: t('notification.notification'), name: notification.title, url: notification_path(notification) }
 
 
 / Confirm delete modal
